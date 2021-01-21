@@ -80,7 +80,7 @@ System.register([], function (_export, _context) {
 
     function loadSettingsJson(cc) {
       return new Promise(function (resolve, reject) {
-        cc.loader.load('./res/settings.6f368.json', function (err, json) {
+        cc.loader.load('./res/settings.d2db2.json', function (err, json) {
           if (err) {
             return reject(err);
           }
