@@ -1,1 +1,0 @@
-{"__type__":"cc.Material","_effectAsset":{"__uuid__":"a3zQCfCrBCDZJ4uf2rk5u8"},"_techIdx":3,"_defines":[{}],"_states":[{"blendState":{"targets":[{}]},"depthStencilState":{},"rasterizerState":{}}],"_props":[{"mainColor":{"__type__":"cc.Color","r":195,"g":27,"b":27,"a":72},"alphaThreshold":0.6}]}
