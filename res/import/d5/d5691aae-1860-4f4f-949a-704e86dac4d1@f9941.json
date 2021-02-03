@@ -1,1 +1,1 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"btnRed","rect":{"x":0,"y":0,"width":132,"height":112},"offset":{"x":0,"y":0},"originalSize":{"width":132,"height":112},"rotated":false,"capInsets":[51,0,50,0],"texture":"d5aRquGGBPT5SacE6G2sTR@6c48a"}}
+{"__type__":"cc.SpriteFrame","content":{"name":"btnRed","rect":{"x":1,"y":1,"width":130,"height":110},"offset":{"x":0,"y":0},"originalSize":{"width":132,"height":112},"rotated":false,"capInsets":[51,0,50,0],"texture":"d5aRquGGBPT5SacE6G2sTR@6c48a"}}

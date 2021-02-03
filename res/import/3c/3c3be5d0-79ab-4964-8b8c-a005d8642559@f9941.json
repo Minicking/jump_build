@@ -1,1 +1,1 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"heart","rect":{"x":1,"y":0,"width":82,"height":72},"offset":{"x":0,"y":0},"originalSize":{"width":84,"height":72},"rotated":false,"capInsets":[0,0,0,0],"texture":"3cO+XQeatJZIuMoAXYZCVZ@6c48a"}}
+{"__type__":"cc.SpriteFrame","content":{"name":"heart","rect":{"x":3,"y":1,"width":79,"height":70},"offset":{"x":0.5,"y":0},"originalSize":{"width":84,"height":72},"rotated":false,"capInsets":[0,0,0,0],"texture":"3cO+XQeatJZIuMoAXYZCVZ@6c48a"}}
