@@ -1,4 +1,4 @@
-System.register(["cc.base", "cc.gfx-webgl", "cc.gfx-webgl2", "cc.ui", "cc.particle", "cc.audio", "cc.tween"], function (_export, _context) {
+System.register(["cc.base", "cc.gfx-webgl", "cc.ui", "cc.particle", "cc.audio", "cc.tween"], function (_export, _context) {
   "use strict";
 
   return {
@@ -18,46 +18,38 @@ System.register(["cc.base", "cc.gfx-webgl", "cc.gfx-webgl2", "cc.ui", "cc.partic
       }
 
       _export(_exportObj2);
-    }, function (_ccGfxWebgl2) {
+    }, function (_ccUi) {
       var _exportObj3 = {};
 
-      for (var _key3 in _ccGfxWebgl2) {
-        if (_key3 !== "default" && _key3 !== "__esModule") _exportObj3[_key3] = _ccGfxWebgl2[_key3];
+      for (var _key3 in _ccUi) {
+        if (_key3 !== "default" && _key3 !== "__esModule") _exportObj3[_key3] = _ccUi[_key3];
       }
 
       _export(_exportObj3);
-    }, function (_ccUi) {
+    }, function (_ccParticle) {
       var _exportObj4 = {};
 
-      for (var _key4 in _ccUi) {
-        if (_key4 !== "default" && _key4 !== "__esModule") _exportObj4[_key4] = _ccUi[_key4];
+      for (var _key4 in _ccParticle) {
+        if (_key4 !== "default" && _key4 !== "__esModule") _exportObj4[_key4] = _ccParticle[_key4];
       }
 
       _export(_exportObj4);
-    }, function (_ccParticle) {
+    }, function (_ccAudio) {
       var _exportObj5 = {};
 
-      for (var _key5 in _ccParticle) {
-        if (_key5 !== "default" && _key5 !== "__esModule") _exportObj5[_key5] = _ccParticle[_key5];
+      for (var _key5 in _ccAudio) {
+        if (_key5 !== "default" && _key5 !== "__esModule") _exportObj5[_key5] = _ccAudio[_key5];
       }
 
       _export(_exportObj5);
-    }, function (_ccAudio) {
+    }, function (_ccTween) {
       var _exportObj6 = {};
 
-      for (var _key6 in _ccAudio) {
-        if (_key6 !== "default" && _key6 !== "__esModule") _exportObj6[_key6] = _ccAudio[_key6];
+      for (var _key6 in _ccTween) {
+        if (_key6 !== "default" && _key6 !== "__esModule") _exportObj6[_key6] = _ccTween[_key6];
       }
 
       _export(_exportObj6);
-    }, function (_ccTween) {
-      var _exportObj7 = {};
-
-      for (var _key7 in _ccTween) {
-        if (_key7 !== "default" && _key7 !== "__esModule") _exportObj7[_key7] = _ccTween[_key7];
-      }
-
-      _export(_exportObj7);
     }],
     execute: function () {}
   };
