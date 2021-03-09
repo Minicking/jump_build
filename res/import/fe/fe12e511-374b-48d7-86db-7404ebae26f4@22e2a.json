@@ -1,0 +1,1 @@
+{"__type__":"cc.Material","_name":"材质","_effectAsset":{"__uuid__":"1brw/JvvpFnIvdrxpFCgMZ"},"_defines":[{}],"_states":[{"rasterizerState":{},"blendState":{"targets":[{}]},"depthStencilState":{}}],"_props":[{"albedoScale":{"__type__":"cc.Vec3","x":0.0900000035762787,"y":0.495000004768372,"z":0.899999976158142},"metallic":0.400000005960464,"roughness":0.242535620927811}]}
