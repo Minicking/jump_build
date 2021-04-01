@@ -1,1 +1,2187 @@
-System.register(["./deprecated-d0bd4179.js","./deprecated-f701969e.js","./component-event-handler-11b7e3c4.js","./terrain-asset-cb7e7d07.js"],(function(t){"use strict";var e,i,r,a,n,s,l,h,o,u,_,f,c,g,y,p,d,v,b,M,k,w,S,m,z,C,x,A,I,E,T,R,L,N,P,B,H,O,D,U,V,F,Y,W,G,X,j,K,q,Z,Q,J,$,tt,et;return{setters:[function(t){e=t.j,i=t.d,r=t.k,a=t.c,n=t._,s=t.t,l=t.b1,h=t.s,o=t.F,u=t.l,_=t.H,f=t.K,c=t.W,g=t.h,y=t.b5,p=t.bN,d=t.T,v=t.g,b=t.b,M=t.e,k=t.f,w=t.aN,S=t.i,m=t.D,z=t.at,C=t.V,x=t.C},function(t){A=t.b2,I=t.d9,E=t.c_,T=t.h,R=t.i,L=t.G,N=t.f,P=t.b4,B=t.t,H=t.W,O=t.aY,D=t.df,U=t.dQ,V=t.dZ,F=t.b3,Y=t.d2,W=t.d3},function(t){G=t.d},function(e){X=e.T,j=e.a,K=e.b,q=e.c,Z=e.d,Q=e.e,J=e.f,$=e.g,tt=e.h,et=e.i;var i={};i.TERRAIN_BLOCK_TILE_COMPLEXITY=e.b,i.TERRAIN_BLOCK_VERTEX_COMPLEXITY=e.a,i.TERRAIN_BLOCK_VERTEX_SIZE=e.c,i.TERRAIN_DATA_VERSION=e.p,i.TERRAIN_DATA_VERSION2=e.q,i.TERRAIN_DATA_VERSION3=e.r,i.TERRAIN_DATA_VERSION_DEFAULT=e.s,i.TERRAIN_EAST_INDEX=e.o,i.TERRAIN_HEIGHT_BASE=e.h,i.TERRAIN_HEIGHT_FACTORY=e.i,i.TERRAIN_HEIGHT_FMAX=e.f,i.TERRAIN_HEIGHT_FMIN=e.g,i.TERRAIN_MAX_BLEND_LAYERS=e.k,i.TERRAIN_MAX_LAYER_COUNT=e.d,i.TERRAIN_MAX_LEVELS=e.j,i.TERRAIN_NORTH_INDEX=e.l,i.TERRAIN_SOUTH_INDEX=e.m,i.TERRAIN_WEST_INDEX=e.n,i.TerrainAsset=e.T,i.TerrainLayerInfo=e.e,t(i)}],execute:function(){t("HeightField",function(){function t(e,r){i(this,t),this.data=new Uint16Array,this.w=0,this.h=0,this.w=e,this.h=r,this.data=new Uint16Array(e*r);for(var a=0;a<e*r;++a)this.data[a]=0}return e(t,[{key:"set",value:function(t,e,i){this.data[e*this.w+t]=i}},{key:"get",value:function(t,e){return this.data[e*this.w+t]}},{key:"getClamp",value:function(t,e){return t=r(t,0,this.w-1),e=r(e,0,this.h-1),this.get(t,e)}},{key:"getAt",value:function(t,e){var i=t,a=e,n=Math.floor(i),s=Math.floor(a),l=n+1,h=s+1,o=i-n,u=a-s;n=r(n,0,this.w-1),s=r(s,0,this.h-1),l=r(l,0,this.w-1),h=r(h,0,this.h-1);var _=this.get(n,s),f=this.get(l,s),c=this.get(n,h),g=this.get(l,h),y=.5*(f+c);return o+u<=1?g=y+(y-_):_=y+(y-g),(_*(1-o)+f*o)*(1-u)+(c*(1-o)+g*o)*u}}]),t}());var it,rt,at,nt,st,lt,ht,ot,ut,_t,ft,ct,gt,yt,pt,dt,vt,bt,Mt,kt,wt,St,mt,zt,Ct,xt,At,It,Et,Tt,Rt,Lt,Nt,Pt,Bt,Ht,Ot,Dt,Ut=t("TerrainInfo",a("cc.TerrainInfo")((at=n((rt=function(){function t(){i(this,t),v(this,"tileSize",at,this),v(this,"blockCount",nt,this),v(this,"weightMapSize",st,this),v(this,"lightMapSize",lt,this)}return e(t,[{key:"size",get:function(){var t=new d(0,0);return t.width=this.blockCount[0]*K*this.tileSize,t.height=this.blockCount[1]*K*this.tileSize,t}},{key:"tileCount",get:function(){var t=[0,0];return t[0]=this.blockCount[0]*K,t[1]=this.blockCount[1]*K,t}},{key:"vertexCount",get:function(){var t=this.tileCount;return t[0]+=1,t[1]+=1,t}}]),t}()).prototype,"tileSize",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 1}}),nt=n(rt.prototype,"blockCount",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[1,1]}}),st=n(rt.prototype,"weightMapSize",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 128}}),lt=n(rt.prototype,"lightMapSize",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 128}}),it=rt))||it),Vt=t("TerrainLayer",a("cc.TerrainLayer")((ut=n((ot=function t(){i(this,t),v(this,"detailMap",ut,this),v(this,"tileSize",_t,this)}).prototype,"detailMap",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),_t=n(ot.prototype,"tileSize",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 1}}),ht=ot))||ht),Ft=function(t){function r(){var t,e;i(this,r);for(var a=arguments.length,n=new Array(a),s=0;s<a;s++)n[s]=arguments[s];return(e=M(this,(t=k(r)).call.apply(t,[this].concat(n))))._model=null,e._meshData=null,e._brushMaterial=null,e._currentMaterial=null,e._currentMaterialLayers=0,e}return b(r,t),e(r,[{key:"destroy",value:function(){return null!=this._model&&(u.director.root.destroyModel(this._model),this._model=null),w(k(r.prototype),"destroy",this).call(this)}},{key:"_invalidMaterial",value:function(){null!=this._currentMaterial&&(this._clearMaterials(),this._currentMaterial=null,null!=this._model&&(this._model.enabled=!1))}},{key:"_updateMaterial",value:function(t,e){if(null!=this._meshData&&null!=this._model){var i=t.getMaxLayer();if(null==this._currentMaterial||i!==this._currentMaterialLayers){if(this._currentMaterial=new F,this._currentMaterial.initialize({effectAsset:t.getTerrain().getEffectAsset(),defines:t._getMaterialDefines(i)}),null!==this._brushMaterial)this._currentMaterial.passes.push(this._brushMaterial.passes[0]);e&&this._model.initSubModel(0,this._meshData,this._currentMaterial),this.setMaterial(this._currentMaterial,0),this._currentMaterialLayers=i,this._model.enabled=!0}}}},{key:"_onMaterialModified",value:function(t,e){null!=this._model&&this._onRebuildPSO(t,e||this._getBuiltinMaterial())}},{key:"_onRebuildPSO",value:function(t,e){this._model&&this._model.setSubModelMaterial(t,e)}},{key:"_clearMaterials",value:function(){null!=this._model&&this._onMaterialModified(0,null)}},{key:"_getBuiltinMaterial",value:function(){return Y.get("missing-material")}}]),r}(W),Yt=t("TerrainBlockInfo",a("cc.TerrainBlockInfo")((gt=n((ct=function t(){i(this,t),v(this,"layers",gt,this)}).prototype,"layers",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[-1,-1,-1,-1]}}),ft=ct))||ft),Wt=t("TerrainBlockLightmapInfo",a("cc.TerrainBlockLightmapInfo")((dt=n((pt=function t(){i(this,t),v(this,"texture",dt,this),v(this,"UOff",vt,this),v(this,"VOff",bt,this),v(this,"UScale",Mt,this),v(this,"VScale",kt,this)}).prototype,"texture",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),vt=n(pt.prototype,"UOff",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 0}}),bt=n(pt.prototype,"VOff",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 0}}),Mt=n(pt.prototype,"UScale",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 0}}),kt=n(pt.prototype,"VScale",[h,o],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 0}}),yt=pt))||yt),Gt=t("TerrainBlock",function(){function t(e,r,a){i(this,t),this._terrain=void 0,this._info=void 0,this._node=void 0,this._renderable=void 0,this._index=[1,1],this._weightMap=null,this._lightmapInfo=null,this._terrain=e,this._info=e.getBlockInfo(r,a),this._index[0]=r,this._index[1]=a,this._lightmapInfo=e._getLightmapInfo(r,a),this._node=new E(""),this._node.setParent(this._terrain.node),this._node._objFlags|=u.Object.Flags.DontSave,this._renderable=this._node.addComponent(Ft)}return e(t,[{key:"build",value:function(){for(var t=G.root.device,e=new Float32Array(q*j*j),i=0,r=0;r<j;++r)for(var a=0;a<j;++a){var n=this._index[0]*K+a,s=this._index[1]*K+r,l=this._terrain.getPosition(n,s),h=this._terrain.getNormal(n,s),o=new _(a/K,r/K);e[i++]=l.x,e[i++]=l.y,e[i++]=l.z,e[i++]=h.x,e[i++]=h.y,e[i++]=h.z,e[i++]=o.x,e[i++]=o.y}var f=t.createBuffer({usage:T.VERTEX|T.TRANSFER_DST,memUsage:R.HOST|R.DEVICE,size:q*Float32Array.BYTES_PER_ELEMENT*j*j,stride:q*Float32Array.BYTES_PER_ELEMENT});f.update(e);var c=[{name:L.ATTR_POSITION,format:N.RGB32F},{name:L.ATTR_NORMAL,format:N.RGB32F},{name:L.ATTR_TEX_COORD,format:N.RG32F}];(this._renderable._meshData=new P([f],c,B.TRIANGLE_LIST)).indexBuffer=this._terrain._getSharedIndexBuffer()||void 0,this._renderable._model=u.director.root.createModel(H),this._renderable._model.initialize(this._node),this._renderable._getRenderScene().addModel(this._renderable._model),this._updateWeightMap(),this._updateMaterial(!0)}},{key:"rebuild",value:function(){this._updateHeight(),this._updateWeightMap(),this._renderable._invalidMaterial(),this._updateMaterial(!1)}},{key:"destroy",value:function(){null!=this._renderable&&this._renderable.destroy(),null!=this._node&&this._node.destroy(),null!=this._weightMap&&this._weightMap.destroy()}},{key:"update",value:function(){this._updateMaterial(!1);var t=this._renderable._currentMaterial;if(null!=t){var e=this.getMaxLayer(),i=new f(1,1,1,1);if(0===e)if(-1!==this.layers[0]){var r=this._terrain.getLayer(this.layers[0]);null!=r&&(i.x=1/r.tileSize),t.setProperty("detailMap0",null!=r?r.detailMap:null)}else t.setProperty("detailMap0",u.builtinResMgr.get("default-texture"));else if(1===e){var a=this._terrain.getLayer(this.layers[0]),n=this._terrain.getLayer(this.layers[1]);null!=a&&(i.x=1/a.tileSize),null!=n&&(i.y=1/n.tileSize),t.setProperty("weightMap",this._weightMap),t.setProperty("detailMap0",null!=a?a.detailMap:null),t.setProperty("detailMap1",null!=n?n.detailMap:null)}else if(2===e){var s=this._terrain.getLayer(this.layers[0]),l=this._terrain.getLayer(this.layers[1]),h=this._terrain.getLayer(this.layers[2]);null!=s&&(i.x=1/s.tileSize),null!=l&&(i.y=1/l.tileSize),null!=h&&(i.z=1/h.tileSize),t.setProperty("weightMap",this._weightMap),t.setProperty("detailMap0",null!=s?s.detailMap:null),t.setProperty("detailMap1",null!=l?l.detailMap:null),t.setProperty("detailMap2",null!=h?h.detailMap:null)}else if(3===e){var o=this._terrain.getLayer(this.layers[0]),_=this._terrain.getLayer(this.layers[1]),c=this._terrain.getLayer(this.layers[2]),g=this._terrain.getLayer(this.layers[3]);null!=o&&(i.x=1/o.tileSize),null!=_&&(i.y=1/_.tileSize),null!=c&&(i.z=1/c.tileSize),null!=g&&(i.z=1/g.tileSize),t.setProperty("weightMap",this._weightMap),t.setProperty("detailMap0",null!=o?o.detailMap:null),t.setProperty("detailMap1",null!=_?_.detailMap:null),t.setProperty("detailMap2",null!=c?c.detailMap:null),t.setProperty("detailMap3",null!=g?g.detailMap:null)}t.setProperty("UVScale",i),null!=this.lightmap&&(t.setProperty("lightMap",this.lightmap),t.setProperty("lightMapUVParam",this.lightmapUVParam))}}},{key:"setBrushMaterial",value:function(t){this._renderable._brushMaterial!==t&&(this._renderable._brushMaterial=t,this._renderable._invalidMaterial())}},{key:"getTerrain",value:function(){return this._terrain}},{key:"getIndex",value:function(){return this._index}},{key:"getRect",value:function(){var t=new c;return t.x=this._index[0]*K,t.y=this._index[1]*K,t.width=K,t.height=K,t}},{key:"setLayer",value:function(t,e){this.layers[t]!==e&&(this.layers[t]=e,this._renderable._invalidMaterial(),this._updateMaterial(!1))}},{key:"getLayer",value:function(t){return this.layers[t]}},{key:"getMaxLayer",value:function(){return this.layers[3]>=0?3:this.layers[2]>=0?2:this.layers[1]>=0?1:0}},{key:"_getMaterialDefines",value:function(t){if(null!=this.lightmap){if(0===t)return{LAYERS:1,LIGHT_MAP:1};if(1===t)return{LAYERS:2,LIGHT_MAP:1};if(2===t)return{LAYERS:3,LIGHT_MAP:1};if(3===t)return{LAYERS:4,LIGHT_MAP:1}}else{if(0===t)return{LAYERS:1};if(1===t)return{LAYERS:2};if(2===t)return{LAYERS:3};if(3===t)return{LAYERS:4}}return{LAYERS:0}}},{key:"_invalidMaterial",value:function(){this._renderable._invalidMaterial()}},{key:"_updateMaterial",value:function(t){this._renderable._updateMaterial(this,t)}},{key:"_updateHeight",value:function(){if(null!=this._renderable._meshData){for(var t=new Float32Array(q*j*j),e=0,i=0;i<j;++i)for(var r=0;r<j;++r){var a=this._index[0]*K+r,n=this._index[1]*K+i,s=this._terrain.getPosition(a,n),l=this._terrain.getNormal(a,n),h=new _(r/j,i/j);t[e++]=s.x,t[e++]=s.y,t[e++]=s.z,t[e++]=l.x,t[e++]=l.y,t[e++]=l.z,t[e++]=h.x,t[e++]=h.y}this._renderable._meshData.vertexBuffers[0].update(t)}}},{key:"_updateWeightMap",value:function(){if(0!==this.getMaxLayer()){null==this._weightMap&&(this._weightMap=new O,this._weightMap.create(this._terrain.weightMapSize,this._terrain.weightMapSize,D.RGBA8888),this._weightMap.setFilters(U.LINEAR,U.LINEAR),this._weightMap.setWrapMode(V.CLAMP_TO_EDGE,V.CLAMP_TO_EDGE));for(var t=new Uint8Array(this._terrain.weightMapSize*this._terrain.weightMapSize*4),e=0,i=0;i<this._terrain.weightMapSize;++i)for(var r=0;r<this._terrain.weightMapSize;++r){var a=this._index[0]*this._terrain.weightMapSize+r,n=this._index[1]*this._terrain.weightMapSize+i,s=this._terrain.getWeight(a,n);t[4*e+0]=Math.floor(255*s.x),t[4*e+1]=Math.floor(255*s.y),t[4*e+2]=Math.floor(255*s.z),t[4*e+3]=Math.floor(255*s.w),e+=1}this._weightMap.uploadData(t)}else null!=this._weightMap&&(this._weightMap.destroy(),this._weightMap=null)}},{key:"_updateLightmap",value:function(t){this._lightmapInfo=t,this._invalidMaterial()}},{key:"layers",get:function(){return this._info.layers}},{key:"lightmap",get:function(){return this._lightmapInfo?this._lightmapInfo.texture:null}},{key:"lightmapUVParam",get:function(){return null!=this._lightmapInfo?new f(this._lightmapInfo.UOff,this._lightmapInfo.VOff,this._lightmapInfo.UScale,this._lightmapInfo.VScale):new f(0,0,0,0)}}]),t}());t("Terrain",(wt=a("cc.Terrain"),St=g(),mt=s(X),zt=s(A),Ct=y(),xt=s(Vt),At=s(X),It=y(),Et=s(A),Tt=y(),Rt=s(Ut),wt(Lt=St(Lt=l(Lt=I((Pt=n((Nt=function(t){function a(){var t;i(this,a),t=M(this,k(a).call(this)),v(t,"__asset",Pt,S(t)),v(t,"_effectAsset",Bt,S(t)),v(t,"_layers",Ht,S(t)),v(t,"_blockInfos",Ot,S(t)),v(t,"_lightmapInfos",Dt,S(t)),t._tileSize=1,t._blockCount=[1,1],t._weightMapSize=128,t._lightMapSize=128,t._heights=new Uint16Array,t._weights=new Uint8Array,t._normals=[],t._blocks=[],t._sharedIndexBuffer=null;for(var e=0;e<Z;++e)t._layers.push(null);return t}return b(a,t),e(a,[{key:"build",value:function(t){return this._tileSize=t.tileSize,this._blockCount[0]=t.blockCount[0],this._blockCount[1]=t.blockCount[1],this._weightMapSize=t.weightMapSize,this._lightMapSize=t.lightMapSize,this._buildImp()}},{key:"rebuild",value:function(t){for(var e=[],i=0;i<t.blockCount[0]*t.blockCount[1];++i)e.push(new Yt);for(var r=Math.min(this._blockCount[0],t.blockCount[0]),a=Math.min(this._blockCount[1],t.blockCount[1]),n=0;n<a;++n)for(var s=0;s<r;++s){var l=n*t.blockCount[0]+s,h=n*this.blockCount[0]+s;e[l]=this._blockInfos[h]}this._blockInfos=e;for(var o,u=m(this._blocks);!(o=u()).done;){o.value.destroy()}this._blocks=[],this._rebuildHeights(t),this._rebuildWeights(t),this._tileSize=t.tileSize,this._blockCount[0]=t.blockCount[0],this._blockCount[1]=t.blockCount[1],this._weightMapSize=t.weightMapSize,this._lightMapSize=t.lightMapSize,this._buildNormals();for(var _=0;_<this._blockCount[1];++_)for(var f=0;f<this._blockCount[0];++f)this._blocks.push(new Gt(this,f,_));for(var c,g=m(this._blocks);!(c=g()).done;){c.value.build()}}},{key:"importHeightField",value:function(t,e){for(var i=0,r=0;r<this.vertexCount[1];++r)for(var a=0;a<this.vertexCount[0];++a){var n=a/this.tileCount[0],s=r/this.tileCount[1],l=t.getAt(n*t.w,s*t.h)*e;this._heights[i++]=l}this._buildNormals();for(var h,o=m(this._blocks);!(h=o()).done;){h.value._updateHeight()}}},{key:"exportHeightField",value:function(t,e){for(var i=0,r=0;r<t.h;++r)for(var a=0;a<t.w;++a){var n=a/(t.w-1),s=r/(t.h-1),l=n*this.size.width,h=s*this.size.height,o=this.getHeightAt(l,h);null!=o&&(t.data[i++]=o*e)}}},{key:"exportAsset",value:function(){var t=new X;t.tileSize=this.tileSize,t.blockCount=this.blockCount,t.lightMapSize=this.lightMapSize,t.weightMapSize=this.weightMapSize,t.heights=this.heights,t.weights=this.weights,t.layerBuffer=new Array(4*this._blocks.length);for(var e=0;e<this._blocks.length;++e)t.layerBuffer[4*e+0]=this._blocks[e].layers[0],t.layerBuffer[4*e+1]=this._blocks[e].layers[1],t.layerBuffer[4*e+2]=this._blocks[e].layers[2],t.layerBuffer[4*e+3]=this._blocks[e].layers[3];for(var i=0;i<this._layers.length;++i){var r=this._layers[i];if(r&&r.detailMap&&z(r.detailMap)){var a=new Q;a.slot=i,a.tileSize=r.tileSize,a.detailMap=r.detailMap._uuid,t.layerInfos.push(a)}}return t}},{key:"getEffectAsset",value:function(){return null===this._effectAsset?u.EffectAsset.get("builtin-terrain"):this._effectAsset}},{key:"onLoad",value:function(){for(var t=u.director.root.device,e=new Uint16Array(K*K*6),i=0,r=0;r<K;++r)for(var a=0;a<K;++a){var n=r*j+a,s=r*j+a+1,l=(r+1)*j+a,h=(r+1)*j+a+1;e[i++]=n,e[i++]=l,e[i++]=s,e[i++]=s,e[i++]=l,e[i++]=h}this._sharedIndexBuffer=t.createBuffer({usage:T.INDEX|T.TRANSFER_DST,memUsage:R.HOST|R.DEVICE,size:Uint16Array.BYTES_PER_ELEMENT*K*K*6,stride:Uint16Array.BYTES_PER_ELEMENT}),this._sharedIndexBuffer.update(e)}},{key:"onEnable",value:function(){0===this._blocks.length&&this._buildImp()}},{key:"onDisable",value:function(){for(var t,e=m(this._blocks);!(t=e()).done;){t.value.destroy()}this._blocks=[]}},{key:"onDestroy",value:function(){for(var t=0;t<this._layers.length;++t)this._layers[t]=null;null!=this._sharedIndexBuffer&&this._sharedIndexBuffer.destroy()}},{key:"onRestore",value:function(){this.onDisable(),this.onLoad(),this._buildImp(!0)}},{key:"update",value:function(t){for(var e,i=m(this._blocks);!(e=i()).done;){e.value.update()}}},{key:"addLayer",value:function(t){for(var e=0;e<this._layers.length;++e)if(null==this._layers[e])return this._layers[e]=t,e;return-1}},{key:"setLayer",value:function(t,e){this._layers[t]=e}},{key:"removeLayer",value:function(t){this._layers[t]=null}},{key:"getLayer",value:function(t){return-1===t?null:this._layers[t]}},{key:"getPosition",value:function(t,e){var i=t*this._tileSize,r=e*this._tileSize,a=this.getHeight(t,e);return new C(i,a,r)}},{key:"getHeightField",value:function(){return this._heights}},{key:"setHeight",value:function(t,e,i){i=r(i,$,J),this._heights[e*this.vertexCount[0]+t]=tt+i/et}},{key:"getHeight",value:function(t,e){return(this._heights[e*this.vertexCount[0]+t]-tt)*et}},{key:"getHeightClamp",value:function(t,e){return t=r(t,0,this.vertexCount[0]-1),e=r(e,0,this.vertexCount[1]-1),this.getHeight(t,e)}},{key:"getHeightAt",value:function(t,e){var i=t/this.tileSize,a=e/this.tileSize,n=Math.floor(i),s=Math.floor(a),l=n+1,h=s+1,o=i-n,u=a-s;if(n<0||n>this.vertexCount[0]-1||s<0||s>this.vertexCount[1]-1)return null;n=r(n,0,this.vertexCount[0]-1),s=r(s,0,this.vertexCount[1]-1),l=r(l,0,this.vertexCount[0]-1),h=r(h,0,this.vertexCount[1]-1);var _=this.getHeight(n,s),f=this.getHeight(l,s),c=this.getHeight(n,h),g=this.getHeight(l,h),y=.5*(f+c);return o+u<=1?g=y+(y-_):_=y+(y-g),(_*(1-o)+f*o)*(1-u)+(c*(1-o)+g*o)*u}},{key:"_setNormal",value:function(t,e,i){var r=e*this.vertexCount[0]+t;this._normals[3*r+0]=i.x,this._normals[3*r+1]=i.y,this._normals[3*r+2]=i.z}},{key:"getNormal",value:function(t,e){var i=e*this.vertexCount[0]+t,r=new C;return r.x=this._normals[3*i+0],r.y=this._normals[3*i+1],r.z=this._normals[3*i+2],r}},{key:"getNormalAt",value:function(t,e){var i=t/this.tileSize,a=e/this.tileSize,n=Math.floor(i),s=Math.floor(a),l=n+1,h=s+1,o=i-n,u=a-s;if(n<0||n>this.vertexCount[0]-1||s<0||s>this.vertexCount[1]-1)return null;n=r(n,0,this.vertexCount[0]-1),s=r(s,0,this.vertexCount[1]-1),l=r(l,0,this.vertexCount[0]-1),h=r(h,0,this.vertexCount[1]-1);var _=this.getNormal(n,s),f=this.getNormal(l,s),c=this.getNormal(n,h),g=this.getNormal(l,h),y=new C;C.add(y,f,c).multiplyScalar(.5),o+u<=1?(g.set(y),g.subtract(_),g.add(y)):(_.set(y),_.subtract(g),_.add(y));var p=new C,d=new C,v=new C;return C.lerp(p,_,f,o),C.lerp(d,c,g,o),C.lerp(v,p,d,u),v}},{key:"setWeight",value:function(t,e,i){var r=e*this._weightMapSize*this._blockCount[0]+t;this._weights[4*r+0]=255*i.x,this._weights[4*r+1]=255*i.y,this._weights[4*r+2]=255*i.z,this._weights[4*r+3]=255*i.w}},{key:"getWeight",value:function(t,e){var i=e*this._weightMapSize*this._blockCount[0]+t,r=new f;return r.x=this._weights[4*i+0]/255,r.y=this._weights[4*i+1]/255,r.z=this._weights[4*i+2]/255,r.w=this._weights[4*i+3]/255,r}},{key:"getWeightAt",value:function(t,e){var i=t/this.tileSize,a=e/this.tileSize,n=Math.floor(i),s=Math.floor(a),l=n+1,h=s+1,o=i-n,u=a-s;if(n<0||n>this.vertexCount[0]-1||s<0||s>this.vertexCount[1]-1)return null;n=r(n,0,this.vertexCount[0]-1),s=r(s,0,this.vertexCount[1]-1),l=r(l,0,this.vertexCount[0]-1),h=r(h,0,this.vertexCount[1]-1);var _=this.getWeight(n,s),c=this.getWeight(l,s),g=this.getWeight(n,h),y=this.getWeight(l,h),p=new f;f.add(p,c,g).multiplyScalar(.5),o+u<=1?(y=new f,f.subtract(y,p,_).add(p)):(_=new f,f.subtract(_,p,y).add(p));var d=new f,v=new f,b=new f;return f.lerp(d,_,c,o),f.lerp(v,g,y,o),f.lerp(b,d,v,u),b}},{key:"getBlockInfo",value:function(t,e){return this._blockInfos[e*this._blockCount[0]+t]}},{key:"getBlock",value:function(t,e){return this._blocks[e*this._blockCount[0]+t]}},{key:"getBlocks",value:function(){return this._blocks}},{key:"rayCheck",value:function(t,e,i){var r=!(arguments.length>3&&void 0!==arguments[3])||arguments[3],a=2e3,n=t;r&&C.subtract(n,t,this.node.getWorldPosition());var s=new C;s.set(e),s.multiplyScalar(i);var l=null;if(e.equals(new C(0,1,0))){var h=this.getHeightAt(n.x,n.z);null!=h&&n.y<=h&&(l=new C(n.x,h,n.z))}else if(e.equals(new C(0,-1,0))){var o=this.getHeightAt(n.x,n.z);null!=o&&n.y>=o&&(l=new C(n.x,o,n.z))}else{for(var u=0;u++<a;){var _=this.getHeightAt(n.x,n.z);if(null!=_&&n.y<=_)break;n.add(e)}for(;u++<a;){var f=this.getHeightAt(n.x,n.z);if(null!=f&&n.y<=f){l=new C(n.x,f,n.z);break}n.add(s)}}return l}},{key:"_getSharedIndexBuffer",value:function(){return this._sharedIndexBuffer}},{key:"_resetLightmap",value:function(t){if(this._lightmapInfos.length=0,t)for(var e=0;e<this._blockCount[0]*this._blockCount[1];++e)this._lightmapInfos.push(new Wt)}},{key:"_updateLightmap",value:function(t,e,i,r,a,n){this._lightmapInfos[t].texture=e,this._lightmapInfos[t].UOff=i,this._lightmapInfos[t].VOff=r,this._lightmapInfos[t].UScale=a,this._lightmapInfos[t].VScale=n,this._blocks[t]._updateLightmap(this._lightmapInfos[t])}},{key:"_getLightmapInfo",value:function(t,e){var i=e*this._blockCount[0]+t;return i<this._lightmapInfos.length?this._lightmapInfos[i]:null}},{key:"_calcNormal",value:function(t,e){var i,r,a=1,n=this.getPosition(t,e);t<this.vertexCount[0]-1?i=this.getPosition(t+1,e):(a*=-1,i=this.getPosition(t-1,e)),e<this.vertexCount[1]-1?r=this.getPosition(t,e+1):(a*=-1,r=this.getPosition(t,e-1)),i.subtract(n),r.subtract(n);var s=new C;return s.set(r),s.cross(i),s.multiplyScalar(a),s.normalize(),s}},{key:"_buildNormals",value:function(){for(var t=0,e=0;e<this.vertexCount[1];++e)for(var i=0;i<this.vertexCount[0];++i){var r=this._calcNormal(i,e);this._normals[3*t+0]=r.x,this._normals[3*t+1]=r.y,this._normals[3*t+2]=r.z,t+=1}}},{key:"_buildImp",value:function(){var t=this,e=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(this.valid)return!0;if(!e&&null!=this.__asset){this._tileSize=this.__asset.tileSize,this._blockCount=this.__asset.blockCount,this._weightMapSize=this.__asset.weightMapSize,this._lightMapSize=this.__asset.lightMapSize,this._heights=this.__asset.heights,this._weights=this.__asset.weights;for(var i=!0,r=0;r<this._layers.length;++r)null!=this._layers[r]&&(i=!1);if(i&&null!=this._asset)for(var a,n=function(){var e=a.value,i=new Vt;i.tileSize=e.tileSize,u.loader.loadRes(e.detailMap,O,(function(t,e){i.detailMap=e})),t._layers[e.slot]=i},s=m(this._asset.layerInfos);!(a=s()).done;)n()}if(0===this._blockCount[0]||0===this._blockCount[1])return!1;var l=this.vertexCount[0]*this.vertexCount[1];if(null===this._heights||this._heights.length!==l){this._heights=new Uint16Array(l),this._normals=new Array(3*l);for(var h=0;h<l;++h)this._heights[h]=tt,this._normals[3*h+0]=0,this._normals[3*h+1]=1,this._normals[3*h+2]=0}else this._normals=new Array(3*l),this._buildNormals();var o=this._weightMapSize*this._blockCount[0],_=this._weightMapSize*this._blockCount[1];if(this._weights.length!==o*_*4){this._weights=new Uint8Array(o*_*4);for(var f=0;f<o*_;++f)this._weights[4*f+0]=255,this._weights[4*f+1]=0,this._weights[4*f+2]=0,this._weights[4*f+3]=0}if(this._blockInfos.length!==this._blockCount[0]*this._blockCount[1]){this._blockInfos=[];for(var c=0;c<this._blockCount[1];++c)for(var g=0;g<this._blockCount[0];++g){var y=new Yt;null!=this._asset&&(y.layers[0]=this._asset.getLayer(g,c,0),y.layers[1]=this._asset.getLayer(g,c,1),y.layers[1]===y.layers[0]&&(y.layers[1]=-1),y.layers[2]=this._asset.getLayer(g,c,2),y.layers[2]===y.layers[0]&&(y.layers[2]=-1),y.layers[3]=this._asset.getLayer(g,c,3),y.layers[3]===y.layers[0]&&(y.layers[3]=-1)),this._blockInfos.push(y)}}for(var p=0;p<this._blockCount[1];++p)for(var d=0;d<this._blockCount[0];++d)this._blocks.push(new Gt(this,d,p));for(var v,b=m(this._blocks);!(v=b()).done;){var M=v.value;M.build()}}},{key:"_rebuildHeights",value:function(t){if(this.vertexCount[0]===t.vertexCount[0]&&this.vertexCount[1]===t.vertexCount[1])return!1;for(var e=new Uint16Array(t.vertexCount[0]*t.vertexCount[1]),i=0;i<e.length;++i)e[i]=tt;for(var r=Math.min(this.vertexCount[0],t.vertexCount[0]),a=Math.min(this.vertexCount[1],t.vertexCount[1]),n=0;n<a;++n)for(var s=0;s<r;++s){var l=n*t.vertexCount[0]+s,h=n*this.vertexCount[0]+s;e[l]=this._heights[h]}return this._heights=e,!0}},{key:"_rebuildWeights",value:function(t){var e=this,i=this._weightMapSize,r=this._weightMapSize*this._blockCount[0],a=this._weightMapSize*this._blockCount[1],n=t.weightMapSize*t.blockCount[0],s=t.weightMapSize*t.blockCount[1];if(n===r&&s===a)return!1;for(var l=new Uint8Array(n*s*4),h=0;h<n*s;++h)l[4*h+0]=255,l[4*h+1]=0,l[4*h+2]=0,l[4*h+3]=0;for(var o=Math.min(t.blockCount[0],this._blockCount[0]),u=Math.min(t.blockCount[1],this._blockCount[1]),_=function(t,e,i){var a=e*r+t,n=new f;return n.x=i[4*a+0]/255,n.y=i[4*a+1]/255,n.z=i[4*a+2]/255,n.w=i[4*a+3]/255,n},c=function(t,i,r,a,n){var s=Math.floor(t),l=Math.floor(i),h=s+1,o=l+1,u=t-s,c=i-l,g=_(s+r,l+a,e._weights),y=_(h+r,l+a,e._weights),p=_(s+r,o+a,e._weights),d=_(h+r,o+a,e._weights),v=new f;f.add(v,y,p).multiplyScalar(.5),u+c<=1?(d.set(v),d.subtract(g),d.add(v)):(g.set(v),g.subtract(d),g.add(v));var b=new f,M=new f,k=new f;return f.lerp(b,g,y,u),f.lerp(M,p,d,u),f.lerp(k,b,M,c),k},g=0;g<u;++g)for(var y=0;y<o;++y)for(var p=y*i,d=g*i,v=0;v<t.weightMapSize;++v)for(var b=0;b<t.weightMapSize;++b){var M=void 0;if(t.weightMapSize===i)M=_(b+p,v+d,this._weights);else M=c(b/(t.weightMapSize-1)*(i-1),v/(t.weightMapSize-1)*(i-1),p,d,this._weights);var k=y*t.weightMapSize+b,w=(g*t.weightMapSize+v)*n+k;l[4*w+0]=255*M.x,l[4*w+1]=255*M.y,l[4*w+2]=255*M.z,l[4*w+3]=255*M.w}return this._weights=l,!0}},{key:"_asset",set:function(t){if(this.__asset!==t&&(this.__asset=t,null!=this.__asset&&this.valid)){for(var e,i=m(this._blocks);!(e=i()).done;){e.value.destroy()}this._blocks=[],this._blockInfos=[],this._buildImp()}},get:function(){return this.__asset}},{key:"effectAsset",set:function(t){if(this._effectAsset!==t){this._effectAsset=t;for(var e,i=m(this._blocks);!(e=i()).done;){e.value._invalidMaterial()}}},get:function(){return this._effectAsset}},{key:"size",get:function(){var t=new d(0,0);return t.width=this.blockCount[0]*K*this.tileSize,t.height=this.blockCount[1]*K*this.tileSize,t}},{key:"tileSize",get:function(){return this._tileSize}},{key:"tileCount",get:function(){return[this.blockCount[0]*K,this.blockCount[1]*K]}},{key:"vertexCount",get:function(){var t=this.tileCount;return t[0]+=1,t[1]+=1,t}},{key:"blockCount",get:function(){return this._blockCount}},{key:"lightMapSize",get:function(){return this._lightMapSize}},{key:"weightMapSize",get:function(){return this._weightMapSize}},{key:"heights",get:function(){return this._heights}},{key:"weights",get:function(){return this._weights}},{key:"valid",get:function(){return this._blocks.length>0}},{key:"info",get:function(){var t=new Ut;return t.tileSize=this.tileSize,t.blockCount[0]=this.blockCount[0],t.blockCount[1]=this.blockCount[1],t.weightMapSize=this.weightMapSize,t.lightMapSize=this.lightMapSize,t}}]),a}(x)).prototype,"__asset",[mt,h,p],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Bt=n(Nt.prototype,"_effectAsset",[zt,h,p,Ct],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ht=n(Nt.prototype,"_layers",[xt,h,p],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),Ot=n(Nt.prototype,"_blockInfos",[h,p],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),Dt=n(Nt.prototype,"_lightmapInfos",[h,p],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),n(Nt.prototype,"_asset",[At,It],Object.getOwnPropertyDescriptor(Nt.prototype,"_asset"),Nt.prototype),n(Nt.prototype,"effectAsset",[Et,Tt],Object.getOwnPropertyDescriptor(Nt.prototype,"effectAsset"),Nt.prototype),n(Nt.prototype,"info",[Rt],Object.getOwnPropertyDescriptor(Nt.prototype,"info"),Nt.prototype),Lt=Nt))||Lt)||Lt)||Lt)||Lt))}}}));
+System.register(['./deprecated-4ec15e5e.js', './deprecated-b99c04b5.js', './component-event-handler-b65b5a5a.js', './terrain-asset-1902cdce.js'], function (exports) {
+    'use strict';
+    var _createClass, _classCallCheck, clamp, ccclass, _applyDecoratedDescriptor, type, executeInEditMode, serializable, editable, legacyCC, Vec2, Vec4, Rect, help, visible, disallowAnimation, Size, _initializerDefineProperty, _inherits, _possibleConstructorReturn, _getPrototypeOf, _get, _assertThisInitialized, _createForOfIteratorHelperLoose, isValid, Vec3, Component, EffectAsset, disallowMultiple, PrivateNode, GFXBufferUsageBit, GFXMemoryUsageBit, GFXAttributeName, GFXFormat, RenderingSubMesh, GFXPrimitiveMode, Model, Texture2D, PixelFormat, Filter, WrapMode, Material, builtinResMgr, RenderableComponent, director, TerrainAsset, TERRAIN_BLOCK_VERTEX_COMPLEXITY, TERRAIN_BLOCK_TILE_COMPLEXITY, TERRAIN_BLOCK_VERTEX_SIZE, TERRAIN_MAX_LAYER_COUNT, TerrainLayerInfo, TERRAIN_HEIGHT_FMAX, TERRAIN_HEIGHT_FMIN, TERRAIN_HEIGHT_BASE, TERRAIN_HEIGHT_FACTORY;
+    return {
+        setters: [function (module) {
+            _createClass = module.j;
+            _classCallCheck = module.d;
+            clamp = module.k;
+            ccclass = module.c;
+            _applyDecoratedDescriptor = module._;
+            type = module.t;
+            executeInEditMode = module.b1;
+            serializable = module.s;
+            editable = module.F;
+            legacyCC = module.l;
+            Vec2 = module.H;
+            Vec4 = module.K;
+            Rect = module.W;
+            help = module.h;
+            visible = module.b5;
+            disallowAnimation = module.bN;
+            Size = module.T;
+            _initializerDefineProperty = module.g;
+            _inherits = module.b;
+            _possibleConstructorReturn = module.e;
+            _getPrototypeOf = module.f;
+            _get = module.aN;
+            _assertThisInitialized = module.i;
+            _createForOfIteratorHelperLoose = module.D;
+            isValid = module.at;
+            Vec3 = module.V;
+            Component = module.C;
+        }, function (module) {
+            EffectAsset = module.b2;
+            disallowMultiple = module.d9;
+            PrivateNode = module.c_;
+            GFXBufferUsageBit = module.h;
+            GFXMemoryUsageBit = module.i;
+            GFXAttributeName = module.G;
+            GFXFormat = module.f;
+            RenderingSubMesh = module.b4;
+            GFXPrimitiveMode = module.t;
+            Model = module.W;
+            Texture2D = module.aY;
+            PixelFormat = module.df;
+            Filter = module.dQ;
+            WrapMode = module.dZ;
+            Material = module.b3;
+            builtinResMgr = module.d2;
+            RenderableComponent = module.d3;
+        }, function (module) {
+            director = module.d;
+        }, function (module) {
+            TerrainAsset = module.T;
+            TERRAIN_BLOCK_VERTEX_COMPLEXITY = module.a;
+            TERRAIN_BLOCK_TILE_COMPLEXITY = module.b;
+            TERRAIN_BLOCK_VERTEX_SIZE = module.c;
+            TERRAIN_MAX_LAYER_COUNT = module.d;
+            TerrainLayerInfo = module.e;
+            TERRAIN_HEIGHT_FMAX = module.f;
+            TERRAIN_HEIGHT_FMIN = module.g;
+            TERRAIN_HEIGHT_BASE = module.h;
+            TERRAIN_HEIGHT_FACTORY = module.i;
+            var _setter = {};
+            _setter.TERRAIN_BLOCK_TILE_COMPLEXITY = module.b;
+            _setter.TERRAIN_BLOCK_VERTEX_COMPLEXITY = module.a;
+            _setter.TERRAIN_BLOCK_VERTEX_SIZE = module.c;
+            _setter.TERRAIN_DATA_VERSION = module.p;
+            _setter.TERRAIN_DATA_VERSION2 = module.q;
+            _setter.TERRAIN_DATA_VERSION3 = module.r;
+            _setter.TERRAIN_DATA_VERSION_DEFAULT = module.s;
+            _setter.TERRAIN_EAST_INDEX = module.o;
+            _setter.TERRAIN_HEIGHT_BASE = module.h;
+            _setter.TERRAIN_HEIGHT_FACTORY = module.i;
+            _setter.TERRAIN_HEIGHT_FMAX = module.f;
+            _setter.TERRAIN_HEIGHT_FMIN = module.g;
+            _setter.TERRAIN_MAX_BLEND_LAYERS = module.k;
+            _setter.TERRAIN_MAX_LAYER_COUNT = module.d;
+            _setter.TERRAIN_MAX_LEVELS = module.j;
+            _setter.TERRAIN_NORTH_INDEX = module.l;
+            _setter.TERRAIN_SOUTH_INDEX = module.m;
+            _setter.TERRAIN_WEST_INDEX = module.n;
+            _setter.TerrainAsset = module.T;
+            _setter.TerrainLayerInfo = module.e;
+            exports(_setter);
+        }],
+        execute: function () {
+
+            var HeightField = exports('HeightField', /*#__PURE__*/function () {
+              function HeightField(w, h) {
+                _classCallCheck(this, HeightField);
+
+                this.data = new Uint16Array();
+                this.w = 0;
+                this.h = 0;
+                this.w = w;
+                this.h = h;
+                this.data = new Uint16Array(w * h);
+
+                for (var i = 0; i < w * h; ++i) {
+                  this.data[i] = 0;
+                }
+              }
+
+              _createClass(HeightField, [{
+                key: "set",
+                value: function set(i, j, value) {
+                  this.data[j * this.w + i] = value;
+                }
+              }, {
+                key: "get",
+                value: function get(i, j) {
+                  return this.data[j * this.w + i];
+                }
+              }, {
+                key: "getClamp",
+                value: function getClamp(i, j) {
+                  i = clamp(i, 0, this.w - 1);
+                  j = clamp(j, 0, this.h - 1);
+                  return this.get(i, j);
+                }
+              }, {
+                key: "getAt",
+                value: function getAt(x, y) {
+                  var fx = x;
+                  var fy = y;
+                  var ix0 = Math.floor(fx);
+                  var iz0 = Math.floor(fy);
+                  var ix1 = ix0 + 1;
+                  var iz1 = iz0 + 1;
+                  var dx = fx - ix0;
+                  var dz = fy - iz0;
+                  ix0 = clamp(ix0, 0, this.w - 1);
+                  iz0 = clamp(iz0, 0, this.h - 1);
+                  ix1 = clamp(ix1, 0, this.w - 1);
+                  iz1 = clamp(iz1, 0, this.h - 1);
+                  var a = this.get(ix0, iz0);
+                  var b = this.get(ix1, iz0);
+                  var c = this.get(ix0, iz1);
+                  var d = this.get(ix1, iz1);
+                  var m = (b + c) * 0.5;
+
+                  if (dx + dz <= 1.0) {
+                    d = m + (m - a);
+                  } else {
+                    a = m + (m - d);
+                  }
+
+                  var h1 = a * (1.0 - dx) + b * dx;
+                  var h2 = c * (1.0 - dx) + d * dx;
+                  var h = h1 * (1.0 - dz) + h2 * dz;
+                  return h;
+                }
+              }]);
+
+              return HeightField;
+            }());
+
+            var _dec, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _temp, _dec2, _class4, _class5, _descriptor5, _descriptor6, _temp2, _dec3, _class7, _class8, _descriptor7, _temp3, _dec4, _class10, _class11, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _temp4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _class13, _class14, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _temp5;
+            /**
+             * @en Terrain info
+             * @zh 地形信息
+             */
+
+            var TerrainInfo = exports('TerrainInfo', (_dec = ccclass('cc.TerrainInfo'), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function () {
+              function TerrainInfo() {
+                _classCallCheck(this, TerrainInfo);
+
+                _initializerDefineProperty(this, "tileSize", _descriptor, this);
+
+                _initializerDefineProperty(this, "blockCount", _descriptor2, this);
+
+                _initializerDefineProperty(this, "weightMapSize", _descriptor3, this);
+
+                _initializerDefineProperty(this, "lightMapSize", _descriptor4, this);
+              }
+
+              _createClass(TerrainInfo, [{
+                key: "size",
+
+                /**
+                 * @en terrain size
+                 * @zh 地形大小
+                 */
+                get: function get() {
+                  var sz = new Size(0, 0);
+                  sz.width = this.blockCount[0] * TERRAIN_BLOCK_TILE_COMPLEXITY * this.tileSize;
+                  sz.height = this.blockCount[1] * TERRAIN_BLOCK_TILE_COMPLEXITY * this.tileSize;
+                  return sz;
+                }
+                /**
+                 * @en tile count
+                 * @zh 栅格数量
+                 */
+
+              }, {
+                key: "tileCount",
+                get: function get() {
+                  var _tileCount = [0, 0];
+                  _tileCount[0] = this.blockCount[0] * TERRAIN_BLOCK_TILE_COMPLEXITY;
+                  _tileCount[1] = this.blockCount[1] * TERRAIN_BLOCK_TILE_COMPLEXITY;
+                  return _tileCount;
+                }
+                /**
+                 * @en vertex count
+                 * @zh 顶点数量
+                 */
+
+              }, {
+                key: "vertexCount",
+                get: function get() {
+                  var _vertexCount = this.tileCount;
+                  _vertexCount[0] += 1;
+                  _vertexCount[1] += 1;
+                  return _vertexCount;
+                }
+              }]);
+
+              return TerrainInfo;
+            }(), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "tileSize", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return 1;
+              }
+            }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "blockCount", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return [1, 1];
+              }
+            }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "weightMapSize", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return 128;
+              }
+            }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "lightMapSize", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return 128;
+              }
+            })), _class2)) || _class));
+            /**
+             * @en Terrain layer
+             * @zh 地形纹理层
+             */
+
+            var TerrainLayer = exports('TerrainLayer', (_dec2 = ccclass('cc.TerrainLayer'), _dec2(_class4 = (_class5 = (_temp2 = function TerrainLayer() {
+              _classCallCheck(this, TerrainLayer);
+
+              _initializerDefineProperty(this, "detailMap", _descriptor5, this);
+
+              _initializerDefineProperty(this, "tileSize", _descriptor6, this);
+            }, _temp2), (_descriptor5 = _applyDecoratedDescriptor(_class5.prototype, "detailMap", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return null;
+              }
+            }), _descriptor6 = _applyDecoratedDescriptor(_class5.prototype, "tileSize", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return 1;
+              }
+            })), _class5)) || _class4));
+            /**
+             * @en Terrain renderable
+             * @zh 地形渲染组件
+             */
+
+            var TerrainRenderable = /*#__PURE__*/function (_RenderableComponent) {
+              _inherits(TerrainRenderable, _RenderableComponent);
+
+              function TerrainRenderable() {
+                var _getPrototypeOf2;
+
+                var _this;
+
+                _classCallCheck(this, TerrainRenderable);
+
+                for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+                  args[_key] = arguments[_key];
+                }
+
+                _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TerrainRenderable)).call.apply(_getPrototypeOf2, [this].concat(args)));
+                _this._model = null;
+                _this._meshData = null;
+                _this._brushMaterial = null;
+                _this._currentMaterial = null;
+                _this._currentMaterialLayers = 0;
+                return _this;
+              }
+
+              _createClass(TerrainRenderable, [{
+                key: "destroy",
+                value: function destroy() {
+                  // this._invalidMaterial();
+                  if (this._model != null) {
+                    legacyCC.director.root.destroyModel(this._model);
+                    this._model = null;
+                  }
+
+                  return _get(_getPrototypeOf(TerrainRenderable.prototype), "destroy", this).call(this);
+                }
+              }, {
+                key: "_invalidMaterial",
+                value: function _invalidMaterial() {
+                  if (this._currentMaterial == null) {
+                    return;
+                  }
+
+                  this._clearMaterials();
+
+                  this._currentMaterial = null;
+
+                  if (this._model != null) {
+                    this._model.enabled = false;
+                  }
+                }
+              }, {
+                key: "_updateMaterial",
+                value: function _updateMaterial(block, init) {
+                  if (this._meshData == null || this._model == null) {
+                    return;
+                  }
+
+                  var nLayers = block.getMaxLayer();
+
+                  if (this._currentMaterial == null || nLayers !== this._currentMaterialLayers) {
+                    this._currentMaterial = new Material();
+
+                    this._currentMaterial.initialize({
+                      effectAsset: block.getTerrain().getEffectAsset(),
+                      defines: block._getMaterialDefines(nLayers)
+                    });
+
+                    if (this._brushMaterial !== null) {
+                      var passes = this._currentMaterial.passes;
+                      passes.push(this._brushMaterial.passes[0]);
+                    }
+
+                    if (init) {
+                      this._model.initSubModel(0, this._meshData, this._currentMaterial);
+                    }
+
+                    this.setMaterial(this._currentMaterial, 0);
+                    this._currentMaterialLayers = nLayers;
+                    this._model.enabled = true;
+                  }
+                }
+              }, {
+                key: "_onMaterialModified",
+                value: function _onMaterialModified(idx, mtl) {
+                  if (this._model == null) {
+                    return;
+                  }
+
+                  this._onRebuildPSO(idx, mtl || this._getBuiltinMaterial());
+                }
+              }, {
+                key: "_onRebuildPSO",
+                value: function _onRebuildPSO(idx, material) {
+                  if (this._model) {
+                    this._model.setSubModelMaterial(idx, material);
+                  }
+                }
+              }, {
+                key: "_clearMaterials",
+                value: function _clearMaterials() {
+                  if (this._model == null) {
+                    return;
+                  }
+
+                  this._onMaterialModified(0, null);
+                }
+              }, {
+                key: "_getBuiltinMaterial",
+                value: function _getBuiltinMaterial() {
+                  return builtinResMgr.get('missing-material');
+                }
+              }]);
+
+              return TerrainRenderable;
+            }(RenderableComponent);
+            /**
+             * @en Terrain block info
+             * @zh 地形块信息
+             */
+
+
+            var TerrainBlockInfo = exports('TerrainBlockInfo', (_dec3 = ccclass('cc.TerrainBlockInfo'), _dec3(_class7 = (_class8 = (_temp3 = function TerrainBlockInfo() {
+              _classCallCheck(this, TerrainBlockInfo);
+
+              _initializerDefineProperty(this, "layers", _descriptor7, this);
+            }, _temp3), (_descriptor7 = _applyDecoratedDescriptor(_class8.prototype, "layers", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return [-1, -1, -1, -1];
+              }
+            })), _class8)) || _class7));
+            /**
+             * @en Terrain block light map info
+             * @zh 地形块光照图信息
+             */
+
+            var TerrainBlockLightmapInfo = exports('TerrainBlockLightmapInfo', (_dec4 = ccclass('cc.TerrainBlockLightmapInfo'), _dec4(_class10 = (_class11 = (_temp4 = function TerrainBlockLightmapInfo() {
+              _classCallCheck(this, TerrainBlockLightmapInfo);
+
+              _initializerDefineProperty(this, "texture", _descriptor8, this);
+
+              _initializerDefineProperty(this, "UOff", _descriptor9, this);
+
+              _initializerDefineProperty(this, "VOff", _descriptor10, this);
+
+              _initializerDefineProperty(this, "UScale", _descriptor11, this);
+
+              _initializerDefineProperty(this, "VScale", _descriptor12, this);
+            }, _temp4), (_descriptor8 = _applyDecoratedDescriptor(_class11.prototype, "texture", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return null;
+              }
+            }), _descriptor9 = _applyDecoratedDescriptor(_class11.prototype, "UOff", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return 0;
+              }
+            }), _descriptor10 = _applyDecoratedDescriptor(_class11.prototype, "VOff", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return 0;
+              }
+            }), _descriptor11 = _applyDecoratedDescriptor(_class11.prototype, "UScale", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return 0;
+              }
+            }), _descriptor12 = _applyDecoratedDescriptor(_class11.prototype, "VScale", [serializable, editable], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return 0;
+              }
+            })), _class11)) || _class10));
+            /**
+             * @en Terrain block
+             * @zh 地形块
+             */
+
+            var TerrainBlock = exports('TerrainBlock', /*#__PURE__*/function () {
+              // private _neighbor: TerrainBlock|null[] = [null, null, null, null];
+              function TerrainBlock(t, i, j) {
+                _classCallCheck(this, TerrainBlock);
+
+                this._terrain = void 0;
+                this._info = void 0;
+                this._node = void 0;
+                this._renderable = void 0;
+                this._index = [1, 1];
+                this._weightMap = null;
+                this._lightmapInfo = null;
+                this._terrain = t;
+                this._info = t.getBlockInfo(i, j);
+                this._index[0] = i;
+                this._index[1] = j;
+                this._lightmapInfo = t._getLightmapInfo(i, j);
+                this._node = new PrivateNode(''); // @ts-ignore
+
+                this._node.setParent(this._terrain.node); // @ts-ignore
+
+
+                this._node._objFlags |= legacyCC.Object.Flags.DontSave;
+                this._renderable = this._node.addComponent(TerrainRenderable);
+              }
+
+              _createClass(TerrainBlock, [{
+                key: "build",
+                value: function build() {
+                  var gfxDevice = director.root.device; // vertex buffer
+
+                  var vertexData = new Float32Array(TERRAIN_BLOCK_VERTEX_SIZE * TERRAIN_BLOCK_VERTEX_COMPLEXITY * TERRAIN_BLOCK_VERTEX_COMPLEXITY);
+                  var index = 0;
+
+                  for (var j = 0; j < TERRAIN_BLOCK_VERTEX_COMPLEXITY; ++j) {
+                    for (var i = 0; i < TERRAIN_BLOCK_VERTEX_COMPLEXITY; ++i) {
+                      var x = this._index[0] * TERRAIN_BLOCK_TILE_COMPLEXITY + i;
+                      var y = this._index[1] * TERRAIN_BLOCK_TILE_COMPLEXITY + j;
+
+                      var position = this._terrain.getPosition(x, y);
+
+                      var normal = this._terrain.getNormal(x, y);
+
+                      var uv = new Vec2(i / TERRAIN_BLOCK_TILE_COMPLEXITY, j / TERRAIN_BLOCK_TILE_COMPLEXITY);
+                      vertexData[index++] = position.x;
+                      vertexData[index++] = position.y;
+                      vertexData[index++] = position.z;
+                      vertexData[index++] = normal.x;
+                      vertexData[index++] = normal.y;
+                      vertexData[index++] = normal.z;
+                      vertexData[index++] = uv.x;
+                      vertexData[index++] = uv.y;
+                    }
+                  }
+
+                  var vertexBuffer = gfxDevice.createBuffer({
+                    usage: GFXBufferUsageBit.VERTEX | GFXBufferUsageBit.TRANSFER_DST,
+                    memUsage: GFXMemoryUsageBit.HOST | GFXMemoryUsageBit.DEVICE,
+                    size: TERRAIN_BLOCK_VERTEX_SIZE * Float32Array.BYTES_PER_ELEMENT * TERRAIN_BLOCK_VERTEX_COMPLEXITY * TERRAIN_BLOCK_VERTEX_COMPLEXITY,
+                    stride: TERRAIN_BLOCK_VERTEX_SIZE * Float32Array.BYTES_PER_ELEMENT
+                  });
+                  vertexBuffer.update(vertexData); // initialize renderable
+
+                  var gfxAttributes = [{
+                    name: GFXAttributeName.ATTR_POSITION,
+                    format: GFXFormat.RGB32F
+                  }, {
+                    name: GFXAttributeName.ATTR_NORMAL,
+                    format: GFXFormat.RGB32F
+                  }, {
+                    name: GFXAttributeName.ATTR_TEX_COORD,
+                    format: GFXFormat.RG32F
+                  }];
+                  var subMesh = this._renderable._meshData = new RenderingSubMesh([vertexBuffer], gfxAttributes, GFXPrimitiveMode.TRIANGLE_LIST);
+                  subMesh.indexBuffer = this._terrain._getSharedIndexBuffer() || undefined;
+                  this._renderable._model = legacyCC.director.root.createModel(Model);
+
+                  this._renderable._model.initialize(this._node);
+
+                  this._renderable._getRenderScene().addModel(this._renderable._model); // reset weightmap
+
+
+                  this._updateWeightMap(); // reset material
+
+
+                  this._updateMaterial(true);
+                }
+              }, {
+                key: "rebuild",
+                value: function rebuild() {
+                  this._updateHeight();
+
+                  this._updateWeightMap();
+
+                  this._renderable._invalidMaterial();
+
+                  this._updateMaterial(false);
+                }
+              }, {
+                key: "destroy",
+                value: function destroy() {
+                  if (this._renderable != null) {
+                    this._renderable.destroy();
+                  }
+
+                  if (this._node != null) {
+                    this._node.destroy();
+                  }
+
+                  if (this._weightMap != null) {
+                    this._weightMap.destroy();
+                  }
+                }
+              }, {
+                key: "update",
+                value: function update() {
+                  this._updateMaterial(false);
+
+                  var mtl = this._renderable._currentMaterial;
+
+                  if (mtl != null) {
+                    var nlayers = this.getMaxLayer();
+                    var uvScale = new Vec4(1, 1, 1, 1);
+
+                    if (nlayers === 0) {
+                      if (this.layers[0] !== -1) {
+                        var l0 = this._terrain.getLayer(this.layers[0]);
+
+                        if (l0 != null) {
+                          uvScale.x = 1.0 / l0.tileSize;
+                        }
+
+                        mtl.setProperty('detailMap0', l0 != null ? l0.detailMap : null);
+                      } else {
+                        mtl.setProperty('detailMap0', legacyCC.builtinResMgr.get('default-texture'));
+                      }
+                    } else if (nlayers === 1) {
+                      var _l = this._terrain.getLayer(this.layers[0]);
+
+                      var l1 = this._terrain.getLayer(this.layers[1]);
+
+                      if (_l != null) {
+                        uvScale.x = 1.0 / _l.tileSize;
+                      }
+
+                      if (l1 != null) {
+                        uvScale.y = 1.0 / l1.tileSize;
+                      }
+
+                      mtl.setProperty('weightMap', this._weightMap);
+                      mtl.setProperty('detailMap0', _l != null ? _l.detailMap : null);
+                      mtl.setProperty('detailMap1', l1 != null ? l1.detailMap : null);
+                    } else if (nlayers === 2) {
+                      var _l2 = this._terrain.getLayer(this.layers[0]);
+
+                      var _l3 = this._terrain.getLayer(this.layers[1]);
+
+                      var l2 = this._terrain.getLayer(this.layers[2]);
+
+                      if (_l2 != null) {
+                        uvScale.x = 1.0 / _l2.tileSize;
+                      }
+
+                      if (_l3 != null) {
+                        uvScale.y = 1.0 / _l3.tileSize;
+                      }
+
+                      if (l2 != null) {
+                        uvScale.z = 1.0 / l2.tileSize;
+                      }
+
+                      mtl.setProperty('weightMap', this._weightMap);
+                      mtl.setProperty('detailMap0', _l2 != null ? _l2.detailMap : null);
+                      mtl.setProperty('detailMap1', _l3 != null ? _l3.detailMap : null);
+                      mtl.setProperty('detailMap2', l2 != null ? l2.detailMap : null);
+                    } else if (nlayers === 3) {
+                      var _l4 = this._terrain.getLayer(this.layers[0]);
+
+                      var _l5 = this._terrain.getLayer(this.layers[1]);
+
+                      var _l6 = this._terrain.getLayer(this.layers[2]);
+
+                      var l3 = this._terrain.getLayer(this.layers[3]);
+
+                      if (_l4 != null) {
+                        uvScale.x = 1.0 / _l4.tileSize;
+                      }
+
+                      if (_l5 != null) {
+                        uvScale.y = 1.0 / _l5.tileSize;
+                      }
+
+                      if (_l6 != null) {
+                        uvScale.z = 1.0 / _l6.tileSize;
+                      }
+
+                      if (l3 != null) {
+                        uvScale.z = 1.0 / l3.tileSize;
+                      }
+
+                      mtl.setProperty('weightMap', this._weightMap);
+                      mtl.setProperty('detailMap0', _l4 != null ? _l4.detailMap : null);
+                      mtl.setProperty('detailMap1', _l5 != null ? _l5.detailMap : null);
+                      mtl.setProperty('detailMap2', _l6 != null ? _l6.detailMap : null);
+                      mtl.setProperty('detailMap3', l3 != null ? l3.detailMap : null);
+                    }
+
+                    mtl.setProperty('UVScale', uvScale);
+
+                    if (this.lightmap != null) {
+                      mtl.setProperty('lightMap', this.lightmap);
+                      mtl.setProperty('lightMapUVParam', this.lightmapUVParam);
+                    }
+                  }
+                }
+              }, {
+                key: "setBrushMaterial",
+                value: function setBrushMaterial(mtl) {
+                  if (this._renderable._brushMaterial !== mtl) {
+                    this._renderable._brushMaterial = mtl;
+
+                    this._renderable._invalidMaterial();
+                  }
+                }
+                /**
+                 * @en get layers
+                 * @zh 获得纹理层索引
+                 */
+
+              }, {
+                key: "getTerrain",
+
+                /**
+                 * @en get terrain owner
+                 * @zh 获得地形对象
+                 */
+                value: function getTerrain() {
+                  return this._terrain;
+                }
+                /**
+                 * @en get index
+                 * @zh 获得地形索引
+                 */
+
+              }, {
+                key: "getIndex",
+                value: function getIndex() {
+                  return this._index;
+                }
+                /**
+                 * @en get rect bound
+                 * @zh 获得地形矩形包围体
+                 */
+
+              }, {
+                key: "getRect",
+                value: function getRect() {
+                  var rect = new Rect();
+                  rect.x = this._index[0] * TERRAIN_BLOCK_TILE_COMPLEXITY;
+                  rect.y = this._index[1] * TERRAIN_BLOCK_TILE_COMPLEXITY;
+                  rect.width = TERRAIN_BLOCK_TILE_COMPLEXITY;
+                  rect.height = TERRAIN_BLOCK_TILE_COMPLEXITY;
+                  return rect;
+                }
+                /**
+                 * @en set layer
+                 * @zh 设置纹理层
+                 */
+
+              }, {
+                key: "setLayer",
+                value: function setLayer(index, layerId) {
+                  if (this.layers[index] !== layerId) {
+                    this.layers[index] = layerId;
+
+                    this._renderable._invalidMaterial();
+
+                    this._updateMaterial(false);
+                  }
+                }
+                /**
+                 * @en get layer
+                 * @zh 获得纹理层
+                 */
+
+              }, {
+                key: "getLayer",
+                value: function getLayer(index) {
+                  return this.layers[index];
+                }
+                /**
+                 * @en get max layer index
+                 * @zh 获得最大纹理索引
+                 */
+
+              }, {
+                key: "getMaxLayer",
+                value: function getMaxLayer() {
+                  if (this.layers[3] >= 0) {
+                    return 3;
+                  } else if (this.layers[2] >= 0) {
+                    return 2;
+                  } else if (this.layers[1] >= 0) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+                }
+              }, {
+                key: "_getMaterialDefines",
+                value: function _getMaterialDefines(nlayers) {
+                  if (this.lightmap != null) {
+                    if (nlayers === 0) {
+                      return {
+                        LAYERS: 1,
+                        LIGHT_MAP: 1
+                      };
+                    } else if (nlayers === 1) {
+                      return {
+                        LAYERS: 2,
+                        LIGHT_MAP: 1
+                      };
+                    } else if (nlayers === 2) {
+                      return {
+                        LAYERS: 3,
+                        LIGHT_MAP: 1
+                      };
+                    } else if (nlayers === 3) {
+                      return {
+                        LAYERS: 4,
+                        LIGHT_MAP: 1
+                      };
+                    }
+                  } else {
+                    if (nlayers === 0) {
+                      return {
+                        LAYERS: 1
+                      };
+                    } else if (nlayers === 1) {
+                      return {
+                        LAYERS: 2
+                      };
+                    } else if (nlayers === 2) {
+                      return {
+                        LAYERS: 3
+                      };
+                    } else if (nlayers === 3) {
+                      return {
+                        LAYERS: 4
+                      };
+                    }
+                  }
+
+                  return {
+                    LAYERS: 0
+                  };
+                }
+              }, {
+                key: "_invalidMaterial",
+                value: function _invalidMaterial() {
+                  this._renderable._invalidMaterial();
+                }
+              }, {
+                key: "_updateMaterial",
+                value: function _updateMaterial(init) {
+                  this._renderable._updateMaterial(this, init);
+                }
+              }, {
+                key: "_updateHeight",
+                value: function _updateHeight() {
+                  if (this._renderable._meshData == null) {
+                    return;
+                  }
+
+                  var vertexData = new Float32Array(TERRAIN_BLOCK_VERTEX_SIZE * TERRAIN_BLOCK_VERTEX_COMPLEXITY * TERRAIN_BLOCK_VERTEX_COMPLEXITY);
+                  var index = 0;
+
+                  for (var j = 0; j < TERRAIN_BLOCK_VERTEX_COMPLEXITY; ++j) {
+                    for (var i = 0; i < TERRAIN_BLOCK_VERTEX_COMPLEXITY; ++i) {
+                      var x = this._index[0] * TERRAIN_BLOCK_TILE_COMPLEXITY + i;
+                      var y = this._index[1] * TERRAIN_BLOCK_TILE_COMPLEXITY + j;
+
+                      var position = this._terrain.getPosition(x, y);
+
+                      var normal = this._terrain.getNormal(x, y);
+
+                      var uv = new Vec2(i / TERRAIN_BLOCK_VERTEX_COMPLEXITY, j / TERRAIN_BLOCK_VERTEX_COMPLEXITY);
+                      vertexData[index++] = position.x;
+                      vertexData[index++] = position.y;
+                      vertexData[index++] = position.z;
+                      vertexData[index++] = normal.x;
+                      vertexData[index++] = normal.y;
+                      vertexData[index++] = normal.z;
+                      vertexData[index++] = uv.x;
+                      vertexData[index++] = uv.y;
+                    }
+                  }
+
+                  this._renderable._meshData.vertexBuffers[0].update(vertexData);
+                }
+              }, {
+                key: "_updateWeightMap",
+                value: function _updateWeightMap() {
+                  var nlayers = this.getMaxLayer();
+
+                  if (nlayers === 0) {
+                    if (this._weightMap != null) {
+                      this._weightMap.destroy();
+
+                      this._weightMap = null;
+                    }
+
+                    return;
+                  } else {
+                    if (this._weightMap == null) {
+                      this._weightMap = new Texture2D();
+
+                      this._weightMap.create(this._terrain.weightMapSize, this._terrain.weightMapSize, PixelFormat.RGBA8888);
+
+                      this._weightMap.setFilters(Filter.LINEAR, Filter.LINEAR);
+
+                      this._weightMap.setWrapMode(WrapMode.CLAMP_TO_EDGE, WrapMode.CLAMP_TO_EDGE);
+                    }
+                  }
+
+                  var weightData = new Uint8Array(this._terrain.weightMapSize * this._terrain.weightMapSize * 4);
+                  var weightIndex = 0;
+
+                  for (var j = 0; j < this._terrain.weightMapSize; ++j) {
+                    for (var i = 0; i < this._terrain.weightMapSize; ++i) {
+                      var x = this._index[0] * this._terrain.weightMapSize + i;
+                      var y = this._index[1] * this._terrain.weightMapSize + j;
+
+                      var w = this._terrain.getWeight(x, y);
+
+                      weightData[weightIndex * 4 + 0] = Math.floor(w.x * 255);
+                      weightData[weightIndex * 4 + 1] = Math.floor(w.y * 255);
+                      weightData[weightIndex * 4 + 2] = Math.floor(w.z * 255);
+                      weightData[weightIndex * 4 + 3] = Math.floor(w.w * 255);
+                      weightIndex += 1;
+                    }
+                  }
+
+                  this._weightMap.uploadData(weightData);
+                }
+              }, {
+                key: "_updateLightmap",
+                value: function _updateLightmap(info) {
+                  this._lightmapInfo = info;
+
+                  this._invalidMaterial();
+                }
+              }, {
+                key: "layers",
+                get: function get() {
+                  return this._info.layers;
+                }
+                /**
+                 * @en get light map
+                 * @zh 获得光照图
+                 */
+
+              }, {
+                key: "lightmap",
+                get: function get() {
+                  return this._lightmapInfo ? this._lightmapInfo.texture : null;
+                }
+                /**
+                 * @en get light map uv parameter
+                 * @zh 获得光照图纹理坐标参数
+                 */
+
+              }, {
+                key: "lightmapUVParam",
+                get: function get() {
+                  if (this._lightmapInfo != null) {
+                    return new Vec4(this._lightmapInfo.UOff, this._lightmapInfo.VOff, this._lightmapInfo.UScale, this._lightmapInfo.VScale);
+                  } else {
+                    return new Vec4(0, 0, 0, 0);
+                  }
+                }
+              }]);
+
+              return TerrainBlock;
+            }());
+            /**
+             * @en Terrain
+             * @zh 地形组件
+             */
+
+            var Terrain = exports('Terrain', (_dec5 = ccclass('cc.Terrain'), _dec6 = help(), _dec7 = type(TerrainAsset), _dec8 = type(EffectAsset), _dec9 = visible(), _dec10 = type(TerrainLayer), _dec11 = type(TerrainAsset), _dec12 = visible(), _dec13 = type(EffectAsset), _dec14 = visible(), _dec15 = type(TerrainInfo), _dec5(_class13 = _dec6(_class13 = executeInEditMode(_class13 = disallowMultiple(_class13 = (_class14 = (_temp5 = /*#__PURE__*/function (_Component) {
+              _inherits(Terrain, _Component);
+
+              function Terrain() {
+                var _this2;
+
+                _classCallCheck(this, Terrain);
+
+                _this2 = _possibleConstructorReturn(this, _getPrototypeOf(Terrain).call(this)); // initialize layers
+
+                _initializerDefineProperty(_this2, "__asset", _descriptor13, _assertThisInitialized(_this2));
+
+                _initializerDefineProperty(_this2, "_effectAsset", _descriptor14, _assertThisInitialized(_this2));
+
+                _initializerDefineProperty(_this2, "_layers", _descriptor15, _assertThisInitialized(_this2));
+
+                _initializerDefineProperty(_this2, "_blockInfos", _descriptor16, _assertThisInitialized(_this2));
+
+                _initializerDefineProperty(_this2, "_lightmapInfos", _descriptor17, _assertThisInitialized(_this2));
+
+                _this2._tileSize = 1;
+                _this2._blockCount = [1, 1];
+                _this2._weightMapSize = 128;
+                _this2._lightMapSize = 128;
+                _this2._heights = new Uint16Array();
+                _this2._weights = new Uint8Array();
+                _this2._normals = [];
+                _this2._blocks = [];
+                _this2._sharedIndexBuffer = null;
+
+                for (var i = 0; i < TERRAIN_MAX_LAYER_COUNT; ++i) {
+                  _this2._layers.push(null);
+                }
+
+                return _this2;
+              }
+
+              _createClass(Terrain, [{
+                key: "build",
+
+                /**
+                 * @en build
+                 * @zh 构建地形
+                 */
+                value: function build(info) {
+                  this._tileSize = info.tileSize;
+                  this._blockCount[0] = info.blockCount[0];
+                  this._blockCount[1] = info.blockCount[1];
+                  this._weightMapSize = info.weightMapSize;
+                  this._lightMapSize = info.lightMapSize;
+                  return this._buildImp();
+                }
+                /**
+                 * @en rebuild
+                 * @zh 重建地形
+                 */
+
+              }, {
+                key: "rebuild",
+                value: function rebuild(info) {
+                  // build block info
+                  var blockInfos = [];
+
+                  for (var i = 0; i < info.blockCount[0] * info.blockCount[1]; ++i) {
+                    blockInfos.push(new TerrainBlockInfo());
+                  }
+
+                  var w = Math.min(this._blockCount[0], info.blockCount[0]);
+                  var h = Math.min(this._blockCount[1], info.blockCount[1]);
+
+                  for (var j = 0; j < h; ++j) {
+                    for (var _i2 = 0; _i2 < w; ++_i2) {
+                      var index0 = j * info.blockCount[0] + _i2;
+                      var index1 = j * this.blockCount[0] + _i2;
+                      blockInfos[index0] = this._blockInfos[index1];
+                    }
+                  }
+
+                  this._blockInfos = blockInfos;
+
+                  for (var _iterator = _createForOfIteratorHelperLoose(this._blocks), _step; !(_step = _iterator()).done;) {
+                    var block = _step.value;
+                    block.destroy();
+                  }
+
+                  this._blocks = []; // build heights
+
+                  this._rebuildHeights(info); // build weights
+
+
+                  this._rebuildWeights(info); // update info
+
+
+                  this._tileSize = info.tileSize;
+                  this._blockCount[0] = info.blockCount[0];
+                  this._blockCount[1] = info.blockCount[1];
+                  this._weightMapSize = info.weightMapSize;
+                  this._lightMapSize = info.lightMapSize; // build blocks
+
+                  this._buildNormals();
+
+                  for (var _j2 = 0; _j2 < this._blockCount[1]; ++_j2) {
+                    for (var _i3 = 0; _i3 < this._blockCount[0]; ++_i3) {
+                      this._blocks.push(new TerrainBlock(this, _i3, _j2));
+                    }
+                  }
+
+                  for (var _iterator2 = _createForOfIteratorHelperLoose(this._blocks), _step2; !(_step2 = _iterator2()).done;) {
+                    var _i4 = _step2.value;
+
+                    _i4.build();
+                  }
+                }
+                /**
+                 * @en import height field
+                 * @zh 导入高度图
+                 */
+
+              }, {
+                key: "importHeightField",
+                value: function importHeightField(hf, heightScale) {
+                  var index = 0;
+
+                  for (var j = 0; j < this.vertexCount[1]; ++j) {
+                    for (var i = 0; i < this.vertexCount[0]; ++i) {
+                      var u = i / this.tileCount[0];
+                      var v = j / this.tileCount[1];
+                      var h = hf.getAt(u * hf.w, v * hf.h) * heightScale;
+                      this._heights[index++] = h;
+                    }
+                  }
+
+                  this._buildNormals(); // rebuild all blocks
+
+
+                  for (var _iterator3 = _createForOfIteratorHelperLoose(this._blocks), _step3; !(_step3 = _iterator3()).done;) {
+                    var _i5 = _step3.value;
+
+                    _i5._updateHeight();
+                  }
+                }
+                /**
+                 * @en export height field
+                 * @zh 导出高度图
+                 */
+
+              }, {
+                key: "exportHeightField",
+                value: function exportHeightField(hf, heightScale) {
+                  var index = 0;
+
+                  for (var j = 0; j < hf.h; ++j) {
+                    for (var i = 0; i < hf.w; ++i) {
+                      var u = i / (hf.w - 1);
+                      var v = j / (hf.h - 1);
+                      var x = u * this.size.width;
+                      var y = v * this.size.height;
+                      var h = this.getHeightAt(x, y);
+
+                      if (h != null) {
+                        hf.data[index++] = h * heightScale;
+                      }
+                    }
+                  }
+                }
+              }, {
+                key: "exportAsset",
+                value: function exportAsset() {
+                  var asset = new TerrainAsset();
+                  asset.tileSize = this.tileSize;
+                  asset.blockCount = this.blockCount;
+                  asset.lightMapSize = this.lightMapSize;
+                  asset.weightMapSize = this.weightMapSize;
+                  asset.heights = this.heights;
+                  asset.weights = this.weights;
+                  asset.layerBuffer = new Array(this._blocks.length * 4);
+
+                  for (var i = 0; i < this._blocks.length; ++i) {
+                    asset.layerBuffer[i * 4 + 0] = this._blocks[i].layers[0];
+                    asset.layerBuffer[i * 4 + 1] = this._blocks[i].layers[1];
+                    asset.layerBuffer[i * 4 + 2] = this._blocks[i].layers[2];
+                    asset.layerBuffer[i * 4 + 3] = this._blocks[i].layers[3];
+                  }
+
+                  for (var _i6 = 0; _i6 < this._layers.length; ++_i6) {
+                    var temp = this._layers[_i6];
+
+                    if (temp && temp.detailMap && isValid(temp.detailMap)) {
+                      var layer = new TerrainLayerInfo();
+                      layer.slot = _i6;
+                      layer.tileSize = temp.tileSize;
+                      layer.detailMap = temp.detailMap._uuid;
+                      asset.layerInfos.push(layer);
+                    }
+                  }
+
+                  return asset;
+                }
+              }, {
+                key: "getEffectAsset",
+                value: function getEffectAsset() {
+                  if (this._effectAsset === null) {
+                    return legacyCC.EffectAsset.get('builtin-terrain');
+                  } else {
+                    return this._effectAsset;
+                  }
+                }
+              }, {
+                key: "onLoad",
+                value: function onLoad() {
+                  var gfxDevice = legacyCC.director.root.device; // initialize shared index buffer
+
+                  var indexData = new Uint16Array(TERRAIN_BLOCK_TILE_COMPLEXITY * TERRAIN_BLOCK_TILE_COMPLEXITY * 6);
+                  var index = 0;
+
+                  for (var j = 0; j < TERRAIN_BLOCK_TILE_COMPLEXITY; ++j) {
+                    for (var i = 0; i < TERRAIN_BLOCK_TILE_COMPLEXITY; ++i) {
+                      var a = j * TERRAIN_BLOCK_VERTEX_COMPLEXITY + i;
+                      var b = j * TERRAIN_BLOCK_VERTEX_COMPLEXITY + i + 1;
+                      var c = (j + 1) * TERRAIN_BLOCK_VERTEX_COMPLEXITY + i;
+                      var d = (j + 1) * TERRAIN_BLOCK_VERTEX_COMPLEXITY + i + 1; // face 1
+
+                      indexData[index++] = a;
+                      indexData[index++] = c;
+                      indexData[index++] = b; // face 2
+
+                      indexData[index++] = b;
+                      indexData[index++] = c;
+                      indexData[index++] = d;
+                    }
+                  }
+
+                  this._sharedIndexBuffer = gfxDevice.createBuffer({
+                    usage: GFXBufferUsageBit.INDEX | GFXBufferUsageBit.TRANSFER_DST,
+                    memUsage: GFXMemoryUsageBit.HOST | GFXMemoryUsageBit.DEVICE,
+                    size: Uint16Array.BYTES_PER_ELEMENT * TERRAIN_BLOCK_TILE_COMPLEXITY * TERRAIN_BLOCK_TILE_COMPLEXITY * 6,
+                    stride: Uint16Array.BYTES_PER_ELEMENT
+                  });
+
+                  this._sharedIndexBuffer.update(indexData);
+                }
+              }, {
+                key: "onEnable",
+                value: function onEnable() {
+                  if (this._blocks.length === 0) {
+                    this._buildImp();
+                  }
+                }
+              }, {
+                key: "onDisable",
+                value: function onDisable() {
+                  for (var _iterator4 = _createForOfIteratorHelperLoose(this._blocks), _step4; !(_step4 = _iterator4()).done;) {
+                    var i = _step4.value;
+                    i.destroy();
+                  }
+
+                  this._blocks = [];
+                }
+              }, {
+                key: "onDestroy",
+                value: function onDestroy() {
+                  for (var i = 0; i < this._layers.length; ++i) {
+                    this._layers[i] = null;
+                  }
+
+                  if (this._sharedIndexBuffer != null) {
+                    this._sharedIndexBuffer.destroy();
+                  }
+                }
+              }, {
+                key: "onRestore",
+                value: function onRestore() {
+                  this.onDisable();
+                  this.onLoad();
+
+                  this._buildImp(true);
+                }
+              }, {
+                key: "update",
+                value: function update(deltaTime) {
+                  for (var _iterator5 = _createForOfIteratorHelperLoose(this._blocks), _step5; !(_step5 = _iterator5()).done;) {
+                    var i = _step5.value;
+                    i.update();
+                  }
+                }
+                /**
+                 * @en add layer
+                 * @zh 添加纹理层
+                 */
+
+              }, {
+                key: "addLayer",
+                value: function addLayer(layer) {
+                  for (var i = 0; i < this._layers.length; ++i) {
+                    if (this._layers[i] == null) {
+                      this._layers[i] = layer;
+                      return i;
+                    }
+                  }
+
+                  return -1;
+                }
+                /**
+                 * @en set layer
+                 * @zh 设置纹理层
+                 */
+
+              }, {
+                key: "setLayer",
+                value: function setLayer(i, layer) {
+                  this._layers[i] = layer;
+                }
+                /**
+                 * @en remove layer
+                 * @zh 移除纹理层
+                 */
+
+              }, {
+                key: "removeLayer",
+                value: function removeLayer(id) {
+                  this._layers[id] = null;
+                }
+                /**
+                 * @en get layer
+                 * @zh 获得纹理层
+                 */
+
+              }, {
+                key: "getLayer",
+                value: function getLayer(id) {
+                  if (id === -1) {
+                    return null;
+                  }
+
+                  return this._layers[id];
+                }
+                /**
+                 * @en get position
+                 * @zh 获得地形上的位置
+                 */
+
+              }, {
+                key: "getPosition",
+                value: function getPosition(i, j) {
+                  var x = i * this._tileSize;
+                  var z = j * this._tileSize;
+                  var y = this.getHeight(i, j);
+                  return new Vec3(x, y, z);
+                }
+              }, {
+                key: "getHeightField",
+                value: function getHeightField() {
+                  return this._heights;
+                }
+                /**
+                 * @en set height
+                 * @zh 设置地形上的高度
+                 */
+
+              }, {
+                key: "setHeight",
+                value: function setHeight(i, j, h) {
+                  h = clamp(h, TERRAIN_HEIGHT_FMIN, TERRAIN_HEIGHT_FMAX);
+                  this._heights[j * this.vertexCount[0] + i] = TERRAIN_HEIGHT_BASE + h / TERRAIN_HEIGHT_FACTORY;
+                }
+                /**
+                 * @en get height
+                 * @zh 获得地形上的高度
+                 */
+
+              }, {
+                key: "getHeight",
+                value: function getHeight(i, j) {
+                  return (this._heights[j * this.vertexCount[0] + i] - TERRAIN_HEIGHT_BASE) * TERRAIN_HEIGHT_FACTORY;
+                }
+                /**
+                 * @en set height
+                 * @zh 设置高度
+                 */
+
+              }, {
+                key: "getHeightClamp",
+                value: function getHeightClamp(i, j) {
+                  i = clamp(i, 0, this.vertexCount[0] - 1);
+                  j = clamp(j, 0, this.vertexCount[1] - 1);
+                  return this.getHeight(i, j);
+                }
+                /**
+                 * @en get height by point
+                 * @zh 根据点的坐标获得高度
+                 */
+
+              }, {
+                key: "getHeightAt",
+                value: function getHeightAt(x, y) {
+                  var fx = x / this.tileSize;
+                  var fy = y / this.tileSize;
+                  var ix0 = Math.floor(fx);
+                  var iz0 = Math.floor(fy);
+                  var ix1 = ix0 + 1;
+                  var iz1 = iz0 + 1;
+                  var dx = fx - ix0;
+                  var dz = fy - iz0;
+
+                  if (ix0 < 0 || ix0 > this.vertexCount[0] - 1 || iz0 < 0 || iz0 > this.vertexCount[1] - 1) {
+                    return null;
+                  }
+
+                  ix0 = clamp(ix0, 0, this.vertexCount[0] - 1);
+                  iz0 = clamp(iz0, 0, this.vertexCount[1] - 1);
+                  ix1 = clamp(ix1, 0, this.vertexCount[0] - 1);
+                  iz1 = clamp(iz1, 0, this.vertexCount[1] - 1);
+                  var a = this.getHeight(ix0, iz0);
+                  var b = this.getHeight(ix1, iz0);
+                  var c = this.getHeight(ix0, iz1);
+                  var d = this.getHeight(ix1, iz1);
+                  var m = (b + c) * 0.5;
+
+                  if (dx + dz <= 1.0) {
+                    d = m + (m - a);
+                  } else {
+                    a = m + (m - d);
+                  }
+
+                  var h1 = a * (1.0 - dx) + b * dx;
+                  var h2 = c * (1.0 - dx) + d * dx;
+                  var h = h1 * (1.0 - dz) + h2 * dz;
+                  return h;
+                }
+              }, {
+                key: "_setNormal",
+                value: function _setNormal(i, j, n) {
+                  var index = j * this.vertexCount[0] + i;
+                  this._normals[index * 3 + 0] = n.x;
+                  this._normals[index * 3 + 1] = n.y;
+                  this._normals[index * 3 + 2] = n.z;
+                }
+                /**
+                 * @en get normal
+                 * @zh 获得法线
+                 */
+
+              }, {
+                key: "getNormal",
+                value: function getNormal(i, j) {
+                  var index = j * this.vertexCount[0] + i;
+                  var n = new Vec3();
+                  n.x = this._normals[index * 3 + 0];
+                  n.y = this._normals[index * 3 + 1];
+                  n.z = this._normals[index * 3 + 2];
+                  return n;
+                }
+                /**
+                 * @en get normal by point
+                 * @zh 根据点的坐标获得法线
+                 */
+
+              }, {
+                key: "getNormalAt",
+                value: function getNormalAt(x, y) {
+                  var fx = x / this.tileSize;
+                  var fy = y / this.tileSize;
+                  var ix0 = Math.floor(fx);
+                  var iz0 = Math.floor(fy);
+                  var ix1 = ix0 + 1;
+                  var iz1 = iz0 + 1;
+                  var dx = fx - ix0;
+                  var dz = fy - iz0;
+
+                  if (ix0 < 0 || ix0 > this.vertexCount[0] - 1 || iz0 < 0 || iz0 > this.vertexCount[1] - 1) {
+                    return null;
+                  }
+
+                  ix0 = clamp(ix0, 0, this.vertexCount[0] - 1);
+                  iz0 = clamp(iz0, 0, this.vertexCount[1] - 1);
+                  ix1 = clamp(ix1, 0, this.vertexCount[0] - 1);
+                  iz1 = clamp(iz1, 0, this.vertexCount[1] - 1);
+                  var a = this.getNormal(ix0, iz0);
+                  var b = this.getNormal(ix1, iz0);
+                  var c = this.getNormal(ix0, iz1);
+                  var d = this.getNormal(ix1, iz1);
+                  var m = new Vec3();
+                  Vec3.add(m, b, c).multiplyScalar(0.5);
+
+                  if (dx + dz <= 1.0) {
+                    // d = m + (m - a);
+                    d.set(m);
+                    d.subtract(a);
+                    d.add(m);
+                  } else {
+                    // a = m + (m - d);
+                    a.set(m);
+                    a.subtract(d);
+                    a.add(m);
+                  }
+
+                  var n1 = new Vec3();
+                  var n2 = new Vec3();
+                  var n = new Vec3();
+                  Vec3.lerp(n1, a, b, dx);
+                  Vec3.lerp(n2, c, d, dx);
+                  Vec3.lerp(n, n1, n2, dz);
+                  return n;
+                }
+                /**
+                 * @en set weight
+                 * @zh 设置权重
+                 */
+
+              }, {
+                key: "setWeight",
+                value: function setWeight(i, j, w) {
+                  var index = j * this._weightMapSize * this._blockCount[0] + i;
+                  this._weights[index * 4 + 0] = w.x * 255;
+                  this._weights[index * 4 + 1] = w.y * 255;
+                  this._weights[index * 4 + 2] = w.z * 255;
+                  this._weights[index * 4 + 3] = w.w * 255;
+                }
+                /**
+                 * @en get weight
+                 * @zh 获得权重
+                 */
+
+              }, {
+                key: "getWeight",
+                value: function getWeight(i, j) {
+                  var index = j * this._weightMapSize * this._blockCount[0] + i;
+                  var w = new Vec4();
+                  w.x = this._weights[index * 4 + 0] / 255.0;
+                  w.y = this._weights[index * 4 + 1] / 255.0;
+                  w.z = this._weights[index * 4 + 2] / 255.0;
+                  w.w = this._weights[index * 4 + 3] / 255.0;
+                  return w;
+                }
+                /**
+                 * @en get normal by point
+                 * @zh 根据点的坐标获得权重
+                 */
+
+              }, {
+                key: "getWeightAt",
+                value: function getWeightAt(x, y) {
+                  var fx = x / this.tileSize;
+                  var fy = y / this.tileSize;
+                  var ix0 = Math.floor(fx);
+                  var iz0 = Math.floor(fy);
+                  var ix1 = ix0 + 1;
+                  var iz1 = iz0 + 1;
+                  var dx = fx - ix0;
+                  var dz = fy - iz0;
+
+                  if (ix0 < 0 || ix0 > this.vertexCount[0] - 1 || iz0 < 0 || iz0 > this.vertexCount[1] - 1) {
+                    return null;
+                  }
+
+                  ix0 = clamp(ix0, 0, this.vertexCount[0] - 1);
+                  iz0 = clamp(iz0, 0, this.vertexCount[1] - 1);
+                  ix1 = clamp(ix1, 0, this.vertexCount[0] - 1);
+                  iz1 = clamp(iz1, 0, this.vertexCount[1] - 1);
+                  var a = this.getWeight(ix0, iz0);
+                  var b = this.getWeight(ix1, iz0);
+                  var c = this.getWeight(ix0, iz1);
+                  var d = this.getWeight(ix1, iz1);
+                  var m = new Vec4();
+                  Vec4.add(m, b, c).multiplyScalar(0.5);
+
+                  if (dx + dz <= 1.0) {
+                    d = new Vec4();
+                    Vec4.subtract(d, m, a).add(m);
+                  } else {
+                    a = new Vec4();
+                    Vec4.subtract(a, m, d).add(m);
+                  }
+
+                  var n1 = new Vec4();
+                  var n2 = new Vec4();
+                  var n = new Vec4();
+                  Vec4.lerp(n1, a, b, dx);
+                  Vec4.lerp(n2, c, d, dx);
+                  Vec4.lerp(n, n1, n2, dz);
+                  return n;
+                }
+                /**
+                 * @en get block info
+                 * @zh 获得地形块信息
+                 */
+
+              }, {
+                key: "getBlockInfo",
+                value: function getBlockInfo(i, j) {
+                  return this._blockInfos[j * this._blockCount[0] + i];
+                }
+                /**
+                 * @en get block
+                 * @zh 获得地形块对象
+                 */
+
+              }, {
+                key: "getBlock",
+                value: function getBlock(i, j) {
+                  return this._blocks[j * this._blockCount[0] + i];
+                }
+                /**
+                 * @en get all blocks
+                 * @zh 获得地形块缓存
+                 */
+
+              }, {
+                key: "getBlocks",
+                value: function getBlocks() {
+                  return this._blocks;
+                }
+                /**
+                 * @en ray check
+                 * @zh 射线检测
+                 * @param start ray start
+                 * @param dir ray direction
+                 * @param step ray step
+                 * @param worldSpace is world space
+                 */
+
+              }, {
+                key: "rayCheck",
+                value: function rayCheck(start, dir, step) {
+                  var worldSpace = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+                  var MAX_COUNT = 2000;
+                  var trace = start;
+
+                  if (worldSpace) {
+                    Vec3.subtract(trace, start, this.node.getWorldPosition());
+                  }
+
+                  var delta = new Vec3();
+                  delta.set(dir);
+                  delta.multiplyScalar(step);
+                  var position = null;
+
+                  if (dir.equals(new Vec3(0, 1, 0))) {
+                    var y = this.getHeightAt(trace.x, trace.z);
+
+                    if (y != null && trace.y <= y) {
+                      position = new Vec3(trace.x, y, trace.z);
+                    }
+                  } else if (dir.equals(new Vec3(0, -1, 0))) {
+                    var _y2 = this.getHeightAt(trace.x, trace.z);
+
+                    if (_y2 != null && trace.y >= _y2) {
+                      position = new Vec3(trace.x, _y2, trace.z);
+                    }
+                  } else {
+                    var i = 0; // 优先大步进查找
+
+                    while (i++ < MAX_COUNT) {
+                      var _y3 = this.getHeightAt(trace.x, trace.z);
+
+                      if (_y3 != null && trace.y <= _y3) {
+                        break;
+                      }
+
+                      trace.add(dir);
+                    } // 穷举法
+
+
+                    while (i++ < MAX_COUNT) {
+                      var _y4 = this.getHeightAt(trace.x, trace.z);
+
+                      if (_y4 != null && trace.y <= _y4) {
+                        position = new Vec3(trace.x, _y4, trace.z);
+                        break;
+                      }
+
+                      trace.add(delta);
+                    }
+                  }
+
+                  return position;
+                }
+              }, {
+                key: "_getSharedIndexBuffer",
+                value: function _getSharedIndexBuffer() {
+                  return this._sharedIndexBuffer;
+                }
+              }, {
+                key: "_resetLightmap",
+                value: function _resetLightmap(enble) {
+                  this._lightmapInfos.length = 0;
+
+                  if (enble) {
+                    for (var i = 0; i < this._blockCount[0] * this._blockCount[1]; ++i) {
+                      this._lightmapInfos.push(new TerrainBlockLightmapInfo());
+                    }
+                  }
+                }
+              }, {
+                key: "_updateLightmap",
+                value: function _updateLightmap(blockId, tex, uOff, vOff, uScale, vScale) {
+                  this._lightmapInfos[blockId].texture = tex;
+                  this._lightmapInfos[blockId].UOff = uOff;
+                  this._lightmapInfos[blockId].VOff = vOff;
+                  this._lightmapInfos[blockId].UScale = uScale;
+                  this._lightmapInfos[blockId].VScale = vScale;
+
+                  this._blocks[blockId]._updateLightmap(this._lightmapInfos[blockId]);
+                }
+              }, {
+                key: "_getLightmapInfo",
+                value: function _getLightmapInfo(i, j) {
+                  var index = j * this._blockCount[0] + i;
+                  return index < this._lightmapInfos.length ? this._lightmapInfos[index] : null;
+                }
+              }, {
+                key: "_calcNormal",
+                value: function _calcNormal(x, z) {
+                  var flip = 1;
+                  var here = this.getPosition(x, z);
+                  var right;
+                  var up;
+
+                  if (x < this.vertexCount[0] - 1) {
+                    right = this.getPosition(x + 1, z);
+                  } else {
+                    flip *= -1;
+                    right = this.getPosition(x - 1, z);
+                  }
+
+                  if (z < this.vertexCount[1] - 1) {
+                    up = this.getPosition(x, z + 1);
+                  } else {
+                    flip *= -1;
+                    up = this.getPosition(x, z - 1);
+                  }
+
+                  right.subtract(here);
+                  up.subtract(here);
+                  var normal = new Vec3();
+                  normal.set(up);
+                  normal.cross(right);
+                  normal.multiplyScalar(flip);
+                  normal.normalize();
+                  return normal;
+                }
+              }, {
+                key: "_buildNormals",
+                value: function _buildNormals() {
+                  var index = 0;
+
+                  for (var y = 0; y < this.vertexCount[1]; ++y) {
+                    for (var x = 0; x < this.vertexCount[0]; ++x) {
+                      var n = this._calcNormal(x, y);
+
+                      this._normals[index * 3 + 0] = n.x;
+                      this._normals[index * 3 + 1] = n.y;
+                      this._normals[index * 3 + 2] = n.z;
+                      index += 1;
+                    }
+                  }
+                }
+              }, {
+                key: "_buildImp",
+                value: function _buildImp() {
+                  var _this3 = this;
+
+                  var restore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+                  if (this.valid) {
+                    return true;
+                  }
+
+                  if (!restore && this.__asset != null) {
+                    this._tileSize = this.__asset.tileSize;
+                    this._blockCount = this.__asset.blockCount;
+                    this._weightMapSize = this.__asset.weightMapSize;
+                    this._lightMapSize = this.__asset.lightMapSize;
+                    this._heights = this.__asset.heights;
+                    this._weights = this.__asset.weights; // build layers
+
+                    var initial = true;
+
+                    for (var i = 0; i < this._layers.length; ++i) {
+                      if (this._layers[i] != null) {
+                        initial = false;
+                      }
+                    }
+
+                    if (initial && this._asset != null) {
+                      var _loop = function _loop() {
+                        var i = _step6.value;
+                        var layer = new TerrainLayer();
+                        layer.tileSize = i.tileSize;
+                        legacyCC.loader.loadRes(i.detailMap, Texture2D, function (err, asset) {
+                          layer.detailMap = asset;
+                        });
+                        _this3._layers[i.slot] = layer;
+                      };
+
+                      for (var _iterator6 = _createForOfIteratorHelperLoose(this._asset.layerInfos), _step6; !(_step6 = _iterator6()).done;) {
+                        _loop();
+                      }
+                    }
+                  }
+
+                  if (this._blockCount[0] === 0 || this._blockCount[1] === 0) {
+                    return false;
+                  } // build heights & normals
+
+
+                  var vertexCount = this.vertexCount[0] * this.vertexCount[1];
+
+                  if (this._heights === null || this._heights.length !== vertexCount) {
+                    this._heights = new Uint16Array(vertexCount);
+                    this._normals = new Array(vertexCount * 3);
+
+                    for (var _i7 = 0; _i7 < vertexCount; ++_i7) {
+                      this._heights[_i7] = TERRAIN_HEIGHT_BASE;
+                      this._normals[_i7 * 3 + 0] = 0;
+                      this._normals[_i7 * 3 + 1] = 1;
+                      this._normals[_i7 * 3 + 2] = 0;
+                    }
+                  } else {
+                    this._normals = new Array(vertexCount * 3);
+
+                    this._buildNormals();
+                  } // build weights
+
+
+                  var weightMapComplexityU = this._weightMapSize * this._blockCount[0];
+                  var weightMapComplexityV = this._weightMapSize * this._blockCount[1];
+
+                  if (this._weights.length !== weightMapComplexityU * weightMapComplexityV * 4) {
+                    this._weights = new Uint8Array(weightMapComplexityU * weightMapComplexityV * 4);
+
+                    for (var _i8 = 0; _i8 < weightMapComplexityU * weightMapComplexityV; ++_i8) {
+                      this._weights[_i8 * 4 + 0] = 255;
+                      this._weights[_i8 * 4 + 1] = 0;
+                      this._weights[_i8 * 4 + 2] = 0;
+                      this._weights[_i8 * 4 + 3] = 0;
+                    }
+                  } // build blocks
+
+
+                  if (this._blockInfos.length !== this._blockCount[0] * this._blockCount[1]) {
+                    this._blockInfos = [];
+
+                    for (var j = 0; j < this._blockCount[1]; ++j) {
+                      for (var _i9 = 0; _i9 < this._blockCount[0]; ++_i9) {
+                        var info = new TerrainBlockInfo();
+
+                        if (this._asset != null) {
+                          info.layers[0] = this._asset.getLayer(_i9, j, 0);
+                          info.layers[1] = this._asset.getLayer(_i9, j, 1);
+
+                          if (info.layers[1] === info.layers[0]) {
+                            info.layers[1] = -1;
+                          }
+
+                          info.layers[2] = this._asset.getLayer(_i9, j, 2);
+
+                          if (info.layers[2] === info.layers[0]) {
+                            info.layers[2] = -1;
+                          }
+
+                          info.layers[3] = this._asset.getLayer(_i9, j, 3);
+
+                          if (info.layers[3] === info.layers[0]) {
+                            info.layers[3] = -1;
+                          }
+                        }
+
+                        this._blockInfos.push(info);
+                      }
+                    }
+                  }
+
+                  for (var _j3 = 0; _j3 < this._blockCount[1]; ++_j3) {
+                    for (var _i10 = 0; _i10 < this._blockCount[0]; ++_i10) {
+                      this._blocks.push(new TerrainBlock(this, _i10, _j3));
+                    }
+                  }
+
+                  for (var _iterator7 = _createForOfIteratorHelperLoose(this._blocks), _step7; !(_step7 = _iterator7()).done;) {
+                    var _i11 = _step7.value;
+
+                    _i11.build();
+                  }
+                }
+              }, {
+                key: "_rebuildHeights",
+                value: function _rebuildHeights(info) {
+                  if (this.vertexCount[0] === info.vertexCount[0] && this.vertexCount[1] === info.vertexCount[1]) {
+                    return false;
+                  }
+
+                  var heights = new Uint16Array(info.vertexCount[0] * info.vertexCount[1]);
+
+                  for (var i = 0; i < heights.length; ++i) {
+                    heights[i] = TERRAIN_HEIGHT_BASE;
+                  }
+
+                  var w = Math.min(this.vertexCount[0], info.vertexCount[0]);
+                  var h = Math.min(this.vertexCount[1], info.vertexCount[1]);
+
+                  for (var j = 0; j < h; ++j) {
+                    for (var _i12 = 0; _i12 < w; ++_i12) {
+                      var index0 = j * info.vertexCount[0] + _i12;
+                      var index1 = j * this.vertexCount[0] + _i12;
+                      heights[index0] = this._heights[index1];
+                    }
+                  }
+
+                  this._heights = heights;
+                  return true;
+                }
+              }, {
+                key: "_rebuildWeights",
+                value: function _rebuildWeights(info) {
+                  var _this4 = this;
+
+                  var oldWeightMapSize = this._weightMapSize;
+                  var oldWeightMapComplexityU = this._weightMapSize * this._blockCount[0];
+                  var oldWeightMapComplexityV = this._weightMapSize * this._blockCount[1];
+                  var weightMapComplexityU = info.weightMapSize * info.blockCount[0];
+                  var weightMapComplexityV = info.weightMapSize * info.blockCount[1];
+
+                  if (weightMapComplexityU === oldWeightMapComplexityU && weightMapComplexityV === oldWeightMapComplexityV) {
+                    return false;
+                  }
+
+                  var weights = new Uint8Array(weightMapComplexityU * weightMapComplexityV * 4);
+
+                  for (var i = 0; i < weightMapComplexityU * weightMapComplexityV; ++i) {
+                    weights[i * 4 + 0] = 255;
+                    weights[i * 4 + 1] = 0;
+                    weights[i * 4 + 2] = 0;
+                    weights[i * 4 + 3] = 0;
+                  }
+
+                  var w = Math.min(info.blockCount[0], this._blockCount[0]);
+                  var h = Math.min(info.blockCount[1], this._blockCount[1]); // get weight
+
+                  var getOldWeight = function getOldWeight(_i, _j, _weights) {
+                    var index = _j * oldWeightMapComplexityU + _i;
+                    var weight = new Vec4();
+                    weight.x = _weights[index * 4 + 0] / 255.0;
+                    weight.y = _weights[index * 4 + 1] / 255.0;
+                    weight.z = _weights[index * 4 + 2] / 255.0;
+                    weight.w = _weights[index * 4 + 3] / 255.0;
+                    return weight;
+                  }; // sample weight
+
+
+                  var sampleOldWeight = function sampleOldWeight(_x, _y, _xOff, _yOff, _weights) {
+                    var ix0 = Math.floor(_x);
+                    var iz0 = Math.floor(_y);
+                    var ix1 = ix0 + 1;
+                    var iz1 = iz0 + 1;
+                    var dx = _x - ix0;
+                    var dz = _y - iz0;
+                    var a = getOldWeight(ix0 + _xOff, iz0 + _yOff, _this4._weights);
+                    var b = getOldWeight(ix1 + _xOff, iz0 + _yOff, _this4._weights);
+                    var c = getOldWeight(ix0 + _xOff, iz1 + _yOff, _this4._weights);
+                    var d = getOldWeight(ix1 + _xOff, iz1 + _yOff, _this4._weights);
+                    var m = new Vec4();
+                    Vec4.add(m, b, c).multiplyScalar(0.5);
+
+                    if (dx + dz <= 1.0) {
+                      d.set(m);
+                      d.subtract(a);
+                      d.add(m);
+                    } else {
+                      a.set(m);
+                      a.subtract(d);
+                      a.add(m);
+                    }
+
+                    var n1 = new Vec4();
+                    var n2 = new Vec4();
+                    var n = new Vec4();
+                    Vec4.lerp(n1, a, b, dx);
+                    Vec4.lerp(n2, c, d, dx);
+                    Vec4.lerp(n, n1, n2, dz);
+                    return n;
+                  }; // fill new weights
+
+
+                  for (var j = 0; j < h; ++j) {
+                    for (var _i13 = 0; _i13 < w; ++_i13) {
+                      var uOff = _i13 * oldWeightMapSize;
+                      var vOff = j * oldWeightMapSize;
+
+                      for (var v = 0; v < info.weightMapSize; ++v) {
+                        for (var u = 0; u < info.weightMapSize; ++u) {
+                          // tslint:disable-next-line: no-shadowed-variable
+                          var _w = void 0;
+
+                          if (info.weightMapSize === oldWeightMapSize) {
+                            _w = getOldWeight(u + uOff, v + vOff, this._weights);
+                          } else {
+                            var x = u / (info.weightMapSize - 1) * (oldWeightMapSize - 1);
+                            var y = v / (info.weightMapSize - 1) * (oldWeightMapSize - 1);
+                            _w = sampleOldWeight(x, y, uOff, vOff, this._weights);
+                          }
+
+                          var du = _i13 * info.weightMapSize + u;
+                          var dv = j * info.weightMapSize + v;
+                          var index = dv * weightMapComplexityU + du;
+                          weights[index * 4 + 0] = _w.x * 255;
+                          weights[index * 4 + 1] = _w.y * 255;
+                          weights[index * 4 + 2] = _w.z * 255;
+                          weights[index * 4 + 3] = _w.w * 255;
+                        }
+                      }
+                    }
+                  }
+
+                  this._weights = weights;
+                  return true;
+                }
+              }, {
+                key: "_asset",
+                set: function set(value) {
+                  if (this.__asset !== value) {
+                    this.__asset = value;
+
+                    if (this.__asset != null && this.valid) {
+                      // rebuild
+                      for (var _iterator8 = _createForOfIteratorHelperLoose(this._blocks), _step8; !(_step8 = _iterator8()).done;) {
+                        var block = _step8.value;
+                        block.destroy();
+                      }
+
+                      this._blocks = [];
+                      this._blockInfos = [];
+
+                      this._buildImp();
+                    }
+                  }
+                },
+                get: function get() {
+                  return this.__asset;
+                }
+                /**
+                 * @en Terrain effect asset
+                 * @zh 地形特效资源
+                 */
+
+              }, {
+                key: "effectAsset",
+                set: function set(value) {
+                  if (this._effectAsset === value) {
+                    return;
+                  }
+
+                  this._effectAsset = value;
+
+                  for (var _iterator9 = _createForOfIteratorHelperLoose(this._blocks), _step9; !(_step9 = _iterator9()).done;) {
+                    var i = _step9.value;
+
+                    i._invalidMaterial();
+                  }
+                },
+                get: function get() {
+                  return this._effectAsset;
+                }
+                /**
+                 * @en get terrain size
+                 * @zh 获得地形大小
+                 */
+
+              }, {
+                key: "size",
+                get: function get() {
+                  var sz = new Size(0, 0);
+                  sz.width = this.blockCount[0] * TERRAIN_BLOCK_TILE_COMPLEXITY * this.tileSize;
+                  sz.height = this.blockCount[1] * TERRAIN_BLOCK_TILE_COMPLEXITY * this.tileSize;
+                  return sz;
+                }
+                /**
+                 * @en get tile size
+                 * @zh 获得栅格大小
+                 */
+
+              }, {
+                key: "tileSize",
+                get: function get() {
+                  return this._tileSize;
+                }
+                /**
+                 * @en get tile count
+                 * @zh 获得栅格数量
+                 */
+
+              }, {
+                key: "tileCount",
+                get: function get() {
+                  return [this.blockCount[0] * TERRAIN_BLOCK_TILE_COMPLEXITY, this.blockCount[1] * TERRAIN_BLOCK_TILE_COMPLEXITY];
+                }
+                /**
+                 * @en get vertex count
+                 * @zh 获得顶点数量
+                 */
+
+              }, {
+                key: "vertexCount",
+                get: function get() {
+                  var _vertexCount = this.tileCount;
+                  _vertexCount[0] += 1;
+                  _vertexCount[1] += 1;
+                  return _vertexCount;
+                }
+                /**
+                 * @en get block count
+                 * @zh 获得地形块数量
+                 */
+
+              }, {
+                key: "blockCount",
+                get: function get() {
+                  return this._blockCount;
+                }
+                /**
+                 * @en get light map size
+                 * @zh 获得光照图大小
+                 */
+
+              }, {
+                key: "lightMapSize",
+                get: function get() {
+                  return this._lightMapSize;
+                }
+                /**
+                 * @en get weight map size
+                 * @zh 获得权重图大小
+                 */
+
+              }, {
+                key: "weightMapSize",
+                get: function get() {
+                  return this._weightMapSize;
+                }
+                /**
+                 * @en get height buffer
+                 * @zh 获得高度缓存
+                 */
+
+              }, {
+                key: "heights",
+                get: function get() {
+                  return this._heights;
+                }
+                /**
+                 * @en get weight buffer
+                 * @zh 获得权重缓存
+                 */
+
+              }, {
+                key: "weights",
+                get: function get() {
+                  return this._weights;
+                }
+                /**
+                 * @en check valid
+                 * @zh 检测是否有效
+                 */
+
+              }, {
+                key: "valid",
+                get: function get() {
+                  return this._blocks.length > 0;
+                }
+                /**
+                 * @en get terrain info
+                 * @zh 获得地形信息
+                 */
+
+              }, {
+                key: "info",
+                get: function get() {
+                  var ti = new TerrainInfo();
+                  ti.tileSize = this.tileSize;
+                  ti.blockCount[0] = this.blockCount[0];
+                  ti.blockCount[1] = this.blockCount[1];
+                  ti.weightMapSize = this.weightMapSize;
+                  ti.lightMapSize = this.lightMapSize;
+                  return ti;
+                }
+              }]);
+
+              return Terrain;
+            }(Component), _temp5), (_descriptor13 = _applyDecoratedDescriptor(_class14.prototype, "__asset", [_dec7, serializable, disallowAnimation], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return null;
+              }
+            }), _descriptor14 = _applyDecoratedDescriptor(_class14.prototype, "_effectAsset", [_dec8, serializable, disallowAnimation, _dec9], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return null;
+              }
+            }), _descriptor15 = _applyDecoratedDescriptor(_class14.prototype, "_layers", [_dec10, serializable, disallowAnimation], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return [];
+              }
+            }), _descriptor16 = _applyDecoratedDescriptor(_class14.prototype, "_blockInfos", [serializable, disallowAnimation], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return [];
+              }
+            }), _descriptor17 = _applyDecoratedDescriptor(_class14.prototype, "_lightmapInfos", [serializable, disallowAnimation], {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              initializer: function initializer() {
+                return [];
+              }
+            }), _applyDecoratedDescriptor(_class14.prototype, "_asset", [_dec11, _dec12], Object.getOwnPropertyDescriptor(_class14.prototype, "_asset"), _class14.prototype), _applyDecoratedDescriptor(_class14.prototype, "effectAsset", [_dec13, _dec14], Object.getOwnPropertyDescriptor(_class14.prototype, "effectAsset"), _class14.prototype), _applyDecoratedDescriptor(_class14.prototype, "info", [_dec15], Object.getOwnPropertyDescriptor(_class14.prototype, "info"), _class14.prototype)), _class14)) || _class13) || _class13) || _class13) || _class13));
+
+        }
+    };
+});

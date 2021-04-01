@@ -1,53 +1,15921 @@
 System.register([], function(_export, _context) { return { execute: function () {
-System.register("chunks:///Box.js",["./_virtual/_rollupPluginBabelHelpers.js","cc"],(function(t,i){var a,e,s,l,c,o,n,h,_,r,u,f;return t({_dec:void 0,_class:void 0}),{setters:[function(t){a=t.inherits,e=t.createClass,s=t.classCallCheck,l=t.possibleConstructorReturn,c=t.getPrototypeOf},function(t){o=t.cclegacy,n=t._decorator,h=t.Vec3,_=t.Component}],execute:function(){o._RF.push({},"6643c+mADFPg59fhSVi8+Su","Box",void 0),f=n.ccclass,n.property,t("Box",(r=f("Box"),r(u=function(t){function i(){return s(this,i),l(this,c(i).apply(this,arguments))}return a(i,t),e(i,[{key:"onLoad",value:function(){this.time_elastic=0,this.time_power=0,this.time_fall=0,this.action_elastic=!1,this.action_power=!1,this.action_fall=!1,this.data_elastic={},this.data_fall={},this.cycle_elastic=20}},{key:"onTouchDown",value:function(t){this.action_power||(this.action_power=!0)}},{key:"onTouchUp",value:function(t){this.action_power&&(this.action_power=!1,this.startElastic())}},{key:"startElastic",value:function(){this.time_elastic=0,this.action_elastic=!0,this.data_elastic.origin_scale_y=this.node.getScale().y,this.data_elastic.A=this.data_elastic.origin_scale_y-1}},{key:"startFall",value:function(){this.time_fall=0,this.action_fall=!0,this.data_fall.speed=0,this.data_fall.g=70,this.data_fall.k=.5}},{key:"actionElastic",value:function(t){if(this.action_elastic){this.time_elastic+=t;var i=this.data_elastic.A*(1/(1+20*this.time_elastic)),a=i*Math.cos(this.time_elastic*this.cycle_elastic);this.node.setScale(new h(1,1+a,1)),Math.abs(i)<.03&&(this.node.setScale(new h(1,1,1)),this.action_elastic=!1)}}},{key:"actionPower",value:function(t){if(this.action_power){this.time_power+=t;var i=1-2*this.time_power;i<.1?(this.action_power=!1,this.startElastic()):this.node.setScale(new h(1,i,1))}}},{key:"actionFall",value:function(t){if(this.action_fall){this.time_fall+=t;var i=this.node.getPosition();this.data_fall.speed+=this.data_fall.g*t;var a=this.data_fall.speed*t;i.y-=a,i.y<=0&&(this.data_fall.speed*=-1*this.data_fall.k,i.y=0),Math.abs(this.data_fall.speed)<=.1&&i.y<=.1&&(i.y=0,this.action_fall=!1),this.node.setPosition(i)}}},{key:"update",value:function(t){this.actionElastic(t),this.actionFall(t)}}]),i}(_))||u)),o._RF.pop()}}}));
+System.register("chunks:///Box.js", ["./_virtual/_rollupPluginBabelHelpers.js", "cc"], function (_export, _context) {
+  "use strict";
 
-System.register("chunks:///Config.js",["cc"],(function(e,n){var i,t,o,a,c,m;return e("EnvType",void 0),{setters:[function(e){i=e.cclegacy}],execute:function(){i._RF.push({},"1c95bfLt8hDMI/mY7kSxKrA","Config",void 0),function(e){e[e.online=0]="online",e[e.develop=1]="develop"}(t||e("EnvType",t={})),e("Env",o=t.develop),e("UseSign",!0),e("UseDebug",!1),e("UseLog",!1),e("DebugGameTime",-1),e("config",a={matchCode:"match-auuc635m",gameId:"obg-8lfv7afz",secretKey:"",initConfig:{url:"8lfv7afz.wxlagame.com",reconnectMaxTimes:5,reconnectInterval:1e3,resendInterval:1e3,resendTimeout:1e4,isAutoRequestFrame:!0}}),c="https://dev-api.didiapp.com",m=localStorage.getItem("userContent")?JSON.parse(localStorage.getItem("userContent")).env:"",e("serverURL",{gameInit:(c="dev"===m?"https://dev-api.didiapp.com":"xlab"===m?"https://xlab-api.didiapp.com":"online"===m?"https://api.didiapp.com":"https://dev-api.didiapp.com")+"/client/awesome/minigame/jump/info/",accountInit:c+"/client/account/user/info/",loverInfo:c+"/client/account/lover/",vipInfo:c+"/client/account/user/vip/",sign:c+"/client/awesome/minigame/jump/sign",group:c+"/client/awesome/minigame/jump/group_id/"}),o==t.develop&&(a.gameId="obg-8lfv7afz",a.secretKey="d58c8b66331414d6daa6e8870015b55a943516a6",a.matchCode="match-auuc635m",a.initConfig.url="8lfv7afz.wxlagame.com"),i._RF.pop()}}}));
+  var _inherits, _createClass, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, cclegacy, _decorator, Vec3, Component, _dec, _class, ccclass, property, Box;
 
-System.register("chunks:///Const.js",["cc","./Config.js"],(function(e,t){var n,o,a,c,i,r,u,l,p,y;return e({log:function(){},BoxShape:void 0,JumpStatus:void 0,AIDataType:void 0,ServerDataType:void 0,ClientDataType:void 0,RoomDataType:void 0,EmojiType:void 0,DialogButtonType:void 0}),{setters:[function(e){n=e.cclegacy,o=e.Color},function(e){}],execute:function(){n._RF.push({},"286ccI0TulGCrD81NytQWoS","Const",void 0),function(e){e[e.cube=0]="cube",e[e.circle=1]="circle"}(a||e("BoxShape",a={})),e("BoxSizeName",{mini:0,small:1,middle:2,large:3,huge:4,center:5}),e("BoxSize",{0:1.3,1:1.833,2:2.249,3:2.6,4:2.24*1.3,5:.26}),function(e){e[e.next=0]="next",e[e.current=1]="current",e[e.dead=2]="dead"}(c||e("JumpStatus",c={})),function(e){e[e.StartJump=0]="StartJump"}(i||e("AIDataType",i={})),function(e){e[e.Error=-1]="Error",e[e.Init=0]="Init",e[e.Sync=1]="Sync",e[e.Result=2]="Result",e[e.Start=3]="Start",e[e.Reconnect=4]="Reconnect",e[e.Map=5]="Map",e[e.NetState=6]="NetState",e[e.ChangeControler=7]="ChangeControler",e[e.ReconnectFailed=8]="ReconnectFailed",e[e.AI=9]="AI",e[e.MatchingSuccess=10]="MatchingSuccess"}(r||e("ServerDataType",r={})),function(e){e[e.Ready=0]="Ready",e[e.Action=1]="Action",e[e.End=2]="End",e[e.Reconnect=3]="Reconnect",e[e.ChangeControler=4]="ChangeControler",e[e.ReconnectComplete=5]="ReconnectComplete",e[e.Heart=6]="Heart",e[e.RequestInitData=7]="RequestInitData",e[e.RequestSyncData=8]="RequestSyncData",e[e.SyncComplete=9]="SyncComplete",e[e.JumpComplete=10]="JumpComplete",e[e.SingalAI=11]="SingalAI"}(u||e("ClientDataType",u={})),function(e){e[e.EnemyPowerEnd=0]="EnemyPowerEnd",e[e.Power=1]="Power",e[e.PowerEnd=2]="PowerEnd",e[e.emoji=3]="emoji",e[e.SyncComplete=4]="SyncComplete",e[e.MatchedJoinGroup=5]="MatchedJoinGroup"}(l||e("RoomDataType",l={})),function(e){e[e.Angry=0]="Angry",e[e.Worship=1]="Worship",e[e.Unfortunately=2]="Unfortunately",e[e.Applause=3]="Applause"}(p||e("EmojiType",p={})),e("PlayerState",{NotReady:0,Ready:1}),e("NetState",{Offline:0,Online:1}),e("GroupMessageType",{Sys:1,Talk:2}),e("GroupSysMessageType",{Matching:1}),e("LabelColor",{Captain:new o(46,139,33),Ready:new o(46,139,33),NotReady:new o(131,123,123)}),function(e){e[e.single=0]="single",e[e.multiple=1]="multiple"}(y||e("DialogButtonType",y={})),e("TeamColor",{red:"0",blue:"1"}),n._RF.pop()}}}));
+  _export({
+    _dec: void 0,
+    _class: void 0
+  });
 
-System.register("chunks:///DeployInfo.js",["cc"],(function(e,n){var o;return{setters:[function(e){o=e.cclegacy}],execute:function(){o._RF.push({},"b0e97zlqg9DAJCZeY2PJIWp","DeployInfo",void 0),e("DeployInfo",{version:7}),o._RF.pop()}}}));
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Vec3 = _cc.Vec3;
+      Component = _cc.Component;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "6643c+mADFPg59fhSVi8+Su", "Box", undefined);
 
-System.register("chunks:///quan.js",["./_virtual/_rollupPluginBabelHelpers.js","cc"],(function(t,e){var n,a,s,i,o,r,c,l,u,h,p,d,f,m,v;return t({_dec:void 0,_class:void 0,_temp:void 0}),{setters:[function(t){n=t.inherits,a=t.classCallCheck,s=t.possibleConstructorReturn,i=t.getPrototypeOf,o=t.createClass},function(t){r=t.cclegacy,c=t._decorator,l=t.Vec3,u=t.MeshRenderer,h=t.tween,p=t.Vec4,d=t.Component}],execute:function(){r._RF.push({},"88109mMvhFPC4a/ipJ0aAXk","quan",void 0),v=c.ccclass,c.property,t("Quan",(f=v("Quan"),f(m=function(t){function e(){var t,n;a(this,e);for(var o=arguments.length,r=new Array(o),c=0;c<o;c++)r[c]=arguments[c];return(n=s(this,(t=i(e)).call.apply(t,[this].concat(r)))).originState=new l(0,0,0),n.startState=new l(.5,1,.5),n.endState=new l(4,1,4),n}return n(e,t),o(e,[{key:"start",value:function(){this.material=this.node.getComponent(u).materials[0],this.pass=this.material.passes[0],this.node.setScale(this.originState)}},{key:"startAnimation",value:function(){var t=this;this.node.setScale(this.startState),h(this.node).to(.5,{scale:this.endState},{onComplete:function(){t.node.setScale(t.originState)},onUpdate:function(e,n){t.pass.setUniform(t.pass.getHandle("mainColor"),new p(1,1,1,1-n))}}).start()}}]),e}(d))||m)),r._RF.pop()}}}));
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
 
-System.register("chunks:///Player.js",["./_virtual/_rollupPluginBabelHelpers.js","cc","./Box.js","./Const.js","./quan.js"],(function(t,e){var i,s,o,n,a,r,h,u,l,m,p,d,c,g,_,f,y,v,P,x,j,w,R,B,M,T,b,z,C,k,A,S,D,I,H,U,N,J,F,Y,E,O,K,V,q;return t({_dec:void 0,_dec2:void 0,_dec3:void 0,_dec4:void 0,_dec5:void 0,_class:void 0,_class2:void 0,_descriptor:void 0,_descriptor2:void 0,_descriptor3:void 0,_descriptor4:void 0,_temp:void 0}),{setters:[function(t){i=t.applyDecoratedDescriptor,s=t.inherits,o=t.classCallCheck,n=t.possibleConstructorReturn,a=t.getPrototypeOf,r=t.initializerDefineProperty,h=t.assertThisInitialized,u=t.createClass,l=t.asyncToGenerator},function(t){m=t.cclegacy,p=t._decorator,d=t.Vec3,c=t.Quat,g=t.Prefab,_=t.CCFloat,f=t.Vec2,y=t.systemEvent,v=t.SystemEvent,P=t.ParticleSystem,x=t.randomRange,j=t.tween,w=t.Component,R=t.instantiate,B=t.loader},function(t){M=t.Box},function(t){T=t.JumpStatus,b=t.ClientDataType,z=t.BoxSize,C=t.BoxSizeName,k=t.log},function(t){A=t.Quan}],execute:function(){m._RF.push({},"06087OdteJF9alMqGeb4DFG","Player",void 0),K=p.ccclass,V=p.property,new d,new d,q=new c,new c,t("Player",(S=K("Player"),D=V({type:g}),I=V({type:_}),H=V({type:_}),U=V({type:_}),S((F=i((J=function(t){function e(){var t,i;o(this,e);for(var s=arguments.length,u=new Array(s),l=0;l<s;l++)u[l]=arguments[l];return i=n(this,(t=a(e)).call.apply(t,[this].concat(u))),r(i,"playerPrfb",F,h(i)),r(i,"jumpHeight",Y,h(i)),r(i,"jumpDuration",E,h(i)),r(i,"max_time",O,h(i)),i.originPosY=0,i.originRotation=new c(0,1,0,0),i.curRotation=new c,i.curPostion=new d,i._jump_time=0,i.jumpResult={time:null,distance:null,offset:null,status:null,perfect:!1},i._face=new f,i._axis=new d,i._stat_power=!1,i._stat_jump=!1,i.curBox=null,i.nextBox=null,i._isRunning=!1,i._control=!1,i.is_controler=!1,i.modelBody=null,i.modelHead=null,i.modelHeadPos=new d,i.modelTire=null,i.AI=!1,i.AI_power=!1,i.AI_jump=!1,i}var i,m;return s(e,t),u(e,[{key:"onLoad",value:function(){this.node.getRotation(q)}},{key:"initEvent",value:function(){y.on(v.EventType.TOUCH_START,this.onTouchDown,this),y.on(v.EventType.TOUCH_END,this.onTouchUp,this)}},{key:"initPlayer",value:function(){var t=new d(this.gameManager.serverTeam.pos[0],this.originPosY,this.gameManager.serverTeam.pos[1]);this.node.setPosition(t),this.node.setRotation(this.originRotation),this.curPostion=t,this._isRunning=!1,this._control=!1,this.is_controler=!1,this._jump_time=0,this.AI_power=!1,this.AI_jump=!1,this._stat_power=!1,this._stat_jump=!1}},{key:"start",value:function(){this.originPosY=this.node.position.y,this.quan=this.node.getChildByName("quan").getComponent(A),this.node.getRotation(this.curRotation),this.initEvent()}},{key:"onTouchDown",value:function(t){this.control&&this.is_controler&&0==this._stat_power&&0==this._stat_jump&&(this.particleOpen(!0),this.gameManager.Util.playAudio(this.gameManager.audio_touch_down),this.onPowerDown(),this._stat_power=!0,this.jumpResult.time=0,this._control=!1)}},{key:"onTouchUp",value:function(t){this._stat_power&&this.is_controler&&(this.jumpResult.time>this.max_time&&(this.jumpResult.time=this.max_time),this._stat_power=!1,this.modelBody.setScale(new d(1,1,1)),this.modelHead.setPosition(this.modelHeadPos),this.modelTire&&this.modelTire.setPosition(new d(0,0,0)),this.start_jump())}},{key:"teammatePower",value:function(){0==this.control&&(this.gameManager.Util.playAudio(this.gameManager.audio_touch_down),this.jumpResult.time=0,this._stat_power=!0,this.particleOpen(!0))}},{key:"teammatePowerEnd",value:function(t){if(0==this.control){this._stat_power=!1,this.modelBody.setScale(new d(1,1,1)),this.modelHead.setPosition(this.modelHeadPos),this.modelTire&&this.modelTire.setPosition(new d(0,0,0));var e=new d;this.node.getPosition(e),e.y=this.originPosY,this.node.setPosition(e),this.start_jump(t)}}},{key:"funnction_jump",value:function(t){return 9*t*t+7*t}},{key:"function_getJumpInfo",value:function(){this.jumpResult.distance=this.funnction_jump(this.jumpResult.time);var t=new d,e=new d,i=new d,s=new f,o=null,n=!1,a=null;this.node.getPosition(i),this.curBox.node.getPosition(e),this.nextBox.node.getPosition(t),this.getFace(s),s.normalize(),s.multiplyScalar(this.jumpResult.distance),s.x+=i.x,s.y+=i.z;var r=new f(999,999);this.gameManager.Util.posInBox(s,new f(t.x,t.z),this.nextBox.size,this.nextBox.shape,r)?(o=[s.x-t.x,s.y-t.z],a=T.next,r.x<.325&&(n=!0)):this.gameManager.Util.posInBox(s,new f(e.x,e.z),this.curBox.size,this.curBox.shape)?(o=[s.x-e.x,s.y-e.z],a=T.current):(a=T.dead,o=[s.x-t.x,s.y-t.z]),this.jumpResult.offset=o,this.jumpResult.status=a,this.jumpResult.perfect=n}},{key:"start_jump",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=arguments.length>1&&void 0!==arguments[1]&&arguments[1];this.particleOpen(!1);var i=!1;if(!this._stat_power){var s=this.node.getChildByName("Node").getChildByName("body").getComponent(P);if(s&&(s.enabled=!0),this._stat_jump=!0,this._jump_time=0,this.getFace(this._face),this._axis=this.gameManager.Util.getJumpAxis(this.node,this.nextBox.node),this.node.getRotation(this.curRotation),this.node.getPosition(this.curPostion),this.curBox.node.getComponent(M).startElastic(),null==t?(i=!0,this.function_getJumpInfo(),e||this.onPowerUp()):(this.jumpResult.distance=t.distance,this.jumpResult.offset=t.pos,this.jumpResult.status=t.status,this.jumpResult.time=t.time,this.jumpResult.perfect=t.perfect),e)return;var o={id:this.gameManager.serverTeam.id,cur_cube:this.gameManager.serverTeam.cur_cube,pos:this.gameManager.serverTeam.pos,perfectJump:this.gameManager.serverTeam.perfectJump,oneStepFinish:this.gameManager.serverTeam.oneStepFinish,playerList:this.gameManager.serverTeam.playerList},n={score:this.gameManager.serverPlayer.score,id:this.gameManager.serverPlayer.id,avatar:this.gameManager.serverPlayer.avatar,status:this.gameManager.serverPlayer.status,teamId:this.gameManager.serverPlayer.teamId,name:this.gameManager.serverPlayer.name,gender:this.gameManager.serverPlayer.gender,isVip:this.gameManager.serverPlayer.isVip,isRobot:this.gameManager.serverPlayer.isRobot,lover_id:this.gameManager.serverPlayer.lover_id,user_id:this.gameManager.serverPlayer.user_id};switch(this.jumpResult.status){case T.next:if(o.cur_cube+=1,o.pos=this.jumpResult.offset,this.jumpResult.perfect?o.perfectJump+=1:o.perfectJump=0,i){var a=this.gameManager.Util.getScore(o.perfectJump);n.score+=a}break;case T.current:o.pos=this.jumpResult.offset,o.perfectJump=0;break;default:o.perfectJump=0}this.gameManager.SDK.sendToServer(b.Action,{player:n,team:o,status:this.jumpResult.status})}}},{key:"action_power",value:function(t){if(this._stat_power){if(this.jumpResult.time+=t,this.jumpResult.time<this.max_time)this.setPlayerPress(this.jumpResult.time/this.max_time),this.setBoxPress(this.jumpResult.time/this.max_time);else if(this.jumpResult.time>this.max_time+2)this.jumpResult.time=this.max_time,this.onTouchUp(1);else{var e=x(.97,1.03);this.setPlayerPress(e),this.setBoxPress(e)}if(this.AI&&this.AI_power&&!this.AI_jump&&this.nextBox){var i=this.funnction_jump(this.jumpResult.time),s=new d,o=new d,n=new f;this.getFace(n),n.normalize(),n.multiplyScalar(i),this.node.getPosition(s),this.nextBox.node.getPosition(o),n.x+=s.x,n.y+=s.z;var a=new f(n.x,n.y),r=new f(o.x,o.z),h=new f;if(this.gameManager.Util.posInBox(a,r,this.nextBox.size,this.nextBox.shape,h),h.x<=z[C.center]||this.jumpResult.time>=this.max_time){this._stat_power=!1,this.modelBody.setScale(new d(1,1,1)),this.modelHead.setPosition(this.modelHeadPos),this.modelTire&&this.modelTire.setPosition(new d(0,0,0));var u=new d;this.node.getPosition(u),u.y=this.originPosY,this.node.setPosition(u),this.AI_jump=!0,this.AI_power=!1,"TeachingBoard"==this.gameManager.SDK.curBoard.name?(this.AI=!1,this.start_jump(null,!0)):this.start_jump()}}}}},{key:"action_jump",value:function(t){if(this._stat_jump){this._jump_time+=t;var e=0,i=0,s=0,o=!1;if(this._jump_time<this.jumpDuration){var n=-4*this.jumpHeight/(this.jumpDuration*this.jumpDuration),a=this.jumpDuration/2,r=this.jumpHeight;e=n*(this._jump_time-a)*(this._jump_time-a)+r+this.originPosY,i=t/this.jumpDuration*this.jumpResult.distance,s=this._jump_time/this.jumpDuration*360}else e=this.originPosY,s=0,this._stat_jump=!1,o=!0;var h=new d;this.node.getPosition(h);var u=this.gameManager.Util.getPosWithVec(h,this._face,i);u.y=e,c.rotateAround(q,this.curRotation,this._axis,3.1415*s/180),this.node.setPosition(u),this.node.setRotation(q),o&&(this.AI_jump=!1,this.action_jump_end())}}},{key:"action_jump_end",value:function(){var t=this,e=new d;this.node.getPosition(e),k("跳跃结果","基本数据:",this.jumpResult);var i=this.node.getChildByName("Node").getChildByName("body").getComponent(P);if(i&&(i.enabled=!1),this.jumpResult.status==T.current){k("修正量",this.jumpResult.offset);var s=new d;this.curBox.node.getPosition(s),s.x+=this.jumpResult.offset[0],s.z+=this.jumpResult.offset[1],s.y=this.originPosY,this.node.setPosition(s),this.node.getPosition(this.curPostion),this.onJumpComplete(!1,this.is_controler),this.gameManager.Util.playAudio(this.gameManager.audio_complete)}else if(this.jumpResult.status==T.next){k("修正量:",this.jumpResult.offset);var o=new d;this.nextBox.node.getPosition(o),o.x+=this.jumpResult.offset[0],o.z+=this.jumpResult.offset[1],o.y=this.originPosY,this.node.setPosition(o),this.node.getPosition(this.curPostion),this.onJumpComplete(!0,this.is_controler),1==this.jumpResult.perfect?this.gameManager.Util.playAudio(this.gameManager.audio_perfect):this.gameManager.Util.playAudio(this.gameManager.audio_complete)}else if(this.jumpResult.status==T.dead){var n=this.nextBox.node.getPosition(),a=new d;a.x=n.x+this.jumpResult.offset[0],a.z=n.z+this.jumpResult.offset[1],a.y=this.originPosY,this.node.setPosition(a);var r=a.clone();r.y=-.5,this.gameManager.Util.playAudio(this.gameManager.audio_dead);var h=new f(9999,9999);if(this.gameManager.Util.posInBox(new f(a.x,a.z),new f(n.x,n.z),this.nextBox.size,this.nextBox.shape,h),h.x<=z[this.nextBox.size]/2+.4){var u=new f(a.x-n.x,a.z-n.z);u.normalize(),u.multiplyScalar(.8),r.x+=u.x,r.z+=u.y;var l=this.gameManager.Util.getTiltQuat(this.node,this.nextBox.node.getPosition()),m=this.node.getRotation(),p=new c;j(this.node).to(.6,{position:r},{onComplete:this.jumpDead.bind(this),onUpdate:function(e,i){p.set(m).slerp(l,i),t.node.setRotation(p)}}).start()}else j(this.node).to(.6,{position:r},{onComplete:this.jumpDead.bind(this)}).start()}this.jumpResult.time=0,this._jump_time=0}},{key:"jumpDead",value:function(){this.onJumpDead(),this.node.setPosition(this.curPostion),this.node.setRotation(this.originRotation),this.gameManager.Util.playAudio(this.gameManager.audio_relife)}},{key:"reset",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null;if(t){var e=new d;this.curBox.node.getPosition(e),e.x+=t.pos[0],e.z+=t.pos[1],e.y=this.originPosY,this.node.setPosition(e);var i=new d;this.node.getPosition(i),this.modelTire&&this.modelTire.setPosition(new d(0,0,0)),this.modelHead&&this.modelHead.setPosition(this.modelHeadPos),this.modelBody&&this.modelBody.setScale(new d(1,1,1))}else this.node.setPosition(this.curPostion);this.particleOpen(!1),this.node.setRotation(this.originRotation),this.node.getPosition(this.curPostion),this._stat_power=!1,this._stat_jump=!1,this.AI_power=!1,this.AI_jump=!1,this.curBox.node.setScale(new d(1,1,1))}},{key:"setFace",value:function(){var t=this;if(this.nextBox){var e=j(this.node),i=new c;this.node.getRotation(i);var s=this.gameManager.Util.getRotaionQuat(this.node,this.nextBox.node),o=new c;e.to(.2,{},{onUpdate:function(e,n){o.set(i).slerp(s,n),t.node.setRotation(o)}}),e.start()}}},{key:"particleOpen",value:function(t){this.node.getChildByName("Node").getChildByName("body").getChildByName("Particle").active=t}},{key:"getFace",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,e=(new f,new d),i=new d;this.node.getPosition(e),this.nextBox.node.getPosition(i),t?(t.set(i.x-e.x,i.z-e.z),this._face.set(t)):this._face.set(i.x-e.x,i.z-e.z)}},{key:"setPlayerPress",value:function(t){var e=this.node.getPosition();e.y=this.originPosY-1.102*t,this.node.setPosition(e);var i=this.modelHead.getPosition();if(i.y=this.modelHeadPos.y-.572*t,this.modelHead.setPosition(i),this.modelTire){var s=this.modelTire.getPosition();s.y=-.572*t,this.modelTire.setPosition(s)}var o=this.modelBody.getScale();o.y=1-.5*t,this.modelBody.setScale(o)}},{key:"setBoxPress",value:function(t){var e=this.curBox.node.getScale();e.y=1-.7*t,this.curBox.node.setScale(e)}},{key:"setModel",value:(m=l(regeneratorRuntime.mark((function t(e){var i,s,o,n;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if(e-=1,i=this.gameManager.ChessPrefab,!(e>=i.length||e<0)){t.next=4;break}return t.abrupt("return");case 4:return(s=this.node.getChildByName("Node"))&&this.node.removeChild(s),o=this.gameManager.ChessPrefab[e],(n=R(o)).setParent(this.node),this.modelHead=n.getChildByName("head"),this.modelBody=n.getChildByName("body"),this.modelHead.getPosition(this.modelHeadPos),t.abrupt("return",!0);case 13:case"end":return t.stop()}}),t,this)}))),function(t){return m.apply(this,arguments)})},{key:"setTire",value:(i=l(regeneratorRuntime.mark((function t(e){var i,s,o,n=this;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:t.t0=e,t.next=1===t.t0?3:5;break;case 3:return i="vip",t.abrupt("break",6);case 5:return t.abrupt("return",!1);case 6:return(s=this.node.getChildByName("Tire").getChildByName("Node"))&&this.node.getChildByName("Tire").removeChild(s),o="Model/Tire/"+i+"/Node",new Promise((function(t){B.loadRes(o,g,(function(e,i){var s=R(i);s.setParent(n.node.getChildByName("Tire")),n.modelTire=s,t(s)}))})),t.abrupt("return",!0);case 11:case"end":return t.stop()}}),t,this)}))),function(t){return i.apply(this,arguments)})},{key:"update",value:function(t){if(this.isRunning||!this.gameManager.SDK.curBoard||"TeachingBoard"==this.gameManager.SDK.curBoard.name){if(this.AI){var e="TeachingBoard"==this.gameManager.SDK.curBoard.name;(this.control||e)&&(0!=this._stat_power||0!=this._stat_jump||this.AI_jump||this.AI_power||(e||this.onPowerDown(),this.AI_power=!0,this._stat_power=!0,this.jumpResult.time=0,this._control=!1))}this.action_power(t),this.action_jump(t)}}},{key:"control",set:function(t){this._control=t,this.is_controler=t,this.is_controler&&this.initEvent()},get:function(){return this._control}},{key:"isRunning",set:function(t){this._isRunning=t},get:function(){return this._isRunning}}]),e}(w)).prototype,"playerPrfb",[D],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Y=i(J.prototype,"jumpHeight",[I],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 2}}),E=i(J.prototype,"jumpDuration",[H],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return.7}}),O=i(J.prototype,"max_time",[U],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 4}}),N=J))||N)),m._RF.pop()}}}));
+      _export("Box", Box = (_dec = ccclass('Box'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inherits(Box, _Component);
 
-System.register("chunks:///Util.js",["./_virtual/_rollupPluginBabelHelpers.js","cc","./Const.js"],(function(e,t){var r,n,a,o,i,s,u,c,l,m,g,f,p,h,v,d,y,b,x,k,I,w;return e("throttle",(function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:2e3;return function(t,r,n){var a=n.value,o=null;return n.value=function(){o||(a.apply(this),o=setTimeout((function(){o=null}),e))},n}})),{setters:[function(e){r=e.createClass,n=e.classCallCheck,a=e.typeof,o=e.asyncToGenerator},function(e){i=e.cclegacy,s=e._decorator,u=e.Vec2,c=e.Rect,l=e.Vec3,m=e.Quat,g=e.loader,f=e.Prefab,p=e.AudioSource,h=e.Sprite,v=e.Texture2D,d=e.ImageAsset,y=e.SpriteFrame,b=e.Label,x=e.Node},function(e){k=e.BoxShape,I=e.TeamColor,w=e.BoxSize}],execute:function(){i._RF.push({},"ce5d5zghdhNhJ8k219NUh+H","Util",void 0),s.ccclass,s.property,e("Util",function(){function e(t,r){n(this,e),this.localImgCache={},this.remoteImgCache={},this.isRobotRoomCache=void 0,this.SDK=t,this.gameManager=r}var t,i,s,S,R,C,P,N,M;return r(e,[{key:"posInBox",value:function(e,t,r,n){var a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null,o=w[r]/2;if(a&&(a.x=u.distance(e,t)),n==k.cube){var i=new c,s=new u(t.x-o,t.y+o),l=new u(t.x+o,t.y-o);return c.fromMinMax(i,s,l),i.contains(e)}return u.distance(e,t)<o}},{key:"getJumpAxis",value:function(e,t){var r=new l,n=new l,a=new l(0,0,0);e.getPosition(r),t.getPosition(n);var o=r.z-n.z,i=n.x-r.x;return a.set(-o,0,-i),a.normalize(),a}},{key:"getTiltQuat",value:function(e,t){var r=new m,n=e.getPosition(),a=new u(n.x-t.x,n.z-t.z);a.rotate(-1.5707963);var o=new l(a.x,0,a.y);o.normalize();var i=e.getRotation();return m.rotateAround(r,i,o,1.5707963),r}},{key:"getRotaionQuat",value:function(e,t){var r=new l,n=new l,a=new u(0,1),o=new u,i=new m;i.lengthSqr(),e.getPosition(r),t.getPosition(n),o.set(n.x-r.x,n.z-r.z);var s=o.signAngle(a);return s<0&&(s+=6.2831852),m.rotateY(i,i,s),i}},{key:"getPosWithVec",value:function(e,t,r){return t.normalize(),t.multiplyScalar(r),new l(e.x+t.x,0,e.z+t.y)}},{key:"getScore",value:function(e){if(e<=0)return 1;var t=2*e;return t<=10?t:10}},{key:"getLocalTime",value:function(){return Math.floor(Date.parse((new Date).toString())/1e3)}},{key:"isControler",value:function(e,t){for(var r=!1,n=0;n<e.length;n++){if(e[n].id==t.id){r=!0;break}}return r}},{key:"getPara",value:function(e,t){var r=new RegExp("(^|&)"+e+"=([^&]*)(&|$)","i"),n=t.substr(1).match(r);return null!=n?decodeURI(n[2]):null}},{key:"teammaterIsLover",value:(M=o(regeneratorRuntime.mark((function e(){var t,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(null==this.SDK.gameManager.teammaterIsLover){e.next=2;break}return e.abrupt("return",this.SDK.gameManager.teammaterIsLover);case 2:return e.next=4,this.SDK.getTeammate();case 4:if(t=e.sent){e.next=7;break}return e.abrupt("return",!1);case 7:return r=JSON.parse(t.customProfile),this.SDK.gameManager.teammaterIsLover=r.lover_id==this.SDK.gameManager.PlayerData.lover_id&&r.lover_id>0,e.abrupt("return",this.SDK.gameManager.teammaterIsLover);case 10:case"end":return e.stop()}}),e,this)}))),function(){return M.apply(this,arguments)})},{key:"enemyIsLover",value:(N=o(regeneratorRuntime.mark((function e(){var t,r,n,a,o,i,s;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(null==this.SDK.gameManager.enemyIsLover){e.next=2;break}return e.abrupt("return",this.SDK.gameManager.enemyIsLover);case 2:return e.next=4,this.SDK.getRoomInfo();case 4:return t=e.sent,e.next=7,this.SDK.getPlayerInfo();case 7:if(r=e.sent,t){e.next=10;break}return e.abrupt("return",!1);case 10:o=t.playerList,i=0;case 12:if(!(i<o.length)){e.next=24;break}if((s=o[i]).teamId==r.teamId){e.next=21;break}if(!n){e.next=20;break}return a=this.gameManager.robotInfo[s.id]?JSON.parse(this.gameManager.robotInfo[s.id].profile):JSON.parse(s.customProfile),e.abrupt("break",24);case 20:n=this.gameManager.robotInfo[s.id]?JSON.parse(this.gameManager.robotInfo[s.id].profile):JSON.parse(s.customProfile);case 21:i++,e.next=12;break;case 24:return this.SDK.gameManager.enemyIsLover=n.lover_id==a.lover_id&&-1!=n.lover_id,e.abrupt("return",this.SDK.gameManager.enemyIsLover);case 26:case"end":return e.stop()}}),e,this)}))),function(){return N.apply(this,arguments)})},{key:"enemyIsVip",value:(P=o(regeneratorRuntime.mark((function e(){var t,r,n,a,o;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getRoomInfo();case 2:if(t=e.sent){e.next=5;break}return e.abrupt("return",!1);case 5:return r=t.playerList,e.next=8,this.SDK.getPlayerInfo();case 8:n=e.sent,a=0;case 10:if(!(a<r.length)){e.next=20;break}if((o=r[a]).teamId==n.teamId){e.next=17;break}if(!(this.gameManager.robotInfo[o.id]?JSON.parse(this.gameManager.robotInfo[o.id].profile):JSON.parse(o.customProfile)).isVip){e.next=17;break}return e.abrupt("return",!0);case 17:a++,e.next=10;break;case 20:return e.abrupt("return",!1);case 21:case"end":return e.stop()}}),e,this)}))),function(){return P.apply(this,arguments)})},{key:"IsRobotRoom",value:(C=o(regeneratorRuntime.mark((function e(){var t,r,n;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(null==this.isRobotRoomCache){e.next=2;break}return e.abrupt("return",this.isRobotRoomCache);case 2:return e.next=4,this.SDK.getRoomInfo();case 4:if(t=e.sent){e.next=7;break}return e.abrupt("return",!1);case 7:r=t.playerList,n=0;case 9:if(!(n<r.length)){e.next=16;break}if(!r[n].isRobot){e.next=13;break}return e.abrupt("return",!0);case 13:n++,e.next=9;break;case 16:return e.abrupt("return",!1);case 17:case"end":return e.stop()}}),e,this)}))),function(){return C.apply(this,arguments)})},{key:"loadRemoteImg",value:(R=o(regeneratorRuntime.mark((function e(t,r){var n=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.abrupt("return",new Promise((function(e,a){if(n.remoteImgCache[t])return r&&(r.getComponent(h).spriteFrame=n.remoteImgCache[t]),e(!0);var o=new Image;o.crossOrigin="Anonymous",o.src=t,o.onload=function(){var a=new v;a.image=new d(o);var i=new y;i.texture=a,n.remoteImgCache[t]=i,r&&(r.getComponent(h).spriteFrame=i),e(!0)},o.onerror=function(t){e(!1),r&&n.loadImg("/Texture/UI/main/banner@2x (3)/spriteFrame",r)}})));case 1:case"end":return e.stop()}}),e)}))),function(e,t){return R.apply(this,arguments)})},{key:"loadImg",value:(S=o(regeneratorRuntime.mark((function e(t,r){var n=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!this.localImgCache[t]){e.next=4;break}return r.getComponent(h).spriteFrame=this.localImgCache[t],e.abrupt("return");case 4:return e.abrupt("return",new Promise((function(e){g.loadRes(t,y,(function(a,o){if(a)throw e(!1),a;r.getComponent(h).spriteFrame=o,n.localImgCache[t]=o,e(!0)}))})));case 5:case"end":return e.stop()}}),e,this)}))),function(e,t){return S.apply(this,arguments)})},{key:"http",value:function(e,t,r){var n=arguments.length>3&&void 0!==arguments[3]&&arguments[3],a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:null;return new Promise((function(o,i){var s=new XMLHttpRequest;if(s.open(t,e,!0),n&&(s.responseType="blob"),s.onreadystatechange=function(){if(4==s.readyState)if(s.status>=200&&s.status<300){var e=s.responseText;o(JSON.parse(e))}else o(null)},s.setRequestHeader("Content-type","application/x-www-form-urlencoded"),s.setRequestHeader("Access-Control-Allow-Origin","*"),a&&s.setRequestHeader("access_token",a),r){var u="";for(var c in r)u+=c+"="+r[c]+"&";s.send(u)}else s.send(null)}))}},{key:"loadPrefab",value:(s=o(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.abrupt("return",new Promise((function(e){g.loadRes(t,f,(function(t,r){e(t?null:r)}))})));case 1:case"end":return e.stop()}}),e)}))),function(e){return s.apply(this,arguments)})},{key:"loadEnemyChessPrefab",value:function(e,t){var r=this;g.loadRes(e,f,(function(e,n){e||(t==I.blue?r.gameManager.ChessPrefabEnemy.blue=n:r.gameManager.ChessPrefabEnemy.red=n)}))}},{key:"loadBoxPrefab",value:function(e,t,r){var n=this;g.loadRes(e,f,(function(e,a){e||(n.gameManager.BoxPrefab[t][r]=a)}))}},{key:"loadChessPrefab",value:function(e,t){var r=this;g.loadRes(e,f,(function(e,n){e||(r.gameManager.ChessPrefab[t]=n)}))}},{key:"setAvatar",value:(i=o(regeneratorRuntime.mark((function e(t,r,n){var a,o,i,s;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return a=r.profile?JSON.parse(r.profile):JSON.parse(r.customProfile),this.loadRemoteImg(a.avatar_url,t),t.getChildByName("isVip")&&(!a.isVip&&(t.getChildByName("isVip").active=!1),a.isVip&&(t.getChildByName("isVip").active=!0)),t.getChildByName("gender")&&(1===a.gender&&this.loadImg("/Texture/UI/result/boy/spriteFrame",t.getChildByName("gender")),2===a.gender&&this.loadImg("/Texture/UI/result/girl/spriteFrame",t.getChildByName("gender"))),t.getChildByName("name")&&(t.getChildByName("name").getComponent(b).string=a.nickname.length>6?a.nickname.slice(0,5):a.nickname),e.next=7,this.SDK.getPlayerInfo();case 7:if(o=e.sent,!n){e.next=21;break}if(r.id!==o.id){e.next=20;break}if(!t.getChildByName("me")){e.next=12;break}return e.abrupt("return",t.getChildByName("me").active=!0);case 12:i=new x("me"),s=new l(0,74,0),i.addComponent(h),this.loadImg("/Texture/UI/gaming/me/spriteFrame",i),t.addChild(i),i.setPosition(s),e.next=21;break;case 20:t.getChildByName("me")&&(t.getChildByName("me").active=!1);case 21:case"end":return e.stop()}}),e,this)}))),function(e,t,r){return i.apply(this,arguments)})},{key:"getTeammaterAvatar",value:(t=o(regeneratorRuntime.mark((function e(t){var r,n;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:return e.sent,e.next=5,this.SDK.getRoomInfo();case 5:return e.sent.playerList,e.next=9,this.SDK.getTeammate();case 9:if(r=e.sent,!(n=JSON.parse(r.customProfile))){e.next=15;break}return e.abrupt("return",n.avatar_url);case 15:return e.abrupt("return",null);case 16:case"end":return e.stop()}}),e,this)}))),function(e){return t.apply(this,arguments)})},{key:"loverLevel",value:function(e){for(var t=[50,100,200,500,1e3,2e3,3e3,5e3,7e3,1e4],r=0;r<t.length;r++){if((e-=t[r])<0)return r}return 10}},{key:"playAudio",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1;this.gameManager.Setting.switch_audio&&this.gameManager.getComponent(p).playOneShot(e,t)}},{key:"isJson",value:function(e){try{var t=JSON.parse(e);return!("object"!==a(t)||!t)}catch(e){return!1}}},{key:"localGet",value:function(e){var t=localStorage.getItem(e);return!!t&&(this.isJson(t)?JSON.parse(t):t)}},{key:"localSet",value:function(e,t){"object"!==a(t)&&localStorage.setItem(e,t),"object"===a(t)&&localStorage.setItem(e,JSON.stringify(t))}}]),e}()),i._RF.pop()}}}));
+        function Box() {
+          _classCallCheck(this, Box);
 
-System.register("chunks:///SDK.js",["./_virtual/_rollupPluginBabelHelpers.js","cc","./Config.js","./Const.js"],(function(e,r){var t,n,a,u,o,i,s,c,p,f;return{setters:[function(e){t=e.createClass,n=e.classCallCheck,a=e.asyncToGenerator},function(e){u=e.cclegacy},function(e){o=e.config,i=e.serverURL},function(e){s=e.log,c=e.ClientDataType,p=e.PlayerState,f=e.RoomDataType}],execute:function(){u._RF.push({},"33e872liaNCrpH3cX9cDkX4","SDK",void 0),e("SDK",function(){function e(){n(this,e),this.Listener=MGOBE.Listener,this.Room=MGOBE.Room,this.curRoom=null,this.curGroup=null,this.curBoard=null,this.curDialog=null,this.gameManager=null,this.errorCode=MGOBE.ErrCode,this.indexListCache={},this.curRoom=new MGOBE.Room,this.curGroup=new MGOBE.Group}var r,u,m,l,h,d,g,y,v,k,R,x,P,G,b,w,I,M,E,S,O,C,L,T;return t(e,[{key:"init",value:function(e,r){var t=this;return new Promise((function(n){var a=i.sign+"/?game_id="+o.gameId+"&open_id="+e,u={gameId:o.gameId,openId:e,createSignature:function(e){fetch(a).then((function(e){return e.json()})).then((function(r){var t=r.sign,n=r.nonce,a=r.timestamp;return e({sign:t,nonce:n,timestamp:a})}))}};t.Listener.init(u,o.initConfig,(function(e){e.code===MGOBE.ErrCode.EC_OK?(t.Listener.add(t.curRoom),t.gameManager=r,n(!0)):(s("正式环境初始化失败",e.code),n(!1))}))}))}},{key:"matchingSingle",value:(T=a(regeneratorRuntime.mark((function e(){var r,t,n,a,u=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.indexListCache={},e.next=3,this.getPlayerInfo();case 3:return r=e.sent,t={name:r.name,customPlayerStatus:r.stateRoom,customProfile:r.profile,matchAttributes:[]},n={playerInfo:t,matchCode:o.matchCode},a=new Promise((function(e){u.curRoom.matchPlayers(n,(function(r){s("进入单人匹配结果",r.code),e(r.code)}))})),e.abrupt("return",a);case 8:case"end":return e.stop()}}),e,this)}))),function(){return T.apply(this,arguments)})},{key:"matchingLover",value:(L=a(regeneratorRuntime.mark((function e(){var r,t,n,a,u,i,s=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getGroupInfo();case 2:if(e.sent){e.next=6;break}return e.abrupt("return");case 6:return e.next=8,this.getPlayerInfo();case 8:return r=e.sent,e.next=11,this.getLoverInfo();case 11:if(t=e.sent){e.next=15;break}return e.abrupt("return");case 15:return n={id:r.id,name:r.name,customProfile:r.profile,customPlayerStatus:r.stateGroup,matchAttributes:[]},a={id:t.id,name:t.name,customProfile:t.profile,customPlayerStatus:t.stateGroup,matchAttributes:[]},u={playerInfoList:[n,a],matchCode:o.matchCode},i=new Promise((function(e){s.curRoom.matchGroup(u,(function(r){e(r.code)}))})),e.abrupt("return",i);case 20:case"end":return e.stop()}}),e,this)}))),function(){return L.apply(this,arguments)})},{key:"cancelMatchinig",value:(C=a(regeneratorRuntime.mark((function e(){var r,t,n=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return r={matchType:MGOBE.ENUM.MatchType.PLAYER_COMPLEX},t=new Promise((function(e){n.curRoom.cancelPlayerMatch(r,(function(r){e(r.code)}))})),e.abrupt("return",t);case 3:case"end":return e.stop()}}),e)}))),function(){return C.apply(this,arguments)})},{key:"getRoomInfo",value:(O=a(regeneratorRuntime.mark((function e(){var r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return r=new Promise((function(e){MGOBE.Room.getMyRoom((function(r){e(r.data.roomInfo)}))})),e.abrupt("return",r);case 2:case"end":return e.stop()}}),e)}))),function(){return O.apply(this,arguments)})},{key:"leaveRoom",value:(S=a(regeneratorRuntime.mark((function e(){var r,t=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return r=new Promise((function(e){t.curRoom.leaveRoom({},(function(r){r.code==t.errorCode.EC_OK&&t.curRoom.initRoom(),e(r.code)}))})),e.abrupt("return",r);case 2:case"end":return e.stop()}}),e)}))),function(){return S.apply(this,arguments)})},{key:"getTeamId",value:(E=a(regeneratorRuntime.mark((function e(){var r,t,n,a,u;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!this.gameManager.serverTeam){e.next=4;break}return e.abrupt("return",this.gameManager.serverTeam.id);case 4:return e.next=6,this.getRoomInfo();case 6:return r=e.sent,t=r.playerList,e.next=10,this.getPlayerInfo();case 10:n=e.sent,a=0;case 12:if(!(a<t.length)){e.next=19;break}if((u=t[a]).id!=n.id){e.next=16;break}return e.abrupt("return",u.teamId);case 16:a++,e.next=12;break;case 19:return e.abrupt("return",null);case 20:case"end":return e.stop()}}),e,this)}))),function(){return E.apply(this,arguments)})},{key:"sendToServer",value:(M=a(regeneratorRuntime.mark((function e(r){var t,n,a,u,o,i,s=this,p=arguments;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(t=p.length>1&&void 0!==p[1]?p[1]:null,n=t,r!=c.ChangeControler){e.next=10;break}return e.next=5,this.getPlayerInfo();case 5:return a=e.sent,e.next=8,this.getTeamId();case 8:u=e.sent,n={teamId:u,playerId:a.id};case 10:return o={type:r,data:n},c.Heart,i=new Promise((function(e){var r={data:o};s.curRoom.sendToGameSvr(r,(function(r){e(r.code)}))})),e.abrupt("return",i);case 14:case"end":return e.stop()}}),e,this)}))),function(e){return M.apply(this,arguments)})},{key:"sendToRoom",value:(I=a(regeneratorRuntime.mark((function e(r,t){var n,u=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return n=new Promise(function(){var e=a(regeneratorRuntime.mark((function e(n){var a,o,i,s,c,p,m,l,h,d,g,y,v,k,R;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(a={type:r,data:t},o=[],i=MGOBE.ENUM.RecvType.ROOM_SOME,r!=f.Power&&r!=f.PowerEnd&&r!=f.SyncComplete&&r!=f.MatchedJoinGroup){e.next=10;break}return e.next=6,u.getTeammate();case 6:(s=e.sent)&&o.push(s.id),e.next=29;break;case 10:if(r!=f.EnemyPowerEnd){e.next=23;break}return e.next=13,u.getRoomInfo();case 13:if(!(c=e.sent)){e.next=21;break}return e.next=17,u.getPlayerInfo();case 17:for(p=e.sent,m=c.playerList,l=p.teamId,h=0;h<m.length;h++)(d=m[h]).teamId!=l&&o.push(d.id);case 21:e.next=29;break;case 23:if(r!=f.emoji){e.next=29;break}return e.next=26,u.getRoomInfo();case 26:for(g=e.sent,y=g.playerList,v=0;v<y.length;v++)k=y[v],o.push(k.id);case 29:R={recvType:i,recvPlayerList:o,msg:JSON.stringify(a)},u.curRoom.sendToClient(R,(function(e){n(e.code)}));case 32:case"end":return e.stop()}}),e)})));return function(r){return e.apply(this,arguments)}}()),e.abrupt("return",n);case 2:case"end":return e.stop()}}),e)}))),function(e,r){return I.apply(this,arguments)})},{key:"getTeammate",value:(w=a(regeneratorRuntime.mark((function e(){var r,t,n,a,u,o,i,s,c;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getPlayerInfo();case 2:return r=e.sent,e.next=5,this.getRoomInfo();case 5:if(t=e.sent,n=!1,a=null,t){e.next=15;break}return e.next=11,this.getGroupInfo();case 11:(u=e.sent)?(n=!0,a=u.groupPlayerList):a=null,e.next=16;break;case 15:a=t.playerList;case 16:if(a){e.next=18;break}return e.abrupt("return",null);case 18:o={id:"",name:"",teamId:"",customPlayerStatus:0,customProfile:"",commonNetworkState:0,relayNetworkState:0,isRobot:!1,matchAttributes:[]},i=null,s=0;case 21:if(!(s<a.length)){e.next=41;break}if(c=a[s],!n){e.next=34;break}if(c.id==r.id){e.next=32;break}return(o=c).id=c.id,o.customPlayerStatus=c.customGroupPlayerStatus,o.commonNetworkState=c.commonGroupNetworkState,o.customProfile=c.customGroupPlayerProfile,i=o,e.abrupt("break",41);case 32:e.next=38;break;case 34:if(c.teamId!=r.teamId||c.id==r.id){e.next=38;break}return i=o=c,e.abrupt("break",41);case 38:s++,e.next=21;break;case 41:return e.abrupt("return",i);case 42:case"end":return e.stop()}}),e,this)}))),function(){return w.apply(this,arguments)})},{key:"inRunningRoom",value:(b=a(regeneratorRuntime.mark((function e(){var r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getRoomInfo();case 2:if(!(r=e.sent)){e.next=7;break}if("ing"!=r.customProperties){e.next=7;break}return e.abrupt("return",!0);case 7:return e.abrupt("return",!1);case 8:case"end":return e.stop()}}),e,this)}))),function(){return b.apply(this,arguments)})},{key:"reconnect",value:(G=a(regeneratorRuntime.mark((function e(){var r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getRoomInfo();case 2:r=e.sent,this.curRoom.initRoom(r),this.Listener.add(this.curRoom);case 5:case"end":return e.stop()}}),e,this)}))),function(){return G.apply(this,arguments)})},{key:"getPlayerIndex",value:(P=a(regeneratorRuntime.mark((function e(r){var t,n,a,u;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(r){e.next=5;break}return e.next=3,this.getPlayerInfo();case 3:t=e.sent,r=t.id;case 5:if(!this.indexListCache[r]){e.next=7;break}return e.abrupt("return",this.indexListCache[r]);case 7:return e.next=9,this.getRoomInfo();case 9:if(n=e.sent){e.next=12;break}return e.abrupt("return",null);case 12:return a=n.playerList,t||a.map((function(e){e.id===r&&(t=e)})),u=1,a.filter((function(e,r){return e.teamId===t.teamId})).map((function(e,r){e.id===t.id&&(u=r+1)})),this.indexListCache[t.id]=u,e.abrupt("return",u);case 19:case"end":return e.stop()}}),e,this)}))),function(e){return P.apply(this,arguments)})},{key:"createGroup",value:(x=a(regeneratorRuntime.mark((function e(){var r,t,n,a,u=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getPlayerInfo();case 2:return r=e.sent,t={name:r.name,customGroupPlayerStatus:r.stateGroup,customGroupPlayerProfile:r.profile},n={groupName:"",groupType:MGOBE.ENUM.GroupType.GROUP_LIMITED,maxPlayers:2,isForbidJoin:!1,isPersistent:!1,customProperties:"",playerInfo:t},a=new Promise((function(e){u.curGroup.createGroup(n,(function(r){0===r.code&&(u.Listener.add(u.curGroup),u.curGroup.initGroup(r.data.groupInfo),s("队组创建成功",r.data.groupInfo)),e(r.code)}))})),e.abrupt("return",a);case 7:case"end":return e.stop()}}),e,this)}))),function(){return x.apply(this,arguments)})},{key:"joinGroup",value:(R=a(regeneratorRuntime.mark((function e(r){var t,n,a,u,o=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getPlayerInfo();case 2:return t=e.sent,n={name:t.name,customGroupPlayerStatus:p.NotReady,customGroupPlayerProfile:t.profile},a={playerInfo:n},this.curGroup.initGroup({id:r}),u=new Promise((function(e){o.curGroup.joinGroup(a,(function(r){0===r.code&&(o.Listener.add(o.curGroup),o.curGroup.initGroup(r.data.groupInfo)),e(r.code)}))})),e.abrupt("return",u);case 8:case"end":return e.stop()}}),e,this)}))),function(e){return R.apply(this,arguments)})},{key:"leaveGroup",value:(k=a(regeneratorRuntime.mark((function e(){var r,t,n=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getGroupInfo();case 2:if(!(r=e.sent)){e.next=7;break}this.curGroup.initGroup(r),e.next=8;break;case 7:return e.abrupt("return",this.errorCode.EC_OK);case 8:return t=new Promise((function(e){n.curGroup.leaveGroup({},(function(r){0===r.code&&n.curGroup.initGroup(),e(r.code)}))})),e.abrupt("return",t);case 10:case"end":return e.stop()}}),e,this)}))),function(){return k.apply(this,arguments)})},{key:"getGroupInfo",value:(v=a(regeneratorRuntime.mark((function e(){var r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return r=new Promise((function(e){MGOBE.Group.getMyGroups((function(r){if(r.code===MGOBE.ErrCode.EC_OK&&r.data.groupInfoList.length>0)for(var t=0;t<r.data.groupInfoList.length;t++){var n=r.data.groupInfoList[t];if(n.type===MGOBE.ENUM.GroupType.GROUP_LIMITED){e(n);break}}else e(null)}))})),e.abrupt("return",r);case 2:case"end":return e.stop()}}),e)}))),function(){return v.apply(this,arguments)})},{key:"setGroupPlayerStatus",value:(y=a(regeneratorRuntime.mark((function e(r){var t,n,a=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t={customGroupPlayerStatus:r},n=new Promise((function(e){a.curGroup.changeCustomGroupPlayerStatus(t,(function(r){e(r)}))})),e.abrupt("return",n);case 3:case"end":return e.stop()}}),e)}))),function(e){return y.apply(this,arguments)})},{key:"removePlayerInGroup",value:(g=a(regeneratorRuntime.mark((function e(r){var t,n,a=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t={removePlayerId:r},n=new Promise((function(e){a.curGroup.removeGroupPlayer(t,(function(r){e(r.code)}))})),e.abrupt("return",n);case 3:case"end":return e.stop()}}),e)}))),function(e){return g.apply(this,arguments)})},{key:"dismissGroup",value:(d=a(regeneratorRuntime.mark((function e(){var r,t=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return r=new Promise((function(e){t.curGroup.dismissGroup({},(function(r){e(r.code)}))})),e.abrupt("return",r);case 2:case"end":return e.stop()}}),e)}))),function(){return d.apply(this,arguments)})},{key:"sendToGroup",value:(h=a(regeneratorRuntime.mark((function e(r,t){var n,u=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:n={type:r,content:t},new Promise(function(){var e=a(regeneratorRuntime.mark((function e(r){var t,a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,u.getLoverInfo();case 2:(t=e.sent)?(a={recvType:MGOBE.ENUM.GroupRecvType.GROUP_SOME,recvPlayerList:[t.id],msg:JSON.stringify(n)},u.curGroup.sendToGroupClient(a,(function(e){r(!0)}))):r(!1);case 4:case"end":return e.stop()}}),e)})));return function(r){return e.apply(this,arguments)}}());case 2:case"end":return e.stop()}}),e)}))),function(e,r){return h.apply(this,arguments)})},{key:"isCaptain",value:(l=a(regeneratorRuntime.mark((function e(){var r,t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getGroupInfo();case 2:return r=e.sent,e.next=5,this.getPlayerInfo();case 5:return t=e.sent,e.abrupt("return",r.owner==t.id);case 7:case"end":return e.stop()}}),e,this)}))),function(){return l.apply(this,arguments)})},{key:"setPlayerStatus",value:(m=a(regeneratorRuntime.mark((function e(r){var t,n,a=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t={customPlayerStatus:r},n=new Promise((function(e){a.curRoom.changeCustomPlayerStatus(t,(function(r){e(r)}))})),e.abrupt("return",n);case 3:case"end":return e.stop()}}),e)}))),function(e){return m.apply(this,arguments)})},{key:"getPlayerInfo",value:(u=a(regeneratorRuntime.mark((function e(){var r,t,n,a,u,o;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getGroupInfo();case 2:r=e.sent,t=[],r&&(t=r.groupPlayerList),n=p.NotReady,a=0;case 7:if(!(a<t.length)){e.next=15;break}if((u=t[a]).id!==MGOBE.Player.id){e.next=12;break}return n=u.customGroupPlayerStatus,e.abrupt("break",15);case 12:a++,e.next=7;break;case 15:return o={id:MGOBE.Player.id,name:this.gameManager.PlayerData.nickname,openId:MGOBE.Player.openId,netState:MGOBE.Player.commonNetworkState,stateRoom:MGOBE.Player.customPlayerStatus,stateGroup:n,teamId:MGOBE.Player.teamId,profile:null!=MGOBE.Player.customProfile?MGOBE.Player.customProfile:JSON.stringify(this.gameManager.PlayerData)},e.abrupt("return",o);case 17:case"end":return e.stop()}}),e,this)}))),function(){return u.apply(this,arguments)})},{key:"getLoverInfo",value:(r=a(regeneratorRuntime.mark((function e(){var r,t,n,a,u,o;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.getGroupInfo();case 2:if(r=e.sent,t=null,r){e.next=7;break}return e.abrupt("return");case 7:n=r.groupPlayerList,a=0;case 9:if(!(a<n.length)){e.next=17;break}if((u=n[a]).id==MGOBE.Player.id){e.next=14;break}return t=u,e.abrupt("break",17);case 14:a++,e.next=9;break;case 17:if(t){e.next=20;break}return e.abrupt("return");case 20:return o={id:t.id,name:null!=t.name?t.name:t.id,netState:t.commonGroupNetworkState,stateGroup:t.customGroupPlayerStatus,profile:t.customGroupPlayerProfile},e.abrupt("return",o);case 22:case"end":return e.stop()}}),e,this)}))),function(){return r.apply(this,arguments)})}]),e}()),u._RF.pop()}}}));
+          return _possibleConstructorReturn(this, _getPrototypeOf(Box).apply(this, arguments));
+        }
 
-System.register("chunks:///UI/Dialog/Dialog.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Const.js"],(function(e,t){var n,i,s,o,r,a,l,u,h,c,d,g;return{setters:[function(e){n=e.createClass,i=e.classCallCheck,s=e.asyncToGenerator},function(e){o=e.cclegacy,r=e.tween,a=e.Vec3,l=e.loader,u=e.Prefab,h=e.instantiate,c=e.Label,d=e.SystemEventType},function(e){g=e.DialogButtonType}],execute:function(){o._RF.push({},"15867PII/lA6aXbZL4Ddkcx","Dialog",void 0),e("Dialog",function(){function e(t,n,s){var o=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,r=arguments.length>4&&void 0!==arguments[4]?arguments[4]:"确认",a=arguments.length>5&&void 0!==arguments[5]?arguments[5]:"取消";i(this,e),this.scene=null,this.node=null,this.result=null,this.SDK=null,this.text=null,this.buttonType=null,this.yesTip=null,this.noTip=null,this.dead=!1,this.scene=t,this.SDK=n,this.text=s,this.buttonType=o,this.yesTip=r,this.noTip=a}var t,o;return n(e,[{key:"InitBoard",value:(o=s(regeneratorRuntime.mark((function e(){var t,n=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t=new Promise((function(e){l.loadRes("Prefab/Dialog/Dialog",u,(function(t,i){t?e(!1):(n.node=h(i),n.scene.getChildByName("UI").addChild(n.node),n.node.setSiblingIndex(100),e(!0))}))})),e.abrupt("return",t);case 3:case"end":return e.stop()}}),e)}))),function(){return o.apply(this,arguments)})},{key:"destroy",value:function(){if(!this.dead){if(!this.node)return void(this.SDK=null);this.dead=!0,this.scene=null,r(this.node).to(.3,{scale:new a(0,0,0)},{onComplete:function(){this.SDK.curDialog=null,this.SDK=null,this.node.destroy(),this.node=null}.bind(this)}).start()}}},{key:"show",value:(t=s(regeneratorRuntime.mark((function e(t,n){var i,s,o,l,u=arguments;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(i=u.length>2&&void 0!==u[2]?u[2]:null,null!=this.SDK.curDialog){e.next=20;break}return e.next=4,this.InitBoard();case 4:if(e.sent){e.next=8;break}return this.destroy(),e.abrupt("return");case 8:this.SDK.curDialog=this,s=this.node.getChildByName("background").getChildByName("yes"),o=this.node.getChildByName("background").getChildByName("no"),this.node.getChildByName("background").getChildByName("content").getComponent(c).string=this.text,s.getChildByName("Label").getComponent(c).string=this.yesTip,o.getChildByName("Label").getComponent(c).string=this.noTip,this.buttonType==g.single&&(o.active=!1,l=new a,s.getPosition(l),l.x=0,s.setPosition(l)),this.node.setScale(new a(0,0,0)),this.node.active=!0,r(this.node).to(.3,{scale:new a(1,1,1),easing:"easeOutExpo"}).start(),s.on(d.TOUCH_END,n,t),i&&o.on(d.TOUCH_END,i,t);case 20:case"end":return e.stop()}}),e,this)}))),function(e,n){return t.apply(this,arguments)})}]),e}()),o._RF.pop()}}}));
+        _createClass(Box, [{
+          key: "onLoad",
+          value: function onLoad() {
+            this.time_elastic = 0;
+            this.time_power = 0;
+            this.time_fall = 0;
+            this.action_elastic = false;
+            this.action_power = false;
+            this.action_fall = false;
+            this.data_elastic = {};
+            this.data_fall = {};
+            this.cycle_elastic = 20;
+          }
+        }, {
+          key: "onTouchDown",
+          value: function onTouchDown(event) {
+            if (!this.action_power) {
+              this.action_power = true;
+            }
+          }
+        }, {
+          key: "onTouchUp",
+          value: function onTouchUp(event) {
+            if (this.action_power) {
+              this.action_power = false;
+              this.startElastic();
+            }
+          }
+        }, {
+          key: "startElastic",
+          value: function startElastic() {
+            this.time_elastic = 0;
+            this.action_elastic = true;
+            this.data_elastic.origin_scale_y = this.node.getScale().y;
+            this.data_elastic.A = this.data_elastic.origin_scale_y - 1;
+          }
+        }, {
+          key: "startFall",
+          value: function startFall() {
+            this.time_fall = 0; // 当前掉落时间
 
-System.register("chunks:///UI/Board/BaseBoard.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Const.js","../Dialog/Dialog.js"],(function(e,t){var n,r,a,o,i,u,s,l,c,h,d;return{setters:[function(e){n=e.createClass,r=e.classCallCheck,a=e.asyncToGenerator},function(e){o=e.cclegacy,i=e._decorator,u=e.loader,s=e.Prefab,l=e.instantiate},function(e){c=e.log,h=e.DialogButtonType},function(e){d=e.Dialog}],execute:function(){o._RF.push({},"72680Q0ztVKyaWXTajENF2V","BaseBoard",void 0),i.ccclass,i.property,e("BaseBoard",function(){function e(t,n){r(this,e),this.board=null,this.SDK=null,this.scene=null,this.name=null,this.uiControl=null,this.dead=!1,this.sleep=function(e){return new Promise((function(t){return setTimeout(t,e)}))},c("创建UI对象:",this.name),this.SDK=n,this.scene=t}var t,o,i;return n(e,[{key:"Init",value:(i=a(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(c("初始化界面:",this.name),!this.board){e.next=4;break}return this.InitEvent(),e.abrupt("return",!0);case 4:return e.abrupt("return",!1);case 5:case"end":return e.stop()}}),e,this)}))),function(){return i.apply(this,arguments)})},{key:"destroy",value:function(){c("销毁界面:",this.name),this.board&&(this.board.active=!1),this.dead=!0}},{key:"setListener",value:function(){c("绑定监听:",this.name)}},{key:"InitBoard",value:(o=a(regeneratorRuntime.mark((function e(){var t,n=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return c("界面预制件实例化:",this.name),t=new Promise((function(e){u.loadRes("Prefab/Board/"+n.name,s,(function(t,r){t?(n.board=null,e(!1)):(n.board=l(r),n.board.active=!1,n.scene.getChildByName("UI").addChild(n.board),n.board.setSiblingIndex(1),e(!0))}))})),e.abrupt("return",t);case 3:case"end":return e.stop()}}),e,this)}))),function(){return o.apply(this,arguments)})},{key:"InitEvent",value:function(){c("初始化UI事件",this.name)}},{key:"initData",value:function(){this.dead=!1,this.uiControl&&this.uiControl.initData()}},{key:"ChangeBoard",value:(t=a(regeneratorRuntime.mark((function e(t){var n,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return(n=this.SDK.curBoard)&&"ResultBoard"==n.name&&(this.SDK.gameManager.teammaterIsLover=void 0,this.SDK.gameManager.enemyIsLover=void 0),n!=t&&(n||(n=t)),c("界面切换",n.name,"--\x3e",t.name),this.SDK.curBoard=t,t.dead=!1,e.next=8,t.Init();case 8:if(!e.sent){e.next=33;break}if(this.SDK.Room.onCancelMatch=null,this.SDK.Room.onMatch=null,this.SDK.curRoom.onChangePlayerNetworkState=null,this.SDK.curRoom.onLeaveRoom=null,this.SDK.curRoom.onRecvFromGameSvr=null,this.SDK.curRoom.onRecvFromClient=null,this.SDK.curGroup.onChangeCustomGroupPlayerStatus=null,this.SDK.curGroup.onChangeGroupPlayerNetworkState=null,this.SDK.curGroup.onRecvFromGroupClient=null,this.SDK.curGroup.onJoinGroup=null,this.SDK.curGroup.onLeaveGroup=null,this.SDK.curGroup.onDismissGroup=null,t.setListener(),null==t.uiControl){e.next=27;break}return t.uiControl.board=t.board,e.next=27,t.uiControl.initUI(t.board);case 27:t.initData(),t.scene.getChildByName("UI").getChildByName("loading").active=!1,t.board.active=!0,n!=t&&n.destroy(),e.next=39;break;case 33:return e.next=36,t.destroy();case 36:return r=new d(n.scene,this.SDK,"网络出现问题,无法正常游戏",h.single,"确定"),e.next=39,r.show(this,(function(){this.SDK.curDialog.destroy()}));case 39:case"end":return e.stop()}}),e,this)}))),function(e){return t.apply(this,arguments)})}]),e}()),o._RF.pop()}}}));
+            this.action_fall = true; // 是否处于掉落状态
 
-System.register("chunks:///UI/Board/WaitLoverBoard.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Const.js","../../Util.js","./BaseBoard.js"],(function(e,t){var a,r,n,i,o,s,u,h,d,l,c,y,g,m,p,C,B,N,v,f,k,b,S,D,R;return e({_dec:void 0,_dec2:void 0,_dec3:void 0,_dec4:void 0,_class:void 0,_temp:void 0}),{setters:[function(e){a=e.applyDecoratedDescriptor,r=e.inherits,n=e.classCallCheck,i=e.possibleConstructorReturn,o=e.getPrototypeOf,s=e.createClass,u=e.get,h=e.asyncToGenerator},function(e){d=e.cclegacy,l=e.SystemEventType,c=e.Label},function(e){y=e.log,g=e.NetState,m=e.GroupMessageType,p=e.GroupSysMessageType,C=e.PlayerState,B=e.LabelColor},function(e){N=e.throttle},function(e){v=e.BaseBoard}],execute:function(){d._RF.push({},"638a0cfbatPTK9EkM3XiINe","WaitLoverBoard",void 0),R=function(){function e(t,a){n(this,e),this.board=null,this.SDK=null,this.team1=null,this.team2=null,this.board=t,this.SDK=a}var t,a;return s(e,[{key:"initUI",value:(a=h(regeneratorRuntime.mark((function e(t){var a,r,n,i,o,s,u,h,d,l;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.board=t,e.next=3,this.SDK.getPlayerInfo();case 3:return a=e.sent,e.next=6,this.SDK.getGroupInfo();case 6:if(r=e.sent,n=null,i=null,o=this.board.getChildByName("team1"),s=o.getChildByName("user1"),u=o.getChildByName("user2"),s.getChildByName("nickName").getComponent(c).string=a.name,this.SDK.gameManager.Util.loadRemoteImg(JSON.parse(a.profile).avatar_url,s.getChildByName("avatarBg").getChildByName("avatar")),s.getChildByName("state").getComponent(c).string=a.stateGroup==C.NotReady?"未准备":"已准备",s.getChildByName("state").getComponent(c).color=a.stateGroup==C.NotReady?B.NotReady:B.Ready,this.board.getChildByName("ready").getChildByName("Button-ready").getChildByName("Label").getComponent(c).string=a.stateGroup==C.NotReady?"准备":"取消准备",!r){e.next=33;break}i=r.owner,h=r.groupPlayerList,d=0;case 21:if(!(d<h.length)){e.next=29;break}if((l=h[d]).id==a.id){e.next=26;break}return n=l,e.abrupt("break",29);case 26:d++,e.next=21;break;case 29:y("capId: ",i,a.id),i==a.id?(null!=n?(this.board.getChildByName("ready").getChildByName("Button-invite").active=!1,this.board.getChildByName("ready").getChildByName("Button-match").active=!0):(this.board.getChildByName("ready").getChildByName("Button-invite").active=!0,this.board.getChildByName("ready").getChildByName("Button-match").active=!1),this.board.getChildByName("ready").getChildByName("Button-ready").active=!1,s.getChildByName("state").getComponent(c).string="已准备",u.getChildByName("state").getComponent(c).string="未准备",u.getChildByName("state").getComponent(c).color=B.NotReady,s.getChildByName("state").getComponent(c).color=B.Captain):(this.board.getChildByName("ready").getChildByName("Button-match").active=!1,this.board.getChildByName("ready").getChildByName("Button-invite").active=!1,this.board.getChildByName("ready").getChildByName("Button-ready").active=!0,u.getChildByName("state").getComponent(c).string="已准备",s.getChildByName("state").getComponent(c).string=a.stateGroup===C.Ready?"已准备":"未准备",s.getChildByName("state").getComponent(c).color=a.stateGroup===C.Ready?B.Ready:B.NotReady,u.getChildByName("state").getComponent(c).color=B.Captain),null!=n?(o.getChildByName("wait").active=!1,u.getChildByName("nickName").getComponent(c).string=n.name,u.getChildByName("state").getComponent(c).string=n.customGroupPlayerStatus==C.NotReady?n.id==i?"已准备":"未准备":"已准备",u.getChildByName("state").getComponent(c).color=n.customGroupPlayerStatus==C.NotReady?n.id==i?B.Ready:B.NotReady:B.Ready,this.SDK.gameManager.Util.loadRemoteImg(JSON.parse(n.customGroupPlayerProfile).avatar_url,u.getChildByName("avatarBg").getChildByName("avatar")),u.active=!0):(o.getChildByName("wait").active=!0,u.active=!1);case 33:case"end":return e.stop()}}),e,this)}))),function(e){return a.apply(this,arguments)})},{key:"initData",value:function(){}},{key:"playerReady",value:(t=h(regeneratorRuntime.mark((function e(t,a){var r,n,i,o,s;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:return r=e.sent,e.next=5,this.SDK.getGroupInfo();case 5:n=e.sent,i=null,i=t==r.id?this.board.getChildByName("team1").getChildByName("user1"):this.board.getChildByName("team1").getChildByName("user2"),t!=n.owner?(o=a===C.NotReady?{tip:"未准备",color:B.NotReady}:{tip:"已准备",color:B.Ready},i.getChildByName("state").getComponent(c).string=o.tip,i.getChildByName("state").getComponent(c).color=o.color):(s=this.board.getChildByName("ready").getChildByName("Button-match"),a===C.NotReady?s.active=!1:s.active=!0);case 10:case"end":return e.stop()}}),e,this)}))),function(e,a){return t.apply(this,arguments)})},{key:"playerJoin",value:function(e,t){for(var a=null,r=0;r<t.length;r++){var n=t[r];if(n.id==e){a=n;break}}var i=a.customGroupPlayerProfile?JSON.parse(a.customGroupPlayerProfile):JSON.parse(a.profile);this.SDK.gameManager.Util.loadRemoteImg(i.avatar_url,this.board.getChildByName("team1").getChildByName("user2").getChildByName("avatarBg").getChildByName("avatar")),this.board.getChildByName("ready").getChildByName("Button-invite").active=!1,this.board.getChildByName("ready").getChildByName("Button-match").active=!0,this.board.getChildByName("team1").getChildByName("wait").active=!1,this.board.getChildByName("team1").getChildByName("user2").active=!0,this.board.getChildByName("team1").getChildByName("user2").getChildByName("nickName").getComponent(c).string=a.name}},{key:"playerLeave",value:function(){this.board.getChildByName("team1").getChildByName("wait").active=!0,this.board.getChildByName("team1").getChildByName("user2").active=!1,this.board.getChildByName("ready").getChildByName("Button-invite").active=!0,this.board.getChildByName("ready").getChildByName("Button-match").active=!1}}]),e}(),e("WaitLoverBoard",(f=N(1e3),k=N(),b=N(),S=N(),a((D=function(e){function t(e,a){var r;return n(this,t),(r=i(this,o(t).call(this,e,a))).uiControl=null,r.name="WaitLoverBoard",r.uiControl=new R(r.board,r.SDK),r}var a,d,B,N,v,f,k,b;return r(t,e),s(t,[{key:"setListener",value:function(){u(o(t.prototype),"setListener",this).call(this),this.SDK.curGroup.onChangeCustomGroupPlayerStatus=this.onChangeCustomGroupPlayerStatus.bind(this),this.SDK.curGroup.onChangeGroupPlayerNetworkState=this.onChangeGroupPlayerNetworkState.bind(this),this.SDK.curGroup.onRecvFromGroupClient=this.onRecvFromGroupClient.bind(this),this.SDK.curGroup.onJoinGroup=this.onJoinGroup.bind(this),this.SDK.curGroup.onLeaveGroup=this.onLeaveGroup.bind(this),this.SDK.curGroup.onDismissGroup=this.onDismissGroup.bind(this),this.SDK.gameManager.timerSingal&&(this.SDK.gameManager.timerSingal=null)}},{key:"onDismissGroup",value:(b=h(regeneratorRuntime.mark((function e(t){var a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.SDK.curGroup.initGroup(),a=this.SDK.gameManager.MainBoard,e.next=5,this.ChangeBoard(a);case 5:case"end":return e.stop()}}),e,this)}))),function(e){return b.apply(this,arguments)})},{key:"onChangeCustomGroupPlayerStatus",value:(k=h(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return y("玩家[",t.data.changePlayerId,"]准备状态有变化",t.data.customGroupPlayerStatus),e.next=3,this.uiControl.playerReady(t.data.changePlayerId,t.data.customGroupPlayerStatus);case 3:case"end":return e.stop()}}),e,this)}))),function(e){return k.apply(this,arguments)})},{key:"onChangeGroupPlayerNetworkState",value:(f=h(regeneratorRuntime.mark((function e(t){var a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return y("玩家[",t.data.changePlayerId,"]在线状态有变化",t.data.networkState),e.next=3,this.SDK.isCaptain();case 3:if(e.sent){e.next=15;break}if(t.data.networkState!=g.Offline){e.next=13;break}return e.next=8,this.SDK.leaveGroup();case 8:if(e.sent!=this.SDK.errorCode.EC_OK){e.next=13;break}return a=this.SDK.gameManager.MainBoard,e.next=13,this.ChangeBoard(a);case 13:e.next=19;break;case 15:return e.next=17,this.SDK.removePlayerInGroup(t.data.changePlayerId);case 17:0===e.sent?this.uiControl.playerLeave():y("踢出玩家失败:",t.data.changePlayerId);case 19:case"end":return e.stop()}}),e,this)}))),function(e){return f.apply(this,arguments)})},{key:"onRecvFromGroupClient",value:(v=h(regeneratorRuntime.mark((function e(t){var a,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if((a=JSON.parse(t.data.msg)).type!=m.Sys){e.next=7;break}if(a.content!=p.Matching){e.next=7;break}return r=this.SDK.gameManager.MatchingBoard,e.next=7,this.ChangeBoard(r);case 7:case"end":return e.stop()}}),e,this)}))),function(e){return v.apply(this,arguments)})},{key:"onJoinGroup",value:function(e){y("有玩家加入队组:",e.data.joinPlayerId);var t=e.data.joinPlayerId,a=e.data.groupInfo.groupPlayerList;this.uiControl.playerJoin(t,a)}},{key:"onLeaveGroup",value:function(e){y("有人离开队组",e.data.leavePlayerId),this.uiControl.playerLeave()}},{key:"InitEvent",value:function(){u(o(t.prototype),"InitEvent",this).call(this);var e=this.board.getChildByName("ready").getChildByName("Button-ready"),a=this.board.getChildByName("ready").getChildByName("Button-match"),r=this.board.getChildByName("ready").getChildByName("Button-invite"),n=this.board.getChildByName("Cancel").getChildByName("Button");e.on(l.TOUCH_END,this.clickReady,this),n.on(l.TOUCH_END,this.clickLeave,this),a.on(l.TOUCH_END,this.clickMatch,this),r.on(l.TOUCH_END,this.clickInvite,this)}},{key:"destroy",value:function(){u(o(t.prototype),"destroy",this).call(this);var e=this.board.getChildByName("ready").getChildByName("Button-ready"),a=this.board.getChildByName("ready").getChildByName("Button-match"),r=this.board.getChildByName("ready").getChildByName("Button-invite"),n=this.board.getChildByName("Cancel").getChildByName("Button");e.off(l.TOUCH_END),n.off(l.TOUCH_END),a.off(l.TOUCH_END),r.off(l.TOUCH_END)}},{key:"clickReady",value:(N=h(regeneratorRuntime.mark((function e(){var t,a,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:return t=e.sent,a=C.NotReady,r="准备",t.stateGroup===C.NotReady&&(a=C.Ready,r="取消准备"),e.next=8,this.SDK.setGroupPlayerStatus(a);case 8:e.sent,this.board.getChildByName("ready").getChildByName("Button-ready").getChildByName("Label").getComponent(c).string=r;case 10:case"end":return e.stop()}}),e,this)}))),function(){return N.apply(this,arguments)})},{key:"clickLeave",value:(B=h(regeneratorRuntime.mark((function e(){var t,a,r,n,i,o,s;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getGroupInfo();case 2:return t=e.sent,e.next=5,this.SDK.getPlayerInfo();case 5:if(a=e.sent,!t){e.next=33;break}if(r=t.owner,a.id!=r){e.next=20;break}return e.next=11,this.SDK.dismissGroup();case 11:if(e.sent!==this.SDK.errorCode.EC_OK){e.next=18;break}return this.SDK.curGroup.initGroup(),n=this.SDK.gameManager.MainBoard,e.next=18,this.ChangeBoard(n);case 18:e.next=31;break;case 20:return e.next=22,this.SDK.leaveGroup();case 22:if((i=e.sent)!==this.SDK.errorCode.EC_OK&&i!=this.SDK.errorCode.EC_GROUP_NOT_EXIST){e.next=30;break}return o=this.SDK.gameManager.MainBoard,e.next=28,this.ChangeBoard(o);case 28:e.next=31;break;case 30:case 31:e.next=36;break;case 33:return s=this.SDK.gameManager.MainBoard,e.next=36,this.ChangeBoard(s);case 36:case"end":return e.stop()}}),e,this)}))),function(){return B.apply(this,arguments)})},{key:"clickMatch",value:(d=h(regeneratorRuntime.mark((function e(){var t,a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getLoverInfo();case 2:if(!(t=e.sent)){e.next=21;break}if(t.stateGroup!==C.Ready){e.next=20;break}return e.next=7,this.SDK.matchingLover();case 7:if(e.sent!=this.SDK.errorCode.EC_OK){e.next=17;break}return e.next=12,this.SDK.sendToGroup(m.Sys,p.Matching);case 12:return a=this.SDK.gameManager.MatchingBoard,e.next=15,this.ChangeBoard(a);case 15:e.next=18;break;case 17:case 18:e.next=21;break;case 20:case 21:case"end":return e.stop()}}),e,this)}))),function(){return d.apply(this,arguments)})},{key:"clickInvite",value:(a=h(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:case"end":return e.stop()}}),e)}))),function(){return a.apply(this,arguments)})}]),t}(v)).prototype,"clickReady",[f],Object.getOwnPropertyDescriptor(D.prototype,"clickReady"),D.prototype),a(D.prototype,"clickLeave",[k],Object.getOwnPropertyDescriptor(D.prototype,"clickLeave"),D.prototype),a(D.prototype,"clickMatch",[b],Object.getOwnPropertyDescriptor(D.prototype,"clickMatch"),D.prototype),a(D.prototype,"clickInvite",[S],Object.getOwnPropertyDescriptor(D.prototype,"clickInvite"),D.prototype),D)),d._RF.pop()}}}));
+            this.data_fall.speed = 0; // 瞬时掉落速度
 
-System.register("chunks:///OtherPlayer.js",["./_virtual/_rollupPluginBabelHelpers.js","cc","./Const.js"],(function(t,e){var i,n,s,o,a,r,u,h,l,m,c,p,d,g,_,f,v,y,j,R,x,P,w,B,b,k,C,D,M,T,z,N,S,Y,F;return t({_dec:void 0,_dec2:void 0,_dec3:void 0,_dec4:void 0,_class:void 0,_class2:void 0,_descriptor:void 0,_descriptor2:void 0,_descriptor3:void 0,_temp:void 0}),{setters:[function(t){i=t.applyDecoratedDescriptor,n=t.inherits,s=t.classCallCheck,o=t.possibleConstructorReturn,a=t.getPrototypeOf,r=t.initializerDefineProperty,u=t.assertThisInitialized,h=t.createClass,l=t.asyncToGenerator},function(t){m=t.cclegacy,c=t._decorator,p=t.Vec3,d=t.Quat,g=t.CCFloat,_=t.Vec2,f=t.tween,v=t.Component,y=t.instantiate,j=t.loader,R=t.Prefab},function(t){x=t.log,P=t.JumpStatus,w=t.TeamColor}],execute:function(){m._RF.push({},"f514fFBUXpDva7Z4+Bu/z5l","OtherPlayer",void 0),S=c.ccclass,Y=c.property,new p,new p,F=new d,new d,t("OtherPlayer",(B=S("OtherPlayer"),b=Y({type:g}),k=Y({type:g}),C=Y({type:g}),B((T=i((M=function(t){function e(){var t,i;s(this,e);for(var n=arguments.length,h=new Array(n),l=0;l<n;l++)h[l]=arguments[l];return i=o(this,(t=a(e)).call.apply(t,[this].concat(h))),r(i,"jumpHeight",T,u(i)),r(i,"jumpDuration",z,u(i)),r(i,"max_time",N,u(i)),i.originPosY=0,i.originRotation=new d(0,1,0,0),i._isRunning=!1,i.curRotation=new d,i._cur_position=new p,i._jump_time=0,i.jumpResult={time:null,distance:null,offset:null,status:null},i._face=new _,i._axis=new p,i._stat_power=!1,i._stat_jump=!1,i.curBox=null,i.nextBox=null,i.control=!1,i.modelBody=null,i.modelHead=null,i.modelHeadPos=new p,i.modelTire=null,i.map=null,i.index=0,i}var i,m;return n(e,t),h(e,[{key:"onLoad",value:function(){}},{key:"start",value:function(){this.originPosY=this.node.position.y,this.node.getRotation(this.curRotation)}},{key:"initPlayer",value:function(){var t=new p(this.gameManager.otherTeam.pos[0],this.originPosY,this.gameManager.otherTeam.pos[1]);this._cur_position=t;new d;this.index=0,this.node.setPosition(t),this.node.setRotation(this.originRotation),this._jump_time=0,this._stat_power=!1,this._stat_jump=!1}},{key:"PowerEnd",value:function(t){if(0==this.control){this._stat_power=!1;var e=new p;this.node.getPosition(e),e.y=this.originPosY,this.node.setPosition(e),this.start_jump(t)}}},{key:"start_jump",value:function(t){this._stat_power||(x("地图长度:",this.gameManager.map.length),this._stat_jump=!0,this._jump_time=0,this.getFace(this._face),this._axis=this.gameManager.Util.getJumpAxis(this.node,this.nextBox.node),this.node.getRotation(this.curRotation),this.node.getPosition(this._cur_position),this.jumpResult.distance=t.distance,this.jumpResult.offset=t.pos?t.pos:t.offset,this.jumpResult.status=t.status,this.jumpResult.time=t.time,t.index&&(this.index=t.index))}},{key:"action_jump",value:function(t){if(this._stat_jump){this._jump_time+=t;var e=0,i=0,n=0,s=!1;if(this._jump_time<this.jumpDuration){var o=-4*this.jumpHeight/(this.jumpDuration*this.jumpDuration),a=this.jumpDuration/2,r=this.jumpHeight;e=o*(this._jump_time-a)*(this._jump_time-a)+r+this.originPosY,i=t/this.jumpDuration*this.jumpResult.distance,n=this._jump_time/this.jumpDuration*360}else e=this.originPosY,n=0,this._stat_jump=!1,s=!0;var u=new p;this.node.getPosition(u);var h=this.gameManager.Util.getPosWithVec(u,this._face,i);h.y=e,d.rotateAround(F,this.curRotation,this._axis,3.1415*n/180),this.node.setPosition(h),this.node.setRotation(F),s&&this.action_jump_end()}}},{key:"action_jump_end",value:function(){var t=new p;if(this.node.getPosition(t),this.jumpResult.status==P.current){x("[敌人]原地跳,修正量:",this.jumpResult.offset);var e=new p;this.curBox.node.getPosition(e),e.x+=this.jumpResult.offset[0],e.z+=this.jumpResult.offset[1],e.y=this.originPosY,this.node.setPosition(e),this.node.getPosition(this._cur_position),this.node.setRotation(this.originRotation)}else if(this.jumpResult.status==P.next){x("[敌人]跳到下一块,修正量:",this.jumpResult.offset);var i=new p;this.nextBox.node.getPosition(i),i.x+=this.jumpResult.offset[0],i.z+=this.jumpResult.offset[1],i.y=this.originPosY,this.node.setPosition(i),this.node.getPosition(this._cur_position),this.index+=1,this.curBox=this.gameManager.map[this.index],this.nextBox=this.gameManager.map[this.index+1],this.node.setRotation(this.originRotation)}else if(this.jumpResult.status==P.dead){var n=new p;n.set(t),n.y=-.5,this.node.setRotation(this.originRotation),f(this.node).to(1,{position:n},{onComplete:this.jumpDead.bind(this)}).start()}"TeachingBoard"==this.gameManager.SDK.curBoard.name&&this.gameManager.teachJumpSingal(!0)}},{key:"jumpDead",value:function(){"TeachingBoard"==this.gameManager.SDK.curBoard.name&&this.gameManager.teachJumpSingal(!0),this.reset()}},{key:"reset",value:function(){this.node.setPosition(this._cur_position),this.node.setRotation(this.originRotation)}},{key:"update",value:function(t){(this.isRunning||this.gameManager.SDK.curBoard&&"TeachingBoard"==this.gameManager.SDK.curBoard.name)&&this.action_jump(t)}},{key:"setFace",value:function(){var t=this;if(this.nextBox){var e=f(this.node),i=new d;this.node.getRotation(i);var n=this.gameManager.Util.getRotaionQuat(this.node,this.nextBox.node),s=new d;e.to(.2,{},{onUpdate:function(e,o){s.set(i).slerp(n,o),t.node.setRotation(s)}}),e.start()}}},{key:"getFace",value:function(t){if(this.nextBox){new _;var e=new p,i=new p;this.node.getPosition(e),this.nextBox.node.getPosition(i),t.set(i.x-e.x,i.z-e.z)}else t.set(this._face.x,this._face.y)}},{key:"setModel",value:(m=l(regeneratorRuntime.mark((function t(e){var i,n;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return e==w.blue?i=this.gameManager.ChessPrefabEnemy.blue:e==w.red&&(i=this.gameManager.ChessPrefabEnemy.red),(n=this.node.getChildByName("Node"))&&this.node.removeChild(n),i&&y(i).setParent(this.node),t.abrupt("return",!0);case 5:case"end":return t.stop()}}),t,this)}))),function(t){return m.apply(this,arguments)})},{key:"setTire",value:(i=l(regeneratorRuntime.mark((function t(e){var i,n,s,o=this;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:t.t0=e,t.next=1===t.t0?3:5;break;case 3:return i="vip",t.abrupt("break",6);case 5:return t.abrupt("return",!1);case 6:return(n=this.node.getChildByName("Tire").getChildByName("Node"))&&this.node.getChildByName("Tire").removeChild(n),s="Model/Tire/"+i+"/Node_enemy",new Promise((function(t){j.loadRes(s,R,(function(e,i){var n=y(i);n.setParent(o.node.getChildByName("Tire")),o.modelTire=n,t(n)}))})),t.abrupt("return",!0);case 11:case"end":return t.stop()}}),t,this)}))),function(t){return i.apply(this,arguments)})},{key:"isRunning",set:function(t){this._isRunning=t},get:function(){return this._isRunning}}]),e}(v)).prototype,"jumpHeight",[b],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 2}}),z=i(M.prototype,"jumpDuration",[k],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return.7}}),N=i(M.prototype,"max_time",[C],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 4}}),D=M))||D)),m._RF.pop()}}}));
+            this.data_fall.g = 70; // 掉落时的重力加速度
 
-System.register("chunks:///UI/avatar.js",["../_virtual/_rollupPluginBabelHelpers.js","cc"],(function(e,t){var i,s,n,r,a,o,c,l,u,h,p,v;return e({_dec:void 0,_class:void 0,_temp:void 0}),{setters:[function(e){i=e.inherits,s=e.classCallCheck,n=e.possibleConstructorReturn,r=e.getPrototypeOf,a=e.createClass},function(e){o=e.cclegacy,c=e._decorator,l=e.Sprite,u=e.Component}],execute:function(){o._RF.push({},"62231BivyRLC6qStdnthPWc","avatar",void 0),v=c.ccclass,c.property,e("Avatar",(h=v("Avatar"),h(p=function(e){function t(){var e,i;s(this,t);for(var a=arguments.length,o=new Array(a),c=0;c<a;c++)o[c]=arguments[c];return(i=n(this,(e=r(t)).call.apply(e,[this].concat(o)))).run=!1,i.time=0,i.loopTime=5,i.isLeave=!1,i}return i(t,e),a(t,[{key:"timeStart",value:function(){this.isLeave||(this.run=!0)}},{key:"reset",value:function(){if(this.isLeave)return this.setOffline();this.run=!1,this.time=0;var e=this.node.getComponent(l).material.passes[0];e.setUniform(e.getHandle("precent"),100)}},{key:"setOffline",value:function(){this.isLeave=!0;var e=this.node.getComponent(l).material.passes[0];e.setUniform(e.getHandle("precent"),0)}},{key:"setOnline",value:function(){this.isLeave=!1,this.reset()}},{key:"update",value:function(e){if(this.run){var t=this.node.getComponent(l).material.passes[0];t.setUniform(t.getHandle("precent"),20*this.time),this.time+=e,this.time>=this.loopTime&&this.reset()}}}]),t}(u))||p)),o._RF.pop()}}}));
+            this.data_fall.k = 0.5; // 反弹时速度保留的比例
+          }
+        }, {
+          key: "actionElastic",
+          value: function actionElastic(dt) {
+            if (this.action_elastic) {
+              this.time_elastic += dt; // 当前时间的振幅,随着时间推移振幅会逐渐变小
 
-System.register("chunks:///UI/Board/GamingBoard.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Const.js","../../Util.js","../Dialog/Dialog.js","./BaseBoard.js","../avatar.js"],(function(e,t){var a,r,i,n,s,o,m,h,g,d,l,c,u,p,y,C,f,v,S,N,B,D,b,w,K,x,k,_,R,P,I,M,T,j,A,U,E,O,H,L,F,G,J;return e({_dec:void 0,_dec2:void 0,_dec3:void 0,_dec4:void 0,_dec5:void 0,_dec6:void 0,_dec7:void 0,_class:void 0,_temp:void 0}),{setters:[function(e){a=e.applyDecoratedDescriptor,r=e.inherits,i=e.classCallCheck,n=e.possibleConstructorReturn,s=e.getPrototypeOf,o=e.createClass,m=e.get,h=e.asyncToGenerator},function(e){g=e.cclegacy,d=e.Label,l=e.tween,c=e.ProgressBar,u=e.SystemEventType,p=e.Vec3,y=e.Node,C=e.UITransform,f=e.Sprite,v=e.loader,S=e.Prefab,N=e.UIOpacity,B=e.instantiate},function(e){D=e.TeamColor,b=e.DialogButtonType,w=e.ServerDataType,K=e.log,x=e.PlayerState,k=e.AIDataType,_=e.RoomDataType,R=e.ClientDataType,P=e.EmojiType},function(e){I=e.throttle},function(e){M=e.Dialog},function(e){T=e.BaseBoard},function(e){j=e.Avatar}],execute:function(){g._RF.push({},"5a91dy6sIFJ+IdMqEEFo6I0","GamingBoard",void 0),J=function(){function e(t,a){i(this,e),this.board=null,this.SDK=null,this.gameStart=!1,this.end=!1,this.curAvatar=null,this.selfAvatar=null,this.teammaterAvatar=null,this.timeNumberNode=null,this.time=0,this.messageList=[],this.selfSign="",this.top1=!0,this.board=t,this.SDK=a}var t,a,r,n,s,m,g;return o(e,[{key:"initUI",value:(g=h(regeneratorRuntime.mark((function e(t){var a,r,i;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return K("debug",this.board),this.board=t,this.gameStart=!1,this.changeSoundUI(!0),a=this.board.getChildByName("Header"),this.team1Node=this.board.getChildByName("Header").getChildByName("team0"),this.team2Node=this.board.getChildByName("Header").getChildByName("team1"),this.comp1=this.team1Node.getChildByName("avatar-1").getChildByName("avatar"),this.comp2=this.team1Node.getChildByName("avatar-2").getChildByName("avatar"),this.comp3=this.team2Node.getChildByName("avatar-1").getChildByName("avatar"),this.comp4=this.team2Node.getChildByName("avatar-2").getChildByName("avatar"),this.timeNumberNode=a.getChildByName("time").getChildByName("number"),a.getChildByName("tip").active=!1,a.getChildByName("wait").active=!1,a.getChildByName("end").active=!1,a.getChildByName("team0").getChildByName("avatar-1").getChildByName("offLine").active=!1,a.getChildByName("team0").getChildByName("avatar-2").getChildByName("offLine").active=!1,a.getChildByName("team1").getChildByName("avatar-1").getChildByName("offLine").active=!1,a.getChildByName("team1").getChildByName("avatar-2").getChildByName("offLine").active=!1,a.getChildByName("team0").getChildByName("avatar-1").getChildByName("avatar").getComponent(j).setOnline(),a.getChildByName("team0").getChildByName("avatar-2").getChildByName("avatar").getComponent(j).setOnline(),a.getChildByName("team1").getChildByName("avatar-1").getChildByName("avatar").getComponent(j).setOnline(),a.getChildByName("team1").getChildByName("avatar-2").getChildByName("avatar").getComponent(j).setOnline(),e.next=25,this.SDK.getTeamId();case 25:return r=e.sent,e.next=28,this.SDK.getPlayerIndex();case 28:return i=e.sent,e.next=31,this.loadAvatar();case 31:r==D.red?(this.SDK.gameManager.Util.loadImg("Texture/UI/gaming/lingxian_2/spriteFrame",this.board.getParent().getChildByName("enemy1")),this.SDK.gameManager.Util.loadImg("Texture/UI/gaming/lingxian_2/spriteFrame",this.board.getParent().getChildByName("enemy2")),1==i?(this.selfAvatar=this.comp1,this.selfSign="1-1",this.teammaterAvatar=this.comp2):(this.selfAvatar=this.comp2,this.selfSign="1-2",this.teammaterAvatar=this.comp1)):(this.SDK.gameManager.Util.loadImg("Texture/UI/gaming/lingxian_1/spriteFrame",this.board.getParent().getChildByName("enemy1")),this.SDK.gameManager.Util.loadImg("Texture/UI/gaming/lingxian_1/spriteFrame",this.board.getParent().getChildByName("enemy2")),1==i?(this.selfAvatar=this.comp3,this.selfSign="2-1",this.teammaterAvatar=this.comp4):(this.selfAvatar=this.comp4,this.selfSign="2-2",this.teammaterAvatar=this.comp3)),this.SDK.gameManager.isReconnect?a.getChildByName("ready").active=!1:this.setReady();case 34:case"end":return e.stop()}}),e,this)}))),function(e){return g.apply(this,arguments)})},{key:"initData",value:function(){this.time=-100}},{key:"setTime",value:(m=h(regeneratorRuntime.mark((function e(t){var a,r,i,n,s,o,m,h;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!this.board){e.next=52;break}if(!(this.time!=t&&t<=this.SDK.gameManager.gameTime&&t>=0)){e.next=52;break}if(this.time=t,r=[],0==t){e.next=21;break}case 5:if(!(t>0)){e.next=19;break}return a=t%10,t=Math.floor(t/10),i=new y,n=i.addComponent(C),i.addComponent(f),n.setContentSize(42,56),n.setAnchorPoint(.5,.5),i.setScale(new p(.5,.5,1)),e.next=16,this.SDK.gameManager.Util.loadImg("Texture/number/"+a+"/spriteFrame",i);case 16:r.push(i),e.next=5;break;case 19:e.next=31;break;case 21:return a=0,i=new y,n=i.addComponent(C),i.addComponent(f),n.setContentSize(42,56),n.setAnchorPoint(.5,.5),i.setScale(new p(.5,.5,1)),e.next=30,this.SDK.gameManager.Util.loadImg("Texture/number/"+a+"/spriteFrame",i);case 30:r.push(i);case 31:for(s=this.timeNumberNode.children,o=0;o<s.length;o++)s[o].destroy();this.board.getChildByName("Header").getChildByName("time").getComponent(d).string="",e.t0=r.length,e.next=1===e.t0?37:2===e.t0?40:3===e.t0?43:47;break;case 37:return r[0].setPosition(new p(0,0,0)),a>0&&a<=5&&l(r[0]).to(.5,{scale:new p(1.5,1.5,1)}).start(),e.abrupt("break",51);case 40:return r[1].setPosition(new p(-10,0,0)),r[0].setPosition(new p(10,0,0)),e.abrupt("break",51);case 43:return r[2].setPosition(new p(-20,0,0)),r[1].setPosition(new p(0,0,0)),r[0].setPosition(new p(20,0,0)),e.abrupt("break",51);case 47:for(m=0;m<r.length;m++)r[m].destroy();return r=[],this.board.getChildByName("Header").getChildByName("time").getComponent(d).string=t,e.abrupt("break",51);case 51:for(h=0;h<r.length;h++)r[h].setParent(this.timeNumberNode);case 52:case"end":return e.stop()}}),e,this)}))),function(e){return m.apply(this,arguments)})},{key:"ControlStart",value:(s=h(regeneratorRuntime.mark((function e(t){var a,r,i;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getTeamId();case 2:r=e.sent,i=r==D.red?this.board.getChildByName("Header").getChildByName("team0"):this.board.getChildByName("Header").getChildByName("team1"),(a=t?i.getChildByName("avatar-1").getChildByName("avatar"):i.getChildByName("avatar-2").getChildByName("avatar")).getComponent(j).timeStart(),this.curAvatar=a;case 7:case"end":return e.stop()}}),e,this)}))),function(e){return s.apply(this,arguments)})},{key:"ControlReset",value:(n=h(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:this.curAvatar.getComponent(j).reset();case 1:case"end":return e.stop()}}),e,this)}))),function(){return n.apply(this,arguments)})},{key:"refreshState",value:function(){if(!this.end||this.gameStart){var e=this.board.getChildByName("Header").getChildByName("tip"),t=this.board.getChildByName("Header").getChildByName("wait");this.SDK.gameManager.isControler?(e.active=!0,t.active=!1):(t.active=!0,e.active=!1)}}},{key:"gameEnd",value:function(){if(!this.end){this.end=!0;var e=this.board.getChildByName("Header").getChildByName("tip"),t=this.board.getChildByName("Header").getChildByName("wait");this.board.getChildByName("Header").getChildByName("end").active=!0,e.active=!1,t.active=!1}}},{key:"showEmoji",value:(r=h(regeneratorRuntime.mark((function e(){var t,a,r,i,n,s,o=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(this.messageList&&this.messageList.length){e.next=2;break}return e.abrupt("return");case 2:if(!(Date.now()-this.lastUpdate<1e3)){e.next=4;break}return e.abrupt("return");case 4:return this.lastUpdate=Date.now(),t=new p(260,-160,0),e.next=8,this.SDK.getRoomInfo();case 8:return r=e.sent,i=r.playerList,n=this.messageList[0],s=new Promise((function(e){var r="Prefab/Emoji/emoji_"+(n.data+1);v.loadRes(r,S,function(){var r=h(regeneratorRuntime.mark((function r(s,m){return regeneratorRuntime.wrap((function(r){for(;;)switch(r.prev=r.next){case 0:if(!s){r.next=3;break}return r.abrupt("return");case 3:a=B(m),i.map((function(e){e.id===n.senderId&&o.SDK.gameManager.Util.loadRemoteImg(JSON.parse(e.customProfile).avatar_url,a.getChildByName("avatar"))})),a.getComponent(C).priority=99,a.setPosition(t),a.setScale(new p(.8,.8,.8)),a.setParent(o.board.getChildByName("Header")),l(a).to(3,{position:{x:-218,y:-160,z:0}},{onComplete:function(){a.destroy()}}).start(),o.messageList.shift(),e(!0);case 12:case"end":return r.stop()}}),r)})));return function(e,t){return r.apply(this,arguments)}}())})),e.abrupt("return",s);case 13:case"end":return e.stop()}}),e,this)}))),function(){return r.apply(this,arguments)})},{key:"setReady",value:function(){this.board.getChildByName("Header").getChildByName("ready").setPosition(new p(-300,-200,0)),this.board.getChildByName("Header").getChildByName("ready").active=!0,l(this.board.getChildByName("Header").getChildByName("ready")).to(.3,{position:{x:0,y:-200,z:0},easing:"sineIn"},{onComplete:function(){var e=this;this.SDK.gameManager.Util.playAudio(this.SDK.gameManager.audio_ready),setTimeout((function(){var t;e.SDK.gameManager.Util.playAudio(e.SDK.gameManager.audio_go),l(e.board.getChildByName("Header").getChildByName("ready")).to(.3,{position:{x:300,y:-200,z:0},easing:"sineOut"},{onComplete:(t=h(regeneratorRuntime.mark((function t(){return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return e.board.getChildByName("Header").getChildByName("ready").active=!1,e.changePlayer(e.SDK.gameManager.curActionPlayer),t.next=4,e.SDK.gameManager.changeControler(e.SDK.gameManager.curActionPlayer);case 4:e.gameStart=!0,e.refreshState();case 6:case"end":return t.stop()}}),t)}))),function(){return t.apply(this,arguments)})}).start()}),1500)}.bind(this)}).start()}},{key:"changePlayer",value:(a=h(regeneratorRuntime.mark((function e(t){var a,r,i,n,s,o,m;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:a=e.sent,r=this.board.getChildByName("Header").getChildByName("team0"),"2-1"!==this.selfSign&&"2-2"!==this.selfSign||(r=this.board.getChildByName("Header").getChildByName("team1")),i=t.findIndex((function(e){return e.id===a.id}))>-1,n=r.getChildByName("avatar-1"),s=r.getChildByName("avatar-2"),o=n.getComponent(N),m=s.getComponent(N),i&&("1-1"===this.selfSign||"2-1"===this.selfSign)||!i&&("1-2"===this.selfSign||"2-2"===this.selfSign)?(s.getComponent(C).priority=-1,n.getComponent(C).priority=1,l(s).to(.6,{position:"1-1"===this.selfSign||"1-2"===this.selfSign?new p(-95,-46,0):new p(95,-46,0),scale:new p(.9,.9,.9)}).start(),l(m).to(.6,{opacity:122}).start(),l(n).to(.6,{position:"1-1"===this.selfSign||"1-2"===this.selfSign?new p(-65,30,0):new p(65,30,0)}).start(),l(n).to(.3,{scale:new p(1.06,1.06,1.06)}).then(l(n).to(.3,{scale:new p(1,1,1)}).start()).start(),l(o).to(.6,{opacity:255}).start()):(n.getComponent(C).priority=-1,s.getComponent(C).priority=1,l(n).to(.6,{position:"1-1"===this.selfSign||"1-2"===this.selfSign?new p(-95,-46,0):new p(95,-46,0),scale:new p(.9,.9,.9)}).start(),l(o).to(.6,{opacity:122}).start(),l(s).to(.6,{position:"1-1"===this.selfSign||"1-2"===this.selfSign?new p(-65,30,0):new p(65,30,0)}).start(),l(s).to(.3,{scale:new p(1.06,1.06,1.06)}).then(l(s).to(.3,{scale:new p(1,1,1)}).start()),l(m).to(.6,{opacity:255}).start());case 11:case"end":return e.stop()}}),e,this)}))),function(e){return a.apply(this,arguments)})},{key:"loadAvatar",value:(t=h(regeneratorRuntime.mark((function e(){var t,a,r,i,n=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getRoomInfo();case 2:t=e.sent,a=this.SDK.gameManager.otherTeam.playerList,r=[],i=[],t.playerList.map((function(e){e.teamId===D.red&&(e.isRobot&&a.map((function(t){e.name===t.name&&(e.customProfile=JSON.stringify({nickname:e.name,avatar_url:t.avatar,gender:t.gender,isVip:t.isVip}))})),r.push(e)),e.teamId===D.blue&&(e.isRobot&&a.map((function(t){e.name===t.name&&(e.customProfile=JSON.stringify({nickname:e.name,avatar_url:t.avatar,gender:t.gender,isVip:t.isVip}))})),i.push(e))})),r.length&&r[0].customProfile&&(JSON.parse(r[0].customProfile).lover_id===JSON.parse(r[1].customProfile).lover_id?this.board.getChildByName("Header").getChildByName("team0").getChildByName("isLover").active=!0:this.board.getChildByName("Header").getChildByName("team0").getChildByName("isLover").active=!1),i.length&&i[0].customProfile&&(JSON.parse(i[0].customProfile).lover_id===JSON.parse(i[1].customProfile).lover_id?this.board.getChildByName("Header").getChildByName("team1").getChildByName("isLover").active=!0:this.board.getChildByName("Header").getChildByName("team1").getChildByName("isLover").active=!1),r.map(function(){var e=h(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,n.SDK.getPlayerIndex(t.id);case 2:1===e.sent?n.SDK.gameManager.Util.setAvatar(n.comp1,r[0],!0):n.SDK.gameManager.Util.setAvatar(n.comp2,r[1],!0);case 4:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}()),i.map(function(){var e=h(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,n.SDK.getPlayerIndex(t.id);case 2:1===e.sent?n.SDK.gameManager.Util.setAvatar(n.comp3,i[0],!0):n.SDK.gameManager.Util.setAvatar(n.comp4,i[1],!0);case 4:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}());case 12:case"end":return e.stop()}}),e,this)}))),function(){return t.apply(this,arguments)})},{key:"changeSoundUI",value:function(e){this.SDK.gameManager.Util.loadImg(e?"/Texture/UI/gaming/kaiqi@2x/spriteFrame":"/Texture/UI/gaming/gianbi@2x/spriteFrame",this.board.getChildByName("nav").getChildByName("music"))}}]),e}(),e("GamingBoard",(A=I(),U=I(),E=I(),O=I(),H=I(),L=I(),F=I(),a((G=function(e){function t(e,a){var r;return i(this,t),(r=n(this,s(t).call(this,e,a))).uiControl=null,r.controlTime=-100,r.AI_singal_time=3,r.audio_last5s_tag=!1,r.name="GamingBoard",r.uiControl=new J(r.board,r.SDK),r}var a,g,p,y,C,f,v,S,N;return r(t,e),o(t,[{key:"initData",value:function(){m(s(t.prototype),"initData",this).call(this),this.controlTime=-100,this.AI_singal_time=4,this.audio_last5s_tag=!1,this.uiControl.end=!1,this.SDK.gameManager.updateCenterNode(!1),this.board.getChildByName("Header").getChildByName("score").getChildByName("redScore").getComponent(d).string="0分",this.board.getChildByName("Header").getChildByName("score").getChildByName("blueScore").getComponent(d).string="0分"}},{key:"setListener",value:function(){m(s(t.prototype),"setListener",this).call(this),this.SDK.curRoom.onRecvFromGameSvr=this.onRecvFromGameSvr.bind(this),this.SDK.curRoom.onRecvFromClient=this.onRecvFromClient.bind(this),this.SDK.gameManager.timerSingal=this.onTimerSingal.bind(this),this.SDK.gameManager.uiRefresh=this.onUIRefresh.bind(this),this.SDK.gameManager.avatarSingal=this.onAvatarSingal.bind(this)}},{key:"onLeaveRoom",value:(N=h(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t.data.leavePlayerId,e.next=3,this.SDK.getLoverInfo();case 3:e.sent;case 5:case"end":return e.stop()}}),e,this)}))),function(e){return N.apply(this,arguments)})},{key:"onRecvFromGameSvr",value:(S=h(regeneratorRuntime.mark((function e(t){var a,r,i,n,s,o,m,h;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:a=null,r=-1;try{a=t.data.data,r=a.type}catch(e){}if(r!=w.Sync){e.next=9;break}return K("接收到数据同步信息",a.data),e.next=7,this.SDK.gameManager.syncData(a.data);case 7:e.next=46;break;case 9:if(r!=w.ChangeControler){e.next=16;break}K("接收到控制权转移信息",a.data),this.SDK.gameManager.changeControler(a.data.gameState.curActionPlayer),this.SDK.gameManager.Player.reset(),this.uiControl.changePlayer(a.data.gameState.curActionPlayer),e.next=46;break;case 16:if(r!=w.Map){e.next=21;break}K("接收到地图同步信息",a.data),this.SDK.gameManager.syncMap(a.data),e.next=46;break;case 21:if(r!=w.Result){e.next=36;break}K("接收到结算结果信息",a.data),this.SDK.gameManager.isControler=!1,this.SDK.gameManager.isRunning=!1,this.SDK.leaveRoom(),this.SDK.setGroupPlayerStatus(x.NotReady),(i=this.SDK.gameManager.ResultBoard).setResult(a.data),this.ChangeBoard(i),this.board.getChildByName("Header").getChildByName("score").getComponent(c).progress=.5,this.board.getParent().getChildByName("enemy1").active=!1,this.board.getParent().getChildByName("enemy2").active=!1,e.next=46;break;case 36:if(r!=w.NetState){e.next=45;break}return K("接收到在线状态变更信息",a.data),e.next=40,this.SDK.getPlayerIndex(a.data.playerId);case 40:n=e.sent,a.data.teamId===D.red?((s=this.board.getChildByName("Header").getChildByName("team0").getChildByName("avatar-".concat(n))).getChildByName("offLine").active=0===a.data.state,0===a.data.state&&s.getChildByName("avatar").getComponent(j).setOffline(),1===a.data.state&&s.getChildByName("avatar").getComponent(j).setOnline()):((o=this.board.getChildByName("Header").getChildByName("team1").getChildByName("avatar-".concat(n))).getChildByName("offLine").active=0===a.data.state,0===a.data.state&&o.getChildByName("avatar").getComponent(j).setOffline(),1===a.data.state&&o.getChildByName("avatar").getComponent(j).setOnline()),e.next=46;break;case 45:r==w.AI&&(K("接收到AI控制消息",a.data),m=a.data.type,h=a.data.data,m==k.StartJump&&this.SDK.gameManager.OtherTeam.PowerEnd(h));case 46:case"end":return e.stop()}}),e,this)}))),function(e){return S.apply(this,arguments)})},{key:"onRecvFromClient",value:(v=h(regeneratorRuntime.mark((function e(t){var a,r,i,n,s;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(a=JSON.parse(t.data.msg),r=a.type,i=a.data,n=t.data.sendPlayerId,r!=_.Power){e.next=10;break}this.SDK.gameManager.Player.teammatePower(),e.next=29;break;case 10:if(r!=_.PowerEnd){e.next=15;break}this.SDK.gameManager.Player.teammatePowerEnd(i),e.next=29;break;case 15:if(r!=_.EnemyPowerEnd){e.next=20;break}this.SDK.gameManager.OtherTeam.PowerEnd(i),e.next=29;break;case 20:if(r!=_.emoji){e.next=28;break}return e.next=24,this.SDK.getPlayerInfo();case 24:s=e.sent,n!=s.id&&this.uiControl.messageList.push({data:i,senderId:n}),e.next=29;break;case 28:_.SyncComplete;case 29:case 30:case"end":return e.stop()}}),e,this)}))),function(e){return v.apply(this,arguments)})},{key:"onTimerSingal",value:(f=h(regeneratorRuntime.mark((function e(){var t,a,r=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(this.dead||!this.SDK.gameManager.isRunning){e.next=30;break}return this.AI_singal_time-=.5,e.next=4,this.SDK.sendToServer(R.Heart,this.SDK.gameManager.serverTeam.id);case 4:if(e.sent==MGOBE.ErrCode.EC_OK){e.next=11;break}return this.SDK.gameManager.isRunning=!1,new M(this.scene,this.SDK,"已断开连接,请退出游戏重新进入",b.single,"知道了").show(this,(function(){r.SDK.curDialog.destroy()})),e.abrupt("return");case 11:return e.next=13,this.SDK.gameManager.Util.IsRobotRoom();case 13:if(e.sent&&this.AI_singal_time<=0&&(this.AI_singal_time=1,this.SDK.sendToServer(R.SingalAI,null)),t=this.SDK.gameManager.Util.getLocalTime(),a=this.SDK.gameManager.gameTime-(t-this.SDK.gameManager.startTime),this.SDK.gameManager.startTime,this.uiControl.setTime(a),!(a<=0)){e.next=27;break}return this.SDK.gameManager.isRunning=!1,this.SDK.gameManager.isControler=!1,this.SDK.gameManager.timerSingal=null,this.uiControl.gameEnd(),e.next=26,this.SDK.sendToServer(R.End,t);case 26:this.SDK.gameManager.userTipNode.active=!1;case 27:5!=a||this.audio_last5s_tag||(this.audio_last5s_tag=!0,this.SDK.gameManager.Util.playAudio(this.SDK.gameManager.audio_last5s)),this.uiControl.showEmoji(),this.controlTime>0&&!this.SDK.gameManager.Player._stat_power&&!this.SDK.gameManager.Player._stat_jump?this.controlTime-=.5:this.controlTime<=0&&this.controlTime>=-10&&(this.controlTime=-100,this.SDK.gameManager.isControler=!1,this.onAvatarSingal(!0,!1),this.onUIRefresh(),this.SDK.sendToServer(R.ChangeControler));case 30:case"end":return e.stop()}}),e,this)}))),function(){return f.apply(this,arguments)})},{key:"refreshScore",value:function(){var e,t=0,a=0,r=this.board.getChildByName("Header").getChildByName("score");this.SDK.gameManager.serverTeam.playerList.map((function(e){t+=e.score})),this.SDK.gameManager.otherTeam.playerList.map((function(e){a+=e.score})),(e=t+a===0?.5:t/(t+a))<.2&&(e=.2),e>.8&&(e=.8),e>.24&&e<.5&&(e*=.85),e>.5&&e<.6&&(e*=1.2),this.SDK.gameManager.serverTeam.id==D.red?(l(r.getComponent(c)).to(.3,{progress:e}).start(),r.getChildByName("redScore").getComponent(d).string="".concat(t,"分"),r.getChildByName("blueScore").getComponent(d).string="".concat(a,"分")):(l(r.getComponent(c)).to(.3,{progress:1-e}).start(),r.getChildByName("redScore").getComponent(d).string="".concat(a,"分"),r.getChildByName("blueScore").getComponent(d).string="".concat(t,"分"))}},{key:"onUIRefresh",value:function(){this.uiControl.refreshState(),this.refreshScore()}},{key:"onAvatarSingal",value:function(e,t){e?t?(this.controlTime=5,this.uiControl.selfAvatar.getComponent(j).timeStart()):(this.controlTime=-100,this.uiControl.selfAvatar.getComponent(j).reset()):t?this.uiControl.teammaterAvatar.getComponent(j).timeStart():this.uiControl.teammaterAvatar.getComponent(j).reset()}},{key:"InitEvent",value:(C=h(regeneratorRuntime.mark((function e(){var a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:m(s(t.prototype),"InitEvent",this).call(this),(a=this.board.getChildByName("Interaction-ex")).getChildByName("emoji_1").on(u.TOUCH_END,this.sendEmoji_1,this),a.getChildByName("emoji_2").on(u.TOUCH_END,this.sendEmoji_2,this),a.getChildByName("emoji_3").on(u.TOUCH_END,this.sendEmoji_3,this),a.getChildByName("emoji_4").on(u.TOUCH_END,this.sendEmoji_4,this),this.board.getChildByName("nav").getChildByName("music").on(u.TOUCH_END,this.switchSound,this),this.board.getChildByName("nav").getChildByName("back").on(u.TOUCH_END,this.leave,this);case 8:case"end":return e.stop()}}),e,this)}))),function(){return C.apply(this,arguments)})},{key:"destroy",value:function(){m(s(t.prototype),"destroy",this).call(this);var e=this.board.getChildByName("Interaction-ex");e.getChildByName("emoji_1").off(u.TOUCH_END),e.getChildByName("emoji_2").off(u.TOUCH_END),e.getChildByName("emoji_3").off(u.TOUCH_END),e.getChildByName("emoji_4").off(u.TOUCH_END)}},{key:"sendEmoji_1",value:(y=h(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:t=e.sent,this.uiControl.messageList.push({data:P.Angry,senderId:t.id}),this.SDK.sendToRoom(_.emoji,P.Angry);case 5:case"end":return e.stop()}}),e,this)}))),function(){return y.apply(this,arguments)})},{key:"sendEmoji_2",value:(p=h(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:t=e.sent,this.uiControl.messageList.push({data:P.Worship,senderId:t.id}),this.SDK.sendToRoom(_.emoji,P.Worship);case 5:case"end":return e.stop()}}),e,this)}))),function(){return p.apply(this,arguments)})},{key:"sendEmoji_3",value:(g=h(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:t=e.sent,this.uiControl.messageList.push({data:P.Unfortunately,senderId:t.id}),this.SDK.sendToRoom(_.emoji,P.Unfortunately);case 5:case"end":return e.stop()}}),e,this)}))),function(){return g.apply(this,arguments)})},{key:"sendEmoji_4",value:(a=h(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:t=e.sent,this.uiControl.messageList.push({data:P.Applause,senderId:t.id}),this.SDK.sendToRoom(_.emoji,P.Applause);case 5:case"end":return e.stop()}}),e,this)}))),function(){return a.apply(this,arguments)})},{key:"switchSound",value:function(){this.SDK.gameManager.Setting.switch_audio=!this.SDK.gameManager.Setting.switch_audio,this.uiControl.changeSoundUI(this.SDK.gameManager.Setting.switch_audio)}},{key:"leave",value:function(){var e=this;new M(this.scene,this.SDK,"退出本局游戏则视为认输，是否退出该局游戏？",b.multiple,"退出认输","再想想").show(this,this.confirmLeave,(function(){e.SDK.curDialog.destroy()}))}},{key:"confirmLeave",value:function(){this.SDK.curDialog.dead||(this.SDK.gameManager.userTipNode.active=!1,this.SDK.leaveGroup(),this.SDK.leaveRoom(),this.SDK.curDialog.destroy(),this.ChangeBoard(this.SDK.gameManager.MainBoard))}}]),t}(T)).prototype,"sendEmoji_1",[A],Object.getOwnPropertyDescriptor(G.prototype,"sendEmoji_1"),G.prototype),a(G.prototype,"sendEmoji_2",[U],Object.getOwnPropertyDescriptor(G.prototype,"sendEmoji_2"),G.prototype),a(G.prototype,"sendEmoji_3",[E],Object.getOwnPropertyDescriptor(G.prototype,"sendEmoji_3"),G.prototype),a(G.prototype,"sendEmoji_4",[O],Object.getOwnPropertyDescriptor(G.prototype,"sendEmoji_4"),G.prototype),a(G.prototype,"switchSound",[H],Object.getOwnPropertyDescriptor(G.prototype,"switchSound"),G.prototype),a(G.prototype,"leave",[L],Object.getOwnPropertyDescriptor(G.prototype,"leave"),G.prototype),a(G.prototype,"confirmLeave",[F],Object.getOwnPropertyDescriptor(G.prototype,"confirmLeave"),G.prototype),G)),g._RF.pop()}}}));
+              var A = this.data_elastic.A * (1 / (1 + this.time_elastic * 20)); // 当前时间的实际振动偏移量,根据当前时间振幅以及关于时间的余弦函数计算得到
 
-System.register("chunks:///UI/Dialog/RulesDialog.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Const.js"],(function(e,t){var n,i,s,r,a,o,u,l,c,d;return{setters:[function(e){n=e.createClass,i=e.classCallCheck,s=e.asyncToGenerator},function(e){r=e.cclegacy,a=e.tween,o=e.Vec3,u=e.loader,l=e.Prefab,c=e.instantiate,d=e.SystemEventType},function(e){}],execute:function(){r._RF.push({},"f1725lk6shAIZvaTtd6I/DQ","RulesDialog",void 0),e("RulesDialog",function(){function e(t,n){i(this,e),this.scene=null,this.node=null,this.SDK=null,this.dead=!1,this.scene=t,this.SDK=n}var t,r;return n(e,[{key:"InitBoard",value:(r=s(regeneratorRuntime.mark((function e(){var t,n=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t=new Promise((function(e){u.loadRes("Prefab/Dialog/RulesDialog",l,(function(t,i){t?e(!1):(n.node=c(i),n.scene.getChildByName("UI").addChild(n.node),n.node.setSiblingIndex(100),e(!0))}))})),e.abrupt("return",t);case 3:case"end":return e.stop()}}),e)}))),function(){return r.apply(this,arguments)})},{key:"destroy",value:function(){if(!this.dead){if(!this.node)return void(this.SDK=null);this.dead=!0,this.scene=null,a(this.node.getChildByName("background")).to(.3,{scale:new o(0,0,0)},{onComplete:function(){this.SDK.curDialog=null,this.SDK=null,this.node.destroy(),this.node=null}.bind(this)}).start()}}},{key:"show",value:(t=s(regeneratorRuntime.mark((function e(t){var n,i=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(null!=this.SDK.curDialog){e.next=13;break}return this.SDK.curDialog=this,e.next=4,this.InitBoard();case 4:if(e.sent){e.next=8;break}return this.destroy(),e.abrupt("return");case 8:n=this.node.getChildByName("background").getChildByName("exit"),this.node.getChildByName("background").setScale(new o(0,0,0)),this.node.active=!0,a(this.node.getChildByName("background")).to(.3,{scale:new o(.5,.5,.5)},{easing:"sineOut"}).start(),n.on(d.TOUCH_END,(function(){i.SDK.curDialog.dead||i.SDK.curDialog.destroy()}),t);case 13:case"end":return e.stop()}}),e,this)}))),function(e){return t.apply(this,arguments)})}]),e}()),r._RF.pop()}}}));
+              var y = A * Math.cos(this.time_elastic * this.cycle_elastic);
+              this.node.setScale(new Vec3(1, 1 + y, 1));
 
-System.register("chunks:///UI/Board/MainBoard.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Config.js","../../Const.js","../../Util.js","../Dialog/Dialog.js","./BaseBoard.js","../Dialog/RulesDialog.js"],(function(e,t){var a,r,n,i,o,s,c,h,g,l,u,m,d,p,y,D,v,C,B,N,f,S,M,_,k,K,b;return e({_dec:void 0,_dec2:void 0,_dec3:void 0,_dec4:void 0,_class:void 0}),{setters:[function(e){a=e.applyDecoratedDescriptor,r=e.inherits,n=e.classCallCheck,i=e.possibleConstructorReturn,o=e.getPrototypeOf,s=e.createClass,c=e.get,h=e.asyncToGenerator},function(e){g=e.cclegacy,l=e._decorator,u=e.SystemEventType,m=e.Label},function(e){d=e.Env,p=e.EnvType,y=e.serverURL},function(e){D=e.NetState,v=e.DialogButtonType},function(e){C=e.throttle},function(e){B=e.Dialog},function(e){N=e.BaseBoard},function(e){f=e.RulesDialog}],execute:function(){g._RF.push({},"253a4372BVD94kGBxFcROCR","MainBoard",void 0),l.ccclass,l.property,b=function(){function e(t,a){n(this,e),this.board=t,this.SDK=a}var t,a;return s(e,[{key:"initUI",value:(a=h(regeneratorRuntime.mark((function e(t){var a,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.board=t,e.next=3,this.initUserData();case 3:a=this.board.getChildByName("Header"),this.weekDataNode=a.getChildByName("career").getChildByName("weekData"),this.loverDataNode=a.getChildByName("top").getChildByName("bgHistory"),1===this.SDK.gameManager.PlayerData.gender?(this.selfAvatarNode=a.getChildByName("top").getChildByName("Avatar").getChildByName("Sprite"),this.otherAvatarNode=a.getChildByName("top").getChildByName("Avatar2").getChildByName("Sprite")):(this.selfAvatarNode=a.getChildByName("top").getChildByName("Avatar2").getChildByName("Sprite"),this.otherAvatarNode=a.getChildByName("top").getChildByName("Avatar").getChildByName("Sprite")),this.SDK.gameManager.PlayerData.isVip?(a.getChildByName("top").getChildByName("Avatar").getChildByName("isVip").active=!0,a.getChildByName("top").getChildByName("Avatar2").getChildByName("isVip").active=!0):(a.getChildByName("top").getChildByName("Avatar").getChildByName("isVip").active=!1,a.getChildByName("top").getChildByName("Avatar2").getChildByName("isVip").active=!1),this.SDK.gameManager.Util.loadRemoteImg(this.SDK.gameManager.PlayerData.avatar_url,this.selfAvatarNode),this.SDK.gameManager.loverData&&this.SDK.gameManager.loverData.avatar&&(r="https://".concat(this.SDK.gameManager.loverData.avatar.host,"/").concat(this.SDK.gameManager.loverData.avatar.path),this.SDK.gameManager.Util.loadRemoteImg(r,this.otherAvatarNode)),this.weekDataNode.getChildByName("num").getChildByName("value").getComponent(m).string="".concat(this.SDK.gameManager.PlayerData.playCountWeek),this.weekDataNode.getChildByName("rate").getChildByName("value").getComponent(m).string=this.SDK.gameManager.PlayerData.winCountWeek?"".concat((this.SDK.gameManager.PlayerData.winCountWeek/this.SDK.gameManager.PlayerData.playCountWeek*100).toFixed(0),"%"):"0%",this.weekDataNode.getChildByName("mvp").getChildByName("value").getComponent(m).string="".concat(this.SDK.gameManager.PlayerData.mvpCountWeek),this.loverDataNode.getChildByName("total").getComponent(m).string="".concat(this.SDK.gameManager.PlayerData.loverCount),this.loverDataNode.getChildByName("victory").getComponent(m).string="".concat(this.SDK.gameManager.PlayerData.loverWinCount);case 15:case"end":return e.stop()}}),e,this)}))),function(e){return a.apply(this,arguments)})},{key:"initData",value:function(){}},{key:"initUserData",value:(t=h(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.gameManager.Util.http(y.gameInit,"GET",{},!1,this.SDK.gameManager.AccessToken);case 2:t=e.sent,this.SDK.gameManager.PlayerData.loverCount=t.lover_match_info.game_match_count?t.lover_match_info.game_match_count:0,this.SDK.gameManager.PlayerData.loverWinCount=t.lover_match_info.win_count?t.lover_match_info.win_count:0,this.SDK.gameManager.PlayerData.tacitScore=t.lover_match_info.tacit_score?t.lover_match_info.tacit_score:0,this.SDK.gameManager.PlayerData.playCountWeek=t.user_match_info.game_match_count?t.user_match_info.game_match_count:0,this.SDK.gameManager.PlayerData.mvpCountWeek=t.user_match_info.mvp_count?t.user_match_info.mvp_count:0,this.SDK.gameManager.PlayerData.winCountWeek=t.user_match_info.win_count?t.user_match_info.win_count:0,this.board.getChildByName("Header").getChildByName("top").getChildByName("Lv").getComponent(m).string="恋人Lv.".concat(this.SDK.gameManager.Util.loverLevel(this.SDK.gameManager.PlayerData.tacitScore)),this.board.getChildByName("Header").getChildByName("top").getChildByName("LvHeart").getChildByName("Lv").getComponent(m).string="".concat(this.SDK.gameManager.Util.loverLevel(this.SDK.gameManager.PlayerData.tacitScore));case 11:case"end":return e.stop()}}),e,this)}))),function(){return t.apply(this,arguments)})}]),e}(),e("MainBoard",(S=C(),M=C(),_=C(),k=C(),a((K=function(e){function t(e,a){var r;return n(this,t),(r=i(this,o(t).call(this,e,a))).name="MainBoard",r.uiControl=new b(r.board,r.SDK),r}var a,g,l,m,C;return r(t,e),s(t,[{key:"setListener",value:function(){this.SDK.Room.onCancelMatch=this.onCancelMatch.bind(this),this.SDK.Room.onMatch=this.onMatch.bind(this)}},{key:"InitEvent",value:(C=h(regeneratorRuntime.mark((function e(){var a,r,n,i;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:c(o(t.prototype),"InitEvent",this).call(this),a=this.board.getChildByName("MatchButton").getChildByName("single"),r=this.board.getChildByName("MatchButton").getChildByName("lover"),n=this.board.getChildByName("Nav").getChildByName("exit"),i=this.board.getChildByName("Nav").getChildByName("rules"),a.on(u.TOUCH_END,this.clickSingleMatch,this),r.on(u.TOUCH_END,this.clickLoverMatch,this),i.on(u.TOUCH_END,this.clickRules,this),n.on(u.TOUCH_END,this.quitGame,this);case 9:case"end":return e.stop()}}),e,this)}))),function(){return C.apply(this,arguments)})},{key:"destroy",value:function(){c(o(t.prototype),"destroy",this).call(this);var e=this.board.getChildByName("MatchButton").getChildByName("single"),a=this.board.getChildByName("MatchButton").getChildByName("lover"),r=this.board.getChildByName("Nav").getChildByName("exit"),n=this.board.getChildByName("Nav").getChildByName("rules");e.off(u.TOUCH_END),a.off(u.TOUCH_END),r.off(u.TOUCH_END),n.off(u.TOUCH_END)}},{key:"onCancelMatch",value:function(e){}},{key:"onMatch",value:function(e){}},{key:"teachProcess",value:(m=h(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!(this.SDK.gameManager.PlayerData.totalCount<=3||d==p.develop)||this.SDK.gameManager.isTeached){e.next=5;break}return e.next=4,this.ChangeBoard(this.SDK.gameManager.TeachingBoard);case 4:return e.abrupt("return",!1);case 5:return e.abrupt("return",!0);case 6:case"end":return e.stop()}}),e,this)}))),function(){return m.apply(this,arguments)})},{key:"clickSingleMatch",value:(l=h(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=3,this.teachProcess();case 3:if(e.sent){e.next=5;break}return e.abrupt("return");case 5:return e.next=7,this.SDK.matchingSingle();case 7:if(e.sent!=MGOBE.ErrCode.EC_OK){e.next=15;break}return e.next=13,this.ChangeBoard(this.SDK.gameManager.MatchingBoard);case 13:e.next=17;break;case 15:this.SDK.cancelMatchinig();case 17:case"end":return e.stop()}}),e,this)}))),function(){return l.apply(this,arguments)})},{key:"clickLoverMatch",value:(g=h(regeneratorRuntime.mark((function e(){var t,a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.teachProcess();case 2:if(e.sent){e.next=4;break}return e.abrupt("return");case 4:return e.next=6,this.SDK.gameManager.Util.http(y.group,"GET",null,!1,this.SDK.gameManager.AccessToken);case 6:if(!(t=e.sent)){e.next=20;break}return t=t.other_group_id,e.next=12,this.SDK.joinGroup(t);case 12:if(e.sent!==MGOBE.ErrCode.EC_OK){e.next=20;break}return e.next=16,this.SDK.getTeammate();case 16:if(e.sent.commonNetworkState==D.Offline){e.next=20;break}return this.ChangeBoard(this.SDK.gameManager.WaitLoverBoard),e.abrupt("return");case 20:return e.next=22,this.SDK.createGroup();case 22:if(0!==e.sent){e.next=32;break}return e.next=26,this.SDK.getGroupInfo();case 26:return a=e.sent,this.SDK.gameManager.Util.http(y.group,"POST",{group_id:a.id},!1,this.SDK.gameManager.AccessToken),e.next=30,this.ChangeBoard(this.SDK.gameManager.WaitLoverBoard);case 30:e.next=33;break;case 32:case 33:case"end":return e.stop()}}),e,this)}))),function(){return g.apply(this,arguments)})},{key:"clickRules",value:function(){this.SDK.curDialog||new f(this.scene,this.SDK).show(this)}},{key:"quitGame",value:(a=h(regeneratorRuntime.mark((function e(){var t,a=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t=new B(this.scene,this.SDK,"确定退出游戏？",v.multiple),e.next=3,t.show(this,(function(){a.SDK.curDialog.dead||(a.SDK.curDialog.destroy(),window.RunNative("goBack",{},"",""))}),(function(){a.SDK.curDialog.dead||a.SDK.curDialog.destroy()}));case 3:case"end":return e.stop()}}),e,this)}))),function(){return a.apply(this,arguments)})}]),t}(N)).prototype,"clickSingleMatch",[S],Object.getOwnPropertyDescriptor(K.prototype,"clickSingleMatch"),K.prototype),a(K.prototype,"clickLoverMatch",[M],Object.getOwnPropertyDescriptor(K.prototype,"clickLoverMatch"),K.prototype),a(K.prototype,"clickRules",[_],Object.getOwnPropertyDescriptor(K.prototype,"clickRules"),K.prototype),a(K.prototype,"quitGame",[k],Object.getOwnPropertyDescriptor(K.prototype,"quitGame"),K.prototype),K)),g._RF.pop()}}}));
+              if (Math.abs(A) < 0.03) {
+                this.node.setScale(new Vec3(1, 1, 1));
+                this.action_elastic = false;
+              }
+            }
+          }
+        }, {
+          key: "actionPower",
+          value: function actionPower(dt) {
+            if (this.action_power) {
+              this.time_power += dt;
+              var y = 1 - this.time_power * 2;
 
-System.register("chunks:///UI/Board/MatchingBoard.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Config.js","../../Const.js","../../Util.js","../Dialog/Dialog.js","./BaseBoard.js"],(function(e,t){var a,i,r,n,s,o,h,c,l,m,u,g,d,p,v,y,C,f,S,B,D,K,x,N,b,M,k,R,w,I;return e({_dec:void 0,_class:void 0,_temp:void 0}),{setters:[function(e){a=e.applyDecoratedDescriptor,i=e.inherits,r=e.classCallCheck,n=e.possibleConstructorReturn,s=e.getPrototypeOf,o=e.createClass,h=e.get,c=e.asyncToGenerator},function(e){l=e.cclegacy,m=e.SystemEventType,u=e.Label,g=e.Color,d=e.Animation,p=e.ProgressBar,v=e.tween,y=e.Vec3},function(e){e.Env,C=e.EnvType},function(e){f=e.ClientDataType,S=e.log,B=e.RoomDataType,D=e.NetState,K=e.DialogButtonType,x=e.ServerDataType,N=e.TeamColor},function(e){b=e.throttle},function(e){M=e.Dialog},function(e){k=e.BaseBoard}],execute:function(){l._RF.push({},"b8dbbjBDbxP+YYY37doxtEY","MatchingBoard",void 0),I=function(){function e(t,a){r(this,e),this.board=null,this.SDK=null,this.team1=null,this.team2=null,this.circle=null,this.time=null,this.board=t,this.SDK=a}var t,a,i,n;return o(e,[{key:"initUI",value:(n=c(regeneratorRuntime.mark((function e(t){var a,i,r,n,s;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.board=t,this.team1=this.board.getChildByName("team1"),this.team2=this.board.getChildByName("team2"),this.circle=this.board.getChildByName("circle"),this.time=this.board.getChildByName("guide").getChildByName("Label"),e.next=7,this.SDK.getGroupInfo();case 7:return a=e.sent,e.next=10,this.SDK.getPlayerInfo();case 10:if(i=e.sent,r=null,this.circle.getComponent(d).onLoad(),this.circle.setRotationFromEuler(0,0,0),this.circle.setScale(1,1,1),this.circle.getChildByName("red").active=!0,this.circle.getChildByName("red1").active=!0,this.circle.getChildByName("blue").active=!0,this.circle.getChildByName("blue1").active=!0,this.circle.getChildByName("Sprite").active=!1,this.circle.getChildByName("Sprite2").active=!1,this.team1.getChildByName("card").getChildByName("user2").active=!1,this.team1.getChildByName("card").getChildByName("user2_wait").active=!0,this.team2.getChildByName("card").getChildByName("user1").active=!1,this.team2.getChildByName("card").getChildByName("user2").active=!1,this.team2.getChildByName("card").getChildByName("user1_wait").active=!0,this.team2.getChildByName("card").getChildByName("user2_wait").active=!0,this.team1.getChildByName("card").getChildByName("Lover").active=!1,this.team2.getChildByName("card").getChildByName("Lover").active=!1,this.board.getChildByName("CancelMatchButton").active=!0,this.board.getChildByName("expectedTime").active=!0,this.board.getChildByName("guide").active=!0,this.board.getChildByName("ProgressBar").getComponent(p).progress=0,this.board.getChildByName("ProgressBar").active=!1,this.time.getComponent(u).string="正在匹配 (0:0)",!a){e.next=42;break}return e.next=38,this.showLoverUI();case 38:for(r=a.groupPlayerList,n=0;n<r.length;n++)(s=r[n]).id==i.id?this.setPlayer(1,1,{id:s.id,teamId:"1",profile:s.customGroupPlayerProfile}):this.setPlayer(1,2,{id:s.id,teamId:"1",profile:s.customGroupPlayerProfile});e.next=43;break;case 42:this.setPlayer(1,1,{id:i.id,teamId:i.teamId,profile:i.profile});case 43:case"end":return e.stop()}}),e,this)}))),function(e){return n.apply(this,arguments)})},{key:"initData",value:function(){}},{key:"matchSuccess",value:(i=c(regeneratorRuntime.mark((function e(t){var a,i,r,n;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.showLoverUI(),e.next=3,this.SDK.getRoomInfo();case 3:return e.sent,e.next=6,this.SDK.getPlayerInfo();case 6:for(a=e.sent,i=1,r=0;r<t.length;r++)(n=t[r]).teamId==a.teamId?n.id==a.id?this.setPlayer(1,1,n):this.setPlayer(1,2,n):(this.setPlayer(2,i,n),i+=1);this.board.getChildByName("expectedTime").active=!1,this.board.getChildByName("guide").active=!1,this.board.getChildByName("ProgressBar").active=!0,v(this.board.getChildByName("ProgressBar").getComponent(p)).to(2,{progress:1}).start(),this.time.getComponent(u).string="匹配成功,等待进入游戏";case 14:case"end":return e.stop()}}),e,this)}))),function(e){return i.apply(this,arguments)})},{key:"setTime",value:function(e){if(this.board){var t=Math.floor(e/60),a=Math.floor(e-60*t);this.time.getComponent(u).string="正在匹配 (".concat(t>9?t:"0"+t,":").concat(a>9?a:"0"+a,")")}}},{key:"setPlayer",value:function(e,t,a){var i=null,r=null,n=null,s=JSON.parse(a.profile);if(i=this.team1,2==e&&(i=this.team2),r=i.getChildByName("card").getChildByName("user1"),n=i.getChildByName("card").getChildByName("user1_wait"),2==t&&(r=i.getChildByName("card").getChildByName("user2"),n=i.getChildByName("card").getChildByName("user2_wait")),a){r.getChildByName("nickName").getComponent(u).string=s.nickname,s.isVip?(r.getChildByName("nickName").getComponent(u).color=new g(240,190,37,255),r.getChildByName("nickName").getChildByName("vip").active=!0):(r.getChildByName("nickName").getComponent(u).color=new g(51,51,51,255),r.getChildByName("nickName").getChildByName("vip").active=!1);var o=r.getChildByName("avatarBg").getChildByName("avatar");this.SDK.gameManager.Util.setAvatar(o,a,!1),r.active=!0,n&&(n.active=!1)}else r.active=!1,n&&(n.active=!0)}},{key:"showLoverUI",value:(a=c(regeneratorRuntime.mark((function e(){var t,a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.gameManager.Util.teammaterIsLover();case 2:return t=e.sent,e.next=5,this.SDK.gameManager.Util.enemyIsLover();case 5:a=e.sent,this.team1.getChildByName("card").getChildByName("Lover").active=!!t,this.team2.getChildByName("card").getChildByName("Lover").active=!!a;case 8:case"end":return e.stop()}}),e,this)}))),function(){return a.apply(this,arguments)})},{key:"changeMatchStatus",value:(t=c(regeneratorRuntime.mark((function e(){var t,a,i=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getTeamId();case 2:t=e.sent,a=this.circle.getComponent(d).clips[0],t==N.blue&&(a.curves[0].data.values[1]=new y(0,0,90),this.circle.getChildByName("Sprite").setRotationFromEuler(0,0,-90),this.circle.getChildByName("Sprite2").setRotationFromEuler(0,0,-90)),t==N.red&&(a.curves[0].data.values[1]=new y(0,0,-90),this.circle.getChildByName("Sprite").setRotationFromEuler(0,0,90),this.circle.getChildByName("Sprite2").setRotationFromEuler(0,0,90)),this.circle.getChildByName("red").active=!1,this.circle.getChildByName("red1").active=!1,this.circle.getChildByName("blue").active=!1,this.circle.getChildByName("blue1").active=!1,this.board.getChildByName("CancelMatchButton").active=!1,this.circle.getComponent(d).play(),this.circle.getComponent(d).once(d.EventType.FINISHED,(function(){i.circle.getComponent(d).onDestroy(),i.circle.getChildByName("Sprite").active=!0,i.circle.getChildByName("Sprite2").active=!0}));case 13:case"end":return e.stop()}}),e,this)}))),function(){return t.apply(this,arguments)})}]),e}(),e("MatchingBoard",(R=b(),a((w=function(e){function t(e,a){var i;return r(this,t),(i=n(this,s(t).call(this,e,a))).uiControl=null,i.matchingTime=0,i.initTime=-100,i.waitInit=!1,i.name="MatchingBoard",i.uiControl=new I(i.board,i.SDK),i}var a,l,u,g,d,p,v;return i(t,e),o(t,[{key:"setListener",value:function(){h(s(t.prototype),"setListener",this).call(this),this.SDK.Room.onCancelMatch=this.onCancelMatch.bind(this),this.SDK.Room.onMatch=this.onMatch.bind(this),this.SDK.curRoom.onRecvFromClient=this.onRecvFromClient.bind(this),this.SDK.curRoom.onLeaveRoom=this.onLeaveRoom.bind(this),this.SDK.curRoom.onRecvFromGameSvr=this.onRecvFromGameSvr.bind(this),this.SDK.gameManager.timerSingal=this.onTimerSingal.bind(this)}},{key:"initData",value:function(){h(s(t.prototype),"initData",this).call(this),this.matchingTime=0,this.initTime=0,this.waitInit=!1,this.SDK.gameManager.Util.isRobotRoomCache=void 0}},{key:"onTimerSingal",value:(v=c(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(this.dead){e.next=20;break}if(this.waitInit){e.next=6;break}this.uiControl.setTime(this.matchingTime),this.matchingTime+=.5,e.next=20;break;case 6:if(this.initTime+=.5,this.initTime>2&&this.initTime<3&&this.SDK.sendToServer(f.RequestInitData,1),!(this.initTime>5)){e.next=20;break}if(this.SDK.gameManager.showToast("房间连接失败",2),this.SDK.leaveRoom(),!this.SDK.gameManager.Util.teammaterIsLover()){e.next=16;break}return e.next=14,this.ChangeBoard(this.SDK.gameManager.WaitLoverBoard);case 14:e.next=20;break;case 16:return e.next=18,this.SDK.leaveGroup();case 18:return e.next=20,this.ChangeBoard(this.SDK.gameManager.MainBoard);case 20:case"end":return e.stop()}}),e,this)}))),function(){return v.apply(this,arguments)})},{key:"onCancelMatch",value:(p=c(regeneratorRuntime.mark((function e(t){var a,i;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=3,this.SDK.getGroupInfo();case 3:if(a=e.sent,i=null,!a){e.next=20;break}return e.next=9,this.SDK.gameManager.Util.teammaterIsLover();case 9:if(!e.sent){e.next=13;break}i=this.SDK.gameManager.WaitLoverBoard,e.next=18;break;case 13:return e.next=15,this.SDK.leaveGroup();case 15:return e.next=17,this.SDK.leaveRoom();case 17:i=this.SDK.gameManager.MainBoard;case 18:e.next=21;break;case 20:i=this.SDK.gameManager.MainBoard;case 21:return e.next=23,this.ChangeBoard(i);case 23:case"end":return e.stop()}}),e,this)}))),function(e){return p.apply(this,arguments)})},{key:"onMatch",value:(d=c(regeneratorRuntime.mark((function e(t){var a,i;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(t.data.errCode!==this.SDK.errorCode.EC_OK){e.next=25;break}return S("匹配成功",t.data),this.SDK.curRoom.initRoom(t.data.roomInfo),this.SDK.Listener.add(this.SDK.curRoom),this.waitInit=!0,this.SDK.gameManager.Util.IsRobotRoom(),e.next=9,this.SDK.getGroupInfo();case 9:if(e.sent){e.next=24;break}return e.next=13,this.SDK.getPlayerIndex();case 13:if(1!=e.sent){e.next=24;break}return e.next=17,this.SDK.createGroup();case 17:if(e.sent!=MGOBE.ErrCode.EC_OK){e.next=24;break}return e.next=21,this.SDK.getGroupInfo();case 21:return a=e.sent,e.next=24,this.SDK.sendToRoom(B.MatchedJoinGroup,a.id);case 24:return e.abrupt("return");case 25:return this.SDK.gameManager.showToast("匹配失败",1.5),e.next=29,this.SDK.getGroupInfo();case 29:return i=e.sent,e.next=32,this.ChangeBoard(i?this.SDK.gameManager.WaitLoverBoard:this.SDK.gameManager.MainBoard);case 32:case"end":return e.stop()}}),e,this)}))),function(e){return d.apply(this,arguments)})},{key:"onLeaveRoom",value:(g=c(regeneratorRuntime.mark((function e(t){var a,i,r,n,s,o,h,c=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(this.dead){e.next=18;break}return this.dead=!0,e.next=4,this.SDK.getLoverInfo();case 4:return a=e.sent,i=t.data.leavePlayerId,r=1,n=a.id==i,e.next=10,this.SDK.gameManager.Util.teammaterIsLover();case 10:if(s=e.sent,h=this.SDK.gameManager.MainBoard,this.dead=!0,r!=D.Offline){e.next=18;break}return e.next=16,this.SDK.leaveRoom();case 16:a?n?(this.SDK.leaveGroup(),o=new M(this.scene,this.SDK,s?"另一半已离开,此局不计入对局数据":"队友已离开,此局不计入对局数据",K.single,"回到首页")):s?(h=this.SDK.gameManager.WaitLoverBoard,o=new M(this.scene,this.SDK,"敌人已离开,此局不计入对局数据",K.single,"回到情侣房间")):(this.SDK.leaveGroup(),o=new M(this.scene,this.SDK,"敌人已离开,此局不计入对局数据",K.single,"回到首页")):this.SDK.leaveGroup(),o.show(this,(function(){c.SDK.curDialog.dead||(c.ChangeBoard(h),c.SDK.curDialog.destroy())}));case 18:case"end":return e.stop()}}),e,this)}))),function(e){return g.apply(this,arguments)})},{key:"onRecvFromGameSvr",value:(u=c(regeneratorRuntime.mark((function e(t){var a,i,r,n,s,o,h,l,m,u,g,d,p,v,y,f=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(S("接收到实时服务器的数据:",t.data),a=t.data.data,(i=a.type)!=x.Init){e.next=16;break}return this.SDK.gameManager.timerSingal=null,r=a.data,this.SDK.gameManager.node.emit("GameInit",r.init),e.next=10,this.SDK.getPlayerInfo();case 10:for(n=e.sent,s=!1,o=0;o<r.playerList.length;o++)(h=r.playerList[o]).isRobot&&(this.SDK.gameManager.robotInfo[h.id]=h,h.teamId==n.teamId&&(s=!0));s?(this.SDK.gameManager.showToast("匹配失败",1.5),this.SDK.leaveGroup(),this.SDK.leaveRoom(),this.ChangeBoard(this.SDK.gameManager.MainBoard)):(this.uiControl.matchSuccess(r.playerList),this.uiControl.changeMatchStatus()),e.next=47;break;case 16:if(i!=x.Start){e.next=27;break}this.SDK.gameManager.isRunning=!0,l=a.data,this.SDK.gameManager.startTime=l.startTime,m=this.SDK.gameManager.Util.getLocalTime(),Math.abs(m-l.startTime)>5&&new M(this.scene,this.SDK,"检测到您本地时间有误,可能导致游戏倒计时显示错误",K.single,"知道了").show(this,(function(){f.SDK.curDialog.destroy()})),C.develop,this.SDK.gameManager.gameTime=a.data.gameTime,setTimeout(c(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t=f.SDK.gameManager.GamingBoard,e.next=3,f.ChangeBoard(t);case 3:case"end":return e.stop()}}),e)}))),2e3),e.next=47;break;case 27:if(i!=x.NetState){e.next=47;break}if(!this.dead){e.next=30;break}return e.abrupt("return");case 30:return S("[matching]接收到在线状态变更信息",a.data),e.next=33,this.SDK.getLoverInfo();case 33:return u=e.sent,g=a.data.playerId,d=a.data.state,p=u.id==g,e.next=39,this.SDK.gameManager.Util.teammaterIsLover();case 39:if(v=e.sent,y=this.SDK.gameManager.MainBoard,this.dead=!0,d!=D.Offline){e.next=47;break}return e.next=45,this.SDK.leaveRoom();case 45:u?p?(this.SDK.leaveGroup(),v?this.SDK.gameManager.showToast("另一半离开了房间",2):this.SDK.gameManager.showToast("队友离开了房间",2)):v?(y=this.SDK.gameManager.WaitLoverBoard,this.SDK.gameManager.showToast("对方离开了房间",2)):(this.SDK.leaveGroup(),this.SDK.gameManager.showToast("对方离开了房间",2)):this.SDK.leaveGroup(),this.ChangeBoard(y);case 47:case"end":return e.stop()}}),e,this)}))),function(e){return u.apply(this,arguments)})},{key:"onRecvFromClient",value:(l=c(regeneratorRuntime.mark((function e(t){var a,i,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(a=JSON.parse(t.data.msg),i=a.type,r=a.data,t.data.sendPlayerId,i!=B.MatchedJoinGroup){e.next=8;break}return e.next=8,this.SDK.joinGroup(r);case 8:case"end":return e.stop()}}),e,this)}))),function(e){return l.apply(this,arguments)})},{key:"InitEvent",value:function(){h(s(t.prototype),"InitEvent",this).call(this),this.board.getChildByName("CancelMatchButton").getChildByName("Button").on(m.TOUCH_END,this.clickCancelMatch,this)}},{key:"destroy",value:function(){h(s(t.prototype),"destroy",this).call(this),this.board.getChildByName("CancelMatchButton").getChildByName("Button").off(m.TOUCH_END)}},{key:"clickCancelMatch",value:(a=c(regeneratorRuntime.mark((function e(){var t,a,i,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!this.dead){e.next=2;break}return e.abrupt("return");case 2:return this.dead=!0,e.next=5,this.SDK.getRoomInfo();case 5:return t=e.sent,e.next=8,this.SDK.getGroupInfo();case 8:if(a=e.sent,i=!1,!t){e.next=16;break}return e.next=13,this.SDK.leaveRoom();case 13:e.sent,this.SDK.errorCode.EC_OK,i=!0;case 16:if(i){e.next=23;break}return e.next=19,this.SDK.cancelMatchinig();case 19:e.sent,this.SDK.errorCode.EC_OK,e.next=40;break;case 23:if(r=null,!a){e.next=37;break}return e.next=27,this.SDK.gameManager.Util.teammaterIsLover();case 27:if(!e.sent){e.next=32;break}r=this.SDK.gameManager.WaitLoverBoard,e.next=35;break;case 32:return e.next=34,this.SDK.leaveGroup();case 34:r=this.SDK.gameManager.MainBoard;case 35:e.next=38;break;case 37:r=this.SDK.gameManager.MainBoard;case 38:return e.next=40,this.ChangeBoard(r);case 40:case"end":return e.stop()}}),e,this)}))),function(){return a.apply(this,arguments)})}]),t}(k)).prototype,"clickCancelMatch",[R],Object.getOwnPropertyDescriptor(w.prototype,"clickCancelMatch"),w.prototype),w)),l._RF.pop()}}}));
+              if (y < .1) {
+                this.action_power = false;
+                this.startElastic();
+              } else {
+                this.node.setScale(new Vec3(1, y, 1));
+              }
+            }
+          }
+        }, {
+          key: "actionFall",
+          value: function actionFall(dt) {
+            if (this.action_fall) {
+              this.time_fall += dt;
+              var cur_pos = this.node.getPosition();
+              this.data_fall.speed += this.data_fall.g * dt;
+              var dy = this.data_fall.speed * dt;
+              cur_pos.y -= dy;
 
-System.register("chunks:///UI/Board/ResultBoard.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Const.js","../../Util.js","./BaseBoard.js","../avatar.js"],(function(e,t){var a,r,i,n,o,s,l,d,g,m,c,h,y,u,p,C,B,v,N,f,M,S,b,I,D,k,x,K,R,w,U,L;return e({_dec:void 0,_dec2:void 0,_dec3:void 0,_dec4:void 0,_class:void 0,_temp:void 0}),{setters:[function(e){a=e.applyDecoratedDescriptor,r=e.inherits,i=e.classCallCheck,n=e.possibleConstructorReturn,o=e.getPrototypeOf,s=e.createClass,l=e.get,d=e.asyncToGenerator},function(e){g=e.cclegacy,m=e.SystemEventType,c=e.Animation,h=e.Label,y=e.ProgressBar,u=e.AudioSource,p=e.Vec3,C=e.tween,B=e.Color,v=e.Sprite},function(e){N=e.log,f=e.TeamColor,M=e.PlayerState,S=e.GroupMessageType,b=e.GroupSysMessageType},function(e){I=e.throttle},function(e){D=e.BaseBoard},function(e){k=e.Avatar}],execute:function(){g._RF.push({},"8a67cE5ERBGL6NMmCPaURz2","ResultBoard",void 0),L=function(){function e(t,a){i(this,e),this.board=null,this.SDK=null,this.isLover=!1,this.redTeam=[],this.blueTeam=[],this.players=[],this.result=null,this.board=t,this.SDK=a}var t,a,r;return s(e,[{key:"initData",value:(r=d(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getTeammate();case 2:e.sent?this.setOnceMore(0):this.setOnceMore(4);case 4:case"end":return e.stop()}}),e,this)}))),function(){return r.apply(this,arguments)})},{key:"initUI",value:(a=d(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.board=t,e.next=3,this.initBoardData(this.result);case 3:this.onceMore=this.board.getChildByName("onceMore"),this.changeTeammater=this.board.getChildByName("other"),this.homepage=this.board.getChildByName("back");case 6:case"end":return e.stop()}}),e,this)}))),function(e){return a.apply(this,arguments)})},{key:"initBoardData",value:(t=d(regeneratorRuntime.mark((function e(t){var a,r,i,n,o,s,l,g,m,N,M,S,b,I,D,x,K,R,w,U=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return(a=this.board.getChildByName("scoreBoard").getChildByName("cup")).getChildByName("win").active=!1,a.getChildByName("draw").active=!1,a.getChildByName("default").active=!1,this.board.getChildByName("scoreBoard").getChildByName("mvp").active=!1,e.next=7,this.SDK.getPlayerInfo();case 7:if(this.playerInfo=e.sent,t.winnerTeam||(a.getChildByName("draw").active=!0),!(this.SDK.gameManager.serverPlayer.teamId==f.red&&t.winnerTeam==f.red||this.SDK.gameManager.serverPlayer.teamId==f.blue&&t.winnerTeam==f.blue)){e.next=14;break}return e.next=12,this.SDK.gameManager.Util.loadImg("Texture/UI/result/ying/spriteFrame",this.board.getChildByName("scoreBoard"));case 12:a.getChildByName("win").active=!0,this.SDK.gameManager.getComponent(u).playOneShot(this.SDK.gameManager.audio_win,1);case 14:if(!(this.SDK.gameManager.serverPlayer.teamId==f.red&&t.winnerTeam==f.blue||this.SDK.gameManager.serverPlayer.teamId==f.blue&&t.winnerTeam==f.red)){e.next=19;break}return e.next=17,this.SDK.gameManager.Util.loadImg("Texture/UI/result/shu/spriteFrame",this.board.getChildByName("scoreBoard"));case 17:a.getChildByName("default").active=!0,this.SDK.gameManager.Util.playAudio(this.SDK.gameManager.audio_failed);case 19:return r=null,e.next=22,this.SDK.gameManager.Util.teammaterIsLover();case 22:if(this.isLover=e.sent,!this.isLover){e.next=41;break}return this.board.getChildByName("scoreBoard").getChildByName("loverBoard").active=!0,this.board.getChildByName("scoreBoard").getChildByName("strengerBoard").active=!1,r=this.board.getChildByName("scoreBoard").getChildByName("loverBoard"),e.next=29,this.SDK.getLoverInfo();case 29:(i=e.sent)||Object.keys(t.teamList).map((function(e){t.teamList[e].playerList.map((function(e,a){t.teamList[a].id===U.playerInfo.teamId&&e.id!==U.playerInfo.id&&(i=e)}))})),n=JSON.parse(this.playerInfo.profile),o=i.profile?JSON.parse(i.profile):i,s=r.getChildByName("top").getChildByName("Avatar").getChildByName("boyAvatar"),l=r.getChildByName("top").getChildByName("Avatar2").getChildByName("girlAvatar"),1===n.gender?(this.SDK.gameManager.Util.loadRemoteImg(n.avatar_url,s),this.SDK.gameManager.Util.loadRemoteImg(o.avatar_url?o.avatar_url:o.avatar,l)):(this.SDK.gameManager.Util.loadRemoteImg(o.avatar_url?o.avatar_url:o.avatar,s),this.SDK.gameManager.Util.loadRemoteImg(n.avatar_url,l)),n.isVip?(s.getChildByName("isVip").active=!0,l.getChildByName("isVip").active=!0):(s.getChildByName("isVip").active=!1,l.getChildByName("isVip").active=!1),g=r.getChildByName("top").getChildByName("ProgressBar"),t.tacit_score_info&&t.tacit_score_info.length&&(m=t.tacit_score_info.filter((function(e){return e.lover_id===JSON.parse(U.playerInfo.profile).lover_id}))[0],r.getChildByName("top").getChildByName("Lv").getComponent(h).string="恋人Lv.".concat(this.SDK.gameManager.Util.loverLevel(m.original_tacit_score)),r.getChildByName("top").getChildByName("LvHeart").getChildByName("Lv").getComponent(h).string="".concat(this.SDK.gameManager.Util.loverLevel(m.original_tacit_score)),r.getChildByName("top").getChildByName("desc").getChildByName("score").getComponent(h).string="+".concat(m.add_tacit_score),N=m.original_tacit_score,M=m.original_tacit_score+m.add_tacit_score,this.progressBarScore(g,N),S=[50,150,350,850,1850,3850,6850,11850,18850,28850],setTimeout((function(){var e=setInterval((function(){if(N>=M)return r.getChildByName("top").getChildByName("Lv").getComponent(h).string="恋人Lv.".concat(U.SDK.gameManager.Util.loverLevel(M)),r.getChildByName("top").getChildByName("LvHeart").getChildByName("Lv").getComponent(h).string="".concat(U.SDK.gameManager.Util.loverLevel(M)),void clearInterval(e);N<M&&(N++,S.indexOf(N)>-1&&N<M?g.getComponent(y).progress=0:U.progressBarScore(g,N))}),10)}),t.mvp===this.playerInfo.id?3500:500)),e.next=45;break;case 41:this.board.getChildByName("scoreBoard").getChildByName("loverBoard").active=!1,this.board.getChildByName("scoreBoard").getChildByName("strengerBoard").active=!0,(r=this.board.getChildByName("scoreBoard").getChildByName("strengerBoard")).getChildByName("players").children.map((function(e,t){e.getChildByName("avatar").getChildByName("onceMore").active=!1,e.getChildByName("avatar").getChildByName("leave").active=!1}));case 45:b=0,I=0,D=this.board.getChildByName("scoreBoard").getChildByName("mvp"),x=D.getComponent(c),K=new p,this.players=[],this.redTeam=[],this.blueTeam=[],x.onLoad(),Object.keys(t.teamList).map((function(e){t.teamList[e].id==f.red&&t.teamList[e].playerList.map(function(){var e=d(regeneratorRuntime.mark((function e(a,i){var n;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:U.players.find((function(e){return e.id===a.id}))||U.players.push(a),U.redTeam.push({player:a,node:"avatar".concat(i+1)}),b+=a.score,U.isLover?((n=r.getChildByName("teamRed").getChildByName("avatars").getChildByName("avatar".concat(i+1))).getChildByName("score").getComponent(h).string="".concat(a.score,"分"),n.getChildByName("onceMore").active=!1,n.getChildByName("leave").active=!1,1===a.gender?U.SDK.gameManager.Util.loadImg("/Texture/UI/result/boy/spriteFrame",n.getChildByName("avatar").getChildByName("gender")):U.SDK.gameManager.Util.loadImg("/Texture/UI/result/girl/spriteFrame",n.getChildByName("avatar").getChildByName("gender")),0===a.status?(n.getChildByName("offLine").active=!0,n.getChildByName("avatar").getComponent(k).setOffline()):(n.getChildByName("offLine").active=!1,n.getChildByName("avatar").getComponent(k).setOnline()),a.isVip?n.getChildByName("avatar").getChildByName("isVip").active=!0:n.getChildByName("avatar").getChildByName("isVip").active=!1,U.SDK.gameManager.Util.loadRemoteImg(a.avatar,n.getChildByName("avatar")),a.id===t.mvp&&(K=new p(n.getPosition().x-190,n.getPosition().y-150,0))):(n=r.getChildByName("top").getChildByName("teamRed").getChildByName("avatar".concat(i+1)),U.SDK.gameManager.Util.loadRemoteImg(a.avatar,n),1===a.gender&&U.SDK.gameManager.Util.loadImg("/Texture/UI/result/boy/spriteFrame",n.getChildByName("gender")),2===a.gender&&U.SDK.gameManager.Util.loadImg("/Texture/UI/result/girl/spriteFrame",n.getChildByName("gender")),a.isVip?n.getChildByName("isVip").active=!0:n.getChildByName("isVip").active=!1);case 4:case"end":return e.stop()}}),e)})));return function(t,a){return e.apply(this,arguments)}}()),t.teamList[e].id==f.blue&&t.teamList[e].playerList.map((function(e,a){var i;U.players.find((function(t){return t.id===e.id}))||U.players.push(e),U.blueTeam.push({player:e,node:"avatar".concat(a+1)}),I+=e.score,U.isLover?((i=r.getChildByName("teamBlue").getChildByName("avatars").getChildByName("avatar".concat(a+1))).getChildByName("score").getComponent(h).string="".concat(e.score,"分"),i.getChildByName("onceMore").active=!1,i.getChildByName("leave").active=!1,1===e.gender?U.SDK.gameManager.Util.loadImg("/Texture/UI/result/boy/spriteFrame",i.getChildByName("avatar").getChildByName("gender")):U.SDK.gameManager.Util.loadImg("/Texture/UI/result/girl/spriteFrame",i.getChildByName("avatar").getChildByName("gender")),0===e.status?(i.getChildByName("offLine").active=!0,i.getChildByName("avatar").getComponent(k).setOffline()):(i.getChildByName("offLine").active=!1,i.getChildByName("avatar").getComponent(k).setOnline()),e.isVip?i.getChildByName("avatar").getChildByName("isVip").active=!0:i.getChildByName("avatar").getChildByName("isVip").active=!1,U.SDK.gameManager.Util.loadRemoteImg(e.avatar,i.getChildByName("avatar")),e.id===t.mvp&&(K=new p(i.getPosition().x+120,i.getPosition().y-150,0))):(i=r.getChildByName("top").getChildByName("teamBlue").getChildByName("avatar".concat(a+1)),U.SDK.gameManager.Util.loadRemoteImg(e.avatar,i),1===e.gender&&U.SDK.gameManager.Util.loadImg("/Texture/UI/result/boy/spriteFrame",i.getChildByName("gender")),2===e.gender&&U.SDK.gameManager.Util.loadImg("/Texture/UI/result/girl/spriteFrame",i.getChildByName("gender")),e.isVip?i.getChildByName("isVip").active=!0:i.getChildByName("isVip").active=!1)}))})),this.isLover||((R=this.board.getChildByName("scoreBoard").getChildByName("strengerBoard").getChildByName("top")).getChildByName("scoreBar").getComponent(y).progress=.5,R.getChildByName("scoreBar").getChildByName("Bar").getChildByName("vs").position=new p(240,5,0),(w=b+I!==0?b/(b+I):.5)<.2&&(w=.2),w>.8&&(w=.8),setTimeout((function(){C(R.getChildByName("scoreBar").getComponent(y)).to(.3,{progress:w}).start(),C(R.getChildByName("scoreBar").getChildByName("Bar").getChildByName("vs")).to(.3,{position:new p(480*w,5,0)}).start()}),100),R.getChildByName("scoreBar").getChildByName("redScore").getComponent(h).string="".concat(b),R.getChildByName("scoreBar").getChildByName("blueScore").getComponent(h).string="".concat(I),this.players.sort((function(e,t){return t.score-e.score})),this.players.map((function(e,a){var i=r.getChildByName("players").getChildByName("player".concat(a+1));U.SDK.gameManager.Util.loadRemoteImg(e.avatar,i.getChildByName("avatar")),e.isVip?(i.getChildByName("nickName").getComponent(h).color=new B(240,190,37,255),i.getChildByName("nickName").getChildByName("vip").active=!0):(i.getChildByName("nickName").getComponent(h).color=new B(51,51,51,255),i.getChildByName("nickName").getChildByName("vip").active=!1),U.playerInfo.id===e.id?(i.getComponent(v).color=new B(255,246,237,255),i.getChildByName("nickName").getComponent(h).color=new B(210,107,0,255),i.getChildByName("score").getComponent(h).color=new B(210,107,0,255)):(i.getComponent(v).color=new B(255,255,255,255),i.getChildByName("score").getComponent(h).color=new B(51,51,51,255),e.isVip||(i.getChildByName("nickName").getComponent(h).color=new B(51,51,51,255))),0===e.status?(i.getChildByName("avatar").getChildByName("offLine").active=!0,i.getChildByName("avatar").getComponent(k).setOffline()):(i.getChildByName("avatar").getChildByName("offLine").active=!1,i.getChildByName("avatar").getComponent(k).setOnline()),1===e.gender?U.SDK.gameManager.Util.loadImg("/Texture/UI/result/boy/spriteFrame",i.getChildByName("avatar").getChildByName("gender")):U.SDK.gameManager.Util.loadImg("/Texture/UI/result/girl/spriteFrame",i.getChildByName("avatar").getChildByName("gender")),U.isLover||e.id!==t.mvp||(K=new p(i.getChildByName("avatar").getPosition().x-35,i.getChildByName("avatar").getPosition().y+65,0)),i.getChildByName("nickName").getComponent(h).string=e.name,i.getChildByName("score").getComponent(h).string="".concat(e.score,"分")}))),t.mvp&&(t.mvp===this.playerInfo.id?setTimeout((function(){D.active=!0,x.on(c.EventType.FINISHED,(function(){C(D).to(.3,{position:K,scale:new p(.2,.2,.2)}).start()})),x.play()}),300):(D.setScale(.2,.2,.2),D.setPosition(K),D.active=!0));case 57:case"end":return e.stop()}}),e,this)}))),function(e){return t.apply(this,arguments)})},{key:"setOnceMore",value:function(e){var t=this;switch(e){case 1:this.SDK.gameManager.Util.loadImg("Texture/UI/result/anniu_1/spriteFrame",this.onceMore),this.onceMore.getChildByName("Label").getComponent(h).string="等待队友准备";break;case 2:this.SDK.gameManager.Util.loadImg("Texture/UI/result/anniu_1/spriteFrame",this.onceMore),this.onceMore.getChildByName("Label").getComponent(h).string="队友已准备好,立即开始";break;case 3:this.SDK.gameManager.Util.loadImg("Texture/UI/result/anniu_1/spriteFrame",this.onceMore),this.onceMore.getChildByName("Label").getComponent(h).string="再来一局";break;case 4:this.SDK.gameManager.Util.loadImg("Texture/UI/result/anniu_3/spriteFrame",this.onceMore),this.onceMore.getChildByName("Label").getComponent(h).string="队友已离开";break;default:this.SDK.gameManager.Util.loadImg("Texture/UI/result/anniu_1/spriteFrame",this.onceMore),this.onceMore.getChildByName("Label").getComponent(h).string="再来一局"}var a=this.board.getChildByName("scoreBoard").getChildByName("loverBoard").getChildByName("teamRed").getChildByName("avatars"),r=this.board.getChildByName("scoreBoard").getChildByName("loverBoard").getChildByName("teamBlue").getChildByName("avatars"),i=this.board.getChildByName("scoreBoard").getChildByName("strengerBoard");this.playerInfo.teamId===f.red?this.redTeam.map((function(r){switch(e){case 0:case 3:case 4:a.getChildByName("".concat(r.node)).getChildByName("onceMore").active=!1,i.getChildByName("players").getChildByName("player".concat(t.players.findIndex((function(e){return e.id===r.player.id}))+1)).getChildByName("avatar").getChildByName("onceMore").active=!1;break;case 1:if(r.player.id!==t.playerInfo.id)break;a.getChildByName("".concat(r.node)).getChildByName("onceMore").active=!0,i.getChildByName("players").getChildByName("player".concat(t.players.findIndex((function(e){return e.id===r.player.id}))+1)).getChildByName("avatar").getChildByName("onceMore").active=!0;break;case 2:if(r.player.id===t.playerInfo.id)break;a.getChildByName("".concat(r.node)).getChildByName("onceMore").active=!0,i.getChildByName("players").getChildByName("player".concat(t.players.findIndex((function(e){return e.id===r.player.id}))+1)).getChildByName("avatar").getChildByName("onceMore").active=!0}})):this.blueTeam.map((function(a){switch(e){case 0:case 3:case 4:r.getChildByName("".concat(a.node)).getChildByName("onceMore").active=!1,i.getChildByName("players").getChildByName("player".concat(t.players.findIndex((function(e){return e.id===a.player.id}))+1)).getChildByName("avatar").getChildByName("onceMore").active=!1;break;case 1:if(a.player.id!==t.playerInfo.id)break;r.getChildByName("".concat(a.node)).getChildByName("onceMore").active=!0,i.getChildByName("players").getChildByName("player".concat(t.players.findIndex((function(e){return e.id===a.player.id}))+1)).getChildByName("avatar").getChildByName("onceMore").active=!0;break;case 2:if(a.player.id===t.playerInfo.id)break;r.getChildByName("".concat(a.node)).getChildByName("onceMore").active=!0,i.getChildByName("players").getChildByName("player".concat(t.players.findIndex((function(e){return e.id===a.player.id}))+1)).getChildByName("avatar").getChildByName("onceMore").active=!0}}))}},{key:"progressBarScore",value:function(e,t){var a;a=t<=50?t/50:t>50&&t<=150?(t-50)/100:t>150&&t<=350?(t-150)/200:t>350&&t<=850?(t-350)/500:t>850&&t<=1850?(t-850)/1e3:t>1850&&t<=3850?(t-1850)/2e3:t>3850&&t<=6850?(t-3850)/3e3:t>6850&&t<=11850?(t-6850)/5e3:t>11850&&t<=18850?(t-11850)/7e3:t>18850&&t<=28850?(t-18850)/1e4:0,e.getComponent(y).progress=a}}]),e}(),e("ResultBoard",(x=I(),K=I(),R=I(500),w=I(),a((U=function(e){function t(e,a){var r;return i(this,t),(r=n(this,o(t).call(this,e,a))).uiControl=null,r.result=null,r.name="ResultBoard",r.uiControl=new L(r.board,r.SDK),r}var a,g,h,y,u,p,C,B;return r(t,e),s(t,[{key:"setResult",value:function(e){e&&(this.uiControl.result=e)}},{key:"initData",value:function(){l(o(t.prototype),"initData",this).call(this),this.SDK.gameManager.robotInfo={}}},{key:"setListener",value:function(){l(o(t.prototype),"setListener",this).call(this),this.SDK.curGroup.onChangeCustomGroupPlayerStatus=this.onChangeCustomGroupPlayerStatus.bind(this),this.SDK.curGroup.onRecvFromGroupClient=this.onRecvFromGroupClient.bind(this),this.SDK.curGroup.onLeaveGroup=this.onLeaveGroup.bind(this),this.SDK.gameManager.timerSingal&&(this.SDK.gameManager.timerSingal=null)}},{key:"onChangeCustomGroupPlayerStatus",value:(B=d(regeneratorRuntime.mark((function e(t){var a,r,i,n;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getTeammate();case 2:if(a=e.sent,r=this.uiControl.playerInfo.stateGroup,i=M.NotReady,a&&(i=a.customPlayerStatus,t.data.changePlayerId==a.id&&(i=t.data.customGroupPlayerStatus,r==M.Ready?i==M.Ready||this.uiControl.setOnceMore(1):i==M.Ready?this.uiControl.setOnceMore(2):this.uiControl.setOnceMore(3))),r!=M.Ready||i!=M.Ready){e.next=23;break}return e.next=9,this.SDK.getGroupInfo();case 9:if(n=e.sent,N("都准备完毕,进入匹配",n.owner,this.uiControl.playerInfo.id),n.owner!=this.uiControl.playerInfo.id){e.next=23;break}return e.next=14,this.SDK.matchingLover();case 14:if(e.sent!=MGOBE.ErrCode.EC_OK){e.next=22;break}return e.next=18,this.SDK.sendToGroup(S.Sys,b.Matching);case 18:this.initBoardElements(),this.ChangeBoard(this.SDK.gameManager.MatchingBoard),e.next=23;break;case 22:case 23:case"end":return e.stop()}}),e,this)}))),function(e){return B.apply(this,arguments)})},{key:"onRecvFromGroupClient",value:(C=d(regeneratorRuntime.mark((function e(t){var a,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if((a=JSON.parse(t.data.msg)).type!=S.Sys){e.next=8;break}if(a.content!=b.Matching){e.next=8;break}return r=this.SDK.gameManager.MatchingBoard,this.initBoardElements(),e.next=8,this.ChangeBoard(r);case 8:case"end":return e.stop()}}),e,this)}))),function(e){return C.apply(this,arguments)})},{key:"onChangeGroupPlayerNetworkState",value:(p=d(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:N("玩家[",t.data.changePlayerId,"]在线状态有变化",t.data.networkState);case 1:case"end":return e.stop()}}),e)}))),function(e){return p.apply(this,arguments)})},{key:"onJoinGroup",value:function(e){N("有玩家加入队组:",e.data.joinPlayerId)}},{key:"onLeaveGroup",value:function(e){var t=this;N("有人离开队组",e.data.leavePlayerId);var a,r=this.uiControl.blueTeam.concat(this.uiControl.redTeam);this.uiControl.isLover?(a=this.board.getChildByName("scoreBoard").getChildByName("loverBoard"),r.map((function(t){t.player.id===e.data.leavePlayerId&&(t.player.teamId===f.red?a.getChildByName("teamRed").getChildByName("avatars").getChildByName("".concat(t.node)).getChildByName("leave").active=!0:a.getChildByName("teamBlue").getChildByName("avatars").getChildByName("".concat(t.node)).getChildByName("leave").active=!0)}))):(a=this.board.getChildByName("scoreBoard").getChildByName("strengerBoard"),r.map((function(r){r.player.id===e.data.leavePlayerId&&(a.getChildByName("players").getChildByName("player".concat(t.uiControl.players.findIndex((function(e){return e.id===r.player.id}))+1)).getChildByName("avatar").getChildByName("leave").active=!0)}))),this.uiControl.setOnceMore(4)}},{key:"InitEvent",value:(u=d(regeneratorRuntime.mark((function e(){var a,r,i;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:l(o(t.prototype),"InitEvent",this).call(this),a=this.board.getChildByName("back"),r=this.board.getChildByName("onceMore"),i=this.board.getChildByName("other"),a.on(m.TOUCH_END,this.clickHomepage,this),r.on(m.TOUCH_END,this.clickOnceMore,this),i.on(m.TOUCH_END,this.clickOther,this);case 7:case"end":return e.stop()}}),e,this)}))),function(){return u.apply(this,arguments)})},{key:"destroy",value:function(){l(o(t.prototype),"destroy",this).call(this);var e=this.board.getChildByName("back"),a=this.board.getChildByName("onceMore"),r=this.board.getChildByName("other");e.off(m.TOUCH_END),a.off(m.TOUCH_END),r.off(m.TOUCH_END)}},{key:"clickHomepage",value:(y=d(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.leaveRoom();case 2:return e.sent,e.next=5,this.SDK.leaveGroup();case 5:return t=this.SDK.gameManager.MainBoard,this.initBoardElements(),e.next=10,this.ChangeBoard(t);case 10:case"end":return e.stop()}}),e,this)}))),function(){return y.apply(this,arguments)})},{key:"clickOnceMore",value:(h=d(regeneratorRuntime.mark((function e(){var t,a,r,i;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getTeammate();case 2:if(t=e.sent){e.next=5;break}return e.abrupt("return");case 5:a=this.uiControl.playerInfo.stateGroup,r=t.customPlayerStatus,(i=a==M.Ready?M.NotReady:M.Ready)==M.Ready?r==M.Ready||this.uiControl.setOnceMore(1):r==M.Ready?this.uiControl.setOnceMore(2):this.uiControl.setOnceMore(3),this.uiControl.playerInfo.stateGroup=i,this.SDK.setGroupPlayerStatus(i);case 11:case"end":return e.stop()}}),e,this)}))),function(){return h.apply(this,arguments)})},{key:"clickDialogButton",value:(g=d(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.SDK.curDialog.destroy(),this.SDK.leaveGroup(),t=this.SDK.gameManager.MainBoard,this.initBoardElements(),e.next=6,this.ChangeBoard(t);case 6:case"end":return e.stop()}}),e,this)}))),function(){return g.apply(this,arguments)})},{key:"clickOther",value:(a=d(regeneratorRuntime.mark((function e(){var t,a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.leaveGroup();case 2:return t=this.SDK.gameManager.MatchingBoard,a=this.SDK,this.initBoardElements(),e.next=7,this.ChangeBoard(t);case 7:a.matchingSingle();case 8:case"end":return e.stop()}}),e,this)}))),function(){return a.apply(this,arguments)})},{key:"initBoardElements",value:function(){this.board.getChildByName("scoreBoard").getChildByName("mvp").getComponent(c).onDestroy(),this.board.getChildByName("scoreBoard").getChildByName("mvp").active=!1,this.board.getChildByName("scoreBoard").getChildByName("mvp").setPosition(0,0,0),this.board.getChildByName("scoreBoard").getChildByName("mvp").setScale(1.2,1.2,1.2)}}]),t}(D)).prototype,"clickHomepage",[x],Object.getOwnPropertyDescriptor(U.prototype,"clickHomepage"),U.prototype),a(U.prototype,"clickOnceMore",[K],Object.getOwnPropertyDescriptor(U.prototype,"clickOnceMore"),U.prototype),a(U.prototype,"clickDialogButton",[R],Object.getOwnPropertyDescriptor(U.prototype,"clickDialogButton"),U.prototype),a(U.prototype,"clickOther",[w],Object.getOwnPropertyDescriptor(U.prototype,"clickOther"),U.prototype),U)),g._RF.pop()}}}));
+              if (cur_pos.y <= 0) {
+                this.data_fall.speed *= -1 * this.data_fall.k;
+                cur_pos.y = 0;
+              }
 
-System.register("chunks:///UI/highLightMask.js",["../_virtual/_rollupPluginBabelHelpers.js","cc"],(function(t,s){var e,i,n,a,o,h,r,c,u,g,p,l,d,f,m;return t({_dec:void 0,_class:void 0}),{setters:[function(t){e=t.inherits,i=t.createClass,n=t.classCallCheck,a=t.possibleConstructorReturn,o=t.getPrototypeOf},function(t){h=t.cclegacy,r=t._decorator,c=t.Sprite,u=t.view,g=t.Vec3,p=t.UITransform,l=t.Component}],execute:function(){h._RF.push({},"25f14P49k9O0ZDlm2Ne6KtT","highLightMask",void 0),m=r.ccclass,r.property,t("HighLightMask",(d=m("HighLightMask"),d(f=function(t){function s(){return n(this,s),a(this,o(s).apply(this,arguments))}return e(s,t),i(s,[{key:"reset",value:function(){this.pass=this.node.getComponent(c).material.passes[0],this.pass.setUniform(this.pass.getHandle("radius"),0)}},{key:"setFocus",value:function(t,s){var e=arguments.length>2&&void 0!==arguments[2]?arguments[2]:50;if(t&&t.components&&!(t.components.length<=0)){this.focus=t,this.camera=s,this.radius=e;var i=this.node,n=u.getFrameSize(),a=new g,o=new g;if(t&&t.getComponent(p)){t.getPosition(o);for(var h,r=t,c=new g;(r=r.getParent())&&"UI"!=r.name;)h=r.getScale(),o.x*=h.x,o.y*=h.y,r.getPosition(c),o.x+=c.x,o.y+=c.y;a.x=o.x+n.width/2,a.y=-o.y+n.height/2}else t.getPosition(o),s.convertToUINode(o,i,a),a.x+=n.width/2,a.y=-a.y+n.height/2;this.pass.setUniform(this.pass.getHandle("centerX"),a.x),this.pass.setUniform(this.pass.getHandle("centerY"),a.y),this.pass.setUniform(this.pass.getHandle("radius"),e),this.pass.setUniform(this.pass.getHandle("height"),n.height),this.pass.setUniform(this.pass.getHandle("width"),n.width)}}},{key:"update",value:function(t){this.focus&&this.setFocus(this.focus,this.camera,this.radius)}}]),s}(l))||f)),h._RF.pop()}}}));
+              if (Math.abs(this.data_fall.speed) <= 0.1 && cur_pos.y <= 0.1) {
+                cur_pos.y = 0;
+                this.action_fall = false;
+              }
 
-System.register("chunks:///UI/Board/TeachingBoard.js",["../../_virtual/_rollupPluginBabelHelpers.js","cc","../../Box.js","../../Const.js","../../Util.js","../Dialog/Dialog.js","./BaseBoard.js","../avatar.js","../highLightMask.js"],(function(e,t){var i,a,n,o,r,s,h,c,l,d,u,g,m,p,y,C,N,v,f,x,B,S,w,P,D,_,b,T,M,k,K,j,O,I,E,U,A,R,H,z,L,F,Y,J,V,W,q,G,Q;return e({_dec:void 0,_dec2:void 0,_dec3:void 0,_dec4:void 0,_dec5:void 0,_dec6:void 0,_dec7:void 0,_dec8:void 0,_dec9:void 0,_class:void 0,_temp:void 0,TeachState:void 0,TeachStage:void 0}),{setters:[function(e){i=e.applyDecoratedDescriptor,a=e.inherits,n=e.classCallCheck,o=e.possibleConstructorReturn,r=e.getPrototypeOf,s=e.assertThisInitialized,h=e.createClass,c=e.get,l=e.asyncToGenerator},function(e){d=e.cclegacy,u=e.Vec3,g=e.systemEvent,m=e.SystemEvent,p=e.SystemEventType,y=e.Label,C=e.tween,N=e.ProgressBar,v=e.Vec2,f=e.randomRange,x=e.Node,B=e.UITransform,S=e.Sprite,w=e.loader,P=e.Prefab,D=e.UIOpacity,_=e.instantiate},function(e){b=e.Box},function(e){T=e.log,M=e.DialogButtonType,k=e.JumpStatus,K=e.EmojiType},function(e){j=e.throttle},function(e){O=e.Dialog},function(e){I=e.BaseBoard},function(e){E=e.Avatar},function(e){U=e.HighLightMask}],execute:function(){d._RF.push({},"f4ca8JWOD5I16+qzhkrFKPI","TeachingBoard",void 0),q=function(){function e(t,i){n(this,e),this.board=null,this.SDK=null,this.end=!1,this.emojiList=[],this.selfAvatar=null,this.teammaterAvatar=null,this.timeNumberNode=null,this.time=0,this.selfSign="1-2",this.top1=!0,this.board=t,this.SDK=i}var t,i,a,o,r;return h(e,[{key:"initUI",value:(r=l(regeneratorRuntime.mark((function e(t){var i,a;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.board=t,this.changeSoundUI(this.SDK.gameManager.Setting.switch_audio),this.headerNode=this.board.getChildByName("Header"),this.selfAvatar=this.headerNode.getChildByName("team0").getChildByName("avatar-2").getChildByName("avatar"),this.teammaterAvatar=this.headerNode.getChildByName("team0").getChildByName("avatar-1").getChildByName("avatar"),this.timeNumberNode=this.headerNode.getChildByName("time").getChildByName("number"),this.tipNode_tip=this.board.getChildByName("tip"),this.tipNode_wait=this.board.getChildByName("wait"),this.team1Node=this.board.getChildByName("Header").getChildByName("team0"),this.introduceTitleNode=this.board.getChildByName("introduce-title"),this.introduceBoxNode=this.board.getChildByName("introduce-box"),this.introduceBoxNode1=this.board.getChildByName("introduce-box1"),this.interactionNode=this.board.getChildByName("Interaction-ex"),this.touch=this.board.getChildByName("touch-tech"),this.mask=this.board.getChildByName("mask").getComponent(U),this.introduceBoxNode.active=!1,this.introduceBoxNode1.active=!1,this.tipNode_tip.active=!1,this.tipNode_wait.active=!1,this.board.getChildByName("emojiTip").active=!1,this.headerNode.getChildByName("team0").getChildByName("avatar-1").getChildByName("offLine").active=!1,this.headerNode.getChildByName("team0").getChildByName("avatar-2").getChildByName("offLine").active=!1,this.headerNode.getChildByName("team1").getChildByName("avatar-1").getChildByName("offLine").active=!1,this.headerNode.getChildByName("team1").getChildByName("avatar-2").getChildByName("offLine").active=!1,this.teammaterAvatar.getComponent(E).setOnline(),this.selfAvatar.getComponent(E).setOnline(),this.headerNode.getChildByName("team1").getChildByName("avatar-1").getChildByName("avatar").getComponent(E).setOnline(),this.headerNode.getChildByName("team1").getChildByName("avatar-2").getChildByName("avatar").getComponent(E).setOnline(),e.next=30,this.SDK.getPlayerInfo();case 30:i=e.sent,a=JSON.parse(i.profile),this.SDK.gameManager.Util.loadRemoteImg(a.avatar_url,this.selfAvatar),this.selfAvatar.getChildByName("name").getComponent(y).string=i.name;case 34:case"end":return e.stop()}}),e,this)}))),function(e){return r.apply(this,arguments)})},{key:"initData",value:function(){this.time=-100}},{key:"setTime",value:(o=l(regeneratorRuntime.mark((function e(t){var i,a,n,o,r,s,h,c;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!this.board){e.next=51;break}if(!(this.time!=t&&t<=20)){e.next=51;break}if(this.time=t,a=[],0==t){e.next=21;break}case 5:if(!(t>0)){e.next=19;break}return i=t%10,t=Math.floor(t/10),n=new x,o=n.addComponent(B),n.addComponent(S),o.setContentSize(42,56),o.setAnchorPoint(.5,.5),n.setScale(new u(.5,.5,1)),e.next=16,this.SDK.gameManager.Util.loadImg("Texture/number/"+i+"/spriteFrame",n);case 16:a.push(n),e.next=5;break;case 19:e.next=31;break;case 21:return i=0,n=new x,o=n.addComponent(B),n.addComponent(S),o.setContentSize(42,56),o.setAnchorPoint(.5,.5),n.setScale(new u(.5,.5,1)),e.next=30,this.SDK.gameManager.Util.loadImg("Texture/number/"+i+"/spriteFrame",n);case 30:a.push(n);case 31:e.t0=a.length,e.next=1===e.t0?34:2===e.t0?37:3===e.t0?40:44;break;case 34:return a[0].setPosition(new u(0,0,0)),i>0&&i<=5&&C(a[0]).to(.5,{scale:new u(1.5,1.5,1)}).start(),e.abrupt("break",48);case 37:return a[1].setPosition(new u(-10,0,0)),a[0].setPosition(new u(10,0,0)),e.abrupt("break",48);case 40:return a[2].setPosition(new u(-20,0,0)),a[1].setPosition(new u(0,0,0)),a[0].setPosition(new u(20,0,0)),e.abrupt("break",48);case 44:for(r=0;r<a.length;r++)a[r].destroy();return a=[],this.board.getChildByName("Header").getChildByName("time").getComponent(y).string=t,e.abrupt("break",48);case 48:for(s=this.timeNumberNode.children,h=0;h<s.length;h++)s[h].destroy();for(c=0;c<a.length;c++)a[c].setParent(this.timeNumberNode);case 51:case"end":return e.stop()}}),e,this)}))),function(e){return o.apply(this,arguments)})},{key:"showEmoji",value:(a=l(regeneratorRuntime.mark((function e(t,i){var a,n,o,r=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return a=new u(260,206,0),o=new Promise((function(e){var i="Prefab/Emoji/emoji_"+(t+1);w.loadRes(i,P,function(){var t=l(regeneratorRuntime.mark((function t(i,o){var s;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:if(!i){t.next=3;break}return t.abrupt("return");case 3:return n=_(o),t.next=6,r.SDK.getPlayerInfo();case 6:s=t.sent,r.SDK.gameManager.Util.loadRemoteImg(JSON.parse(s.profile).avatar_url,n.getChildByName("avatar")),n.getComponent(B).priority=99,n.setPosition(a),n.setScale(new u(.8,.8,.8)),n.setParent(r.board),C(n).to(3,{position:{x:-218,y:206,z:0}},{onComplete:function(){n.destroy()}}).start(),e(!0);case 14:case"end":return t.stop()}}),t)})));return function(e,i){return t.apply(this,arguments)}}())})),e.abrupt("return",o);case 3:case"end":return e.stop()}}),e)}))),function(e,t){return a.apply(this,arguments)})},{key:"changePlayer",value:(i=l(regeneratorRuntime.mark((function e(t){var i,a,n,o,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:i=this.board.getChildByName("Header").getChildByName("team0"),"2-1"!==this.selfSign&&"2-2"!==this.selfSign||(i=this.board.getChildByName("Header").getChildByName("team1")),a=i.getChildByName("avatar-1"),n=i.getChildByName("avatar-2"),o=a.getComponent(D),r=n.getComponent(D),t?(this.tipNode_tip.active=!0,this.tipNode_wait.active=!1):(this.tipNode_tip.active=!1,this.tipNode_wait.active=!0),t&&("1-1"===this.selfSign||"2-1"===this.selfSign)||!t&&("1-2"===this.selfSign||"2-2"===this.selfSign)?(n.getComponent(B).priority=-1,a.getComponent(B).priority=1,C(n).to(.6,{position:"1-1"===this.selfSign||"1-2"===this.selfSign?new u(-95,-46,0):new u(95,-46,0),scale:new u(.9,.9,.9)}).start(),C(r).to(.6,{opacity:122}).start(),C(a).to(.6,{position:"1-1"===this.selfSign||"1-2"===this.selfSign?new u(-65,30,0):new u(65,30,0)}).start(),C(a).to(.3,{scale:new u(1.06,1.06,1.06)}).then(C(a).to(.3,{scale:new u(1,1,1)}).start()).start(),C(o).to(.6,{opacity:255}).start()):(a.getComponent(B).priority=-1,n.getComponent(B).priority=1,C(a).to(.6,{position:"1-1"===this.selfSign||"1-2"===this.selfSign?new u(-95,-46,0):new u(95,-46,0),scale:new u(.9,.9,.9)}).start(),C(o).to(.6,{opacity:122}).start(),C(n).to(.6,{position:"1-1"===this.selfSign||"1-2"===this.selfSign?new u(-65,30,0):new u(65,30,0)}).start(),C(n).to(.3,{scale:new u(1.06,1.06,1.06)}).then(C(n).to(.3,{scale:new u(1,1,1)}).start()),C(r).to(.6,{opacity:255}).start());case 9:case"end":return e.stop()}}),e,this)}))),function(e){return i.apply(this,arguments)})},{key:"setTipAvatar",value:(t=l(regeneratorRuntime.mark((function e(t){var i,a,n;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(a=new u,n=this.board,(i=this.SDK.gameManager.Player.node.getPosition()).y+=2.2,this.SDK.gameManager.camera.convertToUINode(i,n,a),this.SDK.gameManager.userTipNode.setPosition(a),!t){e.next=11;break}return e.next=9,this.SDK.gameManager.Util.loadImg("Texture/UI/gaming/me-001/spriteFrame",this.SDK.gameManager.userTipNode.getChildByName("avatar"));case 9:e.next=13;break;case 11:return e.next=13,this.SDK.gameManager.Util.loadImg("Texture/UI/main/banner@2x (3)/spriteFrame",this.SDK.gameManager.userTipNode.getChildByName("avatar"));case 13:this.SDK.gameManager.userTipNode.active=!0;case 14:case"end":return e.stop()}}),e,this)}))),function(e){return t.apply(this,arguments)})},{key:"setIntroduce",value:function(e,t){e&&(this.introduceTitleNode.getComponent(y).string=e),t&&(this.introduceBoxNode.getChildByName("Label").getComponent(y).string=t)}},{key:"refreshScore",value:function(e,t){var i,a=e,n=t,o=this.board.getChildByName("Header").getChildByName("score");(i=a+n===0?.5:a/(a+n))<.2&&(i=.2),i>.8&&(i=.8),i>.24&&i<.5&&(i*=.85),i>.5&&i<.6&&(i*=1.2),C(o.getComponent(N)).to(.3,{progress:i}).start(),o.getChildByName("redScore").getComponent(y).string="".concat(a,"分"),o.getChildByName("blueScore").getComponent(y).string="".concat(n,"分")}},{key:"setFocus",value:function(e,t){this.mask.setFocus(e,this.SDK.gameManager.camera,t)}},{key:"changeSoundUI",value:function(e){this.SDK.gameManager.Util.loadImg(e?"/Texture/UI/gaming/kaiqi@2x/spriteFrame":"/Texture/UI/gaming/gianbi@2x/spriteFrame",this.board.getChildByName("nav").getChildByName("music"))}}]),e}(),function(e){e[e.normal=0]="normal",e[e.try=1]="try",e[e.wait=2]="wait"}(G||(G={})),function(e){e[e.single=0]="single",e[e.multiple=1]="multiple",e[e.gaming=2]="gaming",e[e.end=3]="end"}(Q||(Q={})),e("TeachingBoard",(A=j(),R=j(),H=j(),z=j(),L=j(),F=j(),Y=j(),J=j(),V=j(),i((W=function(e){function t(e,i){var a;return n(this,t),(a=o(this,r(t).call(this,e,i))).TeachState={0:a.action_1.bind(s(a)),1:a.action_2.bind(s(a)),2:a.action_3.bind(s(a)),3:a.action_4.bind(s(a)),4:a.action_5.bind(s(a)),5:a.action_6.bind(s(a))},a.uiControl=null,a.name="TeachingBoard",a.uiControl=new q(s(a),a.SDK),a}var i,d,N,x,B,S,w,P,D,_;return a(t,e),h(t,[{key:"initData",value:function(){c(r(t.prototype),"initData",this).call(this),this.teachMap=[[1,2.5,4,0,0,{x:0,y:0,z:0}],[1,2.5,4,0,3,{x:0,y:0,z:0}]],this.SDK.gameManager.updateCenterNode(!1),this.teachIndex=0,this.curBoxIndex=0,this.score=0,this.enemyScore=0,this.perfectCount=0,this.jumpCount=0,this.time=0,this.teachState=G.normal,this.teachStage=Q.single,this.Player=this.SDK.gameManager.Player,this.OtherPlayer=this.SDK.gameManager.OtherTeam,this.uiControl.mask.reset(),this.uiControl.refreshScore(0,0),this.SDK.gameManager.camera.node.setPosition(this.SDK.gameManager._origin_camera_pos),this.SDK.gameManager.plane.setPosition(new u(0,0,0)),this.action_1()}},{key:"setListener",value:function(){c(r(t.prototype),"setListener",this).call(this),this.SDK.gameManager.timerSingal=this.onTimerSingal.bind(this),this.SDK.gameManager.teachJumpSingal=this.jumpEnd.bind(this)}},{key:"onTimerSingal",value:(_=l(regeneratorRuntime.mark((function e(){var t,i,a,n,o,r,s;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:this.teachStage==Q.gaming&&(this.time-=.5,this.uiControl.setTime(Math.floor(this.time)),Math.floor(2*this.time)%7==0&&(t=this.OtherPlayer.node.getPosition(),i=this.OtherPlayer.nextBox.node.getPosition(),a=new v(i.x-t.x,i.z-t.z),n=f(-1,1),o=v.distance(new v(t.x,t.z),new v(i.x,i.z))+n,r=this.SDK.gameManager.Util.getPosWithVec(t,a,o),s={time:0,status:k.next,offset:[r.x-i.x,r.z-i.z],perfect:Math.abs(n)<.325,distance:o},this.SDK.gameManager.OtherTeam.PowerEnd(s)),this.time<=0&&this.nextState());case 1:case"end":return e.stop()}}),e,this)}))),function(){return _.apply(this,arguments)})},{key:"onAvatarSingal",value:function(e,t){e?t?this.uiControl.selfAvatar.getComponent(E).timeStart():this.uiControl.selfAvatar.getComponent(E).reset():t?this.uiControl.teammaterAvatar.getComponent(E).timeStart():this.uiControl.teammaterAvatar.getComponent(E).reset()}},{key:"InitEvent",value:(D=l(regeneratorRuntime.mark((function e(){var i;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:c(r(t.prototype),"InitEvent",this).call(this),i=this.board.getChildByName("Interaction-ex"),this.board.getChildByName("nav").getChildByName("music").on(p.TOUCH_END,this.switchSound,this),this.board.getChildByName("nav").getChildByName("back").on(p.TOUCH_END,this.leave,this),this.board.getChildByName("introduce-box").getChildByName("next").on(p.TOUCH_END,this.nextStateAction,this),this.board.getChildByName("introduce-box").getChildByName("again").on(p.TOUCH_END,this.againAction,this),g.on(m.EventType.TOUCH_START,this.onTouchDown,this),g.on(m.EventType.TOUCH_END,this.onTouchUp,this),i.getChildByName("emoji_1").on(p.TOUCH_END,this.sendEmoji_1,this),i.getChildByName("emoji_2").on(p.TOUCH_END,this.sendEmoji_2,this),i.getChildByName("emoji_3").on(p.TOUCH_END,this.sendEmoji_3,this),i.getChildByName("emoji_4").on(p.TOUCH_END,this.sendEmoji_4,this);case 12:case"end":return e.stop()}}),e,this)}))),function(){return D.apply(this,arguments)})},{key:"destroy",value:function(){c(r(t.prototype),"destroy",this).call(this),g.off(m.EventType.TOUCH_START),g.off(m.EventType.TOUCH_END);var e=this.board.getChildByName("Interaction-ex");this.board.getChildByName("nav").getChildByName("music").off(p.TOUCH_END),this.board.getChildByName("nav").getChildByName("back").off(p.TOUCH_END),this.board.getChildByName("introduce-box").getChildByName("next").off(p.TOUCH_END),this.board.getChildByName("introduce-box").getChildByName("again").off(p.TOUCH_END),e.getChildByName("emoji_1").off(p.TOUCH_END),e.getChildByName("emoji_2").off(p.TOUCH_END),e.getChildByName("emoji_3").off(p.TOUCH_END),e.getChildByName("emoji_4").off(p.TOUCH_END)}},{key:"switchSound",value:function(){this.SDK.gameManager.Setting.switch_audio=!this.SDK.gameManager.Setting.switch_audio,this.uiControl.changeSoundUI(this.SDK.gameManager.Setting.switch_audio)}},{key:"nextStateAction",value:function(){this.nextState()}},{key:"againAction",value:function(){var e=this.teachIndex-1;if(T("教学流程","回到上一步",this.teachIndex),this.TeachState[e])return this.TeachState[e](),this.teachIndex=e,!0}},{key:"clearScoreNode",value:function(){for(var e=0;e<this.SDK.gameManager.scoreNodeList.length;e++){var t=this.SDK.gameManager.scoreNodeList[e];t.node.destroy(),t.perfect&&t.perfect.destroy()}this.SDK.gameManager.scoreNodeList=[]}},{key:"leave",value:function(){var e=this;T("教学流程","点击退出演示,弹出选择框",this.SDK.gameManager.scoreNodeList),new O(this.scene,this.SDK,"确认要跳过游戏演示吗?",M.multiple,"开始游戏","我再看看").show(this,(function(){e.SDK.curDialog.dead||(e.SDK.curDialog.destroy(),e.SDK.gameManager.isTeached=!0,e.clearScoreNode(),e.ChangeBoard(e.SDK.gameManager.MainBoard))}),(function(){e.SDK.curDialog.dead||e.SDK.curDialog.destroy()}))}},{key:"endActionYes",value:function(){var e=this;this.board.getChildByName("dialog-end").active=!1,this.SDK.gameManager.isTeached=!0,setTimeout((function(){e.ChangeBoard(e.SDK.gameManager.MainBoard)}),500)}},{key:"endActionNo",value:function(){this.board.getChildByName("dialog-end").active=!1,this.ChangeBoard(this.SDK.gameManager.TeachingBoard)}},{key:"nextState",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,t=this.teachIndex+1;return T("教学流程","进入下一步",this.teachIndex),this.TeachState[t]?(this.TeachState[t](e),this.teachIndex=t,!0):(this.teachState=G.normal,this.teachStage=Q.end,this.board.getChildByName("dialog-end").active=!0,this.board.getChildByName("dialog-end").getChildByName("content").getChildByName("replay").on(p.TOUCH_END,this.endActionNo,this),this.board.getChildByName("dialog-end").getChildByName("content").getChildByName("next").on(p.TOUCH_END,this.endActionYes,this),!1)}},{key:"onTouchDown",value:function(e){switch(this.teachState){case G.try:this.Player._stat_power=!0,this.Player.jumpResult.time=0,this.Player.particleOpen(!0),this.SDK.gameManager.Util.playAudio(this.SDK.gameManager.audio_touch_down)}}},{key:"jumpEnd",value:(P=l(regeneratorRuntime.mark((function e(t){var i,a,n,o,r,s,h,c,l,d=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(i=null,i=t?this.OtherPlayer:this.Player,a=i.jumpResult.status,n=i.jumpResult.perfect,o=null,a!=k.next){e.next=32;break}if(r=new u,s=new u,h=new u,t){e.next=26;break}return i.nextBox.node.getPosition(s),i.nextBox.node.getPosition(h),h.y=0,this.curBoxIndex+=1,i.curBox=this.SDK.gameManager.map[this.curBoxIndex],this.SDK.gameManager.curBox=i.curBox,i.nextBox=this.SDK.gameManager.map[this.curBoxIndex+1],this.SDK.gameManager.nextBox=i.nextBox,n?this.perfectCount+=1:this.perfectCount=0,c=this.SDK.gameManager.Util.getScore(this.perfectCount),this.score+=c,e.next=23,this.SDK.gameManager.showScore(c,this.perfectCount);case 23:o=e.sent,e.next=29;break;case 26:this.enemyScore+=n?2:1,i.curBox=this.SDK.gameManager.map[this.OtherPlayer.index],i.nextBox=this.SDK.gameManager.map[this.OtherPlayer.index+1];case 29:i.nextBox?t||(l=new u,i.nextBox.node.getPosition(l),s.x=(s.x+l.x)/2,s.z=(s.z+l.z)/2,u.add(r,s,this.SDK.gameManager._origin_camera_pos),C(this.SDK.gameManager.camera.node).to(.5,{position:r},{}).start(),C(this.SDK.gameManager.plane).to(.5,{position:h},{}).start()):(this.teachMap.push([1,2.8,4,0,0,{x:0,y:0,z:0}]),this.SDK.gameManager.drawMap(this.teachMap)),e.next=33;break;case 32:t||(this.perfectCount=0);case 33:this.uiControl.refreshScore(this.score,this.enemyScore),t||(this.teachStage==Q.multiple?(this.jumpCount+=1,this.jumpCount>=4?this.nextState({jumpInfo:this.Player.jumpResult,scoreNode:o}):(this.isControler=!this.isControler,this.uiControl.changePlayer(this.isControler),this.uiControl.setTipAvatar(this.isControler),this.Player.setModel(this.isControler?1:2),this.isControler?this.teachState=G.try:(this.teachState=G.wait,setTimeout((function(){d.Player.AI=!0}),2e3)))):this.teachStage==Q.gaming?(this.isControler=!this.isControler,this.uiControl.changePlayer(this.isControler),this.uiControl.setTipAvatar(this.isControler),this.Player.setModel(this.isControler?1:2),this.isControler?this.teachState=G.try:(this.teachState=G.wait,setTimeout((function(){d.teachStage==Q.gaming&&(d.Player.AI=!0)}),2e3))):this.nextState({jumpInfo:this.Player.jumpResult,scoreNode:o}));case 35:case"end":return e.stop()}}),e,this)}))),function(e){return P.apply(this,arguments)})},{key:"onTouchUp",value:function(e){if(this.teachState==G.try&&this.Player._stat_power){this.Player._stat_power=!1,this.Player.function_getJumpInfo(),this.Player.modelBody.setScale(new u(1,1,1)),this.Player.modelHead.setPosition(this.Player.modelHeadPos),this.Player.modelTire&&this.Player.modelTire.setPosition(new u(0,0,0));var t=new u;this.Player.node.getPosition(t),t.y=this.Player.originPosY,this.Player.node.setPosition(t),this.Player.node.getPosition(this.Player.curPostion),this.Player.curBox.node.getComponent(b).startElastic(),this.Player.particleOpen(!1),this.Player._axis=this.Player.gameManager.Util.getJumpAxis(this.Player.node,this.Player.nextBox.node),this.Player.getFace(),this.Player._stat_jump=!0,this.teachState=G.normal}}},{key:"action_1",value:(w=l(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return t=this.SDK.gameManager,this.teachMap=[[1,2.5,4,0,0,{x:0,y:0,z:0}],[1,2.5,4,0,3,{x:0,y:0,z:0}]],e.next=5,this.SDK.gameManager.drawMap(this.teachMap,!0);case 5:return this.Player.curBox=this.SDK.gameManager.map[0],this.Player.nextBox=this.SDK.gameManager.map[1],e.next=9,t.Player.setModel(1);case 9:return e.next=11,t.OtherTeam.setModel(-1);case 11:t.Player.node.setPosition(new u(0,t.Player.originPosY,0)),this.Player.node.getPosition(this.Player.curPostion),this.jumpCount=0,this.perfectCount=0,this.uiControl.introduceBoxNode.active=!1,this.uiControl.introduceTitleNode.getComponent(y).string="先来一把单人跳一跳让我看看你的实力吧",this.uiControl.introduceBoxNode1.getChildByName("Label").getComponent(y).string="长按蓄力,松手控制向前跳",this.uiControl.introduceBoxNode1.active=!0,this.uiControl.touch.active=!0,this.uiControl.introduceTitleNode.active=!0,this.uiControl.interactionNode.active=!1,this.uiControl.headerNode.active=!1,this.uiControl.introduceBoxNode.getChildByName("again").active=!1,this.uiControl.introduceBoxNode.getChildByName("next").active=!1,this.uiControl.introduceBoxNode.getChildByName("next").getChildByName("Label").getComponent(y).string="下一步",this.uiControl.tipNode_tip.active=!1,this.uiControl.tipNode_wait.active=!1,this.SDK.gameManager.userTipNode.active=!1,this.isControler=!0,this.teachStage=Q.single,this.teachState=G.try;case 32:case"end":return e.stop()}}),e,this)}))),function(){return w.apply(this,arguments)})},{key:"action_2",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null;switch(this.uiControl.touch.active=!1,this.uiControl.introduceBoxNode1.active=!1,this.uiControl.introduceBoxNode.active=!1,this.teachState=G.normal,this.uiControl.introduceTitleNode.active=!1,this.uiControl.introduceBoxNode.getChildByName("next").getChildByName("arrow").active=!0,e.jumpInfo.status){case k.next:e.jumpInfo.perfect?this.uiControl.setIntroduce("","太棒了\n那相信双人的跳一跳\n你也没问题"):this.uiControl.setIntroduce("","你已经掌握跳一跳的精髓了\n那相信双人的跳一跳\n你也没问题");break;case k.dead:case k.current:this.uiControl.setIntroduce("","好遗憾\n有点担心双人的跳一跳\n对你来说会不会太难"),this.uiControl.introduceBoxNode.getChildByName("again").active=!0,this.uiControl.introduceBoxNode.getChildByName("next").getChildByName("arrow").active=!1,this.uiControl.introduceBoxNode.getChildByName("again").getChildByName("arrow").active=!0}this.uiControl.introduceBoxNode.active=!0,this.uiControl.introduceBoxNode.getChildByName("next").active=!0}},{key:"action_3",value:(S=l(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:this.uiControl.introduceBoxNode.active=!1,this.uiControl.introduceBoxNode.getChildByName("again").active=!1,this.uiControl.introduceBoxNode.getChildByName("next").active=!1,this.uiControl.interactionNode.active=!1,this.uiControl.headerNode.active=!1,this.uiControl.setIntroduce("","两个人共同控制棋子\n一人跳完后另一人再跳"),this.board.getChildByName("emojiTip").active=!0,this.teachStage=Q.multiple,this.uiControl.interactionNode.active=!0,this.uiControl.introduceBoxNode.active=!0,this.isControler=!1,this.uiControl.changePlayer(this.isControler),this.uiControl.setTipAvatar(this.isControler),this.uiControl.mask.node.active=!0;case 15:case"end":return e.stop()}}),e,this)}))),function(){return S.apply(this,arguments)})},{key:"action_4",value:function(){var e=this;this.uiControl.mask.node.active=!1,this.teachState=G.wait,setTimeout((function(){e.Player.AI=!0,setTimeout((function(){e.uiControl.setIntroduce("","头像和提示变更为“我“\n就是到你跳了"),e.board.getChildByName("emojiTip").active=!1}),1e3)}),2e3)}},{key:"action_5",value:function(){this.uiControl.introduceBoxNode.active=!1,this.uiControl.tipNode_tip.active=!1,this.uiControl.tipNode_wait.active=!1,this.uiControl.introduceBoxNode.getChildByName("next").getChildByName("Label").getComponent(y).string="接受挑战",this.uiControl.setIntroduce("","看来你已经适应了轮流跳了\n给你加个对手怎么样\n要加油超过他们呢"),this.uiControl.introduceBoxNode.active=!0,this.uiControl.introduceBoxNode.getChildByName("again").active=!1,this.uiControl.introduceBoxNode.getChildByName("again").getChildByName("arrow").active=!1,this.uiControl.introduceBoxNode.getChildByName("next").active=!0,this.uiControl.introduceBoxNode.getChildByName("next").getChildByName("arrow").active=!0}},{key:"action_6",value:(B=l(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.uiControl.introduceBoxNode.active=!1,this.uiControl.introduceTitleNode.active=!1,this.uiControl.headerNode.active=!0,this.score=0,this.time=20,this.perfectCount=0,this.curBoxIndex=0,this.isControler=!0,this.uiControl.setTime(this.time),this.uiControl.refreshScore(0,0),this.uiControl.changePlayer(this.isControler),this.uiControl.setTipAvatar(this.isControler),this.teachStage=Q.gaming,this.teachState=G.try,this.OtherPlayer.index=0,t=this.SDK.gameManager,this.teachMap=[[1,2.5,4,0,0,{x:0,y:0,z:0}],[1,2.5,4,0,3,{x:0,y:0,z:0}]],e.next=20,this.SDK.gameManager.drawMap(this.teachMap,!0);case 20:return this.Player.curBox=this.SDK.gameManager.map[0],this.Player.nextBox=this.SDK.gameManager.map[1],this.OtherPlayer.curBox=this.SDK.gameManager.map[0],this.OtherPlayer.nextBox=this.SDK.gameManager.map[1],e.next=26,t.Player.setModel(1);case 26:return e.next=28,t.OtherTeam.setModel(1);case 28:t.Player.node.setPosition(new u(.7,t.Player.originPosY,0)),t.OtherTeam.node.setPosition(new u(-.7,t.Player.originPosY,0)),this.Player.node.getPosition(this.Player.curPostion),this.SDK.gameManager.camera.node.setPosition(this.SDK.gameManager._origin_camera_pos),this.SDK.gameManager.plane.setPosition(new u(0,0,0));case 33:case"end":return e.stop()}}),e,this)}))),function(){return B.apply(this,arguments)})},{key:"sendEmoji_1",value:(x=l(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:t=e.sent,this.uiControl.showEmoji(K.Angry,t.id),2==this.teachIndex&&this.nextState();case 5:case"end":return e.stop()}}),e,this)}))),function(){return x.apply(this,arguments)})},{key:"sendEmoji_2",value:(N=l(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:t=e.sent,this.uiControl.showEmoji(K.Worship,t.id),2==this.teachIndex&&this.nextState();case 5:case"end":return e.stop()}}),e,this)}))),function(){return N.apply(this,arguments)})},{key:"sendEmoji_3",value:(d=l(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:t=e.sent,this.uiControl.showEmoji(K.Unfortunately,t.id),2==this.teachIndex&&this.nextState();case 5:case"end":return e.stop()}}),e,this)}))),function(){return d.apply(this,arguments)})},{key:"sendEmoji_4",value:(i=l(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.getPlayerInfo();case 2:t=e.sent,this.uiControl.showEmoji(K.Applause,t.id),2==this.teachIndex&&this.nextState();case 5:case"end":return e.stop()}}),e,this)}))),function(){return i.apply(this,arguments)})}]),t}(I)).prototype,"nextStateAction",[A],Object.getOwnPropertyDescriptor(W.prototype,"nextStateAction"),W.prototype),i(W.prototype,"againAction",[R],Object.getOwnPropertyDescriptor(W.prototype,"againAction"),W.prototype),i(W.prototype,"leave",[H],Object.getOwnPropertyDescriptor(W.prototype,"leave"),W.prototype),i(W.prototype,"endActionYes",[z],Object.getOwnPropertyDescriptor(W.prototype,"endActionYes"),W.prototype),i(W.prototype,"endActionNo",[L],Object.getOwnPropertyDescriptor(W.prototype,"endActionNo"),W.prototype),i(W.prototype,"sendEmoji_1",[F],Object.getOwnPropertyDescriptor(W.prototype,"sendEmoji_1"),W.prototype),i(W.prototype,"sendEmoji_2",[Y],Object.getOwnPropertyDescriptor(W.prototype,"sendEmoji_2"),W.prototype),i(W.prototype,"sendEmoji_3",[J],Object.getOwnPropertyDescriptor(W.prototype,"sendEmoji_3"),W.prototype),i(W.prototype,"sendEmoji_4",[V],Object.getOwnPropertyDescriptor(W.prototype,"sendEmoji_4"),W.prototype),W)),d._RF.pop()}}}));
+              this.node.setPosition(cur_pos);
+            }
+          }
+        }, {
+          key: "update",
+          value: function update(dt) {
+            this.actionElastic(dt);
+            this.actionFall(dt);
+          }
+        }]);
 
-System.register("chunks:///UI/toast.js",["../_virtual/_rollupPluginBabelHelpers.js","cc"],(function(t,e){var o,n,s,i,a,c,r,h,l,u,p,d,v,f;return t({_dec:void 0,_class:void 0}),{setters:[function(t){o=t.inherits,n=t.createClass,s=t.classCallCheck,i=t.possibleConstructorReturn,a=t.getPrototypeOf},function(t){c=t.cclegacy,r=t._decorator,h=t.Label,l=t.tween,u=t.Sprite,p=t.Component}],execute:function(){c._RF.push({},"33b70jRWeBFZqBft8IjVWL7","toast",void 0),f=r.ccclass,r.property,t("Toast",(d=f("Toast"),d(v=function(t){function e(){return s(this,e),i(this,a(e).apply(this,arguments))}return o(e,t),n(e,[{key:"start",value:function(){this.isShow=!1}},{key:"show",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:2;this.isShow||(this.node.active=!0,this.isShow=!0,this.node.getChildByName("Label").getComponent(h).string=t,l(this.node).to(e,{},{onComplete:this.onComplete.bind(this),onUpdate:this.onUpdate.bind(this)}).start())}},{key:"onComplete",value:function(){this.node.active=!1,this.isShow=!1}},{key:"onUpdate",value:function(t,e){this.node.getComponent(u).color.set(255,255,255,230*(1-e))}}]),e}(p))||v)),c._RF.pop()}}}));
+        return Box;
+      }(Component)) || _class));
 
-System.register("chunks:///GameManager.js",["./_virtual/_rollupPluginBabelHelpers.js","cc","./Box.js","./Config.js","./Const.js","./Player.js","./Util.js","./SDK.js","./UI/Dialog/Dialog.js","./UI/Board/WaitLoverBoard.js","./OtherPlayer.js","./UI/Board/GamingBoard.js","./UI/Board/MainBoard.js","./UI/Board/MatchingBoard.js","./UI/Board/ResultBoard.js","./UI/Board/TeachingBoard.js","./UI/toast.js"],(function(e,t){var r,n,i,a,o,s,u,l,c,h,d,p,m,f,g,v,y,x,_,b,P,k,w,D,B,S,T,C,R,K,I,U,N,M,z,G,O,j,E,L,A,W,J,F,V,q,H,X,Z,Q,Y,$,ee,te,re,ne,ie,ae,oe,se,ue,le,ce,he,de,pe,me,fe,ge,ve,ye,xe,_e,be,Pe,ke,we,De,Be,Se,Te,Ce,Re,Ke,Ie,Ue,Ne,Me,ze,Ge,Oe,je,Ee,Le,Ae,We,Je,Fe,Ve,qe,He,Xe;return e({_dec:void 0,_dec2:void 0,_dec3:void 0,_dec4:void 0,_dec5:void 0,_dec6:void 0,_dec7:void 0,_dec8:void 0,_dec9:void 0,_dec10:void 0,_dec11:void 0,_dec12:void 0,_dec13:void 0,_dec14:void 0,_dec15:void 0,_dec16:void 0,_dec17:void 0,_dec18:void 0,_dec19:void 0,_dec20:void 0,_dec21:void 0,_dec22:void 0,_dec23:void 0,_dec24:void 0,_class:void 0,_class2:void 0,_descriptor:void 0,_descriptor2:void 0,_descriptor3:void 0,_descriptor4:void 0,_descriptor5:void 0,_descriptor6:void 0,_descriptor7:void 0,_descriptor8:void 0,_descriptor9:void 0,_descriptor10:void 0,_descriptor11:void 0,_descriptor12:void 0,_descriptor13:void 0,_descriptor14:void 0,_descriptor15:void 0,_descriptor16:void 0,_descriptor17:void 0,_descriptor18:void 0,_descriptor19:void 0,_descriptor20:void 0,_descriptor21:void 0,_descriptor22:void 0,_descriptor23:void 0,_temp:void 0}),{setters:[function(e){r=e.applyDecoratedDescriptor,n=e.inherits,i=e.classCallCheck,a=e.possibleConstructorReturn,o=e.getPrototypeOf,s=e.assertThisInitialized,u=e.initializerDefineProperty,l=e.createClass,c=e.asyncToGenerator},function(e){h=e.cclegacy,d=e._decorator,p=e.Node,m=e.Camera,f=e.Prefab,g=e.AudioClip,v=e.Texture2D,y=e.Vec3,x=e.tween,_=e.MeshRenderer,b=e.view,P=e.Component,k=e.instantiate,w=e.UITransform,D=e.Label,B=e.Color},function(e){S=e.Box},function(e){T=e.Env,C=e.EnvType,R=e.serverURL},function(e){K=e.log,I=e.ClientDataType,U=e.RoomDataType,N=e.BoxSize,M=e.TeamColor,z=e.DialogButtonType,G=e.NetState,O=e.ServerDataType,j=e.BoxShape},function(e){E=e.Player},function(e){L=e.Util},function(e){A=e.SDK},function(e){W=e.Dialog},function(e){J=e.WaitLoverBoard},function(e){F=e.OtherPlayer},function(e){V=e.GamingBoard},function(e){q=e.MainBoard},function(e){H=e.MatchingBoard},function(e){X=e.ResultBoard},function(e){Z=e.TeachingBoard},function(e){Q=e.Toast}],execute:function(){h._RF.push({},"1a8f1+varZBzIr09OsNwJXt","GameManager",void 0),qe=d.ccclass,He=d.property,Xe=function e(){i(this,e),this.switch_audio=!0},e("GameManager",(Y=qe("GameManager"),$=He({type:E}),ee=He({type:F}),te=He({type:p}),re=He({type:p}),ne=He({type:m}),ie=He({type:p}),ae=He({type:Q}),oe=He({type:f}),se=He({type:g}),ue=He({type:g}),le=He({type:g}),ce=He({type:g}),he=He({type:g}),de=He({type:g}),pe=He({type:g}),me=He({type:g}),fe=He({type:g}),ge=He({type:g}),ve=He({type:v}),ye=He({type:v}),xe=He({type:v}),_e=He({type:v}),be=He({type:p}),Y((we=r((ke=function(e){function t(){var e,r;i(this,t);for(var n=arguments.length,l=new Array(n),c=0;c<n;c++)l[c]=arguments[c];return(r=a(this,(e=o(t)).call.apply(e,[this].concat(l)))).SDK=new A,r.Setting=new Xe,r.Debug=null,r.Util=new L(r.SDK,s(r)),u(r,"Player",we,s(r)),u(r,"OtherTeam",De,s(r)),u(r,"CenterNode",Be,s(r)),u(r,"plane",Se,s(r)),u(r,"camera",Te,s(r)),u(r,"UI",Ce,s(r)),u(r,"toast",Re,s(r)),u(r,"rangeShowPrefab",Ke,s(r)),u(r,"audio_failed",Ie,s(r)),u(r,"audio_complete",Ue,s(r)),u(r,"audio_dead",Ne,s(r)),u(r,"audio_perfect",Me,s(r)),u(r,"audio_last5s",ze,s(r)),u(r,"audio_ready",Ge,s(r)),u(r,"audio_relife",Oe,s(r)),u(r,"audio_touch_down",je,s(r)),u(r,"audio_win",Ee,s(r)),u(r,"audio_go",Le,s(r)),u(r,"background_1",Ae,s(r)),u(r,"background_2",We,s(r)),u(r,"background_3",Je,s(r)),u(r,"background_4",Fe,s(r)),u(r,"userTipNode",Ve,s(r)),r._origin_camera_pos=new y,r.map=[],r.curActionPlayer=null,r.scoreNodeList=[],r.curBox=null,r.nextBox=null,r.planeIndex=1,r._isControler=!1,r.startTime=0,r.gameTime=0,r.isTeached=!1,r._isRunning=!1,r.diaDead=!1,r.AccessToken=null,r.clearTime=0,r.teammaterIsLover=void 0,r.enemyIsLover=void 0,r.isReconnect=!1,r.robotInfo={},r.BoxPrefab={f1:[null,null,null,null,null,null],f2:[null,null,null,null,null,null],f3:[null,null,null,null,null,null],f4:[null,null,null,null,null,null],f5:[null,null,null,null,null,null],y1:[null,null,null,null,null,null],y2:[null,null,null,null,null,null],y3:[null,null,null,null,null,null],y4:[null,null,null,null,null,null],y5:[null,null,null,null,null,null]},r.ChessPrefab=[null,null,null,null],r.ChessPrefabEnemy={red:null,blue:null},r}var r,h,d,m,f,g,v,P,E,F,Q,Y,$,ee,te,re,ne;return n(t,e),l(t,[{key:"initPrefab",value:(ne=c(regeneratorRuntime.mark((function e(){var t,r,n,i,a,o,s,u,l,c,h,d,p;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:for(t=this.node.getParent(),this.MainBoard=new q(t,this.SDK),this.WaitLoverBoard=new J(t,this.SDK),this.MatchingBoard=new H(t,this.SDK),this.GamingBoard=new V(t,this.SDK),this.ResultBoard=new X(t,this.SDK),this.TeachingBoard=new Z(t,this.SDK),this.MainBoard.InitBoard(),this.GamingBoard.InitBoard(),this.MatchingBoard.InitBoard(),this.WaitLoverBoard.InitBoard(),this.TeachingBoard.InitBoard(),this.ResultBoard.board=t.getChildByName("UI").getChildByName("ResultBoard"),n=1;n<=5;n++)for(i=1;i<=6;i++)a="Model/Box/f"+n+"0"+i+"/f"+n+"0"+i,o="f"+n.toString(),this.Util.loadBoxPrefab(a,o,i-1);for(s=1;s<=5;s++)for(u=1;u<=6;u++)l="Model/Box/y"+s+"0"+u+"/y"+s+"0"+u,c="y"+s.toString(),this.Util.loadBoxPrefab(l,c,u-1);for(K("盒子预制件",this.BoxPrefab),h=["red_1","red_2","blue_1","blue_2"],d=0;d<h.length;d++)p="Model/qizi/"+h[d]+"/Node",this.Util.loadChessPrefab(p,d);return this.Util.loadEnemyChessPrefab("Model/qizi/enemy_blue/Node",M.blue),this.Util.loadEnemyChessPrefab("Model/qizi/enemy_red/Node",M.red),e.next=22,this.Util.loadPrefab("Prefab/UI/perfect");case 22:(r=e.sent)&&(this.PerfectPrefab=r);case 24:case"end":return e.stop()}}),e,this)}))),function(){return ne.apply(this,arguments)})},{key:"initData",value:(re=c(regeneratorRuntime.mark((function e(t){var r,n,i,a,o,s,u,l=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.SDK.init(t,this);case 2:if(r=e.sent,n=this.node.getParent(),!r){e.next=44;break}return K("初始化SDK成功",MGOBE.Player.id),e.next=8,this.SDK.inRunningRoom();case 8:if(!e.sent){e.next=15;break}return i=new W(n,this.SDK,"游戏仍在进行中,是否要进行重连?",z.multiple,"重连","不重连"),e.next=13,i.show(this,this.reconnection_yes,this.reconnection_no);case 13:e.next=42;break;case 15:return e.next=17,this.SDK.leaveGroup();case 17:return e.next=19,this.SDK.leaveRoom();case 19:return e.next=21,this.SDK.cancelMatchinig();case 21:if(!this.Util.localGet("userContent")||!this.Util.localGet("userContent").group){e.next=38;break}return o=this.Util.localGet("userContent").group,e.next=26,this.SDK.joinGroup(o);case 26:if(e.sent!==MGOBE.ErrCode.EC_OK){e.next=34;break}return e.next=30,this.SDK.getTeammate();case 30:e.sent.commonNetworkState!=G.Offline?(a=this.WaitLoverBoard,(s=this.Util.localGet("userContent")).group="",this.Util.localSet("userContent",s)):a=this.MainBoard,e.next=36;break;case 34:a=this.MainBoard,this.showToast("加入房间失败",2);case 36:e.next=39;break;case 38:a=this.MainBoard;case 39:return e.next=41,a.ChangeBoard(a);case 41:n.getChildByName("UI").getChildByName("loading").active=!1;case 42:e.next=47;break;case 44:return u=new W(n,this.SDK,"登录失败,请重新开启游戏",z.single,"知道了"),e.next=47,u.show(this,(function(){l.SDK.curDialog.dead||l.SDK.curDialog.destroy()}));case 47:case"end":return e.stop()}}),e,this)}))),function(e){return re.apply(this,arguments)})},{key:"reconnection_yes",value:(te=c(regeneratorRuntime.mark((function e(){var t,r,n,i,a,o,s,u;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!this.diaDead){e.next=2;break}return e.abrupt("return");case 2:return this.diaDead=!0,this.SDK.curDialog.destroy(),e.next=7,this.SDK.reconnect();case 7:return e.next=9,this.SDK.getRoomInfo();case 9:return t=e.sent,e.next=12,this.SDK.getPlayerInfo();case 12:if(r=e.sent,!t){e.next=42;break}i=t.playerList,a=0;case 16:if(!(a<i.length)){e.next=24;break}if((o=i[a]).id!=r.id){e.next=21;break}return n=o.teamId,e.abrupt("break",24);case 21:a++,e.next=16;break;case 24:return this.SDK.curRoom.onRecvFromGameSvr=this.onRecvFromGameSvr.bind(this),e.next=27,this.SDK.sendToServer(I.Reconnect,n);case 27:if(e.sent==MGOBE.ErrCode.EC_OK){e.next=40;break}return e.next=32,this.SDK.leaveGroup();case 32:return e.next=34,this.SDK.leaveRoom();case 34:return e.next=36,this.SDK.cancelMatchinig();case 36:return s=this.node.getParent(),u=new W(s,this.SDK,"房间已关闭,无法重连",z.single,"回到首页"),e.next=40,u.show(this,this.backMainBoard);case 40:e.next=43;break;case 42:case 43:case"end":return e.stop()}}),e,this)}))),function(){return te.apply(this,arguments)})},{key:"reconnection_no",value:(ee=c(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!this.SDK.curDialog.dead){e.next=2;break}return e.abrupt("return");case 2:return this.node.getParent(),e.next=6,this.SDK.leaveGroup();case 6:return e.next=8,this.SDK.leaveRoom();case 8:return e.next=10,this.SDK.cancelMatchinig();case 10:return this.SDK.curDialog.destroy(),t=this.MainBoard,e.next=15,t.ChangeBoard(t);case 15:case"end":return e.stop()}}),e,this)}))),function(){return ee.apply(this,arguments)})},{key:"onRecvFromGameSvr",value:($=c(regeneratorRuntime.mark((function e(t){var r,n,i,a,o,s=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(K("接收到实时服务器的数据:",t.data),r=this.node.getParent(),n=t.data.data,(i=n.type)!=O.Reconnect){e.next=18;break}return this.isReconnect=!0,this.SDK.curRoom.onRecvFromGameSvr=null,e.next=9,this.reconnectSyncData(n.data);case 9:return this.isRunning=!0,a=this.GamingBoard,e.next=13,a.ChangeBoard(a);case 13:this.SDK.sendToServer(I.ReconnectComplete,this.serverTeam.id),this.SDK.sendToServer(I.ChangeControler),this.changeControler(this.curActionPlayer),e.next=29;break;case 18:if(i!=O.ReconnectFailed){e.next=29;break}return e.next=22,this.SDK.leaveGroup();case 22:return e.next=24,this.SDK.leaveRoom();case 24:return e.next=26,this.SDK.cancelMatchinig();case 26:return o=new W(r,this.SDK,"游戏已结束",z.single,"知道了"),e.next=29,o.show(this,(function(){if(!s.SDK.curDialog.dead){var e=s.MainBoard;e.ChangeBoard(e),s.SDK.curDialog.destroy()}}));case 29:case"end":return e.stop()}}),e,this)}))),function(e){return $.apply(this,arguments)})},{key:"backMainBoard",value:(Y=c(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!this.SDK.curDialog.dead){e.next=2;break}return e.abrupt("return");case 2:return this.SDK.curDialog.destroy(),t=this.MainBoard,e.next=6,t.ChangeBoard(t);case 6:case"end":return e.stop()}}),e,this)}))),function(){return Y.apply(this,arguments)})},{key:"start",value:(Q=c(regeneratorRuntime.mark((function e(){var t,r,n;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.Player.gameManager=this,this.OtherTeam.gameManager=this,this.camera.node.getPosition(this._origin_camera_pos),t=window.location.search,r=this.Util.localGet("userContent")?this.Util.localGet("userContent").appToken:"",n=null,this.AccessToken=r,T==C.develop&&(n=this.Util.getPara("user_id",t)),this.registerEvent(),this.Player.onJumpComplete=this.onJumpComplete.bind(this),this.Player.onJumpDead=this.onJumpDead.bind(this),this.Player.onPowerDown=this.onPowerDown.bind(this),this.Player.onPowerUp=this.onPowerUp.bind(this),this.schedule(this.timerSingalAction.bind(this),.5),e.next=16,this.initPrefab();case 16:return this.node.parent.getChildByName("UI").getChildByName("Debug").destroy(),e.next=19,this.login(n);case 19:case"end":return e.stop()}}),e,this)}))),function(){return Q.apply(this,arguments)})},{key:"login",value:(F=c(regeneratorRuntime.mark((function e(){var t,r,n,i,a,o,s,u,l,c,h,d,p,m,f=this,g=arguments;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(t=g.length>0&&void 0!==g[0]?g[0]:null,r={nickname:"",avatar_url:"",user_id:0,lover_id:0,gender:0,totalCount:0,playCountWeek:0,winCountWeek:0,mvpCountWeek:0,loverCount:0,loverWinCount:0,tacitScore:0,isVip:!1},!t){e.next=19;break}return r.nickname=t,r.avatar_url="",r.user_id=t,r.lover_id=0,r.gender=1,r.playCountWeek=0,r.mvpCountWeek=0,r.winCountWeek=0,r.loverCount=0,r.loverWinCount=0,r.tacitScore=0,r.isVip=!1,this.PlayerData=r,this.initData(t),K("登录完成","user_id","玩家数据:",this.PlayerData),e.abrupt("return");case 19:if(!this.AccessToken){e.next=72;break}return e.next=22,this.Util.http(R.gameInit,"GET",{},!1,this.AccessToken);case 22:return n=e.sent,e.next=25,this.Util.http(R.accountInit,"GET",{},!1,this.AccessToken);case 25:return i=e.sent,e.next=28,this.Util.http(R.loverInfo,"GET",{},!1,this.AccessToken);case 28:return a=e.sent,e.next=31,this.Util.http(R.vipInfo,"GET",{},!1,this.AccessToken);case 31:if(o=e.sent,!n||!i.kiwi_user_info){e.next=66;break}return s=i.kiwi_user_info,u=n,s&&1===s.gender?(this.loverData=a.lover_info.female_user_info,this.loverData.avatar=a.lover_info.female_user_info.avatar_info?a.lover_info.female_user_info.avatar_info:{host:"didi-static.oss-cn-hangzhou.aliyuncs.com",path:"/kitty/girl.jpg"}):(this.loverData=a.lover_info.male_user_info,this.loverData.avatar=a.lover_info.male_user_info.avatar_info?a.lover_info.male_user_info.avatar_info:{host:"didi-static.oss-cn-hangzhou.aliyuncs.com",path:"/kitty/boy.jpg"}),r.nickname=s.nickname?s.nickname:s.id.toString(),r.avatar_url=s.avatar_info?"https://"+s.avatar_info.host+"/"+s.avatar_info.path:"",r.user_id=s.id,r.lover_id=s.lovers_id,r.gender=s.gender,r.totalCount=u.user_match_info.total_game_match?u.user_match_info.total_game_match:0,r.playCountWeek=u.user_match_info.game_match_count?u.user_match_info.game_match_count:0,r.mvpCountWeek=u.user_match_info.mvp_count?u.user_match_info.mvp_count:0,r.winCountWeek=u.user_match_info.win_count?u.user_match_info.win_count:0,r.loverCount=u.lover_match_info.game_match_count?u.lover_match_info.game_match_count:0,r.loverWinCount=u.lover_match_info.win_count?u.lover_match_info.win_count:0,r.tacitScore=u.lover_match_info.tacit_socre?u.lover_match_info.tacit_socre:0,e.next=53,this.Util.loadRemoteImg(r.avatar_url,null);case 53:return l=e.sent,e.next=56,this.Util.loadRemoteImg("https://".concat(this.loverData.avatar.host,"/").concat(this.loverData.avatar.path),null);case 56:return c=e.sent,l||(1===r.gender&&(r.avatar_url="https://didi-static.oss-cn-hangzhou.aliyuncs.com/kitty/boy.jpg"),2===r.gender&&(r.avatar_url="https://didi-static.oss-cn-hangzhou.aliyuncs.com/kitty/girl.jpg")),c||(1===this.loverData.gender&&(this.loverData.avatar={host:"didi-static.oss-cn-hangzhou.aliyuncs.com",path:"/kitty/boy.jpg"}),2===this.loverData.gender&&(this.loverData.avatar={host:"didi-static.oss-cn-hangzhou.aliyuncs.com",path:"/kitty/girl.jpg"})),this.PlayerData=r,this.PlayerData.isVip=!!o&&1e3*o.vip_info.end_date_at>(new Date).getTime(),this.initData(this.PlayerData.user_id),K("登录完成","token","玩家数据:",this.PlayerData),e.abrupt("return");case 66:return h=this.node.getParent(),d=new W(h,this.SDK,"登录失败,未获取到玩家信息",z.single,"知道了"),e.next=70,d.show(this,(function(){f.SDK.curDialog.dead||f.SDK.curDialog.destroy()}));case 70:e.next=76;break;case 72:return p=this.node.getParent(),m=new W(p,this.SDK,"登录失败,无登录数据",z.single,"知道了"),e.next=76,m.show(this,(function(){f.SDK.curDialog.dead||f.SDK.curDialog.destroy()}));case 76:case"end":return e.stop()}}),e,this)}))),function(){return F.apply(this,arguments)})},{key:"registerEvent",value:function(){this.node.on("GameInit",this.gameInit,this),this.node.on("SyncData",this.syncGameData,this)}},{key:"gameInit",value:(E=c(regeneratorRuntime.mark((function e(t){var r,n,i,a,o,s,u;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return this.Player.AI=!1,this.isReconnect=!1,r=t.map,n=t.gameState,e.next=7,this.SDK.getPlayerInfo();case 7:return e.sent,this.CenterNode.setParent(this.node.getParent()),this.camera.node.setPosition(this._origin_camera_pos),this.plane.setPosition(new y(0,0,0)),e.next=15,this.drawMap(r,!0);case 15:return e.next=17,this.syncGameData(n.teamList,!0);case 17:return this.Player.initPlayer(),this.OtherTeam.initPlayer(),e.next=21,this.SDK.getPlayerInfo();case 21:return i=e.sent,e.next=24,this.SDK.getPlayerIndex();case 24:return o=e.sent,a=this.Util.isControler(n.curActionPlayer,i)?o:1==o?2:1,this.serverPlayer.teamId==M.red?(s=1,u=M.blue):(s=3,u=M.red),s+=a-1,e.next=30,this.Player.setModel(s);case 30:return e.next=32,this.OtherTeam.setModel(u);case 32:if(!this.PlayerData.isVip){e.next=35;break}return e.next=35,this.Player.setTire(1);case 35:return e.next=37,this.Util.enemyIsVip();case 37:if(!e.sent){e.next=41;break}return e.next=41,this.OtherTeam.setTire(1);case 41:return this.OtherTeam.map=this.map,this.OtherTeam.index=0,this.Player.curBox=this.map[0],this.Player.nextBox=this.map[1],this.OtherTeam.curBox=this.map[0],this.OtherTeam.nextBox=this.map[1],this.curActionPlayer=n.curActionPlayer,e.next=50,this.SDK.sendToServer(I.Ready,{avatar:this.PlayerData.avatar_url,user_id:this.PlayerData.user_id,gender:this.PlayerData.gender,lover_id:this.PlayerData.lover_id});case 50:e.sent,this.SDK.errorCode.EC_OK;case 52:case"end":return e.stop()}}),e,this)}))),function(e){return E.apply(this,arguments)})},{key:"reconnectSyncData",value:(P=c(regeneratorRuntime.mark((function e(t){var r,n,i,a,o,s;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return C.develop,this.gameTime=t.gameTime,this.startTime=t.startTime,e.next=5,this.drawMap(t.map,!0);case 5:return e.next=7,this.syncGameData(t.gameState.teamList,!0);case 7:return e.next=9,this.SDK.getGroupInfo();case 9:return(r=e.sent)&&(this.SDK.Listener.add(this.SDK.curGroup),this.SDK.curGroup.initGroup(r)),e.next=13,this.SDK.getPlayerInfo();case 13:return n=e.sent,e.next=16,this.SDK.getPlayerIndex();case 16:return a=e.sent,i=this.Util.isControler(t.gameState.curActionPlayer,n)?a:1==a?2:1,this.serverPlayer.teamId==M.red?(o=1,s=M.blue):(o=3,s=M.red),o+=i-1,e.next=22,this.Player.setModel(o);case 22:return e.next=24,this.OtherTeam.setModel(s);case 24:if(!this.PlayerData.isVip){e.next=27;break}return e.next=27,this.Player.setTire(1);case 27:return e.next=29,this.Util.enemyIsVip();case 29:if(!e.sent){e.next=33;break}return e.next=33,this.OtherTeam.setTire(1);case 33:this.Player.reset(this.serverTeam),this.OtherTeam.reset(),this.curActionPlayer=t.gameState.curActionPlayer;case 36:case"end":return e.stop()}}),e,this)}))),function(e){return P.apply(this,arguments)})},{key:"syncData",value:(v=c(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,this.syncGameData(t);case 2:return this.uiRefresh(),e.abrupt("return",!0);case 4:case"end":return e.stop()}}),e,this)}))),function(e){return v.apply(this,arguments)})},{key:"changeControler",value:(g=c(regeneratorRuntime.mark((function e(t){var r,n,i=this;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=3,this.SDK.getPlayerInfo();case 3:r=e.sent,n=this.Util.isControler(t,r),setTimeout(c(regeneratorRuntime.mark((function e(){var t,r,a,o;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return r="xxx",e.next=3,i.SDK.getPlayerIndex();case 3:if(a=e.sent,!n){e.next=8;break}t=a,e.next=12;break;case 8:return t=1==a?2:1,e.next=11,i.Util.getTeammaterAvatar(i.serverTeam);case 11:r=e.sent;case 12:return o=i.serverPlayer.teamId==M.red?1:3,o+=t-1,e.next=16,i.Player.setModel(o);case 16:i.isControler=n,i.uiRefresh(),i.avatarSingal(n,!0),i.isRunning&&("xxx"==r?i.Util.loadImg("Texture/UI/gaming/me-001/spriteFrame",i.userTipNode.getChildByName("avatar")):i.Util.loadRemoteImg(r,i.userTipNode.getChildByName("avatar")),i.userTipNode.active=!0);case 20:case"end":return e.stop()}}),e)}))),1);case 6:case"end":return e.stop()}}),e,this)}))),function(e){return g.apply(this,arguments)})},{key:"syncMap",value:(f=c(regeneratorRuntime.mark((function e(t){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:this.drawMap(t);case 2:case"end":return e.stop()}}),e,this)}))),function(e){return f.apply(this,arguments)})},{key:"onJumpComplete",value:function(e,t){if("GamingBoard"==this.SDK.curBoard.name){if(this.isControler=!1,this.Player.jumpResult.perfect?this.serverTeam.perfectJump+=1:this.serverTeam.perfectJump=0,this.avatarSingal(!1,!1),e){K("跳跃完成","完美跳跃次数:",this.serverTeam.perfectJump);var r=this.Util.getScore(this.serverTeam.perfectJump);this.showScore(r,this.serverTeam.perfectJump);var n=new y,i=new y,a=new y;if(this.nextBox.node.getPosition(i),this.nextBox.node.getPosition(a),a.y=0,t&&(this.serverPlayer.score+=r),this.serverTeam.cur_cube+=1,this.serverTeam.pos=this.Player.jumpResult.offset,K("跳跃完成","最新的下标:",this.serverTeam.cur_cube),K("跳跃完成","地图长度:",this.map.length),this.serverTeam.cur_cube%10==0&&this.changePlane(),this.Player.curBox=this.map[this.serverTeam.cur_cube],this.Player.nextBox=this.map[this.serverTeam.cur_cube+1],this.curBox=this.Player.curBox,this.nextBox=this.Player.nextBox,this.updateCenterNode(this.serverTeam.perfectJump>0),this.nextBox){var o=new y;this.nextBox.node.getPosition(o),i.x=(i.x+o.x)/2,i.z=(i.z+o.z)/2,y.add(n,i,this._origin_camera_pos),x(this.camera.node).to(.5,{position:n},{}).start(),x(this.plane).to(.5,{position:a},{}).start()}}else this.updateCenterNode(!1),this.serverTeam.pos=this.Player.jumpResult.offset;t?this.SDK.sendToServer(I.JumpComplete,{team:this.serverTeam}):this.SDK.sendToServer(I.RequestSyncData,{team:this.SDK.gameManager.serverTeam})}else"TeachingBoard"==this.SDK.curBoard.name&&this.teachJumpSingal(!1)}},{key:"onJumpDead",value:function(){this.serverTeam?(this.serverTeam.perfectJump=0,this.updateCenterNode(!1),this.avatarSingal(!1,!1),this.isControler?this.SDK.sendToServer(I.JumpComplete,{team:this.serverTeam}):this.SDK.sendToServer(I.RequestSyncData,{team:this.SDK.gameManager.serverTeam}),this.isControler=!1):"TeachingBoard"==this.SDK.curBoard.name&&this.teachJumpSingal(!1)}},{key:"onPowerDown",value:function(){this.SDK.sendToRoom(U.Power,1),this.avatarSingal(!0,!1)}},{key:"onPowerUp",value:function(){var e={distance:this.Player.jumpResult.distance,pos:this.Player.jumpResult.offset,status:this.Player.jumpResult.status,time:this.Player.jumpResult.time,index:this.serverTeam.cur_cube,perfect:this.Player.jumpResult.perfect};this.SDK.sendToRoom(U.PowerEnd,e),this.SDK.sendToRoom(U.EnemyPowerEnd,e)}},{key:"timerSingalAction",value:function(){this.timerSingal&&this.timerSingal()}},{key:"drawMap",value:(m=c(regeneratorRuntime.mark((function e(t){var r,n,i,a,o,s,u,l,c,h,d,p,m,f,g,v,_,b,P=arguments;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(!(P.length>1&&void 0!==P[1]&&P[1])){e.next=26;break}if(this.map.length>0){for(r=0;r<this.map.length;r++)(n=this.map[r].node)&&n.destroy();this.map=[]}return e.next=5,this.createBox(t[0]);case 5:i=e.sent,a={node:i,size:t[0][2],shape:t[0][3],index:t[0][4],centerPos:t[0][5]},this.map.push(a),o=null,s=a,u=1;case 11:if(!(u<t.length)){e.next=22;break}return l=t[u],e.next=15,this.createBox(l,s);case 15:o=e.sent,c={node:o,size:l[2],shape:l[3],index:l[4],centerPos:l[5]},this.map.push(c),s=c;case 19:u++,e.next=11;break;case 22:this.nextBox=this.map[1],this.curBox=this.map[0],e.next=44;break;case 26:if(!(t.length>this.map.length)){e.next=44;break}K("绘制地图","检测到有新的地图数据",this.map.length,"--\x3e",t.length),h=this.map[this.map.length-1],d=null,p=this.map.length;case 31:if(!(p<t.length)){e.next=44;break}return m=t[p],e.next=36,this.createBox(m,h,!0);case 36:d=e.sent,f={node:d,size:m[2],shape:m[3],index:m[4],centerPos:m[5]},this.map.push(f),h=f,p==t.length-1&&(this.OtherTeam.nextBox||(this.OtherTeam.nextBox=this.map[this.OtherTeam.index+1]),this.nextBox||(this.nextBox=f,this.Player.nextBox=f,this.Player.reset(),g=new y,v=new y,this.curBox.node.getPosition(g),_=new y,b=new y,this.nextBox.node.getPosition(_),this.nextBox.node.getPosition(b),b.y=0,g.x=(g.x+_.x)/2,g.z=(g.z+_.z)/2,y.add(v,g,this._origin_camera_pos),x(this.camera.node).to(.5,{position:v}).start(),x(this.plane).to(.5,{position:b},{}).start()));case 41:p++,e.next=31;break;case 44:case"end":return e.stop()}}),e,this)}))),function(e){return m.apply(this,arguments)})},{key:"syncGameData",value:(d=c(regeneratorRuntime.mark((function e(t){var r,n,i,a,o,s,u,l,c,h,d,p,m,f,g,v,x,_,b,P,k=arguments;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return r=k.length>1&&void 0!==k[1]&&k[1],e.next=3,this.SDK.getPlayerInfo();case 3:if(n=e.sent,i=null,a=null,o="",s="",u=null,r?u=t:(u=t.data,o=t.teamId,s=t.senderId),l=n.teamId==o,c=n.id==s,n.teamId==M.red?(i=u[0],a=u[1]):(i=u[1],a=u[0]),!r){e.next=30;break}this.serverTeam=i,this.otherTeam=a,h=0;case 18:if(!(h<i.playerList.length)){e.next=26;break}if((d=i.playerList[h]).id!=n.id){e.next=23;break}return this.serverPlayer=d,e.abrupt("break",26);case 23:h++,e.next=18;break;case 26:for(p=0;p<a.playerList.length;p++)(m=a.playerList[p]).isRobot&&(f={nickname:m.name,avatar_url:m.avatar,user_id:m.user_id,lover_id:m.lover_id,gender:m.gender,playCountWeek:0,winCountWeek:0,mvpCountWeek:0,loverCount:0,loverWinCount:0,tacitScore:0,isVip:m.isVip},g={id:m.id,isRobot:!0,profile:JSON.stringify(f),teamId:m.teamId},this.robotInfo[m.id]=g);K("重连设置robot信息",this.robotInfo),e.next=44;break;case 30:if(!l||!c){e.next=43;break}this.serverTeam=i,v=0;case 33:if(!(v<i.playerList.length)){e.next=41;break}if((x=i.playerList[v]).id!=n.id){e.next=38;break}return this.serverPlayer=x,e.abrupt("break",41);case 38:v++,e.next=33;break;case 41:e.next=44;break;case 43:this.otherTeam=a;case 44:r?(this.OtherTeam.map=this.map,this.curBox=this.map[i.cur_cube],this.nextBox=this.map[i.cur_cube+1],this.Player.curBox=this.curBox,this.Player.nextBox=this.nextBox,this.OtherTeam.curBox=this.map[a.cur_cube],this.OtherTeam.nextBox=this.map[a.cur_cube+1],_=new y,b=new y,P=new y,this.curBox.node.getPosition(_),this.curBox.node.getPosition(P),P.y=0,y.add(b,_,this._origin_camera_pos),b.y=this._origin_camera_pos.y,this.camera.node.setPosition(b),this.plane.setPosition(P)):l&&c&&(this.SDK.sendToServer(I.SyncComplete,this.serverTeam.id),K("同步游戏数据","当前Map长度:",this.map.length),K("同步游戏数据","当前位置下标:",this.serverTeam.cur_cube),this.curBox=this.map[this.serverTeam.cur_cube],this.nextBox=this.map[this.serverTeam.cur_cube+1],this.Player.curBox=this.curBox,this.Player.nextBox=this.nextBox,this.curBox&&this.Player.reset(this.serverTeam)),K("同步游戏数据","完成","ServerPlayer:",this.serverPlayer,"ServerTeam:",this.serverTeam);case 46:case"end":return e.stop()}}),e,this)}))),function(e){return d.apply(this,arguments)})},{key:"createBox",value:(h=c(regeneratorRuntime.mark((function e(){var t,r,n,i,a,o,s,u,l,c,h,d,p,m,f,g,v,x=arguments;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:for(t=x.length>0&&void 0!==x[0]?x[0]:null,r=x.length>1&&void 0!==x[1]?x[1]:null,n=x.length>2&&void 0!==x[2]&&x[2],i=new y,a=new y,o=t[0],s=t[1],u=t[2],l=t[3],c="",c=l==j.circle?"y":"f",c+=(u+1).toString(),(h=this.BoxPrefab[c][t[4]])||(h=this.BoxPrefab[c][0]),d=k(h),p=d.getChildByName("RootNode"),m=0;m<p.children.length;m++)f=p.children[m],(g=f.getComponent(_))&&(g.shadowCastingMode=1);if(v=d.addComponent(S),!r){e.next=34;break}if(r.node.getPosition(i),(a=i.clone()).y=0,s+=(N[r.size]+N[u])/2,1==o?a.z-=s:a.x+=s,n?d.setPosition(new y(a.x,7,a.z)):d.setPosition(new y(a.x,0,a.z)),d.setParent(this.Player.node.parent),!n){e.next=31;break}return v.startFall(),e.abrupt("return",d);case 31:return e.abrupt("return",d);case 32:e.next=37;break;case 34:return d.setPosition(new y(0,0,0)),d.setParent(this.Player.node.parent),e.abrupt("return",d);case 37:case"end":return e.stop()}}),e,this)}))),function(){return h.apply(this,arguments)})},{key:"clearMap",value:function(){var e=(this.serverTeam.cur_cube>this.otherTeam.cur_cube?this.otherTeam.cur_cube:this.serverTeam.cur_cube)-4;if(e>0)for(var t=e;t>=0;t--){var r=this.map[t];if(!r.node)break;K("地图定时清除",t,r.node),r.node.destroy(),r.node=null}}},{key:"showToast",value:function(e,t){this.toast.show(e,t)}},{key:"changePlane",value:function(){var e=this.plane.getComponent(_).material;this.planeIndex+=1,this.planeIndex>4&&(this.planeIndex=1);var t,r=this.planeIndex%2==0;switch(this.planeIndex){case 1:t=this.background_2;break;case 2:t=this.background_3;break;case 3:t=this.background_4;break;case 4:t=this.background_1;break;default:return}x(this.plane).to(2,{},{onComplete:function(){r?e.setProperty("Texture1",t):e.setProperty("Texture2",t)},onUpdate:function(t,n){e.passes[0].setUniform(e.passes[0].getHandle("rate"),r?n:1-n)}}).start()}},{key:"showScore",value:(r=c(regeneratorRuntime.mark((function e(t,r){var n,i=this,a=arguments;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return n=a.length>2&&void 0!==a[2]?a[2]:1,e.abrupt("return",new Promise(function(){var e=c(regeneratorRuntime.mark((function e(a){var o,s,u,l,c,h,d,m,f,g,v,x;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(o=i.node.parent.getChildByName("UI"),s=new p,l=new y,i.Player.node.getPosition(l),l.y+=1,c=new y,i.camera.convertToUINode(l,o,c),h=s.addComponent(w),d=s.addComponent(D),h.setContentSize(35,25),d.string="+"+t,d.fontSize=20,d.color=new B(102,102,102),s.setPosition(c),s.setParent(o),s.active=!0,!(r>0)){e.next=39;break}if(i.Player.quan.startAnimation(),(u=k(i.PerfectPrefab)).active=!1,m=u.getChildByName("number_1"),f=u.getChildByName("number_2"),!(r<10)){e.next=27;break}return e.next=25,i.Util.loadImg("Texture/number/"+r+"/spriteFrame",m);case 25:e.next=34;break;case 27:return g=Math.floor(r/10),v=r%10,e.next=31,i.Util.loadImg("Texture/number/"+g+"/spriteFrame",m);case 31:return e.next=33,i.Util.loadImg("Texture/number/"+v+"/spriteFrame",f);case 33:f.active=!0;case 34:c.y+=1.5,u.setPosition(c),u.setParent(o),u.setSiblingIndex(0),u.active=!0;case 39:x={node:s,perfect:u,owner:i.Player.node,time:0,speed:n},i.scoreNodeList.push(x),a(x);case 42:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}()));case 2:case"end":return e.stop()}}),e)}))),function(e,t){return r.apply(this,arguments)})},{key:"updateCenterNode",value:function(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(!e)return this.CenterNode.active=!1,void this.CenterNode.setParent(this.node.getParent());if(!this.nextBox)return this.CenterNode.active=!1,void this.CenterNode.setParent(this.node.getParent());this.CenterNode.setParent(this.nextBox.node);var t=N[this.nextBox.size]/10;this.CenterNode.setScale(new y(t,.001,t)),this.CenterNode.active=!0}},{key:"updateScoreNode",value:function(e){for(var t=new y,r=new y,n=new y,i=new y,a=this.node.parent.getChildByName("UI"),o=this.scoreNodeList.length-1;o>=0;o--){var s=this.scoreNodeList[o];s.owner.getPosition(t),t.y+=s.time*s.speed+4,this.camera.convertToUINode(t,a,r),s.node.setPosition(r),null!=s.perfect&&(s.owner.getPosition(n),n.y+=3.5,this.camera.convertToUINode(n,a,n),s.perfect.setPosition(n)),s.time+=e,s.time>1&&(s.node.destroy(),s.perfect&&s.perfect.destroy(),this.scoreNodeList.splice(o,1))}this.isRunning||this.SDK.curBoard&&"TeachingBoard"==this.SDK.curBoard.name?((t=this.Player.node.getPosition()).y+=2.2,this.camera.convertToUINode(t,a,i),this.userTipNode.setPosition(i)):this.SDK.curBoard&&"TeachingBoard"!=this.SDK.curBoard.name&&(this.userTipNode.active=!1)}},{key:"updateEnemyPosition",value:function(){var e=this.node.getParent().getChildByName("UI"),t=this.OtherTeam.node.getPosition(),r=b.getFrameSize();e.getChildByName("enemy1").active=!1,e.getChildByName("enemy2").active=!1,this.camera.convertToUINode(t,this.node.getParent().getChildByName("UI"),t),(Math.abs(t.x)>r.width/2||Math.abs(t.y)>r.height/2)&&(t.x<0&&t.y>0&&(e.getChildByName("enemy1").active=!0),t.x>0&&t.y>0&&(e.getChildByName("enemy2").active=!0))}},{key:"update",value:function(e){this.updateScoreNode(e),this.isRunning&&(this.updateEnemyPosition(),this.clearTime+=e,this.clearTime>=60&&(this.clearTime=0,this.clearMap()))}},{key:"isControler",set:function(e){this._isControler=e,this.Player.control=e},get:function(){return this._isControler}},{key:"isRunning",set:function(e){this._isRunning=e,this.Player.isRunning=e,this.OtherTeam.isRunning=e},get:function(){return this._isRunning}}]),t}(P)).prototype,"Player",[$],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),De=r(ke.prototype,"OtherTeam",[ee],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Be=r(ke.prototype,"CenterNode",[te],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Se=r(ke.prototype,"plane",[re],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Te=r(ke.prototype,"camera",[ne],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ce=r(ke.prototype,"UI",[ie],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Re=r(ke.prototype,"toast",[ae],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ke=r(ke.prototype,"rangeShowPrefab",[oe],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ie=r(ke.prototype,"audio_failed",[se],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ue=r(ke.prototype,"audio_complete",[ue],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ne=r(ke.prototype,"audio_dead",[le],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Me=r(ke.prototype,"audio_perfect",[ce],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),ze=r(ke.prototype,"audio_last5s",[he],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ge=r(ke.prototype,"audio_ready",[de],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Oe=r(ke.prototype,"audio_relife",[pe],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),je=r(ke.prototype,"audio_touch_down",[me],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ee=r(ke.prototype,"audio_win",[fe],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Le=r(ke.prototype,"audio_go",[ge],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ae=r(ke.prototype,"background_1",[ve],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),We=r(ke.prototype,"background_2",[ye],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Je=r(ke.prototype,"background_3",[xe],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Fe=r(ke.prototype,"background_4",[_e],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Ve=r(ke.prototype,"userTipNode",[be],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),Pe=ke))||Pe)),h._RF.pop()}}}));
+      cclegacy._RF.pop();
+    }
+  };
+});
 
-System.register("chunks:///Interface.js",["cc"],(function(e,c){var t;return{setters:[function(e){t=e.cclegacy}],execute:function(){t._RF.push({},"894b2eWkr1IfbbtaCcBLs2k","Interface",void 0),t._RF.pop()}}}));
+System.register("chunks:///Config.js", ["./_virtual/_rollupPluginBabelHelpers.js", "cc"], function (_export, _context) {
+  "use strict";
 
-System.register("chunks:///UI/resultUI.js",["../_virtual/_rollupPluginBabelHelpers.js","cc","../Const.js"],(function(t,e){var n,s,a,i,u,o,r,c,l,p,f,h,m;return t({_dec:void 0,_class:void 0}),{setters:[function(t){n=t.inherits,s=t.createClass,a=t.classCallCheck,i=t.possibleConstructorReturn,u=t.getPrototypeOf},function(t){o=t.cclegacy,r=t._decorator,c=t.Animation,l=t.Component},function(t){p=t.log}],execute:function(){o._RF.push({},"8f98aNhGdlEqY/iWb0VOzE3","resultUI",void 0),m=r.ccclass,r.property,t("ResultUI",(f=m("ResultUI"),f(h=function(t){function e(){return a(this,e),i(this,u(e).apply(this,arguments))}return n(e,t),s(e,[{key:"start",value:function(){this.anima=this.node.getComponent(c),p("anima: ",this.anima),p("parent: ",this.node.getParent()),this.anima.defaultClip.events.push({frame:1,func:"test",params:[]}),this.anima.defaultClip.updateEventDatas()}},{key:"test",value:function(){var t=this;this.anima.pause(),setTimeout((function(){t.anima.resume()}),1e3)}},{key:"mvpAnimaEnd",value:function(){}}]),e}(l))||h)),o._RF.pop()}}}));
+  var _classCallCheck, cclegacy, UseTeaching, UseSign, UseDebug, UseLog, UseStatistics, Config;
 
-System.register("chunks:///_virtual/prerequisite-imports:main",["../Box.js","../Config.js","../Const.js","../DeployInfo.js","../quan.js","../Player.js","../Util.js","../SDK.js","../UI/Dialog/Dialog.js","../UI/Board/BaseBoard.js","../UI/Board/WaitLoverBoard.js","../OtherPlayer.js","../UI/avatar.js","../UI/Board/GamingBoard.js","../UI/Dialog/RulesDialog.js","../UI/Board/MainBoard.js","../UI/Board/MatchingBoard.js","../UI/Board/ResultBoard.js","../UI/highLightMask.js","../UI/Board/TeachingBoard.js","../UI/toast.js","../GameManager.js","../Interface.js","../UI/resultUI.js"],(function(n,o){return{setters:[function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){},function(n){}],execute:function(){}}}));
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "1c95bfLt8hDMI/mY7kSxKrA", "Config", undefined);
+
+      _export("UseTeaching", UseTeaching = false);
+
+      _export("UseSign", UseSign = true);
+
+      _export("UseDebug", UseDebug = false);
+
+      _export("UseLog", UseLog = true);
+
+      _export("UseStatistics", UseStatistics = true);
+
+      _export("Config", Config = function Config() {
+        _classCallCheck(this, Config);
+
+        this.DebugGameTime = -1;
+        this.baseUrl = 'https://api.didiapp.com';
+        this.env = 'dev'; //localStorage.getItem('userContent') ? JSON.parse(localStorage.getItem('userContent')).env : '';
+
+        if (this.env === 'dev') this.baseUrl = 'https://dev-api.didiapp.com';else if (this.env === 'xlab') this.baseUrl = 'https://xlab-api.didiapp.com';else if (this.env === 'online') this.baseUrl = 'https://api.didiapp.com';
+
+        if (this.env === 'dev') {
+          this.config = {
+            matchCode: 'match-na9u3tge',
+            gameId: 'obg-4zid10f3',
+            secretKey: '',
+            initConfig: {
+              url: '4zid10f3.wxlagame.com',
+              reconnectMaxTimes: 5,
+              reconnectInterval: 1000,
+              resendInterval: 1000,
+              resendTimeout: 10000,
+              isAutoRequestFrame: true
+            }
+          };
+        } else {
+          this.config = {
+            matchCode: 'match-auuc635m',
+            gameId: 'obg-8lfv7afz',
+            secretKey: '',
+            initConfig: {
+              url: '8lfv7afz.wxlagame.com',
+              reconnectMaxTimes: 5,
+              reconnectInterval: 1000,
+              resendInterval: 1000,
+              resendTimeout: 10000,
+              isAutoRequestFrame: true
+            }
+          };
+        }
+
+        this.serverURL = {
+          gameInit: this.baseUrl + '/client/awesome/minigame/jump/info/',
+          accountInit: this.baseUrl + '/client/account/user/info/',
+          loverInfo: this.baseUrl + '/client/account/lover/',
+          vipInfo: this.baseUrl + '/client/account/user/vip/',
+          sign: this.baseUrl + '/client/awesome/minigame/jump/sign',
+          group: this.baseUrl + '/client/awesome/minigame/jump/group_id/'
+        };
+      });
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///Const.js", ["cc", "./Config.js"], function (_export, _context) {
+  "use strict";
+
+  var cclegacy, Color, BoxShape, BoxSizeName, BoxSize, JumpStatus, AIDataType, ServerDataType, ClientDataType, RoomDataType, EmojiType, PlayerState, NetState, GroupMessageType, GroupSysMessageType, LabelColor, DialogButtonType, TeamColor, StatisticsKey;
+
+  function getTodayDate() {
+    var date = new Date();
+    return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + ":" + date.getMilliseconds();
+  }
+
+  function log() {
+    {
+      var _console;
+
+      for (var _len = arguments.length, data = new Array(_len), _key = 0; _key < _len; _key++) {
+        data[_key] = arguments[_key];
+      }
+
+      data[0] = "［" + data[0] + "]";
+      data.unshift("[" + getTodayDate() + "]:");
+
+      (_console = console).log.apply(_console, data);
+    }
+  } //-------地图相关----------
+
+
+  _export({
+    log: log,
+    BoxShape: void 0,
+    JumpStatus: void 0,
+    AIDataType: void 0,
+    ServerDataType: void 0,
+    ClientDataType: void 0,
+    RoomDataType: void 0,
+    EmojiType: void 0,
+    DialogButtonType: void 0
+  });
+
+  return {
+    setters: [function (_cc) {
+      cclegacy = _cc.cclegacy;
+      Color = _cc.Color;
+    }, function (_ConfigJs) {}],
+    execute: function () {
+      cclegacy._RF.push({}, "286ccI0TulGCrD81NytQWoS", "Const", undefined);
+
+      (function (BoxShape) {
+        BoxShape[BoxShape["cube"] = 0] = "cube";
+        BoxShape[BoxShape["circle"] = 1] = "circle";
+      })(BoxShape || _export("BoxShape", BoxShape = {}));
+
+      _export("BoxSizeName", BoxSizeName = {
+        mini: 0,
+        small: 1,
+        middle: 2,
+        large: 3,
+        huge: 4,
+        center: 5 //AI 用来判断中心点所用的尺寸
+
+      });
+
+      _export("BoxSize", BoxSize = {
+        0: 1.00 * 1.3,
+        1: 1.41 * 1.3,
+        2: 1.73 * 1.3,
+        3: 2.00 * 1.3,
+        4: 2.24 * 1.3,
+        5: 0.20 * 1.3 //AI 用来判断中心点所用的尺寸
+
+      }); // -----通讯相关-----------
+
+
+      (function (JumpStatus) {
+        JumpStatus[JumpStatus["next"] = 0] = "next";
+        JumpStatus[JumpStatus["current"] = 1] = "current";
+        JumpStatus[JumpStatus["dead"] = 2] = "dead";
+      })(JumpStatus || _export("JumpStatus", JumpStatus = {}));
+
+      (function (AIDataType) {
+        AIDataType[AIDataType["StartJump"] = 0] = "StartJump";
+      })(AIDataType || _export("AIDataType", AIDataType = {}));
+
+      (function (ServerDataType) {
+        ServerDataType[ServerDataType["Error"] = -1] = "Error";
+        ServerDataType[ServerDataType["Init"] = 0] = "Init";
+        ServerDataType[ServerDataType["Sync"] = 1] = "Sync";
+        ServerDataType[ServerDataType["Result"] = 2] = "Result";
+        ServerDataType[ServerDataType["Start"] = 3] = "Start";
+        ServerDataType[ServerDataType["Reconnect"] = 4] = "Reconnect";
+        ServerDataType[ServerDataType["Map"] = 5] = "Map";
+        ServerDataType[ServerDataType["NetState"] = 6] = "NetState";
+        ServerDataType[ServerDataType["ChangeControler"] = 7] = "ChangeControler";
+        ServerDataType[ServerDataType["ReconnectFailed"] = 8] = "ReconnectFailed";
+        ServerDataType[ServerDataType["AI"] = 9] = "AI";
+        ServerDataType[ServerDataType["MatchingSuccess"] = 10] = "MatchingSuccess";
+      })(ServerDataType || _export("ServerDataType", ServerDataType = {}));
+
+      (function (ClientDataType) {
+        ClientDataType[ClientDataType["Ready"] = 0] = "Ready";
+        ClientDataType[ClientDataType["Action"] = 1] = "Action";
+        ClientDataType[ClientDataType["End"] = 2] = "End";
+        ClientDataType[ClientDataType["Reconnect"] = 3] = "Reconnect";
+        ClientDataType[ClientDataType["ChangeControler"] = 4] = "ChangeControler";
+        ClientDataType[ClientDataType["ReconnectComplete"] = 5] = "ReconnectComplete";
+        ClientDataType[ClientDataType["Heart"] = 6] = "Heart";
+        ClientDataType[ClientDataType["RequestInitData"] = 7] = "RequestInitData";
+        ClientDataType[ClientDataType["RequestSyncData"] = 8] = "RequestSyncData";
+        ClientDataType[ClientDataType["SyncComplete"] = 9] = "SyncComplete";
+        ClientDataType[ClientDataType["JumpComplete"] = 10] = "JumpComplete";
+        ClientDataType[ClientDataType["SingalAI"] = 11] = "SingalAI";
+        ClientDataType[ClientDataType["ChangeNetState"] = 12] = "ChangeNetState";
+      })(ClientDataType || _export("ClientDataType", ClientDataType = {}));
+
+      (function (RoomDataType) {
+        RoomDataType[RoomDataType["EnemyPowerEnd"] = 0] = "EnemyPowerEnd";
+        RoomDataType[RoomDataType["Power"] = 1] = "Power";
+        RoomDataType[RoomDataType["PowerEnd"] = 2] = "PowerEnd";
+        RoomDataType[RoomDataType["emoji"] = 3] = "emoji";
+        RoomDataType[RoomDataType["SyncComplete"] = 4] = "SyncComplete";
+        RoomDataType[RoomDataType["MatchedJoinGroup"] = 5] = "MatchedJoinGroup";
+      })(RoomDataType || _export("RoomDataType", RoomDataType = {}));
+
+      (function (EmojiType) {
+        EmojiType[EmojiType["Angry"] = 0] = "Angry";
+        EmojiType[EmojiType["Worship"] = 1] = "Worship";
+        EmojiType[EmojiType["Unfortunately"] = 2] = "Unfortunately";
+        EmojiType[EmojiType["Applause"] = 3] = "Applause";
+      })(EmojiType || _export("EmojiType", EmojiType = {}));
+
+      _export("PlayerState", PlayerState = {
+        NotReady: 0,
+        Ready: 1
+      });
+
+      _export("NetState", NetState = {
+        Offline: 0,
+        Online: 1
+      });
+
+      _export("GroupMessageType", GroupMessageType = {
+        Sys: 1,
+        //系统通知
+        Talk: 2 //聊天信息
+
+      });
+
+      _export("GroupSysMessageType", GroupSysMessageType = {
+        Matching: 1 //进入匹配通知
+
+      }); //---------------------------------------------
+
+
+      _export("LabelColor", LabelColor = {
+        Captain: new Color(46, 139, 33),
+        Ready: new Color(46, 139, 33),
+        NotReady: new Color(131, 123, 123)
+      });
+
+      (function (DialogButtonType) {
+        DialogButtonType[DialogButtonType["single"] = 0] = "single";
+        DialogButtonType[DialogButtonType["multiple"] = 1] = "multiple";
+      })(DialogButtonType || _export("DialogButtonType", DialogButtonType = {}));
+
+      _export("TeamColor", TeamColor = {
+        red: '0',
+        blue: '1'
+      });
+
+      _export("StatisticsKey", StatisticsKey = {
+        login: '1',
+        leave: '2',
+        main_rule_clicked: 'main_rule_clicked',
+        //	跳一跳首页-点击规则
+        main_quick_clicked: 'main_quick_clicked',
+        //	跳一跳首页-点击快速组队
+        main_couple_clicked: 'main_couple_clicked',
+        //	跳一跳首页-点击和另一半一起玩
+        main_quick_match: 'main_quick_match',
+        //	跳一跳首页-快速组队-匹配成功
+        main_quick_cancel: 'main_quick_cancel',
+        //	跳一跳首页-快速组队-取消匹配
+        main_couple_match: 'main_couple_match',
+        //	跳一跳首页-情侣组队-匹配成功
+        main_couple_cancel: 'main_couple_cancel',
+        //	跳一跳首页-情侣组队-取消匹配
+        main_couple_wait_invite: 'main_couple_wait_invite',
+        //	跳一跳首页-等待另一半-再次邀请
+        main_wait_invite_cancel: 'main_wait_invite_cancel',
+        //	跳一跳首页-等待另一半-取消邀请 ---待定
+        Guidance_appear_clicked: 'Guidance_appear_clicked',
+        //	出现新手引导
+        Guidance_pass_start: 'Guidance_pass_start',
+        //	通过新手引导-点击开始游戏
+        Guidance_pass_again: 'Guidance_pass_again',
+        //	通过新手引导-点击重新演示
+        Guidance_skip_clicked: 'Guidance_skip_clicked',
+        //	跳过新手引导
+        Guidance_skip_confirmed: 'Guidance_skip_confirmed',
+        //	确认跳过新手引导
+        game_jump_success: 'game_jump_success',
+        //	跳一跳游戏-跳跃成功
+        game_jump_fail: 'game_jump_fail',
+        //	跳一跳游戏-跳跃失败
+        game_start_jump: 'game_start_jump',
+        //	跳一跳游戏-任意一次跳跃
+        game_start_emotion: 'game_start_emotion',
+        //	跳一跳游戏-点击表情
+        game_leave_clicked: 'game_leave_clicked',
+        //	跳一跳游戏-离开游戏
+        game_leave_confirmed: 'game_leave_confirmed',
+        //	跳一跳游戏-确认离开游戏
+        game_over_again: 'game_over_again',
+        //	跳一跳游戏-结束-再来一局
+        game_over_replace: 'game_over_replace',
+        //	跳一跳游戏-结束-换个队友
+        game_over_back: 'game_over_back',
+        //	跳一跳游戏-结束-回到首页
+        game_voice_turn: 'game_voice_turn',
+        //	跳一跳游戏-点击音效
+        game_share_chat: 'game_share_chat',
+        //	跳一跳游戏-悄悄话分享成功
+        game_share_wechat: 'game_share_wechat',
+        //	跳一跳游戏-微信分享成功
+        game_share_QQ: 'game_share_QQ',
+        //	跳一跳游戏-QQ分享成功
+        game_share_clicked: 'game_share_clicked' //	跳一跳游戏-分享
+
+      });
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///DeployInfo.js", ["cc"], function (_export, _context) {
+  "use strict";
+
+  var cclegacy, DeployInfo;
+  return {
+    setters: [function (_cc) {
+      cclegacy = _cc.cclegacy;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "b0e97zlqg9DAJCZeY2PJIWp", "DeployInfo", undefined);
+
+      _export("DeployInfo", DeployInfo = {
+        "version": 54
+      });
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///quan.js", ["./_virtual/_rollupPluginBabelHelpers.js", "cc"], function (_export, _context) {
+  "use strict";
+
+  var _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _createClass, cclegacy, _decorator, Vec3, MeshRenderer, tween, Vec4, Component, _dec, _class, _temp, ccclass, property, Quan;
+
+  _export({
+    _dec: void 0,
+    _class: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Vec3 = _cc.Vec3;
+      MeshRenderer = _cc.MeshRenderer;
+      tween = _cc.tween;
+      Vec4 = _cc.Vec4;
+      Component = _cc.Component;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "88109mMvhFPC4a/ipJ0aAXk", "quan", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      _export("Quan", Quan = (_dec = ccclass('Quan'), _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
+        _inherits(Quan, _Component);
+
+        function Quan() {
+          var _getPrototypeOf2;
+
+          var _this;
+
+          _classCallCheck(this, Quan);
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Quan)).call.apply(_getPrototypeOf2, [this].concat(args)));
+          _this.originState = new Vec3(0, 0, 0);
+          _this.startState = new Vec3(.5, 1, .5);
+          _this.endState = new Vec3(4, 1, 4);
+          return _this;
+        }
+
+        _createClass(Quan, [{
+          key: "start",
+          value: function start() {
+            this.material = this.node.getComponent(MeshRenderer).materials[0];
+            this.pass = this.material.passes[0];
+            this.node.setScale(this.originState);
+          }
+        }, {
+          key: "startAnimation",
+          value: function startAnimation() {
+            var _this2 = this;
+
+            this.node.setScale(this.startState);
+            tween(this.node).to(.5, {
+              scale: this.endState
+            }, {
+              onComplete: function onComplete() {
+                _this2.node.setScale(_this2.originState);
+              },
+              onUpdate: function onUpdate(target, ratio) {
+                _this2.pass.setUniform(_this2.pass.getHandle("mainColor"), new Vec4(1, 1, 1, 1 - ratio));
+              }
+            }).start();
+          }
+        }]);
+
+        return Quan;
+      }(Component), _temp)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///Player.js", ["./_virtual/_rollupPluginBabelHelpers.js", "cc", "./Box.js", "./Const.js", "./quan.js"], function (_export, _context3) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _initializerDefineProperty, _assertThisInitialized, _createClass, _asyncToGenerator, cclegacy, _decorator, Vec3, Quat, Prefab, CCFloat, Vec2, systemEvent, SystemEvent, ParticleSystem, randomRangeInt, randomRange, tween, Tween, Component, instantiate, loader, Box, log, JumpStatus, StatisticsKey, ClientDataType, BoxSize, BoxSizeName, Quan, _dec, _dec2, _dec3, _dec4, _dec5, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _temp, ccclass, property, tempVec_1, tempVec_2, tempQuat_1, tempQuat_2, Player;
+
+  _export({
+    _dec: void 0,
+    _dec2: void 0,
+    _dec3: void 0,
+    _dec4: void 0,
+    _dec5: void 0,
+    _class: void 0,
+    _class2: void 0,
+    _descriptor: void 0,
+    _descriptor2: void 0,
+    _descriptor3: void 0,
+    _descriptor4: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _initializerDefineProperty = _virtual_rollupPluginBabelHelpersJs.initializerDefineProperty;
+      _assertThisInitialized = _virtual_rollupPluginBabelHelpersJs.assertThisInitialized;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Vec3 = _cc.Vec3;
+      Quat = _cc.Quat;
+      Prefab = _cc.Prefab;
+      CCFloat = _cc.CCFloat;
+      Vec2 = _cc.Vec2;
+      systemEvent = _cc.systemEvent;
+      SystemEvent = _cc.SystemEvent;
+      ParticleSystem = _cc.ParticleSystem;
+      randomRangeInt = _cc.randomRangeInt;
+      randomRange = _cc.randomRange;
+      tween = _cc.tween;
+      Tween = _cc.Tween;
+      Component = _cc.Component;
+      instantiate = _cc.instantiate;
+      loader = _cc.loader;
+    }, function (_BoxJs) {
+      Box = _BoxJs.Box;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      JumpStatus = _ConstJs.JumpStatus;
+      StatisticsKey = _ConstJs.StatisticsKey;
+      ClientDataType = _ConstJs.ClientDataType;
+      BoxSize = _ConstJs.BoxSize;
+      BoxSizeName = _ConstJs.BoxSizeName;
+    }, function (_quanJs) {
+      Quan = _quanJs.Quan;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "06087OdteJF9alMqGeb4DFG", "Player", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+      tempVec_1 = new Vec3();
+      tempVec_2 = new Vec3();
+      tempQuat_1 = new Quat();
+      tempQuat_2 = new Quat();
+
+      _export("Player", Player = (_dec = ccclass('Player'), _dec2 = property({
+        type: Prefab
+      }), _dec3 = property({
+        type: CCFloat
+      }), _dec4 = property({
+        type: CCFloat
+      }), _dec5 = property({
+        type: CCFloat
+      }), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function (_Component) {
+        _inherits(Player, _Component);
+
+        function Player() {
+          var _getPrototypeOf2;
+
+          var _this;
+
+          _classCallCheck(this, Player);
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Player)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+          _initializerDefineProperty(_this, "playerPrfb", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "jumpHeight", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "jumpDuration", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "max_time", _descriptor4, _assertThisInitialized(_this));
+
+          _this.originPosY = 0;
+          _this.originRotation = new Quat(0, 1, 0, 0);
+          _this.curRotation = new Quat();
+          _this.curPostion = new Vec3();
+          _this._jump_time = 0;
+          _this.jumpResult = {
+            time: null,
+            distance: null,
+            offset: null,
+            status: null,
+            perfect: false
+          };
+          _this._face = new Vec2();
+          _this._axis = new Vec3();
+          _this._stat_power = false;
+          _this._stat_jump = false;
+          _this.curBox = null;
+          _this.nextBox = null;
+          _this._isRunning = false;
+          _this._control = false;
+          _this.is_controler = false;
+          _this.modelBody = null;
+          _this.modelHead = null;
+          _this.modelHeadPos = new Vec3();
+          _this.modelTire = null;
+          _this.AI = false;
+          _this.AI_power = false;
+          _this.AI_jump = false;
+          return _this;
+        }
+
+        _createClass(Player, [{
+          key: "onLoad",
+          value: function onLoad() {
+            this.node.getRotation(tempQuat_1);
+          }
+        }, {
+          key: "initEvent",
+          value: function initEvent() {
+            systemEvent.on(SystemEvent.EventType.TOUCH_START, this.onTouchDown, this);
+            systemEvent.on(SystemEvent.EventType.TOUCH_END, this.onTouchUp, this);
+          }
+        }, {
+          key: "initPlayer",
+          value: function initPlayer() {
+            var pos = new Vec3(this.gameManager.serverTeam.pos[0], this.originPosY, this.gameManager.serverTeam.pos[1]);
+            this.node.setPosition(pos);
+            this.node.setRotation(this.originRotation);
+            this.curPostion = pos;
+            this._isRunning = false;
+            this._control = false;
+            this.is_controler = false;
+            this._jump_time = 0;
+            this.AI_power = false;
+            this.AI_jump = false;
+            this._stat_power = false;
+            this._stat_jump = false;
+          } //------------------自定义事件---------------------------
+          // onSetFace(event) {
+          // }
+          //------------------------------------------------------
+
+        }, {
+          key: "start",
+          value: function start() {
+            this.originPosY = this.node.position.y;
+            this.quan = this.node.getChildByName('quan').getComponent(Quan);
+            this.node.getRotation(this.curRotation);
+            this.initEvent();
+          }
+        }, {
+          key: "onTouchDown",
+          value: function onTouchDown(event) {
+            if (this.control && this.is_controler) {
+              if (this._stat_power == false && this._stat_jump == false) {
+                this.particleOpen(true);
+                this.gameManager.Util.playAudio(this.gameManager.audio_touch_down);
+                this.onPowerDown();
+                this._stat_power = true;
+                this.jumpResult.time = 0;
+                this._control = false;
+              }
+            }
+          }
+        }, {
+          key: "onTouchUp",
+          value: function onTouchUp(event) {
+            if (this._stat_power && this.is_controler) {
+              if (this.jumpResult.time > this.max_time) this.jumpResult.time = this.max_time;
+              log('设置power', '松开蓄力');
+              this._stat_power = false;
+              this.modelBody.setScale(new Vec3(1, 1, 1));
+              this.modelHead.setPosition(this.modelHeadPos);
+
+              if (this.modelTire) {
+                this.modelTire.setPosition(new Vec3(0, 0, 0));
+              } // let PlayerPos = new Vec3();
+              // this.node.getPosition(PlayerPos);
+              // PlayerPos.y = this.originPosY;
+              // this.node.setPosition(PlayerPos);
+
+
+              this.start_jump();
+            }
+          }
+        }, {
+          key: "teammatePower",
+          value: function teammatePower() {
+            if (this.control == false) {
+              this.gameManager.Util.playAudio(this.gameManager.audio_touch_down);
+              this.jumpResult.time = 0;
+              this._stat_power = true;
+              this.particleOpen(true);
+            }
+          }
+        }, {
+          key: "teammatePowerEnd",
+          value: function teammatePowerEnd(jumpInfo) {
+            if (this.control == false) {
+              log('设置power', '队友松开蓄力');
+              this._stat_power = false;
+              this.modelBody.setScale(new Vec3(1, 1, 1));
+              this.modelHead.setPosition(this.modelHeadPos);
+
+              if (this.modelTire) {
+                this.modelTire.setPosition(new Vec3(0, 0, 0));
+              }
+
+              var PlayerPos = new Vec3();
+              this.node.getPosition(PlayerPos);
+              PlayerPos.y = this.originPosY;
+              this.node.setPosition(PlayerPos);
+              this.start_jump(jumpInfo);
+            }
+          }
+        }, {
+          key: "funnction_jump",
+          value: function funnction_jump(time) {
+            return 9 * time * time + 7 * time;
+          }
+        }, {
+          key: "function_getJumpInfo",
+          value: function function_getJumpInfo() {
+            // 根据蓄力时间以及预设的公式计算此次跳跃的实际跳跃距离
+            this.jumpResult.distance = this.funnction_jump(this.jumpResult.time); // 计算此次跳跃的结果,包括落点位置的偏移量,跳跃结果状态(当前格,下一格,结果状态)
+
+            var nextBoxPos = new Vec3();
+            var curBoxPos = new Vec3();
+            var curPlayerPos = new Vec3();
+            var newPos = new Vec2();
+            var offset = null;
+            var perfect = false;
+            var jumpStatus = null;
+            this.node.getPosition(curPlayerPos);
+            this.curBox.node.getPosition(curBoxPos);
+            this.nextBox.node.getPosition(nextBoxPos);
+            this.getFace(newPos);
+            newPos.normalize();
+            newPos.multiplyScalar(this.jumpResult.distance);
+            newPos.x += curPlayerPos.x;
+            newPos.y += curPlayerPos.z; // log('新位置坐标:', newPos);
+            // log('当前脚下块中心坐标:', curBoxPos);
+            // log('下一块中心坐标:', nextBoxPos);
+
+            var toCenter = new Vec2(999, 999);
+
+            if (this.gameManager.Util.posInBox(newPos, new Vec2(nextBoxPos.x, nextBoxPos.z), this.nextBox.size, this.nextBox.shape, toCenter)) {
+              offset = [newPos.x - nextBoxPos.x, newPos.y - nextBoxPos.z];
+              jumpStatus = JumpStatus.next;
+
+              if (toCenter.x < .325) {
+                perfect = true;
+              }
+            } else if (this.gameManager.Util.posInBox(newPos, new Vec2(curBoxPos.x, curBoxPos.z), this.curBox.size, this.curBox.shape)) {
+              offset = [newPos.x - curBoxPos.x, newPos.y - curBoxPos.z];
+              jumpStatus = JumpStatus.current;
+            } else {
+              jumpStatus = JumpStatus.dead;
+              offset = [newPos.x - nextBoxPos.x, newPos.y - nextBoxPos.z];
+            }
+
+            this.jumpResult.offset = offset;
+            this.jumpResult.status = jumpStatus;
+            this.jumpResult.perfect = perfect;
+          }
+        }, {
+          key: "start_jump",
+          value: function start_jump() {
+            var _this2 = this;
+
+            var jumpInfo = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+            var isTeach = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+            this.particleOpen(false);
+            var isControler = false;
+
+            if (!this._stat_power) {
+              // 开启轨迹
+              var particleSystem = this.node.getChildByName('Node').getChildByName('body').getComponent(ParticleSystem);
+
+              if (particleSystem) {
+                particleSystem.enabled = true;
+              }
+
+              this._stat_jump = true;
+              this._jump_time = 0;
+              this.getFace(this._face);
+              this._axis = this.gameManager.Util.getJumpAxis(this.node, this.nextBox.node);
+              this.node.getRotation(this.curRotation);
+              this.node.getPosition(this.curPostion); // 播放盒子回弹动画
+
+              this.curBox.node.getComponent(Box).startElastic(); // 有jumpInfo表示此次跳跃为队友跳跃,根据其中的数据完成此次跳跃
+
+              if (jumpInfo == null) {
+                if (this.gameManager.serverPlayer) this.gameManager.serverPlayer.steps += 1;
+                isControler = true;
+                this.function_getJumpInfo();
+                if (!isTeach) this.onPowerUp();
+              } else {
+                log('队友此次跳跃的结果', jumpInfo);
+                this.jumpResult.distance = jumpInfo.distance;
+                this.jumpResult.offset = jumpInfo.pos;
+                this.jumpResult.status = jumpInfo.status;
+                this.jumpResult.time = jumpInfo.time;
+                this.jumpResult.perfect = jumpInfo.perfect;
+              }
+
+              if (isTeach) return; // 在开始跳跃的时候实际上已经拥有了所有跳跃结果相关的数据,在此时将最新数据发送给实时服务器进行更新,但是本地数据的更新还是需要在跳跃结束后,所以在此处复制一份旧数据并对其进行更新后发送给实时服务器
+
+              var actionDataTeam = {
+                id: this.gameManager.serverTeam.id,
+                cur_cube: this.gameManager.serverTeam.cur_cube,
+                pos: this.gameManager.serverTeam.pos,
+                perfectJump: this.gameManager.serverTeam.perfectJump,
+                oneStepFinish: this.gameManager.serverTeam.oneStepFinish,
+                playerList: this.gameManager.serverTeam.playerList
+              };
+              var actionDataPlayer = {
+                score: this.gameManager.serverPlayer.score,
+                id: this.gameManager.serverPlayer.id,
+                avatar: this.gameManager.serverPlayer.avatar,
+                status: this.gameManager.serverPlayer.status,
+                teamId: this.gameManager.serverPlayer.teamId,
+                name: this.gameManager.serverPlayer.name,
+                gender: this.gameManager.serverPlayer.gender,
+                isVip: this.gameManager.serverPlayer.isVip,
+                isRobot: this.gameManager.serverPlayer.isRobot,
+                lover_id: this.gameManager.serverPlayer.lover_id,
+                user_id: this.gameManager.serverPlayer.user_id,
+                steps: this.gameManager.serverPlayer.steps
+              };
+              var key = StatisticsKey.game_jump_fail;
+
+              switch (this.jumpResult.status) {
+                case JumpStatus.next:
+                  key = StatisticsKey.game_jump_success;
+                  actionDataTeam.cur_cube += 1;
+                  actionDataTeam.pos = this.jumpResult.offset;
+                  if (this.jumpResult.perfect) actionDataTeam.perfectJump += 1;else actionDataTeam.perfectJump = 0;
+
+                  if (isControler) {
+                    var score = this.gameManager.Util.getScore(actionDataTeam.perfectJump);
+                    actionDataPlayer.score += score;
+                  }
+
+                  break;
+
+                case JumpStatus.current:
+                  actionDataTeam.pos = this.jumpResult.offset;
+                  actionDataTeam.perfectJump = 0;
+                  break;
+
+                default:
+                  actionDataTeam.perfectJump = 0;
+                  break;
+              }
+
+              if (isControler) {
+                this.gameManager.Util.callTDGA(key);
+                setTimeout(function () {
+                  _this2.gameManager.Util.callTDGA(StatisticsKey.game_start_jump);
+                }, 50);
+              }
+
+              this.gameManager.SDK.sendToServer(ClientDataType.Action, {
+                player: actionDataPlayer,
+                team: actionDataTeam,
+                status: this.jumpResult.status
+              });
+            }
+          }
+        }, {
+          key: "action_power",
+          value: function action_power(dt) {
+            if (this._stat_power) {
+              this.jumpResult.time += dt;
+
+              if (this.jumpResult.time < this.max_time) {
+                this.setPlayerPress(this.jumpResult.time / this.max_time);
+                this.setBoxPress(this.jumpResult.time / this.max_time);
+              } else {
+                if (this.jumpResult.time > this.max_time + 2) {
+                  this.jumpResult.time = this.max_time;
+                  this.onTouchUp(1);
+                } else {
+                  if (randomRangeInt(1, 100) <= 50) {
+                    var rate = randomRange(0.97, 1.03);
+                    this.setPlayerPress(rate);
+                    this.setBoxPress(rate);
+                  }
+                }
+              } // AI蓄力计算
+
+
+              if (this.AI && this.AI_power && !this.AI_jump && this.nextBox) {
+                var distance = this.funnction_jump(this.jumpResult.time);
+                var curPos = new Vec3();
+                var nextPos = new Vec3();
+                var newPos = new Vec2();
+                this.getFace(newPos);
+                newPos.normalize();
+                newPos.multiplyScalar(distance);
+                this.node.getPosition(curPos);
+                this.nextBox.node.getPosition(nextPos);
+                newPos.x += curPos.x;
+                newPos.y += curPos.z;
+                var v1 = new Vec2(newPos.x, newPos.y);
+                var v2 = new Vec2(nextPos.x, nextPos.z);
+                var dis = new Vec2();
+                this.gameManager.Util.posInBox(v1, v2, this.nextBox.size, this.nextBox.shape, dis);
+
+                if (dis.x <= BoxSize[BoxSizeName.center] || this.jumpResult.time >= this.max_time) {
+                  log('设置power', 'AI松开蓄力');
+                  this._stat_power = false;
+                  this.modelBody.setScale(new Vec3(1, 1, 1));
+                  this.modelHead.setPosition(this.modelHeadPos);
+
+                  if (this.modelTire) {
+                    this.modelTire.setPosition(new Vec3(0, 0, 0));
+                  }
+
+                  var PlayerPos = new Vec3();
+                  this.node.getPosition(PlayerPos);
+                  PlayerPos.y = this.originPosY;
+                  this.node.setPosition(PlayerPos);
+                  this.AI_jump = true;
+                  this.AI_power = false;
+
+                  if (this.gameManager.SDK.curBoard.name == 'TeachingBoard') {
+                    this.AI = false;
+                    this.start_jump(null, true);
+                  } else {
+                    this.start_jump();
+                  }
+                }
+              }
+            }
+          }
+        }, {
+          key: "action_jump",
+          value: function action_jump(dt) {
+            if (this._stat_jump) {
+              this._jump_time += dt;
+              var y = 0;
+              var val = 0;
+              var roa = 0;
+              var jump_end = false;
+
+              if (this._jump_time < this.jumpDuration) {
+                var a = -4 * this.jumpHeight / (this.jumpDuration * this.jumpDuration);
+                var h = this.jumpDuration / 2;
+                var k = this.jumpHeight;
+                y = a * (this._jump_time - h) * (this._jump_time - h) + k + this.originPosY;
+                val = dt / this.jumpDuration * this.jumpResult.distance;
+                roa = this._jump_time / this.jumpDuration * 360;
+              } else {
+                y = this.originPosY;
+                roa = 0;
+                this._stat_jump = false;
+                jump_end = true;
+              } // 当前所在位置
+
+
+              var cur_pos = new Vec3();
+              this.node.getPosition(cur_pos);
+              var new_pos = this.gameManager.Util.getPosWithVec(cur_pos, this._face, val);
+              new_pos.y = y;
+              Quat.rotateAround(tempQuat_1, this.curRotation, this._axis, roa * 3.1415 / 180);
+              this.node.setPosition(new_pos);
+              this.node.setRotation(tempQuat_1);
+
+              if (jump_end) {
+                this.AI_jump = false;
+                this.action_jump_end();
+              }
+            }
+          }
+        }, {
+          key: "action_jump_end",
+          value: function action_jump_end() {
+            var _this3 = this;
+
+            var cur_pos = new Vec3();
+            this.node.getPosition(cur_pos);
+            log('跳跃结果', '基本数据:', this.jumpResult); // 关闭轨迹
+
+            var particleSystem = this.node.getChildByName('Node').getChildByName('body').getComponent(ParticleSystem);
+
+            if (particleSystem) {
+              particleSystem.enabled = false;
+            }
+
+            if (this.jumpResult.status == JumpStatus.current) {
+              log('跳跃结果', '原地跳');
+              log('修正量', this.jumpResult.offset);
+              var newPos = new Vec3();
+              this.curBox.node.getPosition(newPos);
+              newPos.x += this.jumpResult.offset[0];
+              newPos.z += this.jumpResult.offset[1];
+              newPos.y = this.originPosY;
+              log('修正后的坐标', newPos);
+              this.node.setPosition(newPos);
+              this.node.getPosition(this.curPostion);
+              this.onJumpComplete(false, this.is_controler);
+              this.gameManager.Util.playAudio(this.gameManager.audio_complete);
+            } else if (this.jumpResult.status == JumpStatus.next) {
+              log('跳跃结果', '跳到下一块');
+              log('修正量:', this.jumpResult.offset);
+
+              var _newPos = new Vec3();
+
+              this.nextBox.node.getPosition(_newPos);
+              _newPos.x += this.jumpResult.offset[0];
+              _newPos.z += this.jumpResult.offset[1];
+              _newPos.y = this.originPosY;
+              log('修正后的坐标', _newPos);
+              this.node.setPosition(_newPos);
+              this.node.getPosition(this.curPostion);
+              this.onJumpComplete(true, this.is_controler);
+              if (this.jumpResult.perfect == true) this.gameManager.Util.playAudio(this.gameManager.audio_perfect);else this.gameManager.Util.playAudio(this.gameManager.audio_complete);
+            } else if (this.jumpResult.status == JumpStatus.dead) {
+              log('跳跃结果', '跳跃失败');
+              var nextBoxPos = this.nextBox.node.getPosition();
+
+              var _newPos2 = new Vec3();
+
+              _newPos2.x = nextBoxPos.x + this.jumpResult.offset[0];
+              _newPos2.z = nextBoxPos.z + this.jumpResult.offset[1];
+              _newPos2.y = this.originPosY;
+              log('修正后的坐标', _newPos2);
+              this.node.setPosition(_newPos2);
+
+              var dead_pos = _newPos2.clone();
+
+              dead_pos.y = -0.5;
+              this.gameManager.Util.playAudio(this.gameManager.audio_dead); // 判断是否需要进行倾斜
+
+              var toCenter = new Vec2(9999, 9999);
+              this.gameManager.Util.posInBox(new Vec2(_newPos2.x, _newPos2.z), new Vec2(nextBoxPos.x, nextBoxPos.z), this.nextBox.size, this.nextBox.shape, toCenter);
+
+              if (toCenter.x <= BoxSize[this.nextBox.size] / 2 + 0.4) {
+                var ang = new Vec2(_newPos2.x - nextBoxPos.x, _newPos2.z - nextBoxPos.z);
+                ang.normalize();
+                ang.multiplyScalar(0.8);
+                dead_pos.x += ang.x;
+                dead_pos.z += ang.y;
+                var quat_end = this.gameManager.Util.getTiltQuat(this.node, this.nextBox.node.getPosition());
+                var quat_start = this.node.getRotation();
+                var quat_now = new Quat();
+                tween(this.node).to(.6, {
+                  position: dead_pos
+                }, {
+                  onComplete: this.jumpDead.bind(this),
+                  onUpdate: function onUpdate(target, ratio) {
+                    // ratio : 0~1
+                    // 这里使用球面插值，旋转时不会出现变形
+                    quat_now.set(quat_start).slerp(quat_end, ratio);
+
+                    _this3.node.setRotation(quat_now);
+                  }
+                }).start();
+              } else {
+                tween(this.node).to(.6, {
+                  position: dead_pos
+                }, {
+                  onComplete: this.jumpDead.bind(this)
+                }).start();
+              }
+            }
+
+            this.jumpResult.time = 0;
+            this._jump_time = 0;
+          }
+        }, {
+          key: "jumpDead",
+          value: function jumpDead() {
+            this.onJumpDead();
+            this.node.setPosition(this.curPostion);
+            this.node.setRotation(this.originRotation);
+            this.gameManager.Util.playAudio(this.gameManager.audio_relife);
+          }
+        }, {
+          key: "reset",
+          value: function reset() {
+            var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+            log('重置角色数据', data);
+
+            if (data) {
+              var nextPos = this.nextBox.node.getPosition();
+              var curPos = this.curBox.node.getPosition();
+              var camera_pos = new Vec3();
+              var plane_pos = new Vec3(curPos.x);
+              var p_pos = new Vec3(); // this.gameManager.camera
+
+              Tween.stopAllByTarget(this.gameManager.camera); // Tween.stopAllByTarget(this.gameManager.plane);
+
+              plane_pos.set(curPos.x, 0, curPos.z);
+              p_pos.set(curPos.x + data.pos[0], this.originPosY, curPos.z + data.pos[1]);
+              Vec3.add(camera_pos, new Vec3((curPos.x + nextPos.x) / 2, 0, (curPos.z + nextPos.z) / 2), this.gameManager._origin_camera_pos);
+              this.gameManager.plane.setPosition(new Vec3(curPos.x, 0, curPos.z));
+              this.gameManager.camera.node.setPosition(camera_pos);
+              this.node.setPosition(p_pos);
+
+              if (this.modelTire) {
+                this.modelTire.setPosition(new Vec3(0, 0, 0));
+              }
+
+              if (this.modelHead) {
+                this.modelHead.setPosition(this.modelHeadPos);
+              }
+
+              if (this.modelBody) {
+                this.modelBody.setScale(new Vec3(1, 1, 1));
+              }
+            } else {
+              this.node.setPosition(this.curPostion);
+            }
+
+            this.particleOpen(false);
+            this.node.setRotation(this.originRotation);
+            this.node.getPosition(this.curPostion);
+            log('设置power', 'reset');
+            this._stat_power = false;
+            this._stat_jump = false;
+            this.AI_power = false;
+            this.AI_jump = false;
+            this.curBox.node.setScale(new Vec3(1, 1, 1));
+          } // 角色的通用方法
+
+          /* 设置自己角色的面向下一个方块中心点 */
+
+        }, {
+          key: "setFace",
+          value: function setFace() {
+            var _this4 = this;
+
+            if (this.nextBox) {
+              var tw = tween(this.node); // 使用tween动画
+
+              var quat_start = new Quat();
+              this.node.getRotation(quat_start); // 获取起始四元数
+
+              var quat_end = this.gameManager.Util.getRotaionQuat(this.node, this.nextBox.node); // 最终旋转四元数 假设已经算出
+
+              var quat_now = new Quat(); // 用一个中间变量
+
+              tw.to(0.2, {}, {
+                onUpdate: function onUpdate(target, ratio) {
+                  // ratio : 0~1
+                  // 这里使用球面插值，旋转时不会出现变形
+                  quat_now.set(quat_start).slerp(quat_end, ratio);
+
+                  _this4.node.setRotation(quat_now);
+                }
+              });
+              tw.start();
+            }
+          }
+        }, {
+          key: "particleOpen",
+          value: function particleOpen(open) {
+            this.node.getChildByName('Node').getChildByName('body').getChildByName('Particle').active = open;
+          } //获取角色从当前位置到下一个方块应该的向量
+
+        }, {
+          key: "getFace",
+          value: function getFace() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+            var vec2 = new Vec2();
+            var vec3_1 = new Vec3();
+            var vec3_2 = new Vec3();
+            this.node.getPosition(vec3_1);
+            this.nextBox.node.getPosition(vec3_2);
+
+            if (out) {
+              out.set(vec3_2.x - vec3_1.x, vec3_2.z - vec3_1.z);
+
+              this._face.set(out);
+            } else {
+              this._face.set(vec3_2.x - vec3_1.x, vec3_2.z - vec3_1.z);
+            }
+          } // 设置棋子的向下移动量(蓄力过程中下压时的向下移动量, 比例 0.0 - 1.0)
+
+        }, {
+          key: "setPlayerPress",
+          value: function setPlayerPress(rate) {
+            var PlayerPos = this.node.getPosition();
+            PlayerPos.y = this.originPosY - 1.102 * rate;
+            this.node.setPosition(PlayerPos);
+            var headPos = this.modelHead.getPosition();
+            headPos.y = this.modelHeadPos.y - 0.572 * rate;
+            this.modelHead.setPosition(headPos);
+
+            if (this.modelTire) {
+              var tirePos = this.modelTire.getPosition();
+              tirePos.y = -0.572 * rate;
+              this.modelTire.setPosition(tirePos);
+            }
+
+            var bodyScale = this.modelBody.getScale();
+            bodyScale.y = 1 - rate * 0.5;
+            this.modelBody.setScale(bodyScale);
+          }
+        }, {
+          key: "setBoxPress",
+          value: function setBoxPress(rate) {
+            var groundScale = this.curBox.node.getScale();
+            groundScale.y = 1 - rate * 0.7;
+            this.curBox.node.setScale(groundScale);
+          } // 修改角色模型,并自动将其头部,身体Node进行存储,序号从1-4,分别代表红1-2,蓝1-2
+
+        }, {
+          key: "setModel",
+          value: function () {
+            var _setModel = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(modelIndex) {
+              var chessPrefab, curNode, prefab, newModel;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      modelIndex -= 1;
+                      chessPrefab = this.gameManager.ChessPrefab;
+
+                      if (!(modelIndex >= chessPrefab.length || modelIndex < 0)) {
+                        _context.next = 4;
+                        break;
+                      }
+
+                      return _context.abrupt("return");
+
+                    case 4:
+                      curNode = this.node.getChildByName('Node');
+
+                      if (curNode) {
+                        this.node.removeChild(curNode);
+                      }
+
+                      prefab = this.gameManager.ChessPrefab[modelIndex];
+                      newModel = instantiate(prefab);
+                      newModel.setParent(this.node);
+                      this.modelHead = newModel.getChildByName('head');
+                      this.modelBody = newModel.getChildByName('body');
+                      this.modelHead.getPosition(this.modelHeadPos);
+                      return _context.abrupt("return", true);
+
+                    case 13:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function setModel(_x) {
+              return _setModel.apply(this, arguments);
+            }
+
+            return setModel;
+          }() // 修改角色的头饰,并自动将其Node进行存储
+
+        }, {
+          key: "setTire",
+          value: function () {
+            var _setTire = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(index) {
+              var _this5 = this;
+
+              var key, curNode, prefabPath, promise;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      key = null;
+                      _context2.t0 = index;
+                      _context2.next = _context2.t0 === 1 ? 4 : 6;
+                      break;
+
+                    case 4:
+                      key = 'vip';
+                      return _context2.abrupt("break", 6);
+
+                    case 6:
+                      curNode = this.node.getChildByName('Tire').getChildByName('Node');
+
+                      if (curNode) {
+                        this.node.getChildByName('Tire').removeChild(curNode);
+                      }
+
+                      if (key) {
+                        _context2.next = 10;
+                        break;
+                      }
+
+                      return _context2.abrupt("return", false);
+
+                    case 10:
+                      prefabPath = 'Model/Tire/' + key + '/Node';
+                      promise = new Promise(function (resolve) {
+                        loader.loadRes(prefabPath, Prefab, function (err, prefab) {
+                          var newTire = instantiate(prefab);
+                          newTire.setParent(_this5.node.getChildByName('Tire'));
+                          _this5.modelTire = newTire;
+                          resolve(newTire);
+                        });
+                      });
+                      return _context2.abrupt("return", true);
+
+                    case 13:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function setTire(_x2) {
+              return _setTire.apply(this, arguments);
+            }
+
+            return setTire;
+          }()
+        }, {
+          key: "update",
+          value: function update(deltaTime) {
+            if (!this.isRunning && this.gameManager.SDK && this.gameManager.SDK.curBoard && this.gameManager.SDK.curBoard.name != 'TeachingBoard') {
+              return;
+            }
+
+            if (this.AI) {
+              var isTeach = this.gameManager.SDK.curBoard.name == 'TeachingBoard';
+
+              if (this.control || isTeach) {
+                if (this._stat_power == false && this._stat_jump == false && !this.AI_jump && !this.AI_power) {
+                  if (!isTeach) this.onPowerDown();
+                  this.AI_power = true;
+                  this._stat_power = true;
+                  this.jumpResult.time = 0;
+                  this._control = false;
+                }
+              }
+            }
+
+            this.action_power(deltaTime);
+            this.action_jump(deltaTime);
+          }
+        }, {
+          key: "control",
+          //停止蓄力时触≥发事件
+          set: function set(val) {
+            log('设置Player控制:', val);
+            this._control = val;
+            this.is_controler = val;
+
+            if (this.is_controler) {
+              this.initEvent();
+            }
+          },
+          get: function get() {
+            return this._control;
+          }
+        }, {
+          key: "isRunning",
+          set: function set(b) {
+            this._isRunning = b;
+          },
+          get: function get() {
+            return this._isRunning;
+          }
+        }]);
+
+        return Player;
+      }(Component), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "playerPrfb", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "jumpHeight", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 2;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "jumpDuration", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0.7;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "max_time", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 4;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///Util.js", ["./_virtual/_rollupPluginBabelHelpers.js", "cc", "./Const.js"], function (_export, _context11) {
+  "use strict";
+
+  var _createClass, _classCallCheck, _typeof, _asyncToGenerator, cclegacy, _decorator, Vec2, Rect, Vec3, Quat, loader, Prefab, AudioSource, Sprite, Texture2D, ImageAsset, SpriteFrame, Label, Node, log, BoxShape, TeamColor, BoxSize, ccclass, property, Util, HttpCode, HttpMethod, Http;
+
+  function throttle() {
+    var wait = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2000;
+    return function (target, name, descriptor) {
+      {
+        var fun = descriptor.value;
+        var timer = null;
+
+        descriptor.value = function () {
+          if (!timer) {
+            fun.apply(this);
+            timer = setTimeout(function () {
+              timer = null;
+            }, wait);
+          } else {
+            log('重复点击');
+          }
+        };
+
+        return descriptor;
+      }
+    };
+  }
+
+  _export({
+    throttle: throttle,
+    HttpCode: void 0,
+    HttpMethod: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _typeof = _virtual_rollupPluginBabelHelpersJs.typeof;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Vec2 = _cc.Vec2;
+      Rect = _cc.Rect;
+      Vec3 = _cc.Vec3;
+      Quat = _cc.Quat;
+      loader = _cc.loader;
+      Prefab = _cc.Prefab;
+      AudioSource = _cc.AudioSource;
+      Sprite = _cc.Sprite;
+      Texture2D = _cc.Texture2D;
+      ImageAsset = _cc.ImageAsset;
+      SpriteFrame = _cc.SpriteFrame;
+      Label = _cc.Label;
+      Node = _cc.Node;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      BoxShape = _ConstJs.BoxShape;
+      TeamColor = _ConstJs.TeamColor;
+      BoxSize = _ConstJs.BoxSize;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "ce5d5zghdhNhJ8k219NUh+H", "Util", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      _export("Util", Util = /*#__PURE__*/function () {
+        function Util(sdk, gameManager) {
+          _classCallCheck(this, Util);
+
+          this.localImgCache = {};
+          this.remoteImgCache = {};
+          this.isRobotRoomCache = undefined;
+          this.SDK = sdk;
+          this.gameManager = gameManager;
+        }
+
+        _createClass(Util, [{
+          key: "posInBox",
+
+          /**
+           * @name 判断盒子坐标点是否在盒子范围内
+           * @description 如果传入out则将距离赋值到out.x这个属性中
+           * @param {Vec2} pos 目标坐标点
+           * @param {Vec2} t_pos 盒子中心坐标点
+           * @param {number} size 盒子尺寸
+           * @param {BoxShape} shape 盒子形状
+           * @param {Vec2} out 距离数值
+           * @returns {boolean} 返回布尔值
+           */
+          value: function posInBox(pos, t_pos, size, shape) {
+            var out = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+            var range = BoxSize[size] / 2.0;
+
+            if (out) {
+              out.x = Vec2.distance(pos, t_pos);
+            }
+
+            if (shape == BoxShape.cube) {
+              var t_rect = new Rect();
+              var t_rect_p1 = new Vec2(t_pos.x - range, t_pos.y + range);
+              var t_rect_p2 = new Vec2(t_pos.x + range, t_pos.y - range);
+              Rect.fromMinMax(t_rect, t_rect_p1, t_rect_p2);
+              return t_rect.contains(pos);
+            } else {
+              return Vec2.distance(pos, t_pos) < range;
+            }
+          }
+          /**
+           * @name 获取节点A到节点B方向的跳跃旋转轴
+           * @description 用于角色节点跳跃到下一个盒子时空中旋转需要用到的旋转轴
+           * @param {Node} A 起点节点
+           * @param {Node} B 目标节点
+           * @returns {Vec3} 返回用于跳跃计算的旋转轴
+           */
+
+        }, {
+          key: "getJumpAxis",
+          value: function getJumpAxis(A, B) {
+            var A_pos = new Vec3();
+            var B_pos = new Vec3();
+            var axis = new Vec3(0, 0, 0);
+            A.getPosition(A_pos);
+            B.getPosition(B_pos);
+            var a = A_pos.z - B_pos.z;
+            var b = B_pos.x - A_pos.x;
+            axis.set(-a, 0, -b);
+            axis.normalize();
+            return axis;
+          }
+        }, {
+          key: "getTiltQuat",
+          value: function getTiltQuat(N, center_pos) {
+            var r = new Quat();
+            var cur_pos = N.getPosition();
+            var temp1 = new Vec2(cur_pos.x - center_pos.x, cur_pos.z - center_pos.z);
+            temp1.rotate(-90 / 180 * 3.1415926);
+            var axis = new Vec3(temp1.x, 0, temp1.y);
+            axis.normalize();
+            var cur_quat = N.getRotation();
+            Quat.rotateAround(r, cur_quat, axis, 90 / 180 * 3.1415926);
+            return r;
+          }
+          /**
+           * @name 获取某节点A至目标节点B位置的Quat
+           * @description 只考虑水平平面,不考虑竖直方向
+           * @param {Node} A 当前节点
+           * @param {Node} B 目标节点
+           * @returns {Quat}
+           */
+
+        }, {
+          key: "getRotaionQuat",
+          value: function getRotaionQuat(A, B) {
+            var cur_pos = new Vec3();
+            var tar_pos = new Vec3();
+            var temp1 = new Vec2(0, 1);
+            var temp2 = new Vec2();
+            var temp3 = new Quat();
+            temp3.lengthSqr();
+            A.getPosition(cur_pos);
+            B.getPosition(tar_pos);
+            temp2.set(tar_pos.x - cur_pos.x, tar_pos.z - cur_pos.z);
+            var ang = temp2.signAngle(temp1);
+
+            if (ang < 0) {
+              ang += 2 * 3.1415926;
+            }
+
+            Quat.rotateY(temp3, temp3, ang);
+            return temp3;
+          }
+          /**
+           * @name 获取点A沿着向量V方向移动距离L后的新坐标
+           * @description 起点用的Vec3是为了可以直接使用角色Node的position值作为参数,主要用于获取角色的跳跃终点坐标
+           * @param {Vec3} pos 起点
+           * @param {Vec2} V 方向向量
+           * @param {number} L 偏移距离
+           * @returns {Vec3} 新的坐标
+           */
+
+        }, {
+          key: "getPosWithVec",
+          value: function getPosWithVec(pos, V, L) {
+            V.normalize();
+            V.multiplyScalar(L);
+            var new_pos = new Vec3(pos.x + V.x, 0, pos.z + V.y);
+            return new_pos;
+          }
+          /**
+           * @name 获取此次跳跃得分
+           * @description 
+           * @param {number} perfectCount 完美跳跃次数
+           * @returns {number} 分数
+           */
+
+        }, {
+          key: "getScore",
+          value: function getScore(perfectCount) {
+            if (perfectCount <= 0) return 1;
+            var score = perfectCount * 2;
+            return score <= 10 ? score : 10;
+          }
+          /**
+           * @name 获取本地时间戳(精确到秒)
+           * @returs {number} 时间戳
+           */
+
+        }, {
+          key: "getLocalTime",
+          value: function getLocalTime() {
+            return Math.floor(Date.parse(new Date().toString()) / 1000);
+          }
+          /**
+           * @name 判断是不是属于控制者
+           * @description 根据同步消息中的curActionPlayer来进行判断
+           * @param {any} curActionPlayer 同步消息中的curActionPlayer
+           * @param {MGOBE.types.PlayerInfo} curPlayerInfo 当前自己的PlayerInfo
+           * @returns {boolean} 布尔值
+           */
+
+        }, {
+          key: "isControler",
+          value: function isControler(curActionPlayer, curPlayerInfo) {
+            var result = false;
+
+            for (var index = 0; index < curActionPlayer.length; index++) {
+              var element = curActionPlayer[index];
+
+              if (element.id == curPlayerInfo.id) {
+                result = true;
+                break;
+              }
+            }
+
+            return result;
+          }
+          /**
+           * @name 获取URL参数部分中的指定参数
+           * @description 
+           * @param {string} paraName 参数名
+           * @param {string} paraStr URL中的参数部分
+           * @returns {string} 参数值
+           */
+
+        }, {
+          key: "getPara",
+          value: function getPara(paraName, paraStr) {
+            var reg = new RegExp("(^|&)" + paraName + "=([^&]*)(&|$)", "i");
+            var r = paraStr.substr(1).match(reg);
+
+            if (r != null) {
+              return decodeURI(r[2]);
+            } else {
+              return null;
+            }
+          }
+          /**
+           * @name 判断自己的队友是否为自己的另一半
+           * @description 只有在队友为自己另一半时返回为true,其他任何情况(包括没有队友)都为false
+           * @returns {boolean} 布尔值
+           */
+
+        }, {
+          key: "teammaterIsLover",
+          value: function () {
+            var _teammaterIsLover = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var teammater, info;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      if (!(this.SDK.gameManager.teammaterIsLover != undefined)) {
+                        _context.next = 2;
+                        break;
+                      }
+
+                      return _context.abrupt("return", this.SDK.gameManager.teammaterIsLover);
+
+                    case 2:
+                      _context.next = 4;
+                      return this.SDK.getTeammate();
+
+                    case 4:
+                      teammater = _context.sent;
+
+                      if (teammater) {
+                        _context.next = 7;
+                        break;
+                      }
+
+                      return _context.abrupt("return", false);
+
+                    case 7:
+                      info = JSON.parse(teammater.customProfile);
+                      this.SDK.gameManager.teammaterIsLover = info.lover_id == this.SDK.gameManager.PlayerData.lover_id && info.lover_id > 0;
+                      return _context.abrupt("return", this.SDK.gameManager.teammaterIsLover);
+
+                    case 10:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function teammaterIsLover() {
+              return _teammaterIsLover.apply(this, arguments);
+            }
+
+            return teammaterIsLover;
+          }()
+          /**
+           * @name 判断敌人是否为一对情侣
+           * @description 只有在拥有敌人且敌人是一对情侣时返回为true,其他任何情况(包括没有敌人)都为false
+           * @returns {boolean} 布尔值
+           */
+
+        }, {
+          key: "enemyIsLover",
+          value: function () {
+            var _enemyIsLover = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var groupInfo, self, enemy1, enemy2, playerList, index, element;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      if (!(this.SDK.gameManager.enemyIsLover != undefined)) {
+                        _context2.next = 2;
+                        break;
+                      }
+
+                      return _context2.abrupt("return", this.SDK.gameManager.enemyIsLover);
+
+                    case 2:
+                      _context2.next = 4;
+                      return this.SDK.getRoomInfo();
+
+                    case 4:
+                      groupInfo = _context2.sent;
+                      _context2.next = 7;
+                      return this.SDK.getPlayerInfo();
+
+                    case 7:
+                      self = _context2.sent;
+
+                      if (groupInfo) {
+                        _context2.next = 10;
+                        break;
+                      }
+
+                      return _context2.abrupt("return", false);
+
+                    case 10:
+                      playerList = groupInfo.playerList;
+                      index = 0;
+
+                    case 12:
+                      if (!(index < playerList.length)) {
+                        _context2.next = 24;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!(element.teamId != self.teamId)) {
+                        _context2.next = 21;
+                        break;
+                      }
+
+                      if (!enemy1) {
+                        _context2.next = 20;
+                        break;
+                      }
+
+                      if (this.gameManager.robotInfo[element.id]) {
+                        enemy2 = JSON.parse(this.gameManager.robotInfo[element.id].profile);
+                      } else {
+                        enemy2 = JSON.parse(element.customProfile);
+                      }
+
+                      return _context2.abrupt("break", 24);
+
+                    case 20:
+                      if (this.gameManager.robotInfo[element.id]) {
+                        enemy1 = JSON.parse(this.gameManager.robotInfo[element.id].profile);
+                      } else {
+                        enemy1 = JSON.parse(element.customProfile);
+                      }
+
+                    case 21:
+                      index++;
+                      _context2.next = 12;
+                      break;
+
+                    case 24:
+                      this.SDK.gameManager.enemyIsLover = enemy1.lover_id == enemy2.lover_id ? enemy1.lover_id != -1 ? true : false : false;
+                      return _context2.abrupt("return", this.SDK.gameManager.enemyIsLover);
+
+                    case 26:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function enemyIsLover() {
+              return _enemyIsLover.apply(this, arguments);
+            }
+
+            return enemyIsLover;
+          }()
+          /**
+           * @name 判断敌人是否是VIP
+           * @description 只要敌人双方有一个人拥有VIP就返回True
+           * @returns {boolean} 布尔值
+           */
+
+        }, {
+          key: "enemyIsVip",
+          value: function () {
+            var _enemyIsVip = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              var roomInfo, playerList, selfInfo, index, element, enemyInfo;
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      _context3.next = 2;
+                      return this.SDK.getRoomInfo();
+
+                    case 2:
+                      roomInfo = _context3.sent;
+
+                      if (roomInfo) {
+                        _context3.next = 5;
+                        break;
+                      }
+
+                      return _context3.abrupt("return", false);
+
+                    case 5:
+                      playerList = roomInfo.playerList;
+                      _context3.next = 8;
+                      return this.SDK.getPlayerInfo();
+
+                    case 8:
+                      selfInfo = _context3.sent;
+                      index = 0;
+
+                    case 10:
+                      if (!(index < playerList.length)) {
+                        _context3.next = 20;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!(element.teamId != selfInfo.teamId)) {
+                        _context3.next = 17;
+                        break;
+                      }
+
+                      enemyInfo = void 0;
+
+                      if (this.gameManager.robotInfo[element.id]) {
+                        enemyInfo = JSON.parse(this.gameManager.robotInfo[element.id].profile);
+                      } else {
+                        enemyInfo = JSON.parse(element.customProfile);
+                      }
+
+                      if (!enemyInfo.isVip) {
+                        _context3.next = 17;
+                        break;
+                      }
+
+                      return _context3.abrupt("return", true);
+
+                    case 17:
+                      index++;
+                      _context3.next = 10;
+                      break;
+
+                    case 20:
+                      return _context3.abrupt("return", false);
+
+                    case 21:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+
+            function enemyIsVip() {
+              return _enemyIsVip.apply(this, arguments);
+            }
+
+            return enemyIsVip;
+          }()
+          /**
+           * @name 判断当前自己所在的房间是否为机器人房,自己双方为人,敌人双方为机器人
+           * @returns {boolean} 布尔值
+           */
+
+        }, {
+          key: "IsRobotRoom",
+          value: function () {
+            var _IsRobotRoom = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              var roomInfo, playerList, index, element;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      if (!(this.isRobotRoomCache != undefined)) {
+                        _context4.next = 2;
+                        break;
+                      }
+
+                      return _context4.abrupt("return", this.isRobotRoomCache);
+
+                    case 2:
+                      _context4.next = 4;
+                      return this.SDK.getRoomInfo();
+
+                    case 4:
+                      roomInfo = _context4.sent;
+
+                      if (roomInfo) {
+                        _context4.next = 7;
+                        break;
+                      }
+
+                      return _context4.abrupt("return", false);
+
+                    case 7:
+                      playerList = roomInfo.playerList;
+                      index = 0;
+
+                    case 9:
+                      if (!(index < playerList.length)) {
+                        _context4.next = 16;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!element.isRobot) {
+                        _context4.next = 13;
+                        break;
+                      }
+
+                      return _context4.abrupt("return", true);
+
+                    case 13:
+                      index++;
+                      _context4.next = 9;
+                      break;
+
+                    case 16:
+                      return _context4.abrupt("return", false);
+
+                    case 17:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+
+            function IsRobotRoom() {
+              return _IsRobotRoom.apply(this, arguments);
+            }
+
+            return IsRobotRoom;
+          }()
+          /**
+           * @name 加载远程图片
+           * @description 传入图片URL以及带有Sprite组件的Node,自动将图片显示在传入的Node中
+           * @param {string} remoteUrl 图片URL
+           * @param {Node} spriteNode 带有sprite组件的Node
+           * @returns {} 无
+           */
+
+        }, {
+          key: "loadRemoteImg",
+          value: function () {
+            var _loadRemoteImg = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(remoteUrl, spriteNode) {
+              var _this = this;
+
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      return _context5.abrupt("return", new Promise(function (resolve, reject) {
+                        if (_this.remoteImgCache[remoteUrl]) {
+                          // log('远程图片缓存', remoteUrl);
+                          spriteNode && (spriteNode.getComponent(Sprite).spriteFrame = _this.remoteImgCache[remoteUrl]);
+                          return resolve(true);
+                        }
+
+                        var img = new Image();
+                        img.crossOrigin = 'Anonymous';
+                        img.src = remoteUrl;
+
+                        img.onload = function () {
+                          // log('加载远程图片', img)
+                          var texture = new Texture2D();
+                          texture.image = new ImageAsset(img);
+                          var spriteFrame = new SpriteFrame();
+                          spriteFrame.texture = texture;
+                          _this.remoteImgCache[remoteUrl] = spriteFrame;
+                          spriteNode && (spriteNode.getComponent(Sprite).spriteFrame = spriteFrame);
+                          resolve(true);
+                        };
+
+                        img.onerror = function (err) {
+                          resolve(false);
+                          log('加载远程图片失败: ', err);
+                          spriteNode && _this.loadImg('/Texture/UI/main/banner@2x (3)/spriteFrame', spriteNode);
+                        };
+                      }));
+
+                    case 1:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5);
+            }));
+
+            function loadRemoteImg(_x, _x2) {
+              return _loadRemoteImg.apply(this, arguments);
+            }
+
+            return loadRemoteImg;
+          }()
+          /**
+           * @name 加载本地图片
+           * @description 传入图片本地路径以及带有Sprite组件的Node,自动将图片显示在传入的Node中
+           * @param {string} path 图片路径
+           * @param {Node} spriteNode 带有sprite组件的Node
+           * @returns {} 无
+           */
+
+        }, {
+          key: "loadImg",
+          value: function () {
+            var _loadImg = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(path, spriteNode) {
+              var _this2 = this;
+
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      if (path) {
+                        _context6.next = 2;
+                        break;
+                      }
+
+                      return _context6.abrupt("return", spriteNode.getComponent(Sprite).spriteFrame = null);
+
+                    case 2:
+                      if (!this.localImgCache[path]) {
+                        _context6.next = 5;
+                        break;
+                      } // log('本地图片缓存', path);
+
+
+                      spriteNode.getComponent(Sprite).spriteFrame = this.localImgCache[path];
+                      return _context6.abrupt("return");
+
+                    case 5:
+                      return _context6.abrupt("return", new Promise(function (resolve) {
+                        loader.loadRes(path, SpriteFrame, function (err, spriteFrame) {
+                          if (err) {
+                            resolve(false);
+                            throw err;
+                          }
+
+                          spriteNode.getComponent(Sprite).spriteFrame = spriteFrame;
+                          _this2.localImgCache[path] = spriteFrame;
+                          resolve(true);
+                        });
+                      }));
+
+                    case 6:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function loadImg(_x3, _x4) {
+              return _loadImg.apply(this, arguments);
+            }
+
+            return loadImg;
+          }()
+          /**
+           * @name 发送http请求
+           * @description 
+           * @param {string} url 请求URL
+           * @param {string} method 请求方法
+           * @param {any} data 请求参数
+           * @param {boolean} isAssets 返回数据是否为文件(默认为false)
+           * @param {token} token 请求中在Header中的token(可不提供)
+           * @returns {any} 请求返回数据
+           */
+
+        }, {
+          key: "http",
+          value: function http(url, method, data) {
+            var isAssets = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+            var token = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+            return new Promise(function (resolve, reject) {
+              log('发送http', url, data);
+              var request = loader.getXMLHttpRequest(); //new XMLHttpRequest();
+
+              request.open(method, url, true);
+              if (isAssets) request.responseType = 'blob';
+
+              request.onreadystatechange = function () {
+                if (request.readyState == 4) {
+                  if (request.status >= 200 && request.status < 300) {
+                    var response = request.responseText;
+                    resolve(JSON.parse(response));
+                  } else {
+                    resolve(null);
+                  }
+                }
+              };
+
+              request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+              request.setRequestHeader("Access-Control-Allow-Origin", "*");
+
+              if (token) {
+                request.setRequestHeader("access_token", token);
+              }
+
+              if (data) {
+                var str = '';
+
+                for (var _key in data) {
+                  str += _key + '=' + data[_key] + '&';
+                }
+
+                request.send(str);
+              } else {
+                request.send(null);
+              }
+            });
+          }
+          /**
+           * @name 加载预制件
+           * @param {string} path 预制件路径
+           * @returns {Prefab} 预制件
+           */
+
+        }, {
+          key: "loadPrefab",
+          value: function () {
+            var _loadPrefab = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(path) {
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      return _context7.abrupt("return", new Promise(function (resolve) {
+                        loader.loadRes(path, Prefab, function (err, prefab) {
+                          if (err) {
+                            resolve(null);
+                          } else {
+                            log('加载预制件', path, prefab);
+                            resolve(prefab);
+                          }
+                        });
+                      }));
+
+                    case 1:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7);
+            }));
+
+            function loadPrefab(_x5) {
+              return _loadPrefab.apply(this, arguments);
+            }
+
+            return loadPrefab;
+          }()
+        }, {
+          key: "loadEnemyChessPrefab",
+          value: function loadEnemyChessPrefab(path, team) {
+            var _this3 = this;
+
+            loader.loadRes(path, Prefab, function (err, prefab) {
+              if (!err) {
+                if (team == TeamColor.blue) {
+                  _this3.gameManager.ChessPrefabEnemy.blue = prefab;
+                } else {
+                  _this3.gameManager.ChessPrefabEnemy.red = prefab;
+                }
+              }
+            });
+          }
+        }, {
+          key: "loadBoxPrefab",
+          value: function loadBoxPrefab(path, key, index) {
+            var _this4 = this;
+
+            loader.loadRes(path, Prefab, function (err, prefab) {
+              if (!err) {
+                log('加载盒子预制件', path, prefab);
+                _this4.gameManager.BoxPrefab[key][index] = prefab;
+              }
+            });
+          }
+        }, {
+          key: "loadChessPrefab",
+          value: function loadChessPrefab(path, index) {
+            var _this5 = this;
+
+            loader.loadRes(path, Prefab, function (err, prefab) {
+              if (!err) {
+                _this5.gameManager.ChessPrefab[index] = prefab;
+              }
+            });
+          }
+        }, {
+          key: "setAvatar",
+          value: function () {
+            var _setAvatar = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(node, user, showMe) {
+              var profile, player, meSign, mePosition;
+              return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                while (1) {
+                  switch (_context8.prev = _context8.next) {
+                    case 0:
+                      profile = user.profile ? JSON.parse(user.profile) : JSON.parse(user.customProfile);
+                      this.loadRemoteImg(profile.avatar_url, node);
+
+                      if (node.getChildByName('isVip')) {
+                        !profile.isVip && (node.getChildByName('isVip').active = false);
+                        profile.isVip && (node.getChildByName('isVip').active = true);
+                      }
+
+                      if (node.getChildByName('gender')) {
+                        profile.gender === 1 && this.loadImg('/Texture/UI/result/boy/spriteFrame', node.getChildByName('gender'));
+                        profile.gender === 2 && this.loadImg('/Texture/UI/result/girl/spriteFrame', node.getChildByName('gender'));
+                      }
+
+                      if (node.getChildByName('name')) {
+                        node.getChildByName('name').getComponent(Label).string = profile.nickname.length > 6 ? profile.nickname.slice(0, 5) : profile.nickname;
+                      }
+
+                      _context8.next = 7;
+                      return this.SDK.getPlayerInfo();
+
+                    case 7:
+                      player = _context8.sent;
+
+                      if (!showMe) {
+                        _context8.next = 21;
+                        break;
+                      }
+
+                      if (!(user.id === player.id)) {
+                        _context8.next = 20;
+                        break;
+                      }
+
+                      if (!node.getChildByName('me')) {
+                        _context8.next = 12;
+                        break;
+                      }
+
+                      return _context8.abrupt("return", node.getChildByName('me').active = true);
+
+                    case 12:
+                      meSign = new Node('me');
+                      mePosition = new Vec3(0, 74, 0);
+                      meSign.addComponent(Sprite);
+                      this.loadImg('/Texture/UI/gaming/me/spriteFrame', meSign);
+                      node.addChild(meSign);
+                      meSign.setPosition(mePosition);
+                      _context8.next = 21;
+                      break;
+
+                    case 20:
+                      node.getChildByName('me') && (node.getChildByName('me').active = false);
+
+                    case 21:
+                    case "end":
+                      return _context8.stop();
+                  }
+                }
+              }, _callee8, this);
+            }));
+
+            function setAvatar(_x6, _x7, _x8) {
+              return _setAvatar.apply(this, arguments);
+            }
+
+            return setAvatar;
+          }()
+        }, {
+          key: "getTeammaterAvatar",
+          value: function () {
+            var _getTeammaterAvatar = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+              var teammater, info;
+              return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      _context9.prev = 0;
+                      _context9.next = 3;
+                      return this.SDK.getTeammate();
+
+                    case 3:
+                      teammater = _context9.sent;
+                      info = JSON.parse(teammater.customProfile);
+
+                      if (!info) {
+                        _context9.next = 9;
+                        break;
+                      }
+
+                      return _context9.abrupt("return", info.avatar_url);
+
+                    case 9:
+                      return _context9.abrupt("return", null);
+
+                    case 10:
+                      _context9.next = 15;
+                      break;
+
+                    case 12:
+                      _context9.prev = 12;
+                      _context9.t0 = _context9["catch"](0);
+                      return _context9.abrupt("return", null);
+
+                    case 15:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9, this, [[0, 12]]);
+            }));
+
+            function getTeammaterAvatar() {
+              return _getTeammaterAvatar.apply(this, arguments);
+            }
+
+            return getTeammaterAvatar;
+          }() // 获取等级
+
+        }, {
+          key: "loverLevel",
+          value: function loverLevel(score) {
+            var levelList = [50, 100, 200, 500, 1000, 2000, 3000, 5000, 7000, 10000];
+
+            for (var index = 0; index < levelList.length; index++) {
+              var element = levelList[index];
+              score -= element;
+
+              if (score < 0) {
+                return index;
+              }
+            }
+
+            return 10;
+          }
+        }, {
+          key: "playAudio",
+          value: function playAudio(audio) {
+            var volume = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+            if (this.gameManager.Setting.switch_audio) {
+              this.gameManager.getComponent(AudioSource).playOneShot(audio, volume);
+            }
+          }
+        }, {
+          key: "isJson",
+          value: function isJson(data) {
+            try {
+              var obj = JSON.parse(data);
+              if (_typeof(obj) === 'object' && obj) return true;else return false;
+            } catch (err) {
+              return false;
+            }
+          }
+        }, {
+          key: "localGet",
+          value: function localGet(key) {
+            var value = localStorage.getItem(key);
+            if (!value) return false;
+            if (this.isJson(value)) return JSON.parse(value);else return value;
+          }
+        }, {
+          key: "localSet",
+          value: function localSet(key, data) {
+            _typeof(data) !== 'object' && localStorage.setItem(key, data);
+            _typeof(data) === 'object' && localStorage.setItem(key, JSON.stringify(data));
+          }
+        }, {
+          key: "callTDGA",
+          value: function callTDGA(key) {
+            return; //     if(!UseStatistics || !window['TDGA']) return false;
+            //     switch(key) {
+            //         case StatisticsKey.login:
+            //             if(!data) return false
+            //             const profile = {
+            //                 accountId : data.user_id.toString(),
+            //                 level : this.loverLevel(data.tacitScore),
+            //                 gameServer : '1',
+            //                 accountType : 1,
+            //                 age : 2,
+            //                 accountName : data.nickname,
+            //                 gender : data.gender
+            //             }
+            //             window['TDGA'].Profile(profile);
+            //             log('上报统计', '登录', profile)
+            //             break;
+            //         case StatisticsKey.leave:
+            //             window['TDGA'].onPageLeave();
+            //             break;
+            //         default:
+            //             log('上报统计', key);
+            //             window['TDGA'].onEvent(key, data);
+            //     }
+            //     return true
+          }
+        }, {
+          key: "getNetHours",
+          value: function () {
+            var _getNetHours = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+              var _result, code, date, s;
+
+              return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                while (1) {
+                  switch (_context10.prev = _context10.next) {
+                    case 0:
+                      _context10.next = 2;
+                      return Http.request(HttpMethod.GET, 'http://quan.suning.com/getSysTime.do', {});
+
+                    case 2:
+                      _result = _context10.sent;
+                      code = _result.code;
+
+                      if (code === HttpCode.Success) {
+                        s = _result.data.sysTime2;
+                        s = s.replace(/-/g, "/");
+                        date = new Date(s);
+                      } // log('getNetHours_remote', date)
+                      // log('getNetHours_local ', new Date())
+
+
+                      return _context10.abrupt("return", date.getHours());
+
+                    case 6:
+                    case "end":
+                      return _context10.stop();
+                  }
+                }
+              }, _callee10);
+            }));
+
+            function getNetHours() {
+              return _getNetHours.apply(this, arguments);
+            }
+
+            return getNetHours;
+          }()
+        }]);
+
+        return Util;
+      }());
+
+      (function (HttpCode) {
+        HttpCode[HttpCode["Success"] = 0] = "Success";
+        HttpCode[HttpCode["Error"] = 1] = "Error";
+        HttpCode[HttpCode["TimeOut"] = 2] = "TimeOut";
+        HttpCode[HttpCode["ServerErr"] = 3] = "ServerErr";
+        HttpCode[HttpCode["Unknown"] = 4] = "Unknown";
+      })(HttpCode || _export("HttpCode", HttpCode = {}));
+
+      (function (HttpMethod) {
+        HttpMethod[HttpMethod["GET"] = 0] = "GET";
+        HttpMethod[HttpMethod["POST"] = 1] = "POST";
+        HttpMethod[HttpMethod["PUT"] = 2] = "PUT";
+        HttpMethod[HttpMethod["DELETE"] = 3] = "DELETE";
+        HttpMethod[HttpMethod["PATCH"] = 4] = "PATCH";
+      })(HttpMethod || _export("HttpMethod", HttpMethod = {}));
+
+      Http = /*#__PURE__*/function () {
+        function Http() {
+          _classCallCheck(this, Http);
+        }
+
+        _createClass(Http, null, [{
+          key: "request",
+          value: function request(method, url, headers, params) {
+            var _this6 = this;
+
+            return new Promise(function (resolve) {
+              var xhr = loader.getXMLHttpRequest();
+              var m = "GET";
+
+              switch (method) {
+                case HttpMethod.GET:
+                  m = "GET";
+
+                  if (params) {
+                    if (url.indexOf("?") === -1) {
+                      url += "?";
+                    }
+
+                    url += _this6._getQueryString(params);
+                    params = null;
+                  }
+
+                  break;
+
+                case HttpMethod.POST:
+                  m = "POST";
+                  break;
+
+                case HttpMethod.PUT:
+                  m = "PUT";
+                  break;
+
+                case HttpMethod.DELETE:
+                  m = "DELETE";
+                  break;
+
+                case HttpMethod.PATCH:
+                  m = "PATCH";
+                  break;
+              }
+
+              xhr.open(m, url, true); // 错误
+
+              xhr.onerror = function () {
+                resolve({
+                  code: HttpCode.Error,
+                  data: null
+                });
+              }; // 超时
+
+
+              xhr.timeout = 8000;
+
+              xhr.ontimeout = function () {
+                xhr.abort();
+                resolve({
+                  code: HttpCode.TimeOut,
+                  data: null
+                });
+              };
+
+              xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                  if (xhr.status >= 200 && xhr.status <= 299) {
+                    var result = xhr.responseText;
+                    var ret = null;
+
+                    try {
+                      ret = JSON.parse(result);
+                    } catch (error) {
+                      log("http request parse error");
+                    }
+
+                    resolve({
+                      code: HttpCode.Success,
+                      data: ret
+                    });
+                  } else if (xhr.status === 400) {
+                    var _result2 = xhr.responseText;
+                    var _ret = null;
+
+                    try {
+                      _ret = JSON.parse(_result2);
+                    } catch (error) {
+                      log("http request parse error");
+                    }
+
+                    resolve({
+                      code: HttpCode.ServerErr,
+                      data: _ret
+                    });
+                  } else {
+                    resolve({
+                      code: xhr.status,
+                      data: null
+                    });
+                  }
+                }
+              };
+
+              _this6._setHeaders(xhr, headers);
+
+              if (params && _typeof(params) === "object") {
+                params = JSON.stringify(params);
+                xhr.send(params);
+              } else {
+                xhr.send();
+              }
+            });
+          }
+        }, {
+          key: "_setHeaders",
+          value: function _setHeaders(xhr, headers) {
+            // tslint:disable-next-line: forin
+            for (var _key2 in headers) {
+              xhr.setRequestHeader(_key2, headers[_key2]);
+            }
+          }
+        }, {
+          key: "_getQueryString",
+          value: function _getQueryString(params) {
+            var _result = []; // tslint:disable-next-line: forin
+
+            var _loop = function _loop(_key3) {
+              var value = params[_key3];
+
+              if (value == null) {
+                return "continue";
+              }
+
+              if (value.constructor === Array) {
+                value.forEach(function (_value) {
+                  _result.push(encodeURIComponent(_key3) + "[]=" + encodeURIComponent(_value));
+                });
+              } else {
+                _result.push(encodeURIComponent(_key3) + "=" + encodeURIComponent(value));
+              }
+            };
+
+            for (var _key3 in params) {
+              var _ret2 = _loop(_key3);
+
+              if (_ret2 === "continue") continue;
+            }
+
+            return _result.length ? _result.join("&") : "";
+          }
+        }]);
+
+        return Http;
+      }();
+
+      cclegacy._RF.pop();
+
+      _export("default", Http);
+    }
+  };
+});
+
+System.register("chunks:///SDK.js", ["./_virtual/_rollupPluginBabelHelpers.js", "cc", "./Config.js", "./Const.js"], function (_export, _context27) {
+  "use strict";
+
+  var _createClass, _classCallCheck, _asyncToGenerator, cclegacy, log, ClientDataType, PlayerState, RoomDataType, SDK;
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+    }, function (_ConfigJs) {}, function (_ConstJs) {
+      log = _ConstJs.log;
+      ClientDataType = _ConstJs.ClientDataType;
+      PlayerState = _ConstJs.PlayerState;
+      RoomDataType = _ConstJs.RoomDataType;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "33e872liaNCrpH3cX9cDkX4", "SDK", undefined); // const {Room, Listener, Player, Group, ErrCode} = MGOBE
+
+
+      _export("SDK", SDK = /*#__PURE__*/function () {
+        // 当前游戏中被激活的UI对象,随着UI切换自动更新
+        // 当前游戏中被激活的弹框对象
+        // 游戏的主控制对象
+        function SDK() {
+          _classCallCheck(this, SDK);
+
+          this.Listener = MGOBE.Listener;
+          this.Room = MGOBE.Room;
+          this.curRoom = null;
+          this.curGroup = null;
+          this.curBoard = null;
+          this.curDialog = null;
+          this.gameManager = null;
+          this.errorCode = MGOBE.ErrCode;
+          this.indexListCache = {};
+          this.curRoom = new MGOBE.Room();
+          this.curGroup = new MGOBE.Group();
+        }
+
+        _createClass(SDK, [{
+          key: "init",
+          value: function init(openId, manager) {
+            var _this = this;
+
+            this.gameManager = manager;
+            return new Promise(function (resolve) {
+              {
+                var url = _this.gameManager.Config.serverURL.sign + '/?game_id=' + _this.gameManager.Config.config.gameId + '&open_id=' + openId;
+                var _gameInfo = {
+                  gameId: _this.gameManager.Config.config.gameId,
+                  openId: openId,
+                  // 实现签名函数，初始化、掉线重连时会被调用
+                  createSignature: function createSignature(callback) {
+                    fetch(url).then(function (rsp) {
+                      return rsp.json();
+                    }).then(function (json) {
+                      var sign = json.sign;
+                      var nonce = json.nonce;
+                      var timestamp = json.timestamp;
+                      log('sign', sign, nonce, timestamp);
+                      return callback({
+                        sign: sign,
+                        nonce: nonce,
+                        timestamp: timestamp
+                      });
+                    });
+                  }
+                };
+
+                _this.Listener.init(_gameInfo, _this.gameManager.Config.config.initConfig, function (event) {
+                  if (event.code === MGOBE.ErrCode.EC_OK) {
+                    _this.Listener.add(_this.curRoom);
+
+                    log('正式环境初始化成功');
+                    resolve(true);
+                  } else {
+                    log("正式环境初始化失败", event.code);
+                    resolve(false);
+                  }
+                });
+              }
+            });
+          } // 匹配相关方法 匹配结果的监听在具体的界面类中实现 onMatch onCancelMatch
+
+        }, {
+          key: "matchingSingle",
+          value: function () {
+            var _matchingSingle = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var _this2 = this;
+
+              var playerInfo, matchPlayerInfo, matchPara, promise;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      this.indexListCache = {};
+                      _context.next = 3;
+                      return this.getPlayerInfo();
+
+                    case 3:
+                      playerInfo = _context.sent;
+                      matchPlayerInfo = {
+                        name: playerInfo.name,
+                        customPlayerStatus: playerInfo.stateRoom,
+                        customProfile: playerInfo.profile,
+                        matchAttributes: []
+                      };
+                      matchPara = {
+                        playerInfo: matchPlayerInfo,
+                        matchCode: this.gameManager.Config.config.matchCode
+                      };
+                      promise = new Promise(function (resolve) {
+                        _this2.curRoom.matchPlayers(matchPara, function (event) {
+                          log('进入单人匹配结果', event.code);
+                          resolve(event.code);
+                        });
+                      });
+                      return _context.abrupt("return", promise);
+
+                    case 8:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function matchingSingle() {
+              return _matchingSingle.apply(this, arguments);
+            }
+
+            return matchingSingle;
+          }()
+        }, {
+          key: "matchingLover",
+          value: function () {
+            var _matchingLover = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var _this3 = this;
+
+              var groupInfo, playerSelf, playerLover, playerInfo1, playerInfo2, matchPara, promise;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.getGroupInfo();
+
+                    case 2:
+                      groupInfo = _context2.sent;
+
+                      if (groupInfo) {
+                        _context2.next = 6;
+                        break;
+                      }
+
+                      log('没有处于足够人数的队组中');
+                      return _context2.abrupt("return");
+
+                    case 6:
+                      _context2.next = 8;
+                      return this.getPlayerInfo();
+
+                    case 8:
+                      playerSelf = _context2.sent;
+                      _context2.next = 11;
+                      return this.getLoverInfo();
+
+                    case 11:
+                      playerLover = _context2.sent;
+
+                      if (playerLover) {
+                        _context2.next = 15;
+                        break;
+                      }
+
+                      log('情侣未在队组中,进入匹配失败');
+                      return _context2.abrupt("return");
+
+                    case 15:
+                      playerInfo1 = {
+                        id: playerSelf.id,
+                        name: playerSelf.name,
+                        customProfile: playerSelf.profile,
+                        customPlayerStatus: playerSelf.stateGroup,
+                        matchAttributes: []
+                      };
+                      playerInfo2 = {
+                        id: playerLover.id,
+                        name: playerLover.name,
+                        customProfile: playerLover.profile,
+                        customPlayerStatus: playerLover.stateGroup,
+                        matchAttributes: []
+                      };
+                      matchPara = {
+                        playerInfoList: [playerInfo1, playerInfo2],
+                        matchCode: this.gameManager.Config.config.matchCode
+                      };
+                      promise = new Promise(function (resolve) {
+                        _this3.curRoom.matchGroup(matchPara, function (event) {
+                          resolve(event.code);
+                        });
+                      });
+                      return _context2.abrupt("return", promise);
+
+                    case 20:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function matchingLover() {
+              return _matchingLover.apply(this, arguments);
+            }
+
+            return matchingLover;
+          }()
+        }, {
+          key: "cancelMatchinig",
+          value: function () {
+            var _cancelMatchinig = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              var _this4 = this;
+
+              var cancelMatchPara, promise;
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      cancelMatchPara = {
+                        matchType: MGOBE.ENUM.MatchType.PLAYER_COMPLEX
+                      };
+                      promise = new Promise(function (resolve) {
+                        _this4.curRoom.cancelPlayerMatch(cancelMatchPara, function (event) {
+                          resolve(event.code);
+                        });
+                      });
+                      return _context3.abrupt("return", promise);
+
+                    case 3:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3);
+            }));
+
+            function cancelMatchinig() {
+              return _cancelMatchinig.apply(this, arguments);
+            }
+
+            return cancelMatchinig;
+          }() // Room相关方法
+
+        }, {
+          key: "getRoomInfo",
+          value: function () {
+            var _getRoomInfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              var promise;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      promise = new Promise(function (resolve) {
+                        MGOBE.Room.getMyRoom(function (event) {
+                          resolve(event.data.roomInfo);
+                        });
+                      });
+                      return _context4.abrupt("return", promise);
+
+                    case 2:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4);
+            }));
+
+            function getRoomInfo() {
+              return _getRoomInfo.apply(this, arguments);
+            }
+
+            return getRoomInfo;
+          }()
+        }, {
+          key: "leaveRoom",
+          value: function () {
+            var _leaveRoom = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              var _this5 = this;
+
+              var promise;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      promise = new Promise(function (resolve) {
+                        _this5.curRoom.leaveRoom({}, function (event) {
+                          if (event.code == _this5.errorCode.EC_OK) {
+                            _this5.curRoom.initRoom();
+                          }
+
+                          resolve(event.code);
+                        });
+                      });
+                      return _context5.abrupt("return", promise);
+
+                    case 2:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5);
+            }));
+
+            function leaveRoom() {
+              return _leaveRoom.apply(this, arguments);
+            }
+
+            return leaveRoom;
+          }()
+        }, {
+          key: "getTeamId",
+          value: function () {
+            var _getTeamId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              var roomInfo, playerList, playerInfo, index, element;
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      if (!this.gameManager.serverTeam) {
+                        _context6.next = 4;
+                        break;
+                      }
+
+                      return _context6.abrupt("return", this.gameManager.serverTeam.id);
+
+                    case 4:
+                      _context6.next = 6;
+                      return this.getRoomInfo();
+
+                    case 6:
+                      roomInfo = _context6.sent;
+                      playerList = roomInfo.playerList;
+                      _context6.next = 10;
+                      return this.getPlayerInfo();
+
+                    case 10:
+                      playerInfo = _context6.sent;
+                      index = 0;
+
+                    case 12:
+                      if (!(index < playerList.length)) {
+                        _context6.next = 19;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!(element.id == playerInfo.id)) {
+                        _context6.next = 16;
+                        break;
+                      }
+
+                      return _context6.abrupt("return", element.teamId);
+
+                    case 16:
+                      index++;
+                      _context6.next = 12;
+                      break;
+
+                    case 19:
+                      return _context6.abrupt("return", null);
+
+                    case 20:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function getTeamId() {
+              return _getTeamId.apply(this, arguments);
+            }
+
+            return getTeamId;
+          }()
+        }, {
+          key: "sendToServer",
+          value: function () {
+            var _sendToServer = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(type) {
+              var _this6 = this;
+
+              var data,
+                  mesData,
+                  playerInfo,
+                  teamId,
+                  mes,
+                  promise,
+                  _args7 = arguments;
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      data = _args7.length > 1 && _args7[1] !== undefined ? _args7[1] : null;
+                      mesData = data;
+
+                      if (!(type == ClientDataType.ChangeControler)) {
+                        _context7.next = 10;
+                        break;
+                      }
+
+                      _context7.next = 5;
+                      return this.getPlayerInfo();
+
+                    case 5:
+                      playerInfo = _context7.sent;
+                      _context7.next = 8;
+                      return this.getTeamId();
+
+                    case 8:
+                      teamId = _context7.sent;
+                      mesData = {
+                        teamId: teamId,
+                        playerId: playerInfo.id
+                      };
+
+                    case 10:
+                      mes = {
+                        type: type,
+                        data: mesData
+                      };
+
+                      if (type != ClientDataType.Heart) {
+                        log('发送数据到实时服务器:', mes);
+                      }
+
+                      promise = new Promise(function (resolve) {
+                        var sendToGameServerPara = {
+                          data: mes
+                        };
+
+                        _this6.curRoom.sendToGameSvr(sendToGameServerPara, function (event) {
+                          // log('发送消息到实时服务器结果', type, event.code)
+                          resolve(event.code);
+                        });
+                      });
+                      return _context7.abrupt("return", promise);
+
+                    case 14:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7, this);
+            }));
+
+            function sendToServer(_x) {
+              return _sendToServer.apply(this, arguments);
+            }
+
+            return sendToServer;
+          }()
+        }, {
+          key: "sendToRoom",
+          value: function () {
+            var _sendToRoom = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(type, data) {
+              var _this7 = this;
+
+              var promise;
+              return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      promise = new Promise( /*#__PURE__*/function () {
+                        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(resolve) {
+                          var mes, recvPlayerList, paraType, teammate, roomInfo, curPlayerInfo, playerList, curTeamId, index, element, _roomInfo, _playerList, _index, _element, sendToClientPara;
+
+                          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                            while (1) {
+                              switch (_context8.prev = _context8.next) {
+                                case 0:
+                                  mes = {
+                                    type: type,
+                                    data: data
+                                  };
+                                  recvPlayerList = [];
+                                  paraType = MGOBE.ENUM.RecvType.ROOM_SOME;
+
+                                  if (!(type == RoomDataType.Power || type == RoomDataType.PowerEnd || type == RoomDataType.SyncComplete || type == RoomDataType.MatchedJoinGroup)) {
+                                    _context8.next = 10;
+                                    break;
+                                  }
+
+                                  _context8.next = 6;
+                                  return _this7.getTeammate();
+
+                                case 6:
+                                  teammate = _context8.sent;
+
+                                  if (teammate) {
+                                    recvPlayerList.push(teammate.id);
+                                  }
+
+                                  _context8.next = 29;
+                                  break;
+
+                                case 10:
+                                  if (!(type == RoomDataType.EnemyPowerEnd)) {
+                                    _context8.next = 23;
+                                    break;
+                                  }
+
+                                  _context8.next = 13;
+                                  return _this7.getRoomInfo();
+
+                                case 13:
+                                  roomInfo = _context8.sent;
+
+                                  if (!roomInfo) {
+                                    _context8.next = 21;
+                                    break;
+                                  }
+
+                                  _context8.next = 17;
+                                  return _this7.getPlayerInfo();
+
+                                case 17:
+                                  curPlayerInfo = _context8.sent;
+                                  playerList = roomInfo.playerList;
+                                  curTeamId = curPlayerInfo.teamId;
+
+                                  for (index = 0; index < playerList.length; index++) {
+                                    element = playerList[index];
+
+                                    if (element.teamId != curTeamId) {
+                                      recvPlayerList.push(element.id);
+                                    }
+                                  }
+
+                                case 21:
+                                  _context8.next = 29;
+                                  break;
+
+                                case 23:
+                                  if (!(type == RoomDataType.emoji)) {
+                                    _context8.next = 29;
+                                    break;
+                                  }
+
+                                  _context8.next = 26;
+                                  return _this7.getRoomInfo();
+
+                                case 26:
+                                  _roomInfo = _context8.sent;
+                                  _playerList = _roomInfo.playerList;
+
+                                  for (_index = 0; _index < _playerList.length; _index++) {
+                                    _element = _playerList[_index];
+                                    recvPlayerList.push(_element.id);
+                                  }
+
+                                case 29:
+                                  sendToClientPara = {
+                                    recvType: paraType,
+                                    recvPlayerList: recvPlayerList,
+                                    msg: JSON.stringify(mes)
+                                  };
+                                  log('发送房间消息数据给用户:', sendToClientPara);
+
+                                  _this7.curRoom.sendToClient(sendToClientPara, function (event) {
+                                    resolve(event.code);
+                                  });
+
+                                case 32:
+                                case "end":
+                                  return _context8.stop();
+                              }
+                            }
+                          }, _callee8);
+                        }));
+
+                        return function (_x4) {
+                          return _ref.apply(this, arguments);
+                        };
+                      }());
+                      return _context9.abrupt("return", promise);
+
+                    case 2:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9);
+            }));
+
+            function sendToRoom(_x2, _x3) {
+              return _sendToRoom.apply(this, arguments);
+            }
+
+            return sendToRoom;
+          }()
+        }, {
+          key: "getTeammate",
+          value: function () {
+            var _getTeammate = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+              var curPlayerInfo, roomInfo, tag, playerList, groupInfo, teammate, result, index, element;
+              return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                while (1) {
+                  switch (_context10.prev = _context10.next) {
+                    case 0:
+                      _context10.next = 2;
+                      return this.getPlayerInfo();
+
+                    case 2:
+                      curPlayerInfo = _context10.sent;
+                      _context10.next = 5;
+                      return this.getRoomInfo();
+
+                    case 5:
+                      roomInfo = _context10.sent;
+                      tag = false;
+                      playerList = null;
+
+                      if (roomInfo) {
+                        _context10.next = 15;
+                        break;
+                      }
+
+                      _context10.next = 11;
+                      return this.getGroupInfo();
+
+                    case 11:
+                      groupInfo = _context10.sent;
+
+                      if (groupInfo) {
+                        tag = true;
+                        playerList = groupInfo.groupPlayerList;
+                      } else {
+                        playerList = null;
+                      }
+
+                      _context10.next = 16;
+                      break;
+
+                    case 15:
+                      playerList = roomInfo.playerList;
+
+                    case 16:
+                      if (playerList) {
+                        _context10.next = 18;
+                        break;
+                      }
+
+                      return _context10.abrupt("return", null);
+
+                    case 18:
+                      // let teammate:MGOBE.types.PlayerInfo = null;
+                      teammate = {
+                        id: '',
+                        name: '',
+                        teamId: '',
+                        customPlayerStatus: 0,
+                        customProfile: '',
+                        commonNetworkState: 0,
+                        relayNetworkState: 0,
+                        isRobot: false,
+                        matchAttributes: []
+                      };
+                      result = null;
+                      index = 0;
+
+                    case 21:
+                      if (!(index < playerList.length)) {
+                        _context10.next = 41;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!tag) {
+                        _context10.next = 34;
+                        break;
+                      }
+
+                      if (!(element.id != curPlayerInfo.id)) {
+                        _context10.next = 32;
+                        break;
+                      }
+
+                      teammate = element;
+                      teammate.id = element.id;
+                      teammate.customPlayerStatus = element.customGroupPlayerStatus;
+                      teammate.commonNetworkState = element.commonGroupNetworkState;
+                      teammate.customProfile = element.customGroupPlayerProfile;
+                      result = teammate;
+                      return _context10.abrupt("break", 41);
+
+                    case 32:
+                      _context10.next = 38;
+                      break;
+
+                    case 34:
+                      if (!(element.teamId == curPlayerInfo.teamId && element.id != curPlayerInfo.id)) {
+                        _context10.next = 38;
+                        break;
+                      }
+
+                      teammate = element;
+                      result = teammate;
+                      return _context10.abrupt("break", 41);
+
+                    case 38:
+                      index++;
+                      _context10.next = 21;
+                      break;
+
+                    case 41:
+                      return _context10.abrupt("return", result);
+
+                    case 42:
+                    case "end":
+                      return _context10.stop();
+                  }
+                }
+              }, _callee10, this);
+            }));
+
+            function getTeammate() {
+              return _getTeammate.apply(this, arguments);
+            }
+
+            return getTeammate;
+          }()
+        }, {
+          key: "inRunningRoom",
+          value: function () {
+            var _inRunningRoom = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+              var roomInfo, groupInfo;
+              return regeneratorRuntime.wrap(function _callee11$(_context11) {
+                while (1) {
+                  switch (_context11.prev = _context11.next) {
+                    case 0:
+                      _context11.next = 2;
+                      return this.getRoomInfo();
+
+                    case 2:
+                      roomInfo = _context11.sent;
+                      _context11.next = 5;
+                      return this.getGroupInfo();
+
+                    case 5:
+                      groupInfo = _context11.sent;
+
+                      if (!(roomInfo && groupInfo)) {
+                        _context11.next = 10;
+                        break;
+                      }
+
+                      log('房间状态:', roomInfo);
+
+                      if (!(roomInfo.customProperties == 'ing')) {
+                        _context11.next = 10;
+                        break;
+                      }
+
+                      return _context11.abrupt("return", true);
+
+                    case 10:
+                      return _context11.abrupt("return", false);
+
+                    case 11:
+                    case "end":
+                      return _context11.stop();
+                  }
+                }
+              }, _callee11, this);
+            }));
+
+            function inRunningRoom() {
+              return _inRunningRoom.apply(this, arguments);
+            }
+
+            return inRunningRoom;
+          }()
+        }, {
+          key: "reconnect",
+          value: function () {
+            var _reconnect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+              var roomInfo;
+              return regeneratorRuntime.wrap(function _callee12$(_context12) {
+                while (1) {
+                  switch (_context12.prev = _context12.next) {
+                    case 0:
+                      _context12.next = 2;
+                      return this.getRoomInfo();
+
+                    case 2:
+                      roomInfo = _context12.sent;
+                      this.curRoom.initRoom(roomInfo);
+                      this.Listener.add(this.curRoom);
+
+                    case 5:
+                    case "end":
+                      return _context12.stop();
+                  }
+                }
+              }, _callee12, this);
+            }));
+
+            function reconnect() {
+              return _reconnect.apply(this, arguments);
+            }
+
+            return reconnect;
+          }()
+        }, {
+          key: "getPlayerIndex",
+          value: function () {
+            var _getPlayerIndex = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(id) {
+              var playerInfo, roomInfo, playerList, playerIndex, teamList;
+              return regeneratorRuntime.wrap(function _callee13$(_context13) {
+                while (1) {
+                  switch (_context13.prev = _context13.next) {
+                    case 0:
+                      if (id) {
+                        _context13.next = 5;
+                        break;
+                      }
+
+                      _context13.next = 3;
+                      return this.getPlayerInfo();
+
+                    case 3:
+                      playerInfo = _context13.sent;
+                      id = playerInfo.id;
+
+                    case 5:
+                      if (!this.indexListCache[id]) {
+                        _context13.next = 7;
+                        break;
+                      }
+
+                      return _context13.abrupt("return", this.indexListCache[id]);
+
+                    case 7:
+                      _context13.next = 9;
+                      return this.getRoomInfo();
+
+                    case 9:
+                      roomInfo = _context13.sent;
+
+                      if (roomInfo) {
+                        _context13.next = 12;
+                        break;
+                      }
+
+                      return _context13.abrupt("return", null);
+
+                    case 12:
+                      playerList = roomInfo.playerList;
+
+                      if (!playerInfo) {
+                        playerList.map(function (v) {
+                          if (v.id === id) playerInfo = v;
+                        });
+                      }
+
+                      playerIndex = 1;
+                      teamList = playerList.filter(function (p, i) {
+                        return p.teamId === playerInfo.teamId;
+                      });
+                      teamList.map(function (v, i) {
+                        if (v.id === playerInfo.id) playerIndex = i + 1;
+                      });
+                      this.indexListCache[playerInfo.id] = playerIndex;
+                      return _context13.abrupt("return", playerIndex);
+
+                    case 19:
+                    case "end":
+                      return _context13.stop();
+                  }
+                }
+              }, _callee13, this);
+            }));
+
+            function getPlayerIndex(_x5) {
+              return _getPlayerIndex.apply(this, arguments);
+            }
+
+            return getPlayerIndex;
+          }() // Group类方法
+
+        }, {
+          key: "createGroup",
+          value: function () {
+            var _createGroup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+              var _this8 = this;
+
+              var player, playerInfo, createGroupPara, promise;
+              return regeneratorRuntime.wrap(function _callee14$(_context14) {
+                while (1) {
+                  switch (_context14.prev = _context14.next) {
+                    case 0:
+                      _context14.next = 2;
+                      return this.getPlayerInfo();
+
+                    case 2:
+                      player = _context14.sent;
+                      playerInfo = {
+                        name: player.name,
+                        customGroupPlayerStatus: player.stateGroup,
+                        customGroupPlayerProfile: player.profile
+                      };
+                      createGroupPara = {
+                        groupName: '',
+                        groupType: MGOBE.ENUM.GroupType.GROUP_LIMITED,
+                        maxPlayers: 2,
+                        isForbidJoin: false,
+                        isPersistent: false,
+                        customProperties: '',
+                        playerInfo: playerInfo
+                      };
+                      promise = new Promise(function (resolve) {
+                        _this8.curGroup.createGroup(createGroupPara, function (event) {
+                          if (event.code === 0) {
+                            _this8.Listener.add(_this8.curGroup);
+
+                            _this8.curGroup.initGroup(event.data.groupInfo);
+
+                            log('队组创建成功', event.data.groupInfo);
+                          }
+
+                          resolve(event.code);
+                        });
+                      });
+                      return _context14.abrupt("return", promise);
+
+                    case 7:
+                    case "end":
+                      return _context14.stop();
+                  }
+                }
+              }, _callee14, this);
+            }));
+
+            function createGroup() {
+              return _createGroup.apply(this, arguments);
+            }
+
+            return createGroup;
+          }()
+        }, {
+          key: "joinGroup",
+          value: function () {
+            var _joinGroup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(groupId) {
+              var _this9 = this;
+
+              var playerInfo, playerPara, joinPara, promise;
+              return regeneratorRuntime.wrap(function _callee15$(_context15) {
+                while (1) {
+                  switch (_context15.prev = _context15.next) {
+                    case 0:
+                      _context15.next = 2;
+                      return this.getPlayerInfo();
+
+                    case 2:
+                      playerInfo = _context15.sent;
+                      playerPara = {
+                        name: playerInfo.name,
+                        customGroupPlayerStatus: PlayerState.NotReady,
+                        customGroupPlayerProfile: playerInfo.profile
+                      };
+                      joinPara = {
+                        playerInfo: playerPara
+                      };
+                      this.curGroup.initGroup({
+                        id: groupId
+                      });
+                      promise = new Promise(function (resolve) {
+                        _this9.curGroup.joinGroup(joinPara, function (event) {
+                          if (event.code === 0) {
+                            _this9.Listener.add(_this9.curGroup);
+
+                            _this9.curGroup.initGroup(event.data.groupInfo);
+                          }
+
+                          resolve(event.code);
+                        });
+                      });
+                      return _context15.abrupt("return", promise);
+
+                    case 8:
+                    case "end":
+                      return _context15.stop();
+                  }
+                }
+              }, _callee15, this);
+            }));
+
+            function joinGroup(_x6) {
+              return _joinGroup.apply(this, arguments);
+            }
+
+            return joinGroup;
+          }()
+        }, {
+          key: "leaveGroup",
+          value: function () {
+            var _leaveGroup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
+              var _this10 = this;
+
+              var group, promise;
+              return regeneratorRuntime.wrap(function _callee16$(_context16) {
+                while (1) {
+                  switch (_context16.prev = _context16.next) {
+                    case 0:
+                      _context16.next = 2;
+                      return this.getGroupInfo();
+
+                    case 2:
+                      group = _context16.sent;
+
+                      if (!group) {
+                        _context16.next = 7;
+                        break;
+                      }
+
+                      this.curGroup.initGroup(group);
+                      _context16.next = 8;
+                      break;
+
+                    case 7:
+                      return _context16.abrupt("return", this.errorCode.EC_OK);
+
+                    case 8:
+                      promise = new Promise(function (resolve) {
+                        _this10.curGroup.leaveGroup({}, function (event) {
+                          if (event.code === 0) {
+                            _this10.curGroup.initGroup();
+                          }
+
+                          resolve(event.code);
+                        });
+                      });
+                      return _context16.abrupt("return", promise);
+
+                    case 10:
+                    case "end":
+                      return _context16.stop();
+                  }
+                }
+              }, _callee16, this);
+            }));
+
+            function leaveGroup() {
+              return _leaveGroup.apply(this, arguments);
+            }
+
+            return leaveGroup;
+          }()
+        }, {
+          key: "getGroupInfo",
+          value: function () {
+            var _getGroupInfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+              var promise;
+              return regeneratorRuntime.wrap(function _callee17$(_context17) {
+                while (1) {
+                  switch (_context17.prev = _context17.next) {
+                    case 0:
+                      promise = new Promise(function (resolve) {
+                        MGOBE.Group.getMyGroups(function (event) {
+                          if (event.code === MGOBE.ErrCode.EC_OK && event.data.groupInfoList.length > 0) {
+                            for (var index = 0; index < event.data.groupInfoList.length; index++) {
+                              var element = event.data.groupInfoList[index];
+
+                              if (element.type === MGOBE.ENUM.GroupType.GROUP_LIMITED) {
+                                resolve(element);
+                                break;
+                              }
+                            }
+                          } else {
+                            resolve(null);
+                          }
+                        });
+                      });
+                      return _context17.abrupt("return", promise);
+
+                    case 2:
+                    case "end":
+                      return _context17.stop();
+                  }
+                }
+              }, _callee17);
+            }));
+
+            function getGroupInfo() {
+              return _getGroupInfo.apply(this, arguments);
+            }
+
+            return getGroupInfo;
+          }()
+        }, {
+          key: "setGroupPlayerStatus",
+          value: function () {
+            var _setGroupPlayerStatus = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(stat) {
+              var _this11 = this;
+
+              var change, promise;
+              return regeneratorRuntime.wrap(function _callee18$(_context18) {
+                while (1) {
+                  switch (_context18.prev = _context18.next) {
+                    case 0:
+                      change = {
+                        customGroupPlayerStatus: stat
+                      };
+                      promise = new Promise(function (resolve) {
+                        _this11.curGroup.changeCustomGroupPlayerStatus(change, function (event) {
+                          log('修改用户队组状态', event);
+                          resolve(event);
+                        });
+                      });
+                      return _context18.abrupt("return", promise);
+
+                    case 3:
+                    case "end":
+                      return _context18.stop();
+                  }
+                }
+              }, _callee18);
+            }));
+
+            function setGroupPlayerStatus(_x7) {
+              return _setGroupPlayerStatus.apply(this, arguments);
+            }
+
+            return setGroupPlayerStatus;
+          }()
+        }, {
+          key: "removePlayerInGroup",
+          value: function () {
+            var _removePlayerInGroup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(playerId) {
+              var _this12 = this;
+
+              var para, promise;
+              return regeneratorRuntime.wrap(function _callee19$(_context19) {
+                while (1) {
+                  switch (_context19.prev = _context19.next) {
+                    case 0:
+                      para = {
+                        removePlayerId: playerId
+                      };
+                      promise = new Promise(function (resolve) {
+                        _this12.curGroup.removeGroupPlayer(para, function (event) {
+                          resolve(event.code);
+                        });
+                      });
+                      return _context19.abrupt("return", promise);
+
+                    case 3:
+                    case "end":
+                      return _context19.stop();
+                  }
+                }
+              }, _callee19);
+            }));
+
+            function removePlayerInGroup(_x8) {
+              return _removePlayerInGroup.apply(this, arguments);
+            }
+
+            return removePlayerInGroup;
+          }()
+        }, {
+          key: "dismissGroup",
+          value: function () {
+            var _dismissGroup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
+              var _this13 = this;
+
+              var promise;
+              return regeneratorRuntime.wrap(function _callee20$(_context20) {
+                while (1) {
+                  switch (_context20.prev = _context20.next) {
+                    case 0:
+                      promise = new Promise(function (resolve) {
+                        _this13.curGroup.dismissGroup({}, function (event) {
+                          resolve(event.code);
+                        });
+                      });
+                      return _context20.abrupt("return", promise);
+
+                    case 2:
+                    case "end":
+                      return _context20.stop();
+                  }
+                }
+              }, _callee20);
+            }));
+
+            function dismissGroup() {
+              return _dismissGroup.apply(this, arguments);
+            }
+
+            return dismissGroup;
+          }()
+        }, {
+          key: "sendToGroup",
+          value: function () {
+            var _sendToGroup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(type, content) {
+              var _this14 = this;
+
+              var mes, promise;
+              return regeneratorRuntime.wrap(function _callee22$(_context22) {
+                while (1) {
+                  switch (_context22.prev = _context22.next) {
+                    case 0:
+                      mes = {
+                        'type': type,
+                        'content': content
+                      };
+                      promise = new Promise( /*#__PURE__*/function () {
+                        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(resolve) {
+                          var loverInfo, sendToGroupClientPara;
+                          return regeneratorRuntime.wrap(function _callee21$(_context21) {
+                            while (1) {
+                              switch (_context21.prev = _context21.next) {
+                                case 0:
+                                  _context21.next = 2;
+                                  return _this14.getLoverInfo();
+
+                                case 2:
+                                  loverInfo = _context21.sent;
+
+                                  if (loverInfo) {
+                                    sendToGroupClientPara = {
+                                      recvType: MGOBE.ENUM.GroupRecvType.GROUP_SOME,
+                                      recvPlayerList: [loverInfo.id],
+                                      msg: JSON.stringify(mes)
+                                    };
+
+                                    _this14.curGroup.sendToGroupClient(sendToGroupClientPara, function (event) {
+                                      log('消息发送完成:', event);
+                                      resolve(true);
+                                    });
+                                  } else {
+                                    resolve(false);
+                                  }
+
+                                case 4:
+                                case "end":
+                                  return _context21.stop();
+                              }
+                            }
+                          }, _callee21);
+                        }));
+
+                        return function (_x11) {
+                          return _ref2.apply(this, arguments);
+                        };
+                      }());
+
+                    case 2:
+                    case "end":
+                      return _context22.stop();
+                  }
+                }
+              }, _callee22);
+            }));
+
+            function sendToGroup(_x9, _x10) {
+              return _sendToGroup.apply(this, arguments);
+            }
+
+            return sendToGroup;
+          }()
+        }, {
+          key: "isCaptain",
+          value: function () {
+            var _isCaptain = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
+              var groupInfo, curPlayerInfo;
+              return regeneratorRuntime.wrap(function _callee23$(_context23) {
+                while (1) {
+                  switch (_context23.prev = _context23.next) {
+                    case 0:
+                      _context23.next = 2;
+                      return this.getGroupInfo();
+
+                    case 2:
+                      groupInfo = _context23.sent;
+                      _context23.next = 5;
+                      return this.getPlayerInfo();
+
+                    case 5:
+                      curPlayerInfo = _context23.sent;
+                      return _context23.abrupt("return", groupInfo.owner == curPlayerInfo.id);
+
+                    case 7:
+                    case "end":
+                      return _context23.stop();
+                  }
+                }
+              }, _callee23, this);
+            }));
+
+            function isCaptain() {
+              return _isCaptain.apply(this, arguments);
+            }
+
+            return isCaptain;
+          }() // Player相关方法
+
+        }, {
+          key: "setPlayerStatus",
+          value: function () {
+            var _setPlayerStatus = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee24(stat) {
+              var _this15 = this;
+
+              var change, promise;
+              return regeneratorRuntime.wrap(function _callee24$(_context24) {
+                while (1) {
+                  switch (_context24.prev = _context24.next) {
+                    case 0:
+                      change = {
+                        customPlayerStatus: stat
+                      };
+                      promise = new Promise(function (resolve) {
+                        _this15.curRoom.changeCustomPlayerStatus(change, function (event) {
+                          log('修改用户房间状态', event);
+                          resolve(event);
+                        });
+                      });
+                      return _context24.abrupt("return", promise);
+
+                    case 3:
+                    case "end":
+                      return _context24.stop();
+                  }
+                }
+              }, _callee24);
+            }));
+
+            function setPlayerStatus(_x12) {
+              return _setPlayerStatus.apply(this, arguments);
+            }
+
+            return setPlayerStatus;
+          }()
+        }, {
+          key: "getPlayerInfo",
+          value: function () {
+            var _getPlayerInfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
+              var groupInfo, playerList, groupPlayerState, index, element, info;
+              return regeneratorRuntime.wrap(function _callee25$(_context25) {
+                while (1) {
+                  switch (_context25.prev = _context25.next) {
+                    case 0:
+                      _context25.next = 2;
+                      return this.getGroupInfo();
+
+                    case 2:
+                      groupInfo = _context25.sent;
+                      playerList = [];
+
+                      if (groupInfo) {
+                        playerList = groupInfo.groupPlayerList;
+                      }
+
+                      groupPlayerState = PlayerState.NotReady;
+                      index = 0;
+
+                    case 7:
+                      if (!(index < playerList.length)) {
+                        _context25.next = 15;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!(element.id === MGOBE.Player.id)) {
+                        _context25.next = 12;
+                        break;
+                      }
+
+                      groupPlayerState = element.customGroupPlayerStatus;
+                      return _context25.abrupt("break", 15);
+
+                    case 12:
+                      index++;
+                      _context25.next = 7;
+                      break;
+
+                    case 15:
+                      // log('PPPPP', MGOBE.Player, this.gameManager.PlayerData);
+                      info = {
+                        'id': MGOBE.Player.id,
+                        'name': this.gameManager.PlayerData.nickname,
+                        'openId': MGOBE.Player.openId,
+                        'netState': MGOBE.Player.commonNetworkState,
+                        'stateRoom': MGOBE.Player.customPlayerStatus,
+                        'stateGroup': groupPlayerState,
+                        'teamId': MGOBE.Player.teamId,
+                        'profile': MGOBE.Player.customProfile != undefined ? MGOBE.Player.customProfile : JSON.stringify(this.gameManager.PlayerData)
+                      };
+                      return _context25.abrupt("return", info);
+
+                    case 17:
+                    case "end":
+                      return _context25.stop();
+                  }
+                }
+              }, _callee25, this);
+            }));
+
+            function getPlayerInfo() {
+              return _getPlayerInfo.apply(this, arguments);
+            }
+
+            return getPlayerInfo;
+          }()
+        }, {
+          key: "getLoverInfo",
+          value: function () {
+            var _getLoverInfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+              var groupInfo, loverInfo, playerList, index, element, info;
+              return regeneratorRuntime.wrap(function _callee26$(_context26) {
+                while (1) {
+                  switch (_context26.prev = _context26.next) {
+                    case 0:
+                      _context26.next = 2;
+                      return this.getGroupInfo();
+
+                    case 2:
+                      groupInfo = _context26.sent;
+                      loverInfo = null;
+
+                      if (groupInfo) {
+                        _context26.next = 7;
+                        break;
+                      }
+
+                      log('暂未建立队组,无法获得另一半信息');
+                      return _context26.abrupt("return");
+
+                    case 7:
+                      playerList = groupInfo.groupPlayerList;
+                      index = 0;
+
+                    case 9:
+                      if (!(index < playerList.length)) {
+                        _context26.next = 17;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!(element.id != MGOBE.Player.id)) {
+                        _context26.next = 14;
+                        break;
+                      }
+
+                      loverInfo = element;
+                      return _context26.abrupt("break", 17);
+
+                    case 14:
+                      index++;
+                      _context26.next = 9;
+                      break;
+
+                    case 17:
+                      if (loverInfo) {
+                        _context26.next = 20;
+                        break;
+                      }
+
+                      log('另一半不在队组中');
+                      return _context26.abrupt("return");
+
+                    case 20:
+                      info = {
+                        'id': loverInfo.id,
+                        'name': loverInfo.name != null ? loverInfo.name : loverInfo.id,
+                        'netState': loverInfo.commonGroupNetworkState,
+                        'stateGroup': loverInfo.customGroupPlayerStatus,
+                        'profile': loverInfo.customGroupPlayerProfile
+                      };
+                      return _context26.abrupt("return", info);
+
+                    case 22:
+                    case "end":
+                      return _context26.stop();
+                  }
+                }
+              }, _callee26, this);
+            }));
+
+            function getLoverInfo() {
+              return _getLoverInfo.apply(this, arguments);
+            }
+
+            return getLoverInfo;
+          }()
+        }]);
+
+        return SDK;
+      }());
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Dialog/Dialog.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Const.js"], function (_export, _context3) {
+  "use strict";
+
+  var _createClass, _classCallCheck, _asyncToGenerator, cclegacy, HorizontalTextAlignment, tween, Vec3, loader, Prefab, instantiate, Label, SystemEventType, log, DialogButtonType, Dialog;
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      HorizontalTextAlignment = _cc.HorizontalTextAlignment;
+      tween = _cc.tween;
+      Vec3 = _cc.Vec3;
+      loader = _cc.loader;
+      Prefab = _cc.Prefab;
+      instantiate = _cc.instantiate;
+      Label = _cc.Label;
+      SystemEventType = _cc.SystemEventType;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      DialogButtonType = _ConstJs.DialogButtonType;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "15867PII/lA6aXbZL4Ddkcx", "Dialog", undefined);
+
+      _export("Dialog", Dialog = /*#__PURE__*/function () {
+        function Dialog(scene, sdk, text) {
+          var buttonType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+          var yesTip = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '确认';
+          var noTip = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : '取消';
+          var title = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : "提示";
+          var align = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : HorizontalTextAlignment.CENTER;
+
+          _classCallCheck(this, Dialog);
+
+          this.scene = null;
+          this.node = null;
+          this.result = null;
+          this.SDK = null;
+          this.title = '提示';
+          this.align = HorizontalTextAlignment.CENTER;
+          this.text = null;
+          this.buttonType = null;
+          this.yesTip = null;
+          this.noTip = null;
+          this.dead = false;
+          this.scene = scene;
+          this.SDK = sdk;
+          this.text = text;
+          this.buttonType = buttonType;
+          this.yesTip = yesTip;
+          this.noTip = noTip;
+          this.title = title;
+          this.align = align;
+        }
+
+        _createClass(Dialog, [{
+          key: "InitBoard",
+          value: function () {
+            var _InitBoard = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var _this2 = this;
+
+              var promise;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      log('弹窗预制件实例化:');
+                      promise = new Promise(function (resolve) {
+                        loader.loadRes('Prefab/Dialog/Dialog', Prefab, function (err, prefab) {
+                          if (err) {
+                            log('弹框实例化失败', err);
+                            resolve(false);
+                          } else {
+                            log('弹框实例化成功');
+                            _this2.node = instantiate(prefab);
+
+                            _this2.scene.getChildByName('UI').addChild(_this2.node);
+
+                            _this2.node.setSiblingIndex(100);
+
+                            resolve(true);
+                          }
+                        });
+                      });
+                      return _context.abrupt("return", promise);
+
+                    case 3:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee);
+            }));
+
+            function InitBoard() {
+              return _InitBoard.apply(this, arguments);
+            }
+
+            return InitBoard;
+          }()
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            if (!this.dead) {
+              if (!this.node) {
+                this.SDK = null;
+                return;
+              }
+
+              this.dead = true;
+              this.scene = null;
+              tween(this.node.getChildByName('background')).to(.3, {
+                scale: new Vec3(0, 0, 0)
+              }, {
+                onComplete: function () {
+                  this.SDK.curDialog = null;
+                  this.SDK = null;
+                  this.node.destroy();
+                  this.node = null;
+                }.bind(this)
+              }).start();
+            }
+          }
+        }, {
+          key: "show",
+          value: function () {
+            var _show = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(_this, yesCallBack) {
+              var noCallBack,
+                  b,
+                  yes_button,
+                  no_button,
+                  title,
+                  v3,
+                  _args2 = arguments;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      noCallBack = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : null;
+
+                      if (!(this.SDK.curDialog == null)) {
+                        _context2.next = 23;
+                        break;
+                      }
+
+                      _context2.next = 4;
+                      return this.InitBoard();
+
+                    case 4:
+                      b = _context2.sent;
+
+                      if (b) {
+                        _context2.next = 8;
+                        break;
+                      }
+
+                      this.destroy();
+                      return _context2.abrupt("return");
+
+                    case 8:
+                      this.SDK.curDialog = this; // UI的修改与展示
+
+                      yes_button = this.node.getChildByName('background').getChildByName('yes');
+                      no_button = this.node.getChildByName('background').getChildByName('no');
+                      title = this.node.getChildByName('background').getChildByName('tip');
+                      this.node.getChildByName('background').getChildByName('content').getComponent(Label).horizontalAlign = this.align;
+                      this.node.getChildByName('background').getChildByName('content').getComponent(Label).string = this.text;
+                      yes_button.getChildByName('Label').getComponent(Label).string = this.yesTip;
+                      no_button.getChildByName('Label').getComponent(Label).string = this.noTip;
+                      title.getComponent(Label).string = this.title;
+
+                      if (this.buttonType == DialogButtonType.single) {
+                        no_button.active = false;
+                        v3 = new Vec3();
+                        yes_button.getPosition(v3);
+                        v3.x = 0;
+                        yes_button.setPosition(v3);
+                      }
+
+                      this.node.getChildByName('background').setScale(new Vec3(0, 0, 0));
+                      this.node.active = true;
+                      tween(this.node.getChildByName('background')).to(.3, {
+                        scale: new Vec3(.5, .5, .5),
+                        easing: 'easeOutExpo'
+                      }).start(); // 事件回调绑定
+
+                      yes_button.on(SystemEventType.TOUCH_END, yesCallBack, _this);
+
+                      if (noCallBack) {
+                        no_button.on(SystemEventType.TOUCH_END, noCallBack, _this);
+                      }
+
+                    case 23:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function show(_x, _x2) {
+              return _show.apply(this, arguments);
+            }
+
+            return show;
+          }()
+        }]);
+
+        return Dialog;
+      }());
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Board/BaseBoard.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Const.js", "../Dialog/Dialog.js"], function (_export, _context3) {
+  "use strict";
+
+  var _createClass, _classCallCheck, _asyncToGenerator, cclegacy, _decorator, log, DialogButtonType, Dialog, ccclass, property, BaseBoard;
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      DialogButtonType = _ConstJs.DialogButtonType;
+    }, function (_DialogDialogJs) {
+      Dialog = _DialogDialogJs.Dialog;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "72680Q0ztVKyaWXTajENF2V", "BaseBoard", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      _export("BaseBoard", BaseBoard = /*#__PURE__*/function () {
+        function BaseBoard(scene, sdk) {
+          _classCallCheck(this, BaseBoard);
+
+          this.board = null;
+          this.SDK = null;
+          this.scene = null;
+          this.name = null;
+          this.uiControl = null;
+          this.dead = false;
+
+          this.sleep = function (ms) {
+            return new Promise(function (resolve) {
+              return setTimeout(resolve, ms);
+            });
+          };
+
+          this.SDK = sdk;
+          this.scene = scene;
+        }
+
+        _createClass(BaseBoard, [{
+          key: "Init",
+          value: function () {
+            var _Init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      log('初始化界面:', this.name);
+
+                      if (!this.board) {
+                        _context.next = 4;
+                        break;
+                      }
+
+                      this.InitEvent();
+                      return _context.abrupt("return", true);
+
+                    case 4:
+                      return _context.abrupt("return", false);
+
+                    case 5:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function Init() {
+              return _Init.apply(this, arguments);
+            }
+
+            return Init;
+          }() // 销毁界面对象
+
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            log('销毁界面:', this.name);
+            this.board.active = false;
+            this.dead = true;
+          } // 绑定SDK监听,需要再具体界面类中重写此方法
+
+        }, {
+          key: "setListener",
+          value: function setListener() {
+            log('绑定监听:', this.name);
+          } // 初始化界面类,根据name对预制件进行实例化
+          // async InitBoard() {
+          //     log('界面预制件实例化:', this.name)
+          //     macro.ENABLE_WEBGL_ANTIALIAS = true
+          //     let promise = new Promise(resolve => {
+          //         loader.loadRes('Prefab/Board/'+this.name, Prefab, (err: any, prefab: Prefab) => {
+          //             if(err) { 
+          //                 log('界面预制件实例化失败', err);
+          //                 this.board = null;
+          //                 resolve(false);
+          //             } else {
+          //                 this.board = instantiate(prefab);
+          //                 this.board.active = false;
+          //                 this.scene.getChildByName('UI').addChild(this.board);
+          //                 this.board.setSiblingIndex(1);
+          //                 resolve(true);
+          //             }
+          //         });
+          //     })
+          //     return promise;
+          // }
+
+        }, {
+          key: "InitEvent",
+          value: function InitEvent() {
+            log('初始化UI事件', this.name);
+          }
+        }, {
+          key: "initData",
+          value: function initData() {
+            log('重置界面基础数据');
+            this.dead = false;
+
+            if (this.uiControl) {
+              this.uiControl.initData();
+            }
+          } // 测试用等待
+
+        }, {
+          key: "ChangeBoard",
+
+          /* 
+          界面切换方法
+          使用GameManager中缓存的界面对象,通过旧界面的ChangeBoard方法进行界面切换,会自动对新界面进行重置以及数据同步
+          */
+          value: function () {
+            var _ChangeBoard = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(newBoard) {
+              var curBoard, b, dia;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      curBoard = this.SDK.curBoard;
+
+                      if (!newBoard) {
+                        _context2.next = 14;
+                        break;
+                      }
+
+                      _context2.t0 = newBoard.name;
+                      _context2.next = _context2.t0 === 'MainBoard' ? 5 : _context2.t0 === 'GamingBoard' ? 12 : 14;
+                      break;
+
+                    case 5:
+                      _context2.next = 7;
+                      return this.SDK.leaveGroup();
+
+                    case 7:
+                      _context2.next = 9;
+                      return this.SDK.leaveRoom();
+
+                    case 9:
+                      this.SDK.gameManager.teammaterIsLover = undefined;
+                      this.SDK.gameManager.enemyIsLover = undefined;
+                      return _context2.abrupt("break", 14);
+
+                    case 12:
+                      this.SDK.gameManager.isRunning = true;
+                      return _context2.abrupt("break", 14);
+
+                    case 14:
+                      if (!curBoard) {
+                        _context2.next = 24;
+                        break;
+                      }
+
+                      _context2.t1 = curBoard.name;
+                      _context2.next = _context2.t1 === 'GamingBoard' ? 18 : _context2.t1 === 'ResultBoard' ? 21 : 24;
+                      break;
+
+                    case 18:
+                      this.SDK.gameManager.isRunning = false;
+                      this.SDK.gameManager.isControler = false;
+                      return _context2.abrupt("break", 24);
+
+                    case 21:
+                      this.SDK.gameManager.teammaterIsLover = undefined;
+                      this.SDK.gameManager.enemyIsLover = undefined;
+                      return _context2.abrupt("break", 24);
+
+                    case 24:
+                      if (!curBoard) curBoard = newBoard;
+                      log('界面切换', curBoard.name, '-->', newBoard.name);
+                      this.SDK.curBoard = newBoard; // newBoard.dead = false;
+
+                      _context2.next = 29;
+                      return newBoard.Init();
+
+                    case 29:
+                      b = _context2.sent;
+
+                      if (!b) {
+                        _context2.next = 60;
+                        break;
+                      } // 每次切换UI时自动清空上一次所绑定消息监听方法,在此处设置所有曾经使用过的监听为空
+
+
+                      this.SDK.Room.onCancelMatch = null;
+                      this.SDK.Room.onMatch = null;
+                      this.SDK.curRoom.onChangePlayerNetworkState = null;
+                      this.SDK.curRoom.onLeaveRoom = null;
+                      this.SDK.curRoom.onRecvFromGameSvr = null;
+                      this.SDK.curRoom.onRecvFromClient = null;
+                      this.SDK.curGroup.onChangeCustomGroupPlayerStatus = null;
+                      this.SDK.curGroup.onChangeGroupPlayerNetworkState = null;
+                      this.SDK.curGroup.onRecvFromGroupClient = null;
+                      this.SDK.curGroup.onJoinGroup = null;
+                      this.SDK.curGroup.onLeaveGroup = null;
+                      this.SDK.curGroup.onDismissGroup = null;
+
+                      if (!newBoard.uiControl) {
+                        _context2.next = 47;
+                        break;
+                      }
+
+                      newBoard.uiControl.board = newBoard.board;
+                      _context2.next = 47;
+                      return newBoard.uiControl.initUI(newBoard.board);
+
+                    case 47:
+                      newBoard.initData();
+                      newBoard.setListener();
+                      newBoard.scene.getChildByName('UI').getChildByName('loading').active = false;
+                      this.SDK.gameManager.MainBoard.board.active = false;
+                      this.SDK.gameManager.GamingBoard.board.active = false;
+                      this.SDK.gameManager.WaitLoverBoard.board.active = false;
+                      this.SDK.gameManager.TeachingBoard.board.active = false;
+                      this.SDK.gameManager.MatchingBoard.board.active = false;
+                      this.SDK.gameManager.ResultBoard.board.active = false;
+                      newBoard.board.active = true;
+
+                      if (curBoard != newBoard) {
+                        curBoard.destroy();
+                      }
+
+                      _context2.next = 66;
+                      break;
+
+                    case 60:
+                      log('销毁新界面');
+                      _context2.next = 63;
+                      return newBoard.destroy();
+
+                    case 63:
+                      dia = new Dialog(curBoard.scene, this.SDK, '网络出现问题,无法正常游戏', DialogButtonType.single, '确定');
+                      _context2.next = 66;
+                      return dia.show(this, function () {
+                        this.SDK.curDialog.destroy();
+                      });
+
+                    case 66:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function ChangeBoard(_x) {
+              return _ChangeBoard.apply(this, arguments);
+            }
+
+            return ChangeBoard;
+          }()
+        }]);
+
+        return BaseBoard;
+      }());
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Board/WaitLoverBoard.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Const.js", "../../Util.js", "../Dialog/Dialog.js", "./BaseBoard.js"], function (_export, _context12) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _createClass, _get, _asyncToGenerator, cclegacy, SystemEventType, Label, HorizontalTextAlignment, tween, Vec3, log, StatisticsKey, NetState, GroupMessageType, GroupSysMessageType, PlayerState, DialogButtonType, LabelColor, throttle, Dialog, BaseBoard, _dec, _dec2, _dec3, _dec4, _class, _temp, UIControl, WaitLoverBoard;
+
+  _export({
+    _dec: void 0,
+    _dec2: void 0,
+    _dec3: void 0,
+    _dec4: void 0,
+    _class: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _get = _virtual_rollupPluginBabelHelpersJs.get;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      SystemEventType = _cc.SystemEventType;
+      Label = _cc.Label;
+      HorizontalTextAlignment = _cc.HorizontalTextAlignment;
+      tween = _cc.tween;
+      Vec3 = _cc.Vec3;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      StatisticsKey = _ConstJs.StatisticsKey;
+      NetState = _ConstJs.NetState;
+      GroupMessageType = _ConstJs.GroupMessageType;
+      GroupSysMessageType = _ConstJs.GroupSysMessageType;
+      PlayerState = _ConstJs.PlayerState;
+      DialogButtonType = _ConstJs.DialogButtonType;
+      LabelColor = _ConstJs.LabelColor;
+    }, function (_UtilJs) {
+      throttle = _UtilJs.throttle;
+    }, function (_DialogDialogJs) {
+      Dialog = _DialogDialogJs.Dialog;
+    }, function (_BaseBoardJs) {
+      BaseBoard = _BaseBoardJs.BaseBoard;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "638a0cfbatPTK9EkM3XiINe", "WaitLoverBoard", undefined);
+
+      UIControl = /*#__PURE__*/function () {
+        function UIControl(board, sdk) {
+          _classCallCheck(this, UIControl);
+
+          this.board = null;
+          this.SDK = null;
+          this.team1 = null;
+          this.team2 = null;
+          this.board = board;
+          this.SDK = sdk;
+        }
+
+        _createClass(UIControl, [{
+          key: "initUI",
+          value: function () {
+            var _initUI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(board) {
+              var curPlayer, groupInfo, otherPlayer, capId, team1, user1, user2, playerList, index, element;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      this.board = board;
+                      _context.next = 3;
+                      return this.SDK.getPlayerInfo();
+
+                    case 3:
+                      curPlayer = _context.sent;
+                      _context.next = 6;
+                      return this.SDK.getGroupInfo();
+
+                    case 6:
+                      groupInfo = _context.sent;
+                      otherPlayer = null;
+                      capId = null;
+                      team1 = this.board.getChildByName('team1');
+                      user1 = team1.getChildByName('user1');
+                      user2 = team1.getChildByName('user2');
+                      user1.getChildByName('nickName').getComponent(Label).string = curPlayer.name;
+                      this.SDK.gameManager.Util.loadRemoteImg(JSON.parse(curPlayer.profile).avatar_url, user1.getChildByName('avatarBg').getChildByName('avatar')); // log('初始化UI的时候得到的group:', groupInfo)
+
+                      user1.getChildByName('state').getComponent(Label).string = curPlayer.stateGroup == PlayerState.NotReady ? '未准备' : '已准备';
+                      user1.getChildByName('state').getComponent(Label).color = curPlayer.stateGroup == PlayerState.NotReady ? LabelColor.NotReady : LabelColor.Ready;
+                      this.board.getChildByName('ready').getChildByName('Button-ready').getChildByName('Label').getComponent(Label).string = curPlayer.stateGroup == PlayerState.NotReady ? '准备' : '取消准备';
+
+                      if (!groupInfo) {
+                        _context.next = 33;
+                        break;
+                      }
+
+                      capId = groupInfo.owner;
+                      playerList = groupInfo.groupPlayerList;
+                      index = 0;
+
+                    case 21:
+                      if (!(index < playerList.length)) {
+                        _context.next = 29;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!(element.id != curPlayer.id)) {
+                        _context.next = 26;
+                        break;
+                      }
+
+                      otherPlayer = element;
+                      return _context.abrupt("break", 29);
+
+                    case 26:
+                      index++;
+                      _context.next = 21;
+                      break;
+
+                    case 29:
+                      log('capId: ', capId, curPlayer.id);
+
+                      if (capId == curPlayer.id) {
+                        if (otherPlayer != null) {
+                          log('有玩家');
+                          this.board.getChildByName('ready').getChildByName('Button-invite').active = false;
+                          this.board.getChildByName('ready').getChildByName('Button-match').active = true;
+                        } else {
+                          this.board.getChildByName('ready').getChildByName('Button-invite').active = true;
+                          this.board.getChildByName('ready').getChildByName('Button-match').active = false;
+                        }
+
+                        this.board.getChildByName('Cancel').active = true;
+                        this.board.getChildByName('ready').getChildByName('Button-ready').active = false;
+                        user1.getChildByName('state').getComponent(Label).string = '已准备';
+                        user2.getChildByName('state').getComponent(Label).string = '未准备';
+                        user2.getChildByName('state').getComponent(Label).color = LabelColor.NotReady;
+                        user1.getChildByName('state').getComponent(Label).color = LabelColor.Captain;
+                      } else {
+                        this.board.getChildByName('Cancel').active = false;
+                        this.board.getChildByName('ready').getChildByName('Button-match').active = false;
+                        this.board.getChildByName('ready').getChildByName('Button-invite').active = false;
+                        this.board.getChildByName('ready').getChildByName('Button-ready').active = true;
+                        user2.getChildByName('state').getComponent(Label).string = '已准备';
+                        user1.getChildByName('state').getComponent(Label).string = curPlayer.stateGroup === PlayerState.Ready ? '已准备' : '未准备';
+                        user1.getChildByName('state').getComponent(Label).color = curPlayer.stateGroup === PlayerState.Ready ? LabelColor.Ready : LabelColor.NotReady;
+                        user2.getChildByName('state').getComponent(Label).color = LabelColor.Captain;
+                      }
+
+                      log('加入的队组内其他玩家:', otherPlayer);
+
+                      if (otherPlayer != null) {
+                        team1.getChildByName('wait').active = false;
+                        user2.getChildByName('nickName').getComponent(Label).string = otherPlayer.name;
+                        user2.getChildByName('state').getComponent(Label).string = otherPlayer.customGroupPlayerStatus == PlayerState.NotReady ? otherPlayer.id == capId ? '已准备' : '未准备' : '已准备';
+                        user2.getChildByName('state').getComponent(Label).color = otherPlayer.customGroupPlayerStatus == PlayerState.NotReady ? otherPlayer.id == capId ? LabelColor.Ready : LabelColor.NotReady : LabelColor.Ready;
+                        this.SDK.gameManager.Util.loadRemoteImg(JSON.parse(otherPlayer.customGroupPlayerProfile).avatar_url, user2.getChildByName('avatarBg').getChildByName('avatar'));
+                        user2.active = true;
+                      } else {
+                        team1.getChildByName('wait').active = true;
+                        user2.active = false;
+                      }
+
+                    case 33:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function initUI(_x) {
+              return _initUI.apply(this, arguments);
+            }
+
+            return initUI;
+          }()
+        }, {
+          key: "initData",
+          value: function initData() {}
+        }, {
+          key: "playerReady",
+          value: function () {
+            var _playerReady = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(playerId, stat) {
+              var curPlayerInfo, groupInfo, userBoard, newInfo, matchBtn;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.SDK.getPlayerInfo();
+
+                    case 2:
+                      curPlayerInfo = _context2.sent;
+                      _context2.next = 5;
+                      return this.SDK.getGroupInfo();
+
+                    case 5:
+                      groupInfo = _context2.sent;
+                      userBoard = null;
+                      log('UI:修改玩家准备状态:', playerId, stat);
+
+                      if (playerId == curPlayerInfo.id) {
+                        userBoard = this.board.getChildByName('team1').getChildByName('user1');
+                      } else {
+                        userBoard = this.board.getChildByName('team1').getChildByName('user2');
+                      }
+
+                      if (playerId != groupInfo.owner) {
+                        newInfo = stat === PlayerState.NotReady ? {
+                          tip: '未准备',
+                          color: LabelColor.NotReady
+                        } : {
+                          tip: '已准备',
+                          color: LabelColor.Ready
+                        };
+                        userBoard.getChildByName('state').getComponent(Label).string = newInfo.tip;
+                        userBoard.getChildByName('state').getComponent(Label).color = newInfo.color;
+                      } else {
+                        matchBtn = this.board.getChildByName('ready').getChildByName('Button-match');
+                        stat === PlayerState.NotReady ? matchBtn.active = false : matchBtn.active = true;
+                      }
+
+                    case 10:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function playerReady(_x2, _x3) {
+              return _playerReady.apply(this, arguments);
+            }
+
+            return playerReady;
+          }()
+        }, {
+          key: "playerJoin",
+          value: function playerJoin(joinPlayerId, playerList) {
+            var joinPlayerInfo = null;
+
+            for (var index = 0; index < playerList.length; index++) {
+              var element = playerList[index];
+
+              if (element.id == joinPlayerId) {
+                joinPlayerInfo = element;
+                break;
+              }
+            }
+
+            log('joinPlayerInfo: ', joinPlayerInfo);
+            var profile = joinPlayerInfo.customGroupPlayerProfile ? JSON.parse(joinPlayerInfo.customGroupPlayerProfile) : JSON.parse(joinPlayerInfo.profile);
+            this.SDK.gameManager.Util.loadRemoteImg(profile.avatar_url, this.board.getChildByName('team1').getChildByName('user2').getChildByName('avatarBg').getChildByName('avatar'));
+            this.board.getChildByName('ready').getChildByName('Button-invite').active = false;
+            this.board.getChildByName('ready').getChildByName('Button-match').active = true;
+            this.board.getChildByName('team1').getChildByName('wait').active = false;
+            this.board.getChildByName('team1').getChildByName('user2').active = true;
+            this.board.getChildByName('team1').getChildByName('user2').getChildByName('nickName').getComponent(Label).string = joinPlayerInfo.name;
+          }
+        }, {
+          key: "playerLeave",
+          value: function playerLeave() {
+            this.board.getChildByName('team1').getChildByName('wait').active = true;
+            this.board.getChildByName('team1').getChildByName('user2').active = false;
+            this.board.getChildByName('ready').getChildByName('Button-invite').active = true;
+            this.board.getChildByName('ready').getChildByName('Button-match').active = false;
+          }
+        }]);
+
+        return UIControl;
+      }();
+
+      _export("WaitLoverBoard", WaitLoverBoard = (_dec = throttle(1000), _dec2 = throttle(), _dec3 = throttle(), _dec4 = throttle(500), (_class = (_temp = /*#__PURE__*/function (_BaseBoard) {
+        _inherits(WaitLoverBoard, _BaseBoard);
+
+        function WaitLoverBoard(scene, sdk) {
+          var _this;
+
+          _classCallCheck(this, WaitLoverBoard);
+
+          _this = _possibleConstructorReturn(this, _getPrototypeOf(WaitLoverBoard).call(this, scene, sdk));
+          _this.uiControl = null;
+          _this.name = 'WaitLoverBoard';
+          _this.uiControl = new UIControl(_this.board, _this.SDK);
+          return _this;
+        }
+
+        _createClass(WaitLoverBoard, [{
+          key: "setListener",
+          value: function setListener() {
+            _get(_getPrototypeOf(WaitLoverBoard.prototype), "setListener", this).call(this);
+
+            this.SDK.curGroup.onChangeCustomGroupPlayerStatus = this.onChangeCustomGroupPlayerStatus.bind(this);
+            this.SDK.curGroup.onChangeGroupPlayerNetworkState = this.onChangeGroupPlayerNetworkState.bind(this);
+            this.SDK.curGroup.onRecvFromGroupClient = this.onRecvFromGroupClient.bind(this);
+            this.SDK.curGroup.onJoinGroup = this.onJoinGroup.bind(this);
+            this.SDK.curGroup.onLeaveGroup = this.onLeaveGroup.bind(this);
+            this.SDK.curGroup.onDismissGroup = this.onDismissGroup.bind(this);
+
+            if (this.SDK.gameManager.timerSingal) {
+              this.SDK.gameManager.timerSingal = null;
+            }
+          }
+          /* 各类监听方法 */
+
+        }, {
+          key: "onDismissGroup",
+          value: function () {
+            var _onDismissGroup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(event) {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      log('监听到队长解散了队组');
+                      this.SDK.curGroup.initGroup();
+                      _context3.next = 4;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 4:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+
+            function onDismissGroup(_x4) {
+              return _onDismissGroup.apply(this, arguments);
+            }
+
+            return onDismissGroup;
+          }()
+        }, {
+          key: "onChangeCustomGroupPlayerStatus",
+          value: function () {
+            var _onChangeCustomGroupPlayerStatus = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(event) {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      log('玩家[', event.data.changePlayerId, ']准备状态有变化', event.data.customGroupPlayerStatus);
+                      _context4.next = 3;
+                      return this.uiControl.playerReady(event.data.changePlayerId, event.data.customGroupPlayerStatus);
+
+                    case 3:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+
+            function onChangeCustomGroupPlayerStatus(_x5) {
+              return _onChangeCustomGroupPlayerStatus.apply(this, arguments);
+            }
+
+            return onChangeCustomGroupPlayerStatus;
+          }()
+        }, {
+          key: "onChangeGroupPlayerNetworkState",
+          value: function () {
+            var _onChangeGroupPlayerNetworkState = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(event) {
+              var isCap, code;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      log('玩家[', event.data.changePlayerId, ']在线状态有变化', event.data.networkState);
+                      _context5.next = 3;
+                      return this.SDK.isCaptain();
+
+                    case 3:
+                      isCap = _context5.sent;
+
+                      if (isCap) {
+                        _context5.next = 10;
+                        break;
+                      }
+
+                      if (!(event.data.networkState == NetState.Offline)) {
+                        _context5.next = 8;
+                        break;
+                      }
+
+                      _context5.next = 8;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 8:
+                      _context5.next = 14;
+                      break;
+
+                    case 10:
+                      _context5.next = 12;
+                      return this.SDK.removePlayerInGroup(event.data.changePlayerId);
+
+                    case 12:
+                      code = _context5.sent;
+
+                      if (code === 0) {
+                        this.uiControl.playerLeave();
+                      } else {
+                        log('踢出玩家失败:', event.data.changePlayerId);
+                      }
+
+                    case 14:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
+            }));
+
+            function onChangeGroupPlayerNetworkState(_x6) {
+              return _onChangeGroupPlayerNetworkState.apply(this, arguments);
+            }
+
+            return onChangeGroupPlayerNetworkState;
+          }()
+        }, {
+          key: "onRecvFromGroupClient",
+          value: function () {
+            var _onRecvFromGroupClient = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(event) {
+              var msg;
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      log('接收到来自另一半的消息:', event);
+                      msg = JSON.parse(event.data.msg);
+
+                      if (!(msg['type'] == GroupMessageType.Sys)) {
+                        _context6.next = 6;
+                        break;
+                      }
+
+                      if (!(msg['content'] == GroupSysMessageType.Matching)) {
+                        _context6.next = 6;
+                        break;
+                      }
+
+                      _context6.next = 6;
+                      return this.ChangeBoard(this.SDK.gameManager.MatchingBoard);
+
+                    case 6:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function onRecvFromGroupClient(_x7) {
+              return _onRecvFromGroupClient.apply(this, arguments);
+            }
+
+            return onRecvFromGroupClient;
+          }()
+        }, {
+          key: "onJoinGroup",
+          value: function onJoinGroup(event) {
+            log('有玩家加入队组:', event.data.joinPlayerId);
+            var joinPlayerId = event.data.joinPlayerId;
+            var playerList = event.data.groupInfo.groupPlayerList;
+            this.uiControl.playerJoin(joinPlayerId, playerList);
+          }
+        }, {
+          key: "onLeaveGroup",
+          value: function onLeaveGroup(event) {
+            log('有人离开队组', event.data.leavePlayerId);
+            this.uiControl.playerLeave();
+          }
+        }, {
+          key: "InitEvent",
+          value: function InitEvent() {
+            _get(_getPrototypeOf(WaitLoverBoard.prototype), "InitEvent", this).call(this);
+
+            var button_ready = this.board.getChildByName('ready').getChildByName('Button-ready');
+            var button_match = this.board.getChildByName('ready').getChildByName('Button-match');
+            var button_invite = this.board.getChildByName('ready').getChildByName('Button-invite');
+            var button_cancel = this.board.getChildByName('Cancel').getChildByName('Button');
+            button_ready.on(SystemEventType.TOUCH_END, this.clickReady, this);
+            button_cancel.on(SystemEventType.TOUCH_END, this.clickLeave, this);
+            button_match.on(SystemEventType.TOUCH_END, this.clickMatch, this);
+            button_invite.on(SystemEventType.TOUCH_END, this.clickInvite, this);
+            document.addEventListener('visibilitychange', this.visibilityChange.bind(this));
+          }
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            _get(_getPrototypeOf(WaitLoverBoard.prototype), "destroy", this).call(this);
+
+            var button_ready = this.board.getChildByName('ready').getChildByName('Button-ready');
+            var button_match = this.board.getChildByName('ready').getChildByName('Button-match');
+            var button_invite = this.board.getChildByName('ready').getChildByName('Button-invite');
+            var button_cancel = this.board.getChildByName('Cancel').getChildByName('Button');
+            button_ready.off(SystemEventType.TOUCH_END);
+            button_cancel.off(SystemEventType.TOUCH_END);
+            button_match.off(SystemEventType.TOUCH_END);
+            button_invite.off(SystemEventType.TOUCH_END);
+          }
+        }, {
+          key: "clickReady",
+          value: function () {
+            var _clickReady = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+              var playerInfo, newState, newTip, code;
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      _context7.next = 2;
+                      return this.SDK.getPlayerInfo();
+
+                    case 2:
+                      playerInfo = _context7.sent;
+                      newState = PlayerState.NotReady;
+                      newTip = '准备';
+
+                      if (playerInfo.stateGroup === PlayerState.NotReady) {
+                        newState = PlayerState.Ready;
+                        newTip = '取消准备';
+                      }
+
+                      _context7.next = 8;
+                      return this.SDK.setGroupPlayerStatus(newState);
+
+                    case 8:
+                      code = _context7.sent;
+                      this.board.getChildByName('ready').getChildByName('Button-ready').getChildByName('Label').getComponent(Label).string = newTip;
+
+                    case 10:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7, this);
+            }));
+
+            function clickReady() {
+              return _clickReady.apply(this, arguments);
+            }
+
+            return clickReady;
+          }()
+        }, {
+          key: "clickLeave",
+          value: function () {
+            var _clickLeave = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+              var _this2 = this;
+
+              var dia;
+              return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                while (1) {
+                  switch (_context8.prev = _context8.next) {
+                    case 0:
+                      dia = new Dialog(this.scene, this.SDK, '确认取消后，游戏邀请自动失效，另一半无法进入。', DialogButtonType.multiple, "再想想", "取消游戏邀请", "取消游戏邀请", HorizontalTextAlignment.LEFT);
+                      _context8.next = 3;
+                      return dia.show(this, function () {
+                        if (_this2.SDK.curDialog.dead) return;
+
+                        _this2.SDK.curDialog.destroy();
+                      }, function () {
+                        if (_this2.SDK.curDialog.dead) return;
+
+                        _this2.SDK.curDialog.destroy();
+
+                        _this2.playerLeave();
+                      });
+
+                    case 3:
+                    case "end":
+                      return _context8.stop();
+                  }
+                }
+              }, _callee8, this);
+            }));
+
+            function clickLeave() {
+              return _clickLeave.apply(this, arguments);
+            }
+
+            return clickLeave;
+          }()
+        }, {
+          key: "playerLeave",
+          value: function () {
+            var _playerLeave = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+              var groupInfo, curPlayerInfo, capId;
+              return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      _context9.next = 2;
+                      return this.SDK.getGroupInfo();
+
+                    case 2:
+                      groupInfo = _context9.sent;
+                      _context9.next = 5;
+                      return this.SDK.getPlayerInfo();
+
+                    case 5:
+                      curPlayerInfo = _context9.sent;
+
+                      if (!groupInfo) {
+                        _context9.next = 26;
+                        break;
+                      }
+
+                      capId = groupInfo.owner;
+
+                      if (!(curPlayerInfo.id == capId)) {
+                        _context9.next = 22;
+                        break;
+                      }
+
+                      _context9.next = 11;
+                      return this.SDK.getTeammate();
+
+                    case 11:
+                      if (!_context9.sent) {
+                        _context9.next = 15;
+                        break;
+                      }
+
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.main_couple_cancel);
+                      _context9.next = 16;
+                      break;
+
+                    case 15:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.main_wait_invite_cancel);
+
+                    case 16:
+                      _context9.next = 18;
+                      return this.SDK.dismissGroup();
+
+                    case 18:
+                      _context9.next = 20;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 20:
+                      _context9.next = 24;
+                      break;
+
+                    case 22:
+                      _context9.next = 24;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 24:
+                      _context9.next = 28;
+                      break;
+
+                    case 26:
+                      _context9.next = 28;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 28:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9, this);
+            }));
+
+            function playerLeave() {
+              return _playerLeave.apply(this, arguments);
+            }
+
+            return playerLeave;
+          }()
+        }, {
+          key: "clickMatch",
+          value: function () {
+            var _clickMatch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+              var loverInfo, code;
+              return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                while (1) {
+                  switch (_context10.prev = _context10.next) {
+                    case 0:
+                      _context10.next = 2;
+                      return this.SDK.getLoverInfo();
+
+                    case 2:
+                      loverInfo = _context10.sent;
+
+                      if (!loverInfo) {
+                        _context10.next = 27;
+                        break;
+                      }
+
+                      if (!(loverInfo.stateGroup === PlayerState.Ready)) {
+                        _context10.next = 23;
+                        break;
+                      }
+
+                      _context10.next = 7;
+                      return this.SDK.matchingLover();
+
+                    case 7:
+                      code = _context10.sent;
+
+                      if (!(code == this.SDK.errorCode.EC_OK)) {
+                        _context10.next = 16;
+                        break;
+                      }
+
+                      log('进入匹配成功');
+                      _context10.next = 12;
+                      return this.SDK.sendToGroup(GroupMessageType.Sys, GroupSysMessageType.Matching);
+
+                    case 12:
+                      _context10.next = 14;
+                      return this.ChangeBoard(this.SDK.gameManager.MatchingBoard);
+
+                    case 14:
+                      _context10.next = 21;
+                      break;
+
+                    case 16:
+                      _context10.next = 18;
+                      return this.SDK.leaveRoom();
+
+                    case 18:
+                      _context10.next = 20;
+                      return this.SDK.cancelMatchinig();
+
+                    case 20:
+                      this.SDK.gameManager.showToast("\u8FDB\u5165\u5339\u914D\u5931\u8D25(".concat(code, ")"), 2);
+
+                    case 21:
+                      _context10.next = 25;
+                      break;
+
+                    case 23:
+                      this.SDK.gameManager.showToast('另一半还没准备好', 2);
+                      log('另一半未准备好');
+
+                    case 25:
+                      _context10.next = 37;
+                      break;
+
+                    case 27:
+                      _context10.next = 29;
+                      return this.SDK.cancelMatchinig();
+
+                    case 29:
+                      _context10.next = 31;
+                      return this.SDK.leaveGroup();
+
+                    case 31:
+                      _context10.next = 33;
+                      return this.SDK.leaveRoom();
+
+                    case 33:
+                      _context10.next = 35;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 35:
+                      log('无另一半数据,进入匹配失败');
+                      this.SDK.gameManager.showToast("\u83B7\u53D6\u5BF9\u8C61\u6570\u636E\u5931\u8D25", 2);
+
+                    case 37:
+                    case "end":
+                      return _context10.stop();
+                  }
+                }
+              }, _callee10, this);
+            }));
+
+            function clickMatch() {
+              return _clickMatch.apply(this, arguments);
+            }
+
+            return clickMatch;
+          }()
+        }, {
+          key: "clickInvite",
+          value: function () {
+            var _clickInvite = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+              var sharePlatform;
+              return regeneratorRuntime.wrap(function _callee11$(_context11) {
+                while (1) {
+                  switch (_context11.prev = _context11.next) {
+                    case 0:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.main_couple_wait_invite);
+                      sharePlatform = this.board.getChildByName('sharePlatform');
+                      sharePlatform.getChildByName('content').setPosition(0, -240, 0);
+                      sharePlatform.active = true;
+                      tween(sharePlatform.getChildByName('content')).to(.3, {
+                        position: new Vec3(0, -38, 0)
+                      }).start();
+                      sharePlatform.getChildByName('content').getChildByName('inApp').on(SystemEventType.TOUCH_END, this.shareToMessage, this);
+                      sharePlatform.getChildByName('content').getChildByName('weChat').on(SystemEventType.TOUCH_END, this.shareToWX, this); // sharePlatform.getChildByName('content').getChildByName('QQ').on(SystemEventType.TOUCH_END, this.shareToQQ, this)
+
+                      sharePlatform.getChildByName('content').getChildByName('close').on(SystemEventType.TOUCH_END, this.close, this);
+                      sharePlatform.getChildByName('maskBg').on(SystemEventType.TOUCH_END, this.close, this);
+
+                    case 9:
+                    case "end":
+                      return _context11.stop();
+                  }
+                }
+              }, _callee11, this);
+            }));
+
+            function clickInvite() {
+              return _clickInvite.apply(this, arguments);
+            }
+
+            return clickInvite;
+          }()
+        }, {
+          key: "visibilityChange",
+          value: function visibilityChange() {}
+        }, {
+          key: "shareToMessage",
+          value: function shareToMessage() {
+            var _this3 = this;
+
+            var ua = navigator.userAgent.toLowerCase();
+            var isAndroid = ua.indexOf('android') > -1;
+
+            window['toldTA'] = function () {
+              isAndroid ? '' : _this3.SDK.gameManager.showToast('发送成功', 2);
+
+              _this3.close();
+
+              _this3.SDK.gameManager.Util.callTDGA(StatisticsKey.game_share_chat);
+            };
+
+            window['sendLinkFail'] = function () {
+              isAndroid ? '' : _this3.SDK.gameManager.showToast('邀请失败', 2);
+            };
+
+            window['RunNative']('shareURLToPlatform', {
+              "url": "lianaiji://open.minigame?name=jump&group=".concat(this.SDK.curGroup.groupInfo.id),
+              "title": "双人跳一跳",
+              "content": '亲爱的，和我一起玩双人跳一跳吧',
+              "imgUrl": "https://cdn1.didiapp.com/jump/banner.png",
+              "source": "双人跳一跳",
+              "platform": ["chat"]
+            }, 'toldTA', 'sendLinkFail');
+          }
+        }, {
+          key: "shareToWX",
+          value: function shareToWX() {
+            var _this4 = this;
+
+            window['wxSuc'] = function () {
+              _this4.close();
+
+              _this4.SDK.gameManager.Util.callTDGA(StatisticsKey.game_share_wechat);
+            };
+
+            window['wxErr'] = function () {};
+
+            var avatar = this.SDK.gameManager.PlayerData.avatar_url;
+            window['RunNative']('shareURLToPlatform', {
+              "url": "https://kitty.didiapp.com/lovenote/miniGameinvite?from=jump&group=".concat(this.SDK.curGroup.groupInfo.id, "&avatar=").concat(avatar),
+              "title": "邀你一起玩双人跳一跳！点击链接进入游戏",
+              "content": '我们组队，和其他情侣PK，相信我们一定是最有默契的情侣！',
+              "imgUrl": "https://cdn1.didiapp.com/jump/banner.png",
+              "source": "恋爱记",
+              "platform": ["wxsession"]
+            }, 'wxSuc', 'wxErr');
+          } // shareToQQ () {
+          //     window['qqSuc'] = () => {
+          //         this.close()
+          //         this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_share_QQ);
+          //     }
+          //     window['qqErr'] = () => {
+          //     }
+          //     let avatar = this.SDK.gameManager.PlayerData.avatar_url
+          //     window['RunNative']('shareURLToPlatform', {
+          //         "url": `https://kitty.didiapp.com/lovenote/miniGameinvite?from=jump&group=${this.SDK.curGroup.groupInfo.id}&avatar=${avatar}`,
+          //         "title": "邀你一起玩双人跳一跳！点击链接进入游戏",
+          //         "content": '我们组队，和其他情侣PK，相信我们一定是最有默契的情侣！',
+          //         "imgUrl": "https://cdn1.didiapp.com/jump/banner.png",
+          //         "source": "恋爱记",
+          //         "platform": ["qq"]
+          //     } , 'qqSuc', 'qqErr')
+          // }
+
+        }, {
+          key: "close",
+          value: function close() {
+            var sharePlatform = this.board.getChildByName('sharePlatform');
+            sharePlatform.active = false;
+            sharePlatform.getChildByName('content').getChildByName('inApp').off(SystemEventType.TOUCH_END);
+            sharePlatform.getChildByName('content').getChildByName('weChat').off(SystemEventType.TOUCH_END); // sharePlatform.getChildByName('content').getChildByName('QQ').off(SystemEventType.TOUCH_END)
+
+            sharePlatform.getChildByName('content').getChildByName('close').off(SystemEventType.TOUCH_END);
+            sharePlatform.getChildByName('maskBg').off(SystemEventType.TOUCH_END);
+          }
+        }]);
+
+        return WaitLoverBoard;
+      }(BaseBoard), _temp), (_applyDecoratedDescriptor(_class.prototype, "clickReady", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "clickReady"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clickLeave", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "clickLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clickMatch", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "clickMatch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clickInvite", [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, "clickInvite"), _class.prototype)), _class)));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///OtherPlayer.js", ["./_virtual/_rollupPluginBabelHelpers.js", "cc", "./Const.js"], function (_export, _context3) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _initializerDefineProperty, _assertThisInitialized, _createClass, _asyncToGenerator, cclegacy, _decorator, Vec3, Quat, CCFloat, Vec2, tween, Component, instantiate, loader, Prefab, log, JumpStatus, TeamColor, _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _temp, ccclass, property, tempVec_1, tempVec_2, tempQuat_1, tempQuat_2, OtherPlayer;
+
+  _export({
+    _dec: void 0,
+    _dec2: void 0,
+    _dec3: void 0,
+    _dec4: void 0,
+    _class: void 0,
+    _class2: void 0,
+    _descriptor: void 0,
+    _descriptor2: void 0,
+    _descriptor3: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _initializerDefineProperty = _virtual_rollupPluginBabelHelpersJs.initializerDefineProperty;
+      _assertThisInitialized = _virtual_rollupPluginBabelHelpersJs.assertThisInitialized;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Vec3 = _cc.Vec3;
+      Quat = _cc.Quat;
+      CCFloat = _cc.CCFloat;
+      Vec2 = _cc.Vec2;
+      tween = _cc.tween;
+      Component = _cc.Component;
+      instantiate = _cc.instantiate;
+      loader = _cc.loader;
+      Prefab = _cc.Prefab;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      JumpStatus = _ConstJs.JumpStatus;
+      TeamColor = _ConstJs.TeamColor;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "f514fFBUXpDva7Z4+Bu/z5l", "OtherPlayer", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+      tempVec_1 = new Vec3();
+      tempVec_2 = new Vec3();
+      tempQuat_1 = new Quat();
+      tempQuat_2 = new Quat();
+
+      _export("OtherPlayer", OtherPlayer = (_dec = ccclass('OtherPlayer'), _dec2 = property({
+        type: CCFloat
+      }), _dec3 = property({
+        type: CCFloat
+      }), _dec4 = property({
+        type: CCFloat
+      }), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function (_Component) {
+        _inherits(OtherPlayer, _Component);
+
+        function OtherPlayer() {
+          var _getPrototypeOf2;
+
+          var _this;
+
+          _classCallCheck(this, OtherPlayer);
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(OtherPlayer)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+          _initializerDefineProperty(_this, "jumpHeight", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "jumpDuration", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "max_time", _descriptor3, _assertThisInitialized(_this));
+
+          _this.originPosY = 0;
+          _this.originRotation = new Quat(0, 1, 0, 0);
+          _this._isRunning = false;
+          _this.curRotation = new Quat();
+          _this._cur_position = new Vec3();
+          _this._jump_time = 0;
+          _this.jumpResult = {
+            time: null,
+            distance: null,
+            offset: null,
+            status: null
+          };
+          _this._face = new Vec2();
+          _this._axis = new Vec3();
+          _this._stat_power = false;
+          _this._stat_jump = false;
+          _this.curBox = null;
+          _this.nextBox = null;
+          _this.control = false;
+          _this.modelBody = null;
+          _this.modelHead = null;
+          _this.modelHeadPos = new Vec3();
+          _this.modelTire = null;
+          _this.map = null;
+          _this.index = 0;
+          return _this;
+        }
+
+        _createClass(OtherPlayer, [{
+          key: "onLoad",
+          value: function onLoad() {}
+        }, {
+          key: "start",
+          value: function start() {
+            this.originPosY = this.node.position.y;
+            this.node.getRotation(this.curRotation);
+          }
+        }, {
+          key: "initPlayer",
+          value: function initPlayer() {
+            var pos = new Vec3(this.gameManager.otherTeam.pos[0], this.originPosY, this.gameManager.otherTeam.pos[1]);
+            this._cur_position = pos;
+            var quat = new Quat();
+            this.index = 0;
+            this.node.setPosition(pos);
+            this.node.setRotation(this.originRotation);
+            this._jump_time = 0;
+            this._stat_power = false;
+            this._stat_jump = false;
+          }
+        }, {
+          key: "PowerEnd",
+          value: function PowerEnd(jumpInfo) {
+            if (this.control == false) {
+              this.curBox = this.map[this.index];
+              this.nextBox = this.map[this.index + 1];
+              this._stat_power = false;
+              var PlayerPos = new Vec3();
+              this.node.getPosition(PlayerPos);
+              PlayerPos.y = this.originPosY;
+              this.node.setPosition(PlayerPos);
+              this.start_jump(jumpInfo);
+            }
+          }
+        }, {
+          key: "start_jump",
+          value: function start_jump(jumpInfo) {
+            if (!this._stat_power) {
+              log('[敌人]跳跃相关信息:', jumpInfo);
+              log('地图长度:', this.gameManager.map.length);
+              this._stat_jump = true;
+              this._jump_time = 0;
+              this.getFace(this._face);
+              this._axis = this.gameManager.Util.getJumpAxis(this.node, this.nextBox.node);
+              this.node.getRotation(this.curRotation);
+              this.node.getPosition(this._cur_position);
+              this.jumpResult.distance = jumpInfo.distance;
+              this.jumpResult.offset = jumpInfo.pos ? jumpInfo.pos : jumpInfo.offset;
+              this.jumpResult.status = jumpInfo.status;
+              this.jumpResult.time = jumpInfo.time;
+
+              if (jumpInfo.index) {
+                this.index = jumpInfo.index;
+              }
+            }
+          }
+        }, {
+          key: "action_jump",
+          value: function action_jump(dt) {
+            if (this._stat_jump) {
+              this._jump_time += dt;
+              var y = 0;
+              var val = 0;
+              var roa = 0;
+              var jump_end = false;
+
+              if (this._jump_time < this.jumpDuration) {
+                var a = -4 * this.jumpHeight / (this.jumpDuration * this.jumpDuration);
+                var h = this.jumpDuration / 2;
+                var k = this.jumpHeight;
+                y = a * (this._jump_time - h) * (this._jump_time - h) + k + this.originPosY;
+                val = dt / this.jumpDuration * this.jumpResult.distance;
+                roa = this._jump_time / this.jumpDuration * 360;
+              } else {
+                y = this.originPosY;
+                roa = 0;
+                this._stat_jump = false;
+                jump_end = true;
+              }
+
+              var cur_pos = new Vec3();
+              this.node.getPosition(cur_pos);
+              var new_pos = this.gameManager.Util.getPosWithVec(cur_pos, this._face, val);
+              new_pos.y = y;
+              Quat.rotateAround(tempQuat_1, this.curRotation, this._axis, roa * 3.1415 / 180);
+              this.node.setPosition(new_pos);
+              this.node.setRotation(tempQuat_1);
+
+              if (jump_end) {
+                this.action_jump_end();
+              }
+            }
+          }
+        }, {
+          key: "action_jump_end",
+          value: function action_jump_end() {
+            var cur_pos = new Vec3();
+            this.node.getPosition(cur_pos);
+
+            if (this.jumpResult.status == JumpStatus.current) {
+              log('[敌人]原地跳,修正量:', this.jumpResult.offset);
+              var newPos = new Vec3();
+              this.curBox.node.getPosition(newPos);
+              newPos.x += this.jumpResult.offset[0];
+              newPos.z += this.jumpResult.offset[1];
+              newPos.y = this.originPosY;
+              log('[敌人]修正后的坐标:', newPos);
+              this.node.setPosition(newPos);
+              this.node.getPosition(this._cur_position);
+              this.node.setRotation(this.originRotation);
+            } else if (this.jumpResult.status == JumpStatus.next) {
+              log('[敌人]跳到下一块,修正量:', this.jumpResult.offset);
+
+              var _newPos = new Vec3();
+
+              this.nextBox.node.getPosition(_newPos);
+              _newPos.x += this.jumpResult.offset[0];
+              _newPos.z += this.jumpResult.offset[1];
+              _newPos.y = this.originPosY;
+              log('[敌人]修正后的坐标:', _newPos);
+              this.node.setPosition(_newPos);
+              this.node.getPosition(this._cur_position);
+              this.index += 1;
+              this.curBox = this.gameManager.map[this.index];
+              this.nextBox = this.gameManager.map[this.index + 1];
+              this.node.setRotation(this.originRotation);
+            } else if (this.jumpResult.status == JumpStatus.dead) {
+              log('[敌人]跳死了');
+              var dead_pos = new Vec3();
+              dead_pos.set(cur_pos);
+              dead_pos.y = -0.5;
+              this.node.setRotation(this.originRotation);
+              tween(this.node).to(1, {
+                position: dead_pos
+              }, {
+                onComplete: this.jumpDead.bind(this)
+              }).start();
+            } // 教学中跳跃结束时调用教学跳跃结束信号
+
+
+            if (this.gameManager.SDK.curBoard.name == "TeachingBoard") {
+              this.gameManager.teachJumpSingal(true);
+            }
+          }
+        }, {
+          key: "jumpDead",
+          value: function jumpDead() {
+            // 教学中跳跃死亡时调用教学跳跃死亡信号
+            if (this.gameManager.SDK.curBoard.name == "TeachingBoard") {
+              this.gameManager.teachJumpSingal(true);
+            }
+
+            this.reset();
+          }
+        }, {
+          key: "reset",
+          value: function reset() {
+            this.node.setPosition(this._cur_position);
+            this.node.setRotation(this.originRotation); // this.curBox.node.setScale(new Vec3(1, 1, 1));
+          }
+        }, {
+          key: "update",
+          value: function update(deltaTime) {
+            if (this.isRunning || this.gameManager.SDK && this.gameManager.SDK.curBoard && this.gameManager.SDK.curBoard.name == 'TeachingBoard') {
+              this.action_jump(deltaTime);
+            }
+          } // 角色的通用方法
+
+          /* 设置自己角色的面向下一个方块中心点 */
+
+        }, {
+          key: "setFace",
+          value: function setFace() {
+            var _this2 = this;
+
+            if (this.nextBox) {
+              var tw = tween(this.node); // 使用tween动画
+
+              var quat_start = new Quat();
+              this.node.getRotation(quat_start); // 获取起始四元数
+
+              var quat_end = this.gameManager.Util.getRotaionQuat(this.node, this.nextBox.node); // 最终旋转四元数 假设已经算出
+
+              var quat_now = new Quat(); // 用一个中间变量
+
+              tw.to(0.2, {}, {
+                onUpdate: function onUpdate(target, ratio) {
+                  // ratio : 0~1
+                  // 这里使用球面插值，旋转时不会出现变形
+                  quat_now.set(quat_start).slerp(quat_end, ratio);
+
+                  _this2.node.setRotation(quat_now);
+                }
+              });
+              tw.start();
+            }
+          } //获取角色从当前位置到下一个方块应该的向量
+
+        }, {
+          key: "getFace",
+          value: function getFace(out) {
+            if (this.nextBox) {
+              var vec2 = new Vec2();
+              var vec3_1 = new Vec3();
+              var vec3_2 = new Vec3();
+              this.node.getPosition(vec3_1);
+              this.nextBox.node.getPosition(vec3_2);
+              out.set(vec3_2.x - vec3_1.x, vec3_2.z - vec3_1.z);
+            } else {
+              out.set(this._face.x, this._face.y);
+            }
+          } // 修改角色模型,并自动将其头部,身体Node进行存储,序号从1-4,分别代表红1-2,蓝1-2
+
+        }, {
+          key: "setModel",
+          value: function () {
+            var _setModel = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(teamColor) {
+              var chessPrefab, curNode, newModel;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      if (teamColor == TeamColor.blue) {
+                        chessPrefab = this.gameManager.ChessPrefabEnemy.blue;
+                      } else if (teamColor == TeamColor.red) {
+                        chessPrefab = this.gameManager.ChessPrefabEnemy.red;
+                      }
+
+                      curNode = this.node.getChildByName('Node');
+
+                      if (curNode) {
+                        this.node.removeChild(curNode);
+                      }
+
+                      if (chessPrefab) {
+                        newModel = instantiate(chessPrefab);
+                        newModel.setParent(this.node);
+                      }
+
+                      return _context.abrupt("return", true);
+
+                    case 5:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function setModel(_x) {
+              return _setModel.apply(this, arguments);
+            }
+
+            return setModel;
+          }() // 修改角色的头饰,并自动将其Node进行存储
+
+        }, {
+          key: "setTire",
+          value: function () {
+            var _setTire = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(index) {
+              var _this3 = this;
+
+              var key, curNode, prefabPath, promise;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      key = null;
+                      _context2.t0 = index;
+                      _context2.next = _context2.t0 === 1 ? 4 : 6;
+                      break;
+
+                    case 4:
+                      key = 'vip';
+                      return _context2.abrupt("break", 6);
+
+                    case 6:
+                      curNode = this.node.getChildByName('Tire').getChildByName('Node_enemy');
+
+                      if (curNode) {
+                        this.node.getChildByName('Tire').removeChild(curNode);
+                      }
+
+                      if (key) {
+                        _context2.next = 10;
+                        break;
+                      }
+
+                      return _context2.abrupt("return", false);
+
+                    case 10:
+                      prefabPath = 'Model/Tire/' + key + '/Node_enemy';
+                      promise = new Promise(function (resolve) {
+                        loader.loadRes(prefabPath, Prefab, function (err, prefab) {
+                          var newTire = instantiate(prefab);
+                          newTire.setParent(_this3.node.getChildByName('Tire'));
+                          _this3.modelTire = newTire;
+                          resolve(newTire);
+                        });
+                      });
+                      return _context2.abrupt("return", true);
+
+                    case 13:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function setTire(_x2) {
+              return _setTire.apply(this, arguments);
+            }
+
+            return setTire;
+          }()
+        }, {
+          key: "isRunning",
+          set: function set(b) {
+            this._isRunning = b;
+          },
+          get: function get() {
+            return this._isRunning;
+          }
+        }]);
+
+        return OtherPlayer;
+      }(Component), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "jumpHeight", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 2;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "jumpDuration", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0.7;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "max_time", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 4;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/avatar.js", ["../_virtual/_rollupPluginBabelHelpers.js", "cc"], function (_export, _context) {
+  "use strict";
+
+  var _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _createClass, cclegacy, _decorator, Sprite, Component, _dec, _class, _temp, ccclass, property, Avatar;
+
+  _export({
+    _dec: void 0,
+    _class: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Sprite = _cc.Sprite;
+      Component = _cc.Component;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "62231BivyRLC6qStdnthPWc", "avatar", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      _export("Avatar", Avatar = (_dec = ccclass('Avatar'), _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
+        _inherits(Avatar, _Component);
+
+        function Avatar() {
+          var _getPrototypeOf2;
+
+          var _this;
+
+          _classCallCheck(this, Avatar);
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Avatar)).call.apply(_getPrototypeOf2, [this].concat(args)));
+          _this.run = false;
+          _this.time = 0;
+          _this.loopTime = 5.;
+          _this.isLeave = false;
+          return _this;
+        }
+
+        _createClass(Avatar, [{
+          key: "timeStart",
+          value: function timeStart() {
+            if (this.isLeave) return;
+            this.run = true;
+          }
+        }, {
+          key: "reset",
+          value: function reset() {
+            if (this.isLeave) return this.setOffline();
+            this.run = false;
+            this.time = 0;
+            var pass1 = this.node.getComponent(Sprite).material.passes[0];
+            pass1.setUniform(pass1.getHandle("precent"), 100);
+          }
+        }, {
+          key: "setOffline",
+          value: function setOffline() {
+            this.isLeave = true;
+            var pass1 = this.node.getComponent(Sprite).material.passes[0];
+            pass1.setUniform(pass1.getHandle("precent"), 0);
+          }
+        }, {
+          key: "setOnline",
+          value: function setOnline() {
+            this.isLeave = false;
+            this.reset();
+          }
+        }, {
+          key: "update",
+          value: function update(deltaTime) {
+            if (this.run) {
+              var pass1 = this.node.getComponent(Sprite).material.passes[0];
+              pass1.setUniform(pass1.getHandle("precent"), this.time * 20);
+              this.time += deltaTime;
+
+              if (this.time >= this.loopTime) {
+                this.reset();
+              }
+            }
+          }
+        }]);
+
+        return Avatar;
+      }(Component), _temp)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Board/GamingBoard.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Const.js", "../../Util.js", "../Dialog/Dialog.js", "./BaseBoard.js", "../avatar.js"], function (_export, _context21) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _createClass, _get, _asyncToGenerator, cclegacy, tween, ProgressBar, Label, SystemEventType, Vec3, Node, UITransform, Sprite, loader, Prefab, UIOpacity, instantiate, TeamColor, StatisticsKey, DialogButtonType, ClientDataType, NetState, log, ServerDataType, PlayerState, AIDataType, RoomDataType, EmojiType, throttle, Dialog, BaseBoard, Avatar, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _temp, UIControl, GamingBoard;
+
+  _export({
+    _dec: void 0,
+    _dec2: void 0,
+    _dec3: void 0,
+    _dec4: void 0,
+    _dec5: void 0,
+    _dec6: void 0,
+    _dec7: void 0,
+    _class: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _get = _virtual_rollupPluginBabelHelpersJs.get;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      tween = _cc.tween;
+      ProgressBar = _cc.ProgressBar;
+      Label = _cc.Label;
+      SystemEventType = _cc.SystemEventType;
+      Vec3 = _cc.Vec3;
+      Node = _cc.Node;
+      UITransform = _cc.UITransform;
+      Sprite = _cc.Sprite;
+      loader = _cc.loader;
+      Prefab = _cc.Prefab;
+      UIOpacity = _cc.UIOpacity;
+      instantiate = _cc.instantiate;
+    }, function (_ConstJs) {
+      TeamColor = _ConstJs.TeamColor;
+      StatisticsKey = _ConstJs.StatisticsKey;
+      DialogButtonType = _ConstJs.DialogButtonType;
+      ClientDataType = _ConstJs.ClientDataType;
+      NetState = _ConstJs.NetState;
+      log = _ConstJs.log;
+      ServerDataType = _ConstJs.ServerDataType;
+      PlayerState = _ConstJs.PlayerState;
+      AIDataType = _ConstJs.AIDataType;
+      RoomDataType = _ConstJs.RoomDataType;
+      EmojiType = _ConstJs.EmojiType;
+    }, function (_UtilJs) {
+      throttle = _UtilJs.throttle;
+    }, function (_DialogDialogJs) {
+      Dialog = _DialogDialogJs.Dialog;
+    }, function (_BaseBoardJs) {
+      BaseBoard = _BaseBoardJs.BaseBoard;
+    }, function (_avatarJs) {
+      Avatar = _avatarJs.Avatar;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "5a91dy6sIFJ+IdMqEEFo6I0", "GamingBoard", undefined);
+
+      UIControl = /*#__PURE__*/function () {
+        function UIControl(board, sdk) {
+          _classCallCheck(this, UIControl);
+
+          this.board = null;
+          this.SDK = null;
+          this.gameStart = false;
+          this.end = false;
+          this.curAvatar = null;
+          this.selfAvatar = null;
+          this.teammaterAvatar = null;
+          this.timeNumberNode = null;
+          this.time = 0;
+          this.messageList = [];
+          this.selfSign = '';
+          this.top1 = true;
+          log('初始化UI控制', board, sdk);
+          this.board = board;
+          this.SDK = sdk;
+        }
+
+        _createClass(UIControl, [{
+          key: "initUI",
+          value: function () {
+            var _initUI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(board) {
+              var header, teamId, playerIndex;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      log('debug', this.board);
+                      this.board = board;
+                      this.gameStart = false;
+                      this.changeSoundUI(true);
+                      header = this.board.getChildByName('Header');
+                      this.team1Node = this.board.getChildByName('Header').getChildByName('team0');
+                      this.team2Node = this.board.getChildByName('Header').getChildByName('team1');
+                      this.comp1 = this.team1Node.getChildByName('avatar-1').getChildByName('avatar');
+                      this.comp2 = this.team1Node.getChildByName('avatar-2').getChildByName('avatar');
+                      this.comp3 = this.team2Node.getChildByName('avatar-1').getChildByName('avatar');
+                      this.comp4 = this.team2Node.getChildByName('avatar-2').getChildByName('avatar');
+                      this.timeNumberNode = header.getChildByName('time').getChildByName('number');
+                      header.getChildByName('tip').active = false;
+                      header.getChildByName('wait').active = false;
+                      header.getChildByName('end').active = false;
+                      header.getChildByName('team0').getChildByName('avatar-1').getChildByName('offLine').active = false;
+                      header.getChildByName('team0').getChildByName('avatar-2').getChildByName('offLine').active = false;
+                      header.getChildByName('team1').getChildByName('avatar-1').getChildByName('offLine').active = false;
+                      header.getChildByName('team1').getChildByName('avatar-2').getChildByName('offLine').active = false;
+                      header.getChildByName('team0').getChildByName('avatar-1').getChildByName('avatar').getComponent(Avatar).setOnline();
+                      header.getChildByName('team0').getChildByName('avatar-2').getChildByName('avatar').getComponent(Avatar).setOnline();
+                      header.getChildByName('team1').getChildByName('avatar-1').getChildByName('avatar').getComponent(Avatar).setOnline();
+                      header.getChildByName('team1').getChildByName('avatar-2').getChildByName('avatar').getComponent(Avatar).setOnline();
+                      header.getChildByName('score').getChildByName('redScore').getComponent(Label).string = "0\u5206";
+                      header.getChildByName('score').getChildByName('blueScore').getComponent(Label).string = "0\u5206";
+                      _context.next = 27;
+                      return this.SDK.getTeamId();
+
+                    case 27:
+                      teamId = _context.sent;
+                      _context.next = 30;
+                      return this.SDK.getPlayerIndex();
+
+                    case 30:
+                      playerIndex = _context.sent;
+                      _context.next = 33;
+                      return this.loadAvatar();
+
+                    case 33:
+                      if (teamId == TeamColor.red) {
+                        this.SDK.gameManager.Util.loadImg('Texture/UI/gaming/lingxian_2/spriteFrame', this.board.getParent().getParent().getChildByName('enemy1'));
+                        this.SDK.gameManager.Util.loadImg('Texture/UI/gaming/lingxian_2/spriteFrame', this.board.getParent().getParent().getChildByName('enemy2'));
+
+                        if (playerIndex == 1) {
+                          this.selfAvatar = this.comp1;
+                          this.selfSign = '1-1';
+                          this.teammaterAvatar = this.comp2;
+                        } else {
+                          this.selfAvatar = this.comp2;
+                          this.selfSign = '1-2';
+                          this.teammaterAvatar = this.comp1;
+                        }
+                      } else {
+                        this.SDK.gameManager.Util.loadImg('Texture/UI/gaming/lingxian_1/spriteFrame', this.board.getParent().getParent().getChildByName('enemy1'));
+                        this.SDK.gameManager.Util.loadImg('Texture/UI/gaming/lingxian_1/spriteFrame', this.board.getParent().getParent().getChildByName('enemy2'));
+
+                        if (playerIndex == 1) {
+                          this.selfAvatar = this.comp3;
+                          this.selfSign = '2-1';
+                          this.teammaterAvatar = this.comp4;
+                        } else {
+                          this.selfAvatar = this.comp4;
+                          this.selfSign = '2-2';
+                          this.teammaterAvatar = this.comp3;
+                        }
+                      }
+
+                      if (!this.SDK.gameManager.isReconnect) this.setReady();else {
+                        header.getChildByName('ready').active = false;
+                      }
+
+                    case 35:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function initUI(_x) {
+              return _initUI.apply(this, arguments);
+            }
+
+            return initUI;
+          }()
+        }, {
+          key: "initData",
+          value: function initData() {
+            this.time = -100;
+          }
+        }, {
+          key: "setTime",
+          value: function () {
+            var _setTime = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(time) {
+              var n, numNodeList, newNumNode, com_transform, childs, index, _index, _index2;
+
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      if (!this.board) {
+                        _context2.next = 52;
+                        break;
+                      }
+
+                      if (!(this.time != time && time <= this.SDK.gameManager.gameTime && time >= 0)) {
+                        _context2.next = 52;
+                        break;
+                      }
+
+                      this.time = time;
+                      numNodeList = [];
+
+                      if (!(time != 0)) {
+                        _context2.next = 21;
+                        break;
+                      }
+
+                    case 5:
+                      if (!(time > 0)) {
+                        _context2.next = 19;
+                        break;
+                      }
+
+                      n = time % 10;
+                      time = Math.floor(time / 10);
+                      newNumNode = new Node();
+                      com_transform = newNumNode.addComponent(UITransform);
+                      newNumNode.addComponent(Sprite);
+                      com_transform.setContentSize(42, 56);
+                      com_transform.setAnchorPoint(0.5, 0.5);
+                      newNumNode.setScale(new Vec3(0.5, 0.5, 1));
+                      _context2.next = 16;
+                      return this.SDK.gameManager.Util.loadImg('Texture/number/' + n + '/spriteFrame', newNumNode);
+
+                    case 16:
+                      numNodeList.push(newNumNode);
+                      _context2.next = 5;
+                      break;
+
+                    case 19:
+                      _context2.next = 31;
+                      break;
+
+                    case 21:
+                      n = 0;
+                      newNumNode = new Node();
+                      com_transform = newNumNode.addComponent(UITransform);
+                      newNumNode.addComponent(Sprite);
+                      com_transform.setContentSize(42, 56);
+                      com_transform.setAnchorPoint(0.5, 0.5);
+                      newNumNode.setScale(new Vec3(0.5, 0.5, 1));
+                      _context2.next = 30;
+                      return this.SDK.gameManager.Util.loadImg('Texture/number/' + n + '/spriteFrame', newNumNode);
+
+                    case 30:
+                      numNodeList.push(newNumNode);
+
+                    case 31:
+                      // 销毁已存在的数字
+                      childs = this.timeNumberNode.children;
+
+                      for (index = 0; index < childs.length; index++) {
+                        childs[index].destroy();
+                      }
+
+                      this.board.getChildByName('Header').getChildByName('time').getComponent(Label).string = ''; // 根据数字节点长度确定数字节点实际位置
+
+                      _context2.t0 = numNodeList.length;
+                      _context2.next = _context2.t0 === 1 ? 37 : _context2.t0 === 2 ? 40 : _context2.t0 === 3 ? 43 : 47;
+                      break;
+
+                    case 37:
+                      numNodeList[0].setPosition(new Vec3(0, 0, 0));
+
+                      if (n > 0 && n <= 5) {
+                        tween(numNodeList[0]).to(.5, {
+                          scale: new Vec3(1.5, 1.5, 1)
+                        }).start();
+                      }
+
+                      return _context2.abrupt("break", 51);
+
+                    case 40:
+                      numNodeList[1].setPosition(new Vec3(-10, 0, 0));
+                      numNodeList[0].setPosition(new Vec3(10, 0, 0));
+                      return _context2.abrupt("break", 51);
+
+                    case 43:
+                      numNodeList[2].setPosition(new Vec3(-20, 0, 0));
+                      numNodeList[1].setPosition(new Vec3(0, 0, 0));
+                      numNodeList[0].setPosition(new Vec3(20, 0, 0));
+                      return _context2.abrupt("break", 51);
+
+                    case 47:
+                      for (_index = 0; _index < numNodeList.length; _index++) {
+                        numNodeList[_index].destroy();
+                      }
+
+                      numNodeList = [];
+                      this.board.getChildByName('Header').getChildByName('time').getComponent(Label).string = time;
+                      return _context2.abrupt("break", 51);
+
+                    case 51:
+                      // 将最新数字装配到指定位置
+                      for (_index2 = 0; _index2 < numNodeList.length; _index2++) {
+                        numNodeList[_index2].setParent(this.timeNumberNode);
+                      }
+
+                    case 52:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function setTime(_x2) {
+              return _setTime.apply(this, arguments);
+            }
+
+            return setTime;
+          }()
+        }, {
+          key: "ControlStart",
+          value: function () {
+            var _ControlStart = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(isSelf) {
+              var avatar, teamId, teamNode;
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      _context3.next = 2;
+                      return this.SDK.getTeamId();
+
+                    case 2:
+                      teamId = _context3.sent;
+
+                      if (teamId == TeamColor.red) {
+                        teamNode = this.board.getChildByName('Header').getChildByName('team0');
+                      } else {
+                        teamNode = this.board.getChildByName('Header').getChildByName('team1');
+                      }
+
+                      if (isSelf) {
+                        avatar = teamNode.getChildByName('avatar-1').getChildByName('avatar');
+                      } else {
+                        avatar = teamNode.getChildByName('avatar-2').getChildByName('avatar');
+                      }
+
+                      avatar.getComponent(Avatar).timeStart();
+                      this.curAvatar = avatar;
+
+                    case 7:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+
+            function ControlStart(_x3) {
+              return _ControlStart.apply(this, arguments);
+            }
+
+            return ControlStart;
+          }()
+        }, {
+          key: "ControlReset",
+          value: function () {
+            var _ControlReset = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      this.curAvatar.getComponent(Avatar).reset();
+
+                    case 1:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+
+            function ControlReset() {
+              return _ControlReset.apply(this, arguments);
+            }
+
+            return ControlReset;
+          }()
+        }, {
+          key: "refreshState",
+          value: function refreshState() {
+            if (this.end && !this.gameStart) {
+              return;
+            }
+
+            var tip = this.board.getChildByName('Header').getChildByName('tip');
+            var wait = this.board.getChildByName('Header').getChildByName('wait');
+
+            if (this.SDK.gameManager.isControler) {
+              tip.active = true;
+              wait.active = false;
+            } else {
+              wait.active = true;
+              tip.active = false;
+            }
+          }
+        }, {
+          key: "gameEnd",
+          value: function gameEnd() {
+            if (this.end) {
+              return;
+            }
+
+            this.end = true;
+            var tip = this.board.getChildByName('Header').getChildByName('tip');
+            var wait = this.board.getChildByName('Header').getChildByName('wait');
+            this.board.getChildByName('Header').getChildByName('end').active = true;
+            tip.active = false;
+            wait.active = false;
+          }
+        }, {
+          key: "showEmoji",
+          value: function () {
+            var _showEmoji = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              var _this = this;
+
+              var pos, emojiNode, roomInfo, playerList, message, promise;
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      if (!(!this.messageList || !this.messageList.length)) {
+                        _context6.next = 2;
+                        break;
+                      }
+
+                      return _context6.abrupt("return");
+
+                    case 2:
+                      if (!(Date.now() - this.lastUpdate < 1000)) {
+                        _context6.next = 4;
+                        break;
+                      }
+
+                      return _context6.abrupt("return");
+
+                    case 4:
+                      this.lastUpdate = Date.now();
+                      pos = new Vec3(260, -160, 0);
+                      _context6.next = 8;
+                      return this.SDK.getRoomInfo();
+
+                    case 8:
+                      roomInfo = _context6.sent;
+                      playerList = roomInfo.playerList;
+                      message = this.messageList[0];
+                      promise = new Promise(function (resolve) {
+                        var path = 'Prefab/Emoji/emoji_' + (message.data + 1);
+                        log('预制件路径', path);
+                        loader.loadRes(path, Prefab, /*#__PURE__*/function () {
+                          var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(err, prefab) {
+                            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                              while (1) {
+                                switch (_context5.prev = _context5.next) {
+                                  case 0:
+                                    if (!err) {
+                                      _context5.next = 3;
+                                      break;
+                                    }
+
+                                    log('表情预制件实例化失败', err);
+                                    return _context5.abrupt("return");
+
+                                  case 3:
+                                    emojiNode = instantiate(prefab);
+                                    playerList.map(function (v) {
+                                      if (v.id === message.senderId) {
+                                        _this.SDK.gameManager.Util.loadRemoteImg(JSON.parse(v.customProfile).avatar_url, emojiNode.getChildByName('avatar'));
+                                      }
+                                    });
+                                    emojiNode.getComponent(UITransform).priority = 99;
+                                    emojiNode.setPosition(pos);
+                                    emojiNode.setScale(new Vec3(.8, .8, .8));
+                                    emojiNode.setParent(_this.board.getChildByName('Header'));
+                                    tween(emojiNode).to(3, {
+                                      position: {
+                                        x: -218,
+                                        y: -160,
+                                        z: 0
+                                      }
+                                    }, {
+                                      onComplete: function onComplete() {
+                                        emojiNode.destroy();
+                                      }
+                                    }).start();
+
+                                    _this.messageList.shift();
+
+                                    resolve(true);
+
+                                  case 12:
+                                  case "end":
+                                    return _context5.stop();
+                                }
+                              }
+                            }, _callee5);
+                          }));
+
+                          return function (_x4, _x5) {
+                            return _ref.apply(this, arguments);
+                          };
+                        }());
+                      });
+                      return _context6.abrupt("return", promise);
+
+                    case 13:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function showEmoji() {
+              return _showEmoji.apply(this, arguments);
+            }
+
+            return showEmoji;
+          }()
+        }, {
+          key: "setReady",
+          value: function setReady() {
+            this.board.getChildByName('Header').getChildByName('ready').setPosition(new Vec3(-300, -200, 0));
+            this.board.getChildByName('Header').getChildByName('ready').active = true;
+            tween(this.board.getChildByName('Header').getChildByName('ready')).to(.3, {
+              position: {
+                x: 0,
+                y: -200,
+                z: 0
+              },
+              easing: 'sineIn'
+            }, {
+              onComplete: function () {
+                var _this2 = this;
+
+                this.SDK.gameManager.Util.playAudio(this.SDK.gameManager.audio_ready);
+                setTimeout(function () {
+                  _this2.SDK.gameManager.Util.playAudio(_this2.SDK.gameManager.audio_go);
+
+                  tween(_this2.board.getChildByName('Header').getChildByName('ready')).to(.3, {
+                    position: {
+                      x: 300,
+                      y: -200,
+                      z: 0
+                    },
+                    easing: 'sineOut'
+                  }, {
+                    onComplete: function () {
+                      var _onComplete = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+                        return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                          while (1) {
+                            switch (_context7.prev = _context7.next) {
+                              case 0:
+                                _this2.board.getChildByName('Header').getChildByName('ready').active = false;
+
+                                _this2.changePlayer(_this2.SDK.gameManager.curActionPlayer);
+
+                                _context7.next = 4;
+                                return _this2.SDK.gameManager.changeControler(_this2.SDK.gameManager.curActionPlayer);
+
+                              case 4:
+                                _this2.gameStart = true;
+
+                                _this2.refreshState();
+
+                              case 6:
+                              case "end":
+                                return _context7.stop();
+                            }
+                          }
+                        }, _callee7);
+                      }));
+
+                      function onComplete() {
+                        return _onComplete.apply(this, arguments);
+                      }
+
+                      return onComplete;
+                    }()
+                  }).start();
+                }, 1500);
+              }.bind(this)
+            }).start();
+          }
+        }, {
+          key: "changePlayer",
+          value: function () {
+            var _changePlayer = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(curAcPlayers) {
+              var player, team, isController, avatar1, avatar2, avatar1Opacity, avatar2Opacity;
+              return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                while (1) {
+                  switch (_context8.prev = _context8.next) {
+                    case 0:
+                      _context8.next = 2;
+                      return this.SDK.getPlayerInfo();
+
+                    case 2:
+                      player = _context8.sent;
+                      team = this.board.getChildByName('Header').getChildByName('team0');
+
+                      if (this.selfSign === '2-1' || this.selfSign === '2-2') {
+                        team = this.board.getChildByName('Header').getChildByName('team1');
+                      }
+
+                      isController = curAcPlayers.findIndex(function (v) {
+                        return v.id === player.id;
+                      }) > -1;
+                      avatar1 = team.getChildByName('avatar-1');
+                      avatar2 = team.getChildByName('avatar-2');
+                      avatar1Opacity = avatar1.getComponent(UIOpacity);
+                      avatar2Opacity = avatar2.getComponent(UIOpacity);
+
+                      if (isController && (this.selfSign === '1-1' || this.selfSign === '2-1') || !isController && (this.selfSign === '1-2' || this.selfSign === '2-2')) {
+                        avatar2.getComponent(UITransform).priority = -1;
+                        avatar1.getComponent(UITransform).priority = 1;
+                        tween(avatar2).to(.6, {
+                          position: this.selfSign === '1-1' || this.selfSign === '1-2' ? new Vec3(-95, -46, 0) : new Vec3(95, -46, 0),
+                          scale: new Vec3(.9, .9, .9)
+                        }).start();
+                        tween(avatar2Opacity).to(.6, {
+                          opacity: 100
+                        }).start();
+                        tween(avatar1).to(.6, {
+                          position: this.selfSign === '1-1' || this.selfSign === '1-2' ? new Vec3(-65, 30, 0) : new Vec3(65, 30, 0)
+                        }).start();
+                        tween(avatar1).to(.3, {
+                          scale: new Vec3(1.06, 1.06, 1.06)
+                        }).then(tween(avatar1).to(.3, {
+                          scale: new Vec3(1, 1, 1)
+                        }).start()).start();
+                        tween(avatar1Opacity).to(.6, {
+                          opacity: 255
+                        }).start();
+                      } else {
+                        avatar1.getComponent(UITransform).priority = -1;
+                        avatar2.getComponent(UITransform).priority = 1;
+                        tween(avatar1).to(.6, {
+                          position: this.selfSign === '1-1' || this.selfSign === '1-2' ? new Vec3(-95, -46, 0) : new Vec3(95, -46, 0),
+                          scale: new Vec3(.9, .9, .9)
+                        }).start();
+                        tween(avatar1Opacity).to(.6, {
+                          opacity: 100
+                        }).start();
+                        tween(avatar2).to(.6, {
+                          position: this.selfSign === '1-1' || this.selfSign === '1-2' ? new Vec3(-65, 30, 0) : new Vec3(65, 30, 0)
+                        }).start();
+                        tween(avatar2).to(.3, {
+                          scale: new Vec3(1.06, 1.06, 1.06)
+                        }).then(tween(avatar2).to(.3, {
+                          scale: new Vec3(1, 1, 1)
+                        }).start());
+                        tween(avatar2Opacity).to(.6, {
+                          opacity: 255
+                        }).start();
+                      }
+
+                    case 11:
+                    case "end":
+                      return _context8.stop();
+                  }
+                }
+              }, _callee8, this);
+            }));
+
+            function changePlayer(_x6) {
+              return _changePlayer.apply(this, arguments);
+            }
+
+            return changePlayer;
+          }()
+        }, {
+          key: "loadAvatar",
+          value: function () {
+            var _loadAvatar = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+              var _this3 = this;
+
+              var roomInfo, otherTeam, team1, team2, _lover_id, _lover_id2;
+
+              return regeneratorRuntime.wrap(function _callee11$(_context11) {
+                while (1) {
+                  switch (_context11.prev = _context11.next) {
+                    case 0:
+                      _context11.next = 2;
+                      return this.SDK.getRoomInfo();
+
+                    case 2:
+                      roomInfo = _context11.sent;
+                      otherTeam = this.SDK.gameManager.otherTeam.playerList;
+                      team1 = [];
+                      team2 = []; // let RandomAI = Math.ceil(Math.random() * 1.99)
+
+                      roomInfo.playerList.map(function (v) {
+                        if (v.teamId === TeamColor.red) {
+                          if (v.isRobot) {
+                            otherTeam.map(function (o) {
+                              v.name === o.name && (v.customProfile = JSON.stringify({
+                                nickname: v.name,
+                                avatar_url: o.avatar,
+                                gender: o.gender,
+                                isVip: o.isVip
+                              }));
+                            });
+                          }
+
+                          team1.push(v);
+                        }
+
+                        if (v.teamId === TeamColor.blue) {
+                          if (v.isRobot) {
+                            otherTeam.map(function (o) {
+                              v.name === o.name && (v.customProfile = JSON.stringify({
+                                nickname: v.name,
+                                avatar_url: o.avatar,
+                                gender: o.gender,
+                                isVip: o.isVip
+                              }));
+                            });
+                          }
+
+                          team2.push(v);
+                        }
+                      });
+                      log('test', team1);
+
+                      if (team1.length && team1[0].customProfile) {
+                        _lover_id = JSON.parse(team1[0].customProfile).lover_id;
+
+                        if (_lover_id > 0 && _lover_id === JSON.parse(team1[1].customProfile).lover_id) {
+                          this.board.getChildByName('Header').getChildByName('team0').getChildByName('isLover').active = true;
+                        } else {
+                          this.board.getChildByName('Header').getChildByName('team0').getChildByName('isLover').active = false;
+                        }
+                      }
+
+                      if (team2.length && team2[0].customProfile) {
+                        _lover_id2 = JSON.parse(team2[0].customProfile).lover_id;
+
+                        if (_lover_id2 > 0 && _lover_id2 === JSON.parse(team2[1].customProfile).lover_id) {
+                          this.board.getChildByName('Header').getChildByName('team1').getChildByName('isLover').active = true;
+                        } else {
+                          this.board.getChildByName('Header').getChildByName('team1').getChildByName('isLover').active = false;
+                        }
+                      }
+
+                      team1.map( /*#__PURE__*/function () {
+                        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(v) {
+                          var index;
+                          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                            while (1) {
+                              switch (_context9.prev = _context9.next) {
+                                case 0:
+                                  _context9.next = 2;
+                                  return _this3.SDK.getPlayerIndex(v.id);
+
+                                case 2:
+                                  index = _context9.sent;
+
+                                  if (!(index === 1)) {
+                                    _context9.next = 8;
+                                    break;
+                                  }
+
+                                  _context9.next = 6;
+                                  return _this3.SDK.gameManager.Util.setAvatar(_this3.comp1, team1[0], true);
+
+                                case 6:
+                                  _context9.next = 10;
+                                  break;
+
+                                case 8:
+                                  _context9.next = 10;
+                                  return _this3.SDK.gameManager.Util.setAvatar(_this3.comp2, team1[1], true);
+
+                                case 10:
+                                case "end":
+                                  return _context9.stop();
+                              }
+                            }
+                          }, _callee9);
+                        }));
+
+                        return function (_x7) {
+                          return _ref2.apply(this, arguments);
+                        };
+                      }());
+                      team2.map( /*#__PURE__*/function () {
+                        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(v) {
+                          var index;
+                          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                            while (1) {
+                              switch (_context10.prev = _context10.next) {
+                                case 0:
+                                  _context10.next = 2;
+                                  return _this3.SDK.getPlayerIndex(v.id);
+
+                                case 2:
+                                  index = _context10.sent;
+
+                                  if (!(index === 1)) {
+                                    _context10.next = 8;
+                                    break;
+                                  }
+
+                                  _context10.next = 6;
+                                  return _this3.SDK.gameManager.Util.setAvatar(_this3.comp3, team2[0], true);
+
+                                case 6:
+                                  _context10.next = 10;
+                                  break;
+
+                                case 8:
+                                  _context10.next = 10;
+                                  return _this3.SDK.gameManager.Util.setAvatar(_this3.comp4, team2[1], true);
+
+                                case 10:
+                                case "end":
+                                  return _context10.stop();
+                              }
+                            }
+                          }, _callee10);
+                        }));
+
+                        return function (_x8) {
+                          return _ref3.apply(this, arguments);
+                        };
+                      }());
+
+                    case 12:
+                    case "end":
+                      return _context11.stop();
+                  }
+                }
+              }, _callee11, this);
+            }));
+
+            function loadAvatar() {
+              return _loadAvatar.apply(this, arguments);
+            }
+
+            return loadAvatar;
+          }()
+        }, {
+          key: "changeSoundUI",
+          value: function changeSoundUI(sign) {
+            this.SDK.gameManager.Util.loadImg(sign ? '/Texture/UI/gaming/kaiqi@2x/spriteFrame' : '/Texture/UI/gaming/gianbi@2x/spriteFrame', this.board.getChildByName('nav').getChildByName('music'));
+          }
+        }]);
+
+        return UIControl;
+      }();
+
+      _export("GamingBoard", GamingBoard = (_dec = throttle(500), _dec2 = throttle(500), _dec3 = throttle(500), _dec4 = throttle(500), _dec5 = throttle(100), _dec6 = throttle(), _dec7 = throttle(), (_class = (_temp = /*#__PURE__*/function (_BaseBoard) {
+        _inherits(GamingBoard, _BaseBoard);
+
+        function GamingBoard(scene, sdk) {
+          var _this4;
+
+          _classCallCheck(this, GamingBoard);
+
+          _this4 = _possibleConstructorReturn(this, _getPrototypeOf(GamingBoard).call(this, scene, sdk));
+          _this4.uiControl = null;
+          _this4.controlTime = -100;
+          _this4.AI_singal_time = 3;
+          _this4.heart_time = 3;
+          _this4.audio_last5s_tag = false;
+          _this4._remove_document_listener = null;
+          _this4.name = 'GamingBoard';
+          _this4.uiControl = new UIControl(_this4.board, _this4.SDK);
+          return _this4;
+        }
+
+        _createClass(GamingBoard, [{
+          key: "initData",
+          value: function initData() {
+            _get(_getPrototypeOf(GamingBoard.prototype), "initData", this).call(this);
+
+            this.controlTime = -100;
+            this.AI_singal_time = 6;
+            this.heart_time = 3;
+            this.audio_last5s_tag = false;
+            this.uiControl.end = false;
+            this.SDK.gameManager.updateCenterNode(false);
+          }
+        }, {
+          key: "setListener",
+          value: function setListener() {
+            _get(_getPrototypeOf(GamingBoard.prototype), "setListener", this).call(this);
+
+            this.SDK.curRoom.onRecvFromGameSvr = this.onRecvFromGameSvr.bind(this);
+            this.SDK.curRoom.onRecvFromClient = this.onRecvFromClient.bind(this);
+            this.SDK.gameManager.timerSingal = this.onTimerSingal.bind(this);
+            this.SDK.gameManager.uiRefresh = this.onUIRefresh.bind(this);
+            this.SDK.gameManager.avatarSingal = this.onAvatarSingal.bind(this);
+          }
+          /* 各类监听方法 */
+
+        }, {
+          key: "onLeaveRoom",
+          value: function () {
+            var _onLeaveRoom = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(event) {
+              var leavePlayerId, loverInfo;
+              return regeneratorRuntime.wrap(function _callee12$(_context12) {
+                while (1) {
+                  switch (_context12.prev = _context12.next) {
+                    case 0:
+                      leavePlayerId = event.data.leavePlayerId;
+                      _context12.next = 3;
+                      return this.SDK.getLoverInfo();
+
+                    case 3:
+                      loverInfo = _context12.sent;
+                      log('玩家离开房间', leavePlayerId);
+
+                    case 5:
+                    case "end":
+                      return _context12.stop();
+                  }
+                }
+              }, _callee12, this);
+            }));
+
+            function onLeaveRoom(_x9) {
+              return _onLeaveRoom.apply(this, arguments);
+            }
+
+            return onLeaveRoom;
+          }()
+        }, {
+          key: "onRecvFromGameSvr",
+          value: function () {
+            var _onRecvFromGameSvr = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(event) {
+              var data, mesType, newBoard, index, avatar_i, _avatar_i, AI_mesType, AI_mesData;
+
+              return regeneratorRuntime.wrap(function _callee13$(_context13) {
+                while (1) {
+                  switch (_context13.prev = _context13.next) {
+                    case 0:
+                      // log('接收到实时服务器的数据', event.data);
+                      data = null;
+                      mesType = -1;
+
+                      try {
+                        data = event.data.data;
+                        mesType = data.type;
+                      } catch (error) {
+                        log('接收到错误的信息-error', error);
+                      }
+
+                      if (!(mesType == ServerDataType.Sync)) {
+                        _context13.next = 9;
+                        break;
+                      }
+
+                      log('接收到数据同步信息', data.data);
+                      _context13.next = 7;
+                      return this.SDK.gameManager.syncData(data.data);
+
+                    case 7:
+                      _context13.next = 44;
+                      break;
+
+                    case 9:
+                      if (!(mesType == ServerDataType.ChangeControler)) {
+                        _context13.next = 16;
+                        break;
+                      }
+
+                      log('接收到控制权转移信息', data.data);
+                      this.SDK.gameManager.changeControler(data.data.gameState.curActionPlayer);
+                      this.SDK.gameManager.Player.reset();
+                      this.uiControl.changePlayer(data.data.gameState.curActionPlayer);
+                      _context13.next = 44;
+                      break;
+
+                    case 16:
+                      if (!(mesType == ServerDataType.Map)) {
+                        _context13.next = 21;
+                        break;
+                      }
+
+                      log('接收到地图同步信息', data.data);
+                      this.SDK.gameManager.syncMap(data.data);
+                      _context13.next = 44;
+                      break;
+
+                    case 21:
+                      if (!(mesType == ServerDataType.Result)) {
+                        _context13.next = 34;
+                        break;
+                      }
+
+                      log('接收到结算结果信息', data.data);
+                      log('结算界面取消控制权'); // this.SDK.gameManager.isControler = false;
+                      // this.SDK.gameManager.isRunning = false;
+
+                      this.SDK.leaveRoom();
+                      this.SDK.setGroupPlayerStatus(PlayerState.NotReady);
+                      newBoard = this.SDK.gameManager.ResultBoard;
+                      newBoard.setResult(data.data);
+                      this.ChangeBoard(newBoard);
+                      this.board.getChildByName('Header').getChildByName('score').getComponent(ProgressBar).progress = 0.5;
+                      this.board.getParent().getParent().getChildByName('enemy1').active = false;
+                      this.board.getParent().getParent().getChildByName('enemy2').active = false;
+                      _context13.next = 44;
+                      break;
+
+                    case 34:
+                      if (!(mesType == ServerDataType.NetState)) {
+                        _context13.next = 43;
+                        break;
+                      }
+
+                      log('接收到在线状态变更信息', data.data);
+                      _context13.next = 38;
+                      return this.SDK.getPlayerIndex(data.data.playerId);
+
+                    case 38:
+                      index = _context13.sent;
+                      log('接收到在线状态变更信息index', index);
+
+                      if (data.data.teamId === TeamColor.red) {
+                        avatar_i = this.board.getChildByName('Header').getChildByName('team0').getChildByName("avatar-".concat(index));
+                        log('接收到在线状态变更信息avatarIndex', avatar_i);
+                        avatar_i.getChildByName('offLine').active = data.data.state === 0 ? true : false;
+                        data.data.state === 0 && avatar_i.getChildByName('avatar').getComponent(Avatar).setOffline();
+                        data.data.state === 1 && avatar_i.getChildByName('avatar').getComponent(Avatar).setOnline();
+                      } else {
+                        _avatar_i = this.board.getChildByName('Header').getChildByName('team1').getChildByName("avatar-".concat(index));
+                        log('接收到在线状态变更信息avatarIndex', _avatar_i);
+                        _avatar_i.getChildByName('offLine').active = data.data.state === 0 ? true : false;
+                        data.data.state === 0 && _avatar_i.getChildByName('avatar').getComponent(Avatar).setOffline();
+                        data.data.state === 1 && _avatar_i.getChildByName('avatar').getComponent(Avatar).setOnline();
+                      }
+
+                      _context13.next = 44;
+                      break;
+
+                    case 43:
+                      if (mesType == ServerDataType.AI) {
+                        log('接收到AI控制消息', data.data);
+                        AI_mesType = data.data.type;
+                        AI_mesData = data.data.data;
+
+                        if (AI_mesType == AIDataType.StartJump) {
+                          this.SDK.gameManager.OtherTeam.index = this.SDK.gameManager.otherTeam.cur_cube;
+                          this.SDK.gameManager.OtherTeam.PowerEnd(AI_mesData);
+                        }
+                      } else {
+                        log('接收到错误的信息-data', event);
+                      }
+
+                    case 44:
+                    case "end":
+                      return _context13.stop();
+                  }
+                }
+              }, _callee13, this);
+            }));
+
+            function onRecvFromGameSvr(_x10) {
+              return _onRecvFromGameSvr.apply(this, arguments);
+            }
+
+            return onRecvFromGameSvr;
+          }()
+        }, {
+          key: "onRecvFromClient",
+          value: function () {
+            var _onRecvFromClient = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(event) {
+              var mesData, type, data, senderId, tip, selfInfo;
+              return regeneratorRuntime.wrap(function _callee14$(_context14) {
+                while (1) {
+                  switch (_context14.prev = _context14.next) {
+                    case 0:
+                      mesData = JSON.parse(event.data.msg); // log('接收到房间消息', event.data);
+
+                      type = mesData.type;
+                      data = mesData.data;
+                      senderId = event.data.sendPlayerId;
+                      tip = null;
+
+                      if (!(type == RoomDataType.Power)) {
+                        _context14.next = 10;
+                        break;
+                      }
+
+                      tip = '队友';
+                      this.SDK.gameManager.Player.teammatePower();
+                      _context14.next = 29;
+                      break;
+
+                    case 10:
+                      if (!(type == RoomDataType.PowerEnd)) {
+                        _context14.next = 15;
+                        break;
+                      }
+
+                      tip = '队友';
+                      this.SDK.gameManager.Player.teammatePowerEnd(data);
+                      _context14.next = 29;
+                      break;
+
+                    case 15:
+                      if (!(type == RoomDataType.EnemyPowerEnd)) {
+                        _context14.next = 20;
+                        break;
+                      }
+
+                      tip = '敌人';
+                      this.SDK.gameManager.OtherTeam.PowerEnd(data);
+                      _context14.next = 29;
+                      break;
+
+                    case 20:
+                      if (!(type == RoomDataType.emoji)) {
+                        _context14.next = 28;
+                        break;
+                      }
+
+                      tip = senderId;
+                      _context14.next = 24;
+                      return this.SDK.getPlayerInfo();
+
+                    case 24:
+                      selfInfo = _context14.sent;
+
+                      if (senderId != selfInfo.id) {
+                        this.uiControl.messageList.push({
+                          data: data,
+                          senderId: senderId
+                        });
+                      }
+
+                      _context14.next = 29;
+                      break;
+
+                    case 28:
+                      if (type == RoomDataType.SyncComplete) ;
+
+                    case 29:
+                      log('接收到来自其他客户端的消息[' + tip + ']', '类型序号:', type, ' 数据:', data);
+
+                    case 30:
+                    case "end":
+                      return _context14.stop();
+                  }
+                }
+              }, _callee14, this);
+            }));
+
+            function onRecvFromClient(_x11) {
+              return _onRecvFromClient.apply(this, arguments);
+            }
+
+            return onRecvFromClient;
+          }()
+        }, {
+          key: "onTimerSingal",
+          value: function () {
+            var _onTimerSingal = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+              var _this5 = this;
+
+              var code, dia, isRobotRoom, nowTime, time;
+              return regeneratorRuntime.wrap(function _callee15$(_context15) {
+                while (1) {
+                  switch (_context15.prev = _context15.next) {
+                    case 0:
+                      if (!(!this.dead && this.SDK.gameManager.isRunning)) {
+                        _context15.next = 32;
+                        break;
+                      }
+
+                      this.AI_singal_time -= 0.2;
+                      this.heart_time -= 0.2; // 发送心跳,保证在线状态
+
+                      if (!(this.heart_time <= 0)) {
+                        _context15.next = 14;
+                        break;
+                      }
+
+                      this.heart_time = 3;
+                      _context15.next = 7;
+                      return this.SDK.sendToServer(ClientDataType.Heart, this.SDK.gameManager.serverTeam.id);
+
+                    case 7:
+                      code = _context15.sent;
+
+                      if (!(code != MGOBE.ErrCode.EC_OK)) {
+                        _context15.next = 14;
+                        break;
+                      }
+
+                      log('心跳发送失败', '客户端已断开', code);
+                      this.SDK.gameManager.isRunning = false;
+                      dia = new Dialog(this.scene, this.SDK, '已断开连接,请退出游戏重新进入', DialogButtonType.single, '知道了');
+                      dia.show(this, function () {
+                        _this5.SDK.curDialog.destroy();
+
+                        window['RunNative']('exitMiniGame', {}, '', '');
+                      });
+                      return _context15.abrupt("return");
+
+                    case 14:
+                      _context15.next = 16;
+                      return this.SDK.gameManager.Util.IsRobotRoom();
+
+                    case 16:
+                      isRobotRoom = _context15.sent;
+
+                      if (isRobotRoom && false) {
+                        if (this.AI_singal_time <= 0) {
+                          this.AI_singal_time = 1;
+                          this.SDK.sendToServer(ClientDataType.SingalAI, null);
+                        }
+                      } // 修改游戏运行时间UI显示
+
+
+                      nowTime = this.SDK.gameManager.Util.getLocalTime();
+                      time = this.SDK.gameManager.gameTime - (nowTime - this.SDK.gameManager.startTime);
+                      this.SDK.gameManager.startTime;
+                      this.uiControl.setTime(time);
+
+                      if (!(time <= 0)) {
+                        _context15.next = 30;
+                        break;
+                      }
+
+                      this.SDK.gameManager.isRunning = false;
+                      this.SDK.gameManager.isControler = false;
+                      this.SDK.gameManager.timerSingal = null;
+                      this.uiControl.gameEnd();
+                      _context15.next = 29;
+                      return this.SDK.sendToServer(ClientDataType.End, nowTime);
+
+                    case 29:
+                      this.SDK.gameManager.userTipNode.active = false;
+
+                    case 30:
+                      if (time == 5 && !this.audio_last5s_tag) {
+                        this.audio_last5s_tag = true;
+                        this.SDK.gameManager.Util.playAudio(this.SDK.gameManager.audio_last5s);
+                      }
+
+                      this.uiControl.showEmoji();
+                    // 修改玩家控制倒计时
+                    // if(this.controlTime > 0 && !this.SDK.gameManager.Player._stat_power && !this.SDK.gameManager.Player._stat_jump) {
+                    //     this.controlTime -= .2;
+                    // } else if(this.controlTime <= 0 && this.controlTime >= -10) {
+                    //     this.controlTime = -100;
+                    //     this.SDK.gameManager.isControler = false;
+                    //     this.onAvatarSingal(true, false);
+                    //     this.onUIRefresh();
+                    //     this.SDK.sendToServer(ClientDataType.ChangeControler);
+                    // }
+
+                    case 32:
+                    case "end":
+                      return _context15.stop();
+                  }
+                }
+              }, _callee15, this);
+            }));
+
+            function onTimerSingal() {
+              return _onTimerSingal.apply(this, arguments);
+            }
+
+            return onTimerSingal;
+          }()
+        }, {
+          key: "refreshScore",
+          value: function refreshScore() {
+            var _score1 = 0;
+            var _score2 = 0;
+            var scoreEl = this.board.getChildByName('Header').getChildByName('score');
+            this.SDK.gameManager.serverTeam.playerList.map(function (v) {
+              _score1 += v.score;
+            });
+            this.SDK.gameManager.otherTeam.playerList.map(function (v) {
+              _score2 += v.score;
+            });
+            var rate1;
+            if (_score1 + _score2 === 0) rate1 = 0.5;else {
+              rate1 = _score1 / (_score1 + _score2);
+            }
+            rate1 < 0.2 && (rate1 = 0.2);
+            rate1 > 0.8 && (rate1 = 0.8);
+            if (rate1 > 0.24 && rate1 < 0.5) rate1 *= 0.85;
+            if (rate1 > 0.5 && rate1 < 0.6) rate1 *= 1.2;
+
+            if (this.SDK.gameManager.serverTeam.id == TeamColor.red) {
+              tween(scoreEl.getComponent(ProgressBar)).to(.3, {
+                progress: rate1
+              }).start();
+              scoreEl.getChildByName('redScore').getComponent(Label).string = "".concat(_score1, "\u5206");
+              scoreEl.getChildByName('blueScore').getComponent(Label).string = "".concat(_score2, "\u5206");
+            } else {
+              tween(scoreEl.getComponent(ProgressBar)).to(.3, {
+                progress: 1 - rate1
+              }).start();
+              scoreEl.getChildByName('redScore').getComponent(Label).string = "".concat(_score2, "\u5206");
+              scoreEl.getChildByName('blueScore').getComponent(Label).string = "".concat(_score1, "\u5206");
+            }
+          }
+        }, {
+          key: "onUIRefresh",
+          value: function onUIRefresh() {
+            // 根据控制状态修改文字提示
+            this.uiControl.refreshState(); // 根据队伍数据更新得分显示
+
+            this.refreshScore();
+          }
+        }, {
+          key: "onAvatarSingal",
+          value: function onAvatarSingal(isSelf, isStart) {
+            if (isSelf) {
+              if (isStart) {
+                this.controlTime = 5.;
+                this.uiControl.selfAvatar.getComponent(Avatar).timeStart();
+              } else {
+                this.controlTime = -100.;
+                this.uiControl.selfAvatar.getComponent(Avatar).reset();
+              }
+            } else {
+              if (isStart) {
+                this.uiControl.teammaterAvatar.getComponent(Avatar).timeStart();
+              } else {
+                this.uiControl.teammaterAvatar.getComponent(Avatar).reset();
+              }
+            }
+          }
+          /* ------------------ */
+
+        }, {
+          key: "InitEvent",
+          value: function () {
+            var _InitEvent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
+              var interaction, _call;
+
+              return regeneratorRuntime.wrap(function _callee16$(_context16) {
+                while (1) {
+                  switch (_context16.prev = _context16.next) {
+                    case 0:
+                      _get(_getPrototypeOf(GamingBoard.prototype), "InitEvent", this).call(this);
+
+                      interaction = this.board.getChildByName('Interaction-ex');
+                      interaction.getChildByName('emoji_1').on(SystemEventType.TOUCH_END, this.sendEmoji_1, this);
+                      interaction.getChildByName('emoji_2').on(SystemEventType.TOUCH_END, this.sendEmoji_2, this);
+                      interaction.getChildByName('emoji_3').on(SystemEventType.TOUCH_END, this.sendEmoji_3, this);
+                      interaction.getChildByName('emoji_4').on(SystemEventType.TOUCH_END, this.sendEmoji_4, this);
+                      this.board.getChildByName('nav').getChildByName('music').on(SystemEventType.TOUCH_END, this.switchSound, this);
+                      this.board.getChildByName('nav').getChildByName('back').on(SystemEventType.TOUCH_END, this.leave, this);
+                      _call = this.visibilityChange.bind(this);
+                      document.addEventListener('visibilitychange', _call, true);
+
+                      this._remove_document_listener = function () {
+                        document.removeEventListener('visibilitychange', _call, true);
+                      };
+
+                    case 11:
+                    case "end":
+                      return _context16.stop();
+                  }
+                }
+              }, _callee16, this);
+            }));
+
+            function InitEvent() {
+              return _InitEvent.apply(this, arguments);
+            }
+
+            return InitEvent;
+          }()
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            // this.SDK.gameManager.timerSingal = undefined;
+            _get(_getPrototypeOf(GamingBoard.prototype), "destroy", this).call(this);
+
+            var interaction = this.board.getChildByName('Interaction-ex');
+            interaction.getChildByName('emoji_1').off(SystemEventType.TOUCH_END);
+            interaction.getChildByName('emoji_2').off(SystemEventType.TOUCH_END);
+            interaction.getChildByName('emoji_3').off(SystemEventType.TOUCH_END);
+            interaction.getChildByName('emoji_4').off(SystemEventType.TOUCH_END);
+
+            this._remove_document_listener();
+          }
+        }, {
+          key: "sendEmoji_1",
+          value: function () {
+            var _sendEmoji_ = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+              var selfInfo;
+              return regeneratorRuntime.wrap(function _callee17$(_context17) {
+                while (1) {
+                  switch (_context17.prev = _context17.next) {
+                    case 0:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_start_emotion);
+                      _context17.next = 3;
+                      return this.SDK.getPlayerInfo();
+
+                    case 3:
+                      selfInfo = _context17.sent;
+                      this.uiControl.messageList.push({
+                        data: EmojiType.Angry,
+                        senderId: selfInfo.id
+                      });
+                      this.SDK.sendToRoom(RoomDataType.emoji, EmojiType.Angry);
+
+                    case 6:
+                    case "end":
+                      return _context17.stop();
+                  }
+                }
+              }, _callee17, this);
+            }));
+
+            function sendEmoji_1() {
+              return _sendEmoji_.apply(this, arguments);
+            }
+
+            return sendEmoji_1;
+          }()
+        }, {
+          key: "sendEmoji_2",
+          value: function () {
+            var _sendEmoji_2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
+              var selfInfo;
+              return regeneratorRuntime.wrap(function _callee18$(_context18) {
+                while (1) {
+                  switch (_context18.prev = _context18.next) {
+                    case 0:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_start_emotion);
+                      _context18.next = 3;
+                      return this.SDK.getPlayerInfo();
+
+                    case 3:
+                      selfInfo = _context18.sent;
+                      this.uiControl.messageList.push({
+                        data: EmojiType.Worship,
+                        senderId: selfInfo.id
+                      });
+                      this.SDK.sendToRoom(RoomDataType.emoji, EmojiType.Worship);
+
+                    case 6:
+                    case "end":
+                      return _context18.stop();
+                  }
+                }
+              }, _callee18, this);
+            }));
+
+            function sendEmoji_2() {
+              return _sendEmoji_2.apply(this, arguments);
+            }
+
+            return sendEmoji_2;
+          }()
+        }, {
+          key: "sendEmoji_3",
+          value: function () {
+            var _sendEmoji_3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
+              var selfInfo;
+              return regeneratorRuntime.wrap(function _callee19$(_context19) {
+                while (1) {
+                  switch (_context19.prev = _context19.next) {
+                    case 0:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_start_emotion);
+                      _context19.next = 3;
+                      return this.SDK.getPlayerInfo();
+
+                    case 3:
+                      selfInfo = _context19.sent;
+                      this.uiControl.messageList.push({
+                        data: EmojiType.Unfortunately,
+                        senderId: selfInfo.id
+                      });
+                      this.SDK.sendToRoom(RoomDataType.emoji, EmojiType.Unfortunately);
+
+                    case 6:
+                    case "end":
+                      return _context19.stop();
+                  }
+                }
+              }, _callee19, this);
+            }));
+
+            function sendEmoji_3() {
+              return _sendEmoji_3.apply(this, arguments);
+            }
+
+            return sendEmoji_3;
+          }()
+        }, {
+          key: "sendEmoji_4",
+          value: function () {
+            var _sendEmoji_4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
+              var selfInfo;
+              return regeneratorRuntime.wrap(function _callee20$(_context20) {
+                while (1) {
+                  switch (_context20.prev = _context20.next) {
+                    case 0:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_start_emotion);
+                      _context20.next = 3;
+                      return this.SDK.getPlayerInfo();
+
+                    case 3:
+                      selfInfo = _context20.sent;
+                      this.uiControl.messageList.push({
+                        data: EmojiType.Applause,
+                        senderId: selfInfo.id
+                      });
+                      this.SDK.sendToRoom(RoomDataType.emoji, EmojiType.Applause);
+
+                    case 6:
+                    case "end":
+                      return _context20.stop();
+                  }
+                }
+              }, _callee20, this);
+            }));
+
+            function sendEmoji_4() {
+              return _sendEmoji_4.apply(this, arguments);
+            }
+
+            return sendEmoji_4;
+          }()
+        }, {
+          key: "switchSound",
+          value: function switchSound() {
+            this.SDK.gameManager.Setting.switch_audio = !this.SDK.gameManager.Setting.switch_audio;
+            this.uiControl.changeSoundUI(this.SDK.gameManager.Setting.switch_audio);
+            this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_voice_turn);
+          }
+        }, {
+          key: "leave",
+          value: function leave() {
+            var _this6 = this;
+
+            var dialog = new Dialog(this.scene, this.SDK, '退出本局游戏则视为认输，是否退出该局游戏？', DialogButtonType.multiple, '退出认输', '再想想');
+            dialog.show(this, this.confirmLeave, function () {
+              _this6.SDK.curDialog.destroy();
+            });
+          }
+        }, {
+          key: "confirmLeave",
+          value: function confirmLeave() {
+            if (this.SDK.curDialog.dead) return;
+            this.SDK.curDialog.destroy();
+            this.ChangeBoard(this.SDK.gameManager.MainBoard);
+          }
+        }, {
+          key: "visibilityChange",
+          value: function visibilityChange() {
+            if (document.visibilityState === 'hidden') {
+              this.SDK.sendToServer(ClientDataType.ChangeNetState, NetState.Offline);
+            } else {
+              this.SDK.sendToServer(ClientDataType.ChangeNetState, NetState.Online);
+              this.SDK.sendToServer(ClientDataType.RequestSyncData, {
+                team: this.SDK.gameManager.serverTeam
+              });
+            }
+          }
+        }]);
+
+        return GamingBoard;
+      }(BaseBoard), _temp), (_applyDecoratedDescriptor(_class.prototype, "sendEmoji_1", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "sendEmoji_1"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sendEmoji_2", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "sendEmoji_2"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sendEmoji_3", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "sendEmoji_3"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sendEmoji_4", [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, "sendEmoji_4"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "switchSound", [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, "switchSound"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "leave", [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, "leave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "confirmLeave", [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, "confirmLeave"), _class.prototype)), _class)));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Dialog/RulesDialog.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Const.js"], function (_export, _context3) {
+  "use strict";
+
+  var _createClass, _classCallCheck, _asyncToGenerator, cclegacy, tween, Vec3, loader, Prefab, instantiate, SystemEventType, log, RulesDialog;
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      tween = _cc.tween;
+      Vec3 = _cc.Vec3;
+      loader = _cc.loader;
+      Prefab = _cc.Prefab;
+      instantiate = _cc.instantiate;
+      SystemEventType = _cc.SystemEventType;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "f1725lk6shAIZvaTtd6I/DQ", "RulesDialog", undefined);
+
+      _export("RulesDialog", RulesDialog = /*#__PURE__*/function () {
+        function RulesDialog(scene, SDK) {
+          _classCallCheck(this, RulesDialog);
+
+          this.scene = null;
+          this.node = null;
+          this.SDK = null;
+          this.dead = false;
+          this.scene = scene;
+          this.SDK = SDK;
+        }
+
+        _createClass(RulesDialog, [{
+          key: "InitBoard",
+          value: function () {
+            var _InitBoard = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var _this2 = this;
+
+              var promise;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      log('弹窗预制件实例化:');
+                      promise = new Promise(function (resolve) {
+                        loader.loadRes('Prefab/Dialog/RulesDialog', Prefab, function (err, prefab) {
+                          if (err) {
+                            log('弹框实例化失败', err);
+                            resolve(false);
+                          } else {
+                            log('弹框实例化成功');
+                            _this2.node = instantiate(prefab);
+
+                            _this2.scene.getChildByName('UI').addChild(_this2.node);
+
+                            _this2.node.setSiblingIndex(100);
+
+                            resolve(true);
+                          }
+                        });
+                      });
+                      return _context.abrupt("return", promise);
+
+                    case 3:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee);
+            }));
+
+            function InitBoard() {
+              return _InitBoard.apply(this, arguments);
+            }
+
+            return InitBoard;
+          }()
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            if (!this.dead) {
+              if (!this.node) {
+                this.SDK = null;
+                return;
+              }
+
+              this.dead = true;
+              this.scene = null;
+              tween(this.node.getChildByName('background')).to(.3, {
+                scale: new Vec3(0, 0, 0)
+              }, {
+                onComplete: function () {
+                  this.SDK.curDialog = null;
+                  this.SDK = null;
+                  this.node.destroy();
+                  this.node = null;
+                }.bind(this)
+              }).start();
+            }
+          }
+        }, {
+          key: "show",
+          value: function () {
+            var _show = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(_this) {
+              var _this3 = this;
+
+              var b, exit_button;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      if (!(this.SDK.curDialog == null)) {
+                        _context2.next = 13;
+                        break;
+                      }
+
+                      this.SDK.curDialog = this;
+                      _context2.next = 4;
+                      return this.InitBoard();
+
+                    case 4:
+                      b = _context2.sent;
+
+                      if (b) {
+                        _context2.next = 8;
+                        break;
+                      }
+
+                      this.destroy();
+                      return _context2.abrupt("return");
+
+                    case 8:
+                      // UI的修改与展示
+                      exit_button = this.node.getChildByName('background').getChildByName('exit');
+                      this.node.getChildByName('background').setScale(new Vec3(0, 0, 0));
+                      this.node.active = true;
+                      tween(this.node.getChildByName('background')).to(.3, {
+                        scale: new Vec3(.5, .5, .5)
+                      }, {
+                        easing: 'sineOut'
+                      }).start(); // 事件回调绑定
+
+                      exit_button.on(SystemEventType.TOUCH_END, function () {
+                        if (_this3.SDK.curDialog.dead) {
+                          return;
+                        }
+
+                        _this3.SDK.curDialog.destroy();
+                      }, _this);
+
+                    case 13:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function show(_x) {
+              return _show.apply(this, arguments);
+            }
+
+            return show;
+          }()
+        }]);
+
+        return RulesDialog;
+      }());
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Board/MainBoard.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Config.js", "../../Const.js", "../../Util.js", "../Dialog/Dialog.js", "./BaseBoard.js", "../Dialog/RulesDialog.js"], function (_export, _context11) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _createClass, _get, _asyncToGenerator, cclegacy, _decorator, SystemEventType, tween, Vec3, Label, UseTeaching, log, StatisticsKey, NetState, DialogButtonType, throttle, Dialog, BaseBoard, RulesDialog, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, ccclass, property, UIControl, MainBoard;
+
+  _export({
+    _dec: void 0,
+    _dec2: void 0,
+    _dec3: void 0,
+    _dec4: void 0,
+    _dec5: void 0,
+    _dec6: void 0,
+    _dec7: void 0,
+    _class: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _get = _virtual_rollupPluginBabelHelpersJs.get;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      SystemEventType = _cc.SystemEventType;
+      tween = _cc.tween;
+      Vec3 = _cc.Vec3;
+      Label = _cc.Label;
+    }, function (_ConfigJs) {
+      UseTeaching = _ConfigJs.UseTeaching;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      StatisticsKey = _ConstJs.StatisticsKey;
+      NetState = _ConstJs.NetState;
+      DialogButtonType = _ConstJs.DialogButtonType;
+    }, function (_UtilJs) {
+      throttle = _UtilJs.throttle;
+    }, function (_DialogDialogJs) {
+      Dialog = _DialogDialogJs.Dialog;
+    }, function (_BaseBoardJs) {
+      BaseBoard = _BaseBoardJs.BaseBoard;
+    }, function (_DialogRulesDialogJs) {
+      RulesDialog = _DialogRulesDialogJs.RulesDialog;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "253a4372BVD94kGBxFcROCR", "MainBoard", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      UIControl = /*#__PURE__*/function () {
+        // 下面有子节点 total(显示情侣总局数) victory(情侣胜利总局数)
+        function UIControl(board, sdk) {
+          _classCallCheck(this, UIControl);
+
+          this.board = board;
+          this.SDK = sdk;
+        }
+
+        _createClass(UIControl, [{
+          key: "initUI",
+          value: function () {
+            var _initUI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(board) {
+              var headNode, url;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      this.board = board;
+                      _context.next = 3;
+                      return this.initUserData();
+
+                    case 3:
+                      headNode = this.board.getChildByName('Header');
+                      this.weekDataNode = headNode.getChildByName('career').getChildByName('weekData');
+                      this.loverDataNode = headNode.getChildByName('top').getChildByName('bgHistory');
+
+                      if (this.SDK.gameManager.PlayerData.gender === 1) {
+                        this.selfAvatarNode = headNode.getChildByName('top').getChildByName('Avatar').getChildByName('Sprite');
+                        this.otherAvatarNode = headNode.getChildByName('top').getChildByName('Avatar2').getChildByName('Sprite');
+                      } else {
+                        this.selfAvatarNode = headNode.getChildByName('top').getChildByName('Avatar2').getChildByName('Sprite');
+                        this.otherAvatarNode = headNode.getChildByName('top').getChildByName('Avatar').getChildByName('Sprite');
+                      }
+
+                      if (!this.SDK.gameManager.PlayerData.isVip) {
+                        headNode.getChildByName('top').getChildByName('Avatar').getChildByName('isVip').active = false;
+                        headNode.getChildByName('top').getChildByName('Avatar2').getChildByName('isVip').active = false;
+                      } else {
+                        headNode.getChildByName('top').getChildByName('Avatar').getChildByName('isVip').active = true;
+                        headNode.getChildByName('top').getChildByName('Avatar2').getChildByName('isVip').active = true;
+                      }
+
+                      this.SDK.gameManager.Util.loadRemoteImg(this.SDK.gameManager.PlayerData.avatar_url, this.selfAvatarNode);
+
+                      if (this.SDK.gameManager.loverData && this.SDK.gameManager.loverData.avatar) {
+                        url = "https://".concat(this.SDK.gameManager.loverData.avatar.host, "/").concat(this.SDK.gameManager.loverData.avatar.path);
+                        this.SDK.gameManager.Util.loadRemoteImg(url, this.otherAvatarNode);
+                      }
+
+                      this.weekDataNode.getChildByName('num').getChildByName('value').getComponent(Label).string = "".concat(this.SDK.gameManager.PlayerData.playCountWeek);
+                      this.weekDataNode.getChildByName('rate').getChildByName('value').getComponent(Label).string = this.SDK.gameManager.PlayerData.winCountWeek ? "".concat((this.SDK.gameManager.PlayerData.winCountWeek / this.SDK.gameManager.PlayerData.playCountWeek * 100).toFixed(0), "%") : '0%';
+                      this.weekDataNode.getChildByName('mvp').getChildByName('value').getComponent(Label).string = "".concat(this.SDK.gameManager.PlayerData.mvpCountWeek);
+                      this.loverDataNode.getChildByName('total').getComponent(Label).string = "".concat(this.SDK.gameManager.PlayerData.loverCount);
+                      this.loverDataNode.getChildByName('victory').getComponent(Label).string = "".concat(this.SDK.gameManager.PlayerData.loverWinCount);
+
+                    case 15:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function initUI(_x) {
+              return _initUI.apply(this, arguments);
+            }
+
+            return initUI;
+          }()
+        }, {
+          key: "initData",
+          value: function initData() {}
+        }, {
+          key: "initUserData",
+          value: function () {
+            var _initUserData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var gameInfo;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.SDK.gameManager.Util.http(this.SDK.gameManager.Config.serverURL.gameInit, "GET", {}, false, this.SDK.gameManager.AccessToken);
+
+                    case 2:
+                      gameInfo = _context2.sent;
+                      this.SDK.gameManager.PlayerData.loverCount = gameInfo.lover_match_info.game_match_count ? gameInfo.lover_match_info.game_match_count : 0;
+                      this.SDK.gameManager.PlayerData.loverWinCount = gameInfo.lover_match_info.win_count ? gameInfo.lover_match_info.win_count : 0;
+                      this.SDK.gameManager.PlayerData.tacitScore = gameInfo.lover_match_info.tacit_score ? gameInfo.lover_match_info.tacit_score : 0;
+                      this.SDK.gameManager.PlayerData.playCountWeek = gameInfo.user_match_info.game_match_count ? gameInfo.user_match_info.game_match_count : 0;
+                      this.SDK.gameManager.PlayerData.mvpCountWeek = gameInfo.user_match_info.mvp_count ? gameInfo.user_match_info.mvp_count : 0;
+                      this.SDK.gameManager.PlayerData.winCountWeek = gameInfo.user_match_info.win_count ? gameInfo.user_match_info.win_count : 0;
+                      this.board.getChildByName('Header').getChildByName('top').getChildByName('Lv').getComponent(Label).string = "\u604B\u4EBALv.".concat(this.SDK.gameManager.Util.loverLevel(this.SDK.gameManager.PlayerData.tacitScore));
+                      this.board.getChildByName('Header').getChildByName('top').getChildByName('LvHeart').getChildByName('Lv').getComponent(Label).string = "".concat(this.SDK.gameManager.Util.loverLevel(this.SDK.gameManager.PlayerData.tacitScore));
+
+                    case 11:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function initUserData() {
+              return _initUserData.apply(this, arguments);
+            }
+
+            return initUserData;
+          }()
+        }]);
+
+        return UIControl;
+      }();
+
+      _export("MainBoard", MainBoard = (_dec = throttle(), _dec2 = throttle(500), _dec3 = throttle(500), _dec4 = throttle(), _dec5 = throttle(), _dec6 = throttle(200), _dec7 = throttle(200), (_class = /*#__PURE__*/function (_BaseBoard) {
+        _inherits(MainBoard, _BaseBoard);
+
+        function MainBoard(scene, sdk) {
+          var _this;
+
+          _classCallCheck(this, MainBoard);
+
+          _this = _possibleConstructorReturn(this, _getPrototypeOf(MainBoard).call(this, scene, sdk));
+          _this.name = 'MainBoard';
+          _this.uiControl = new UIControl(_this.board, _this.SDK);
+          return _this;
+        }
+
+        _createClass(MainBoard, [{
+          key: "setListener",
+          value: function setListener() {
+            this.SDK.Room.onCancelMatch = this.onCancelMatch.bind(this);
+            this.SDK.Room.onMatch = this.onMatch.bind(this);
+          }
+        }, {
+          key: "InitEvent",
+          value: function () {
+            var _InitEvent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              var button_single, button_lover, button_exit, button_rule, button_feedback;
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      _get(_getPrototypeOf(MainBoard.prototype), "InitEvent", this).call(this);
+
+                      button_single = this.board.getChildByName('MatchButton').getChildByName('single');
+                      button_lover = this.board.getChildByName('MatchButton').getChildByName('lover');
+                      button_exit = this.board.getChildByName('Nav').getChildByName('exit');
+                      button_rule = this.board.getChildByName('Nav').getChildByName('rules');
+                      button_feedback = this.board.getChildByName('Nav').getChildByName('feedback');
+                      button_single.on(SystemEventType.TOUCH_END, this.clickSingleMatch, this);
+                      button_lover.on(SystemEventType.TOUCH_END, this.clickLoverMatch, this);
+                      button_rule.on(SystemEventType.TOUCH_END, this.clickRules, this);
+                      button_feedback.on(SystemEventType.TOUCH_END, this.clickFeedback, this);
+                      button_exit.on(SystemEventType.TOUCH_END, this.quitGame, this);
+
+                    case 11:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+
+            function InitEvent() {
+              return _InitEvent.apply(this, arguments);
+            }
+
+            return InitEvent;
+          }()
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            _get(_getPrototypeOf(MainBoard.prototype), "destroy", this).call(this);
+
+            var button_single = this.board.getChildByName('MatchButton').getChildByName('single');
+            var button_lover = this.board.getChildByName('MatchButton').getChildByName('lover');
+            var button_exit = this.board.getChildByName('Nav').getChildByName('exit');
+            var button_rule = this.board.getChildByName('Nav').getChildByName('rules');
+            button_single.off(SystemEventType.TOUCH_END);
+            button_lover.off(SystemEventType.TOUCH_END);
+            button_exit.off(SystemEventType.TOUCH_END);
+            button_rule.off(SystemEventType.TOUCH_END);
+          }
+        }, {
+          key: "onCancelMatch",
+          value: function onCancelMatch(event) {
+            log('MainBoard', '取消匹配', event);
+          }
+        }, {
+          key: "onMatch",
+          value: function onMatch(event) {
+            log('MainBoard', '匹配完成', event);
+          } // 教学流程,点击匹配时进行判断,如果为首次游戏(游戏对局数为0)则自动进入
+
+        }, {
+          key: "teachProcess",
+          value: function () {
+            var _teachProcess = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      if (!((this.SDK.gameManager.PlayerData.totalCount <= 3 || UseTeaching) && !this.SDK.gameManager.isTeached)) {
+                        _context4.next = 6;
+                        break;
+                      }
+
+                      log('教学流程', '进入教学');
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.Guidance_appear_clicked);
+                      _context4.next = 5;
+                      return this.ChangeBoard(this.SDK.gameManager.TeachingBoard);
+
+                    case 5:
+                      return _context4.abrupt("return", false);
+
+                    case 6:
+                      return _context4.abrupt("return", true);
+
+                    case 7:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+
+            function teachProcess() {
+              return _teachProcess.apply(this, arguments);
+            }
+
+            return teachProcess;
+          }()
+        }, {
+          key: "clickSingleMatch",
+          value: function () {
+            var _clickSingleMatch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              var code;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      log('单人匹配', '点击');
+                      this.SDK.gameManager.isQuickMatching = true;
+                      _context5.next = 4;
+                      return this.teachProcess();
+
+                    case 4:
+                      if (_context5.sent) {
+                        _context5.next = 6;
+                        break;
+                      }
+
+                      return _context5.abrupt("return");
+
+                    case 6:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.main_quick_clicked);
+                      _context5.next = 9;
+                      return this.SDK.matchingSingle();
+
+                    case 9:
+                      code = _context5.sent;
+                      log('单人匹配', '进入结果:', code);
+
+                      if (!(code == MGOBE.ErrCode.EC_OK)) {
+                        _context5.next = 17;
+                        break;
+                      }
+
+                      log('单人匹配', '进入成功');
+                      _context5.next = 15;
+                      return this.ChangeBoard(this.SDK.gameManager.MatchingBoard);
+
+                    case 15:
+                      _context5.next = 19;
+                      break;
+
+                    case 17:
+                      log('单人匹配', '进入失败');
+                      this.SDK.cancelMatchinig();
+
+                    case 19:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
+            }));
+
+            function clickSingleMatch() {
+              return _clickSingleMatch.apply(this, arguments);
+            }
+
+            return clickSingleMatch;
+          }()
+        }, {
+          key: "clickLoverMatch",
+          value: function () {
+            var _clickLoverMatch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              var loverGroupId, _code, teammaterInfo, code;
+
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      this.SDK.gameManager.isQuickMatching = false;
+                      _context6.next = 3;
+                      return this.teachProcess();
+
+                    case 3:
+                      if (_context6.sent) {
+                        _context6.next = 5;
+                        break;
+                      }
+
+                      return _context6.abrupt("return");
+
+                    case 5:
+                      /*
+                      增加一个新的流程:从后台接口获取另一半上一次所创建的队组ID,尝试加入这个队组,
+                      如果失败或者另一半在队组内的状态为掉线状态则判定为加入失败,此时自己创建一个队组,并将队组ID上报.
+                      */
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.main_couple_clicked);
+                      _context6.next = 8;
+                      return this.SDK.gameManager.Util.http(this.SDK.gameManager.Config.serverURL.group, 'GET', null, false, this.SDK.gameManager.AccessToken);
+
+                    case 8:
+                      loverGroupId = _context6.sent;
+                      log('loverGroupId', loverGroupId);
+
+                      if (!loverGroupId) {
+                        _context6.next = 22;
+                        break;
+                      }
+
+                      loverGroupId = loverGroupId['other_group_id'];
+                      _context6.next = 14;
+                      return this.SDK.joinGroup(loverGroupId);
+
+                    case 14:
+                      _code = _context6.sent;
+
+                      if (!(_code === MGOBE.ErrCode.EC_OK)) {
+                        _context6.next = 22;
+                        break;
+                      }
+
+                      _context6.next = 18;
+                      return this.SDK.getTeammate();
+
+                    case 18:
+                      teammaterInfo = _context6.sent;
+
+                      if (!(teammaterInfo.commonNetworkState != NetState.Offline)) {
+                        _context6.next = 22;
+                        break;
+                      }
+
+                      this.ChangeBoard(this.SDK.gameManager.WaitLoverBoard);
+                      return _context6.abrupt("return");
+
+                    case 22:
+                      _context6.next = 24;
+                      return this.SDK.createGroup();
+
+                    case 24:
+                      code = _context6.sent;
+
+                      if (code === 0) {
+                        this.showInvite();
+                      } else {
+                        log('队组创建失败', code);
+                      }
+
+                    case 26:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function clickLoverMatch() {
+              return _clickLoverMatch.apply(this, arguments);
+            }
+
+            return clickLoverMatch;
+          }()
+        }, {
+          key: "clickRules",
+          value: function () {
+            var _clickRules = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+              var dia;
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      if (!this.SDK.curDialog) {
+                        this.SDK.gameManager.Util.callTDGA(StatisticsKey.main_rule_clicked);
+                        dia = new RulesDialog(this.scene, this.SDK);
+                        dia.show(this);
+                      }
+
+                    case 1:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7, this);
+            }));
+
+            function clickRules() {
+              return _clickRules.apply(this, arguments);
+            }
+
+            return clickRules;
+          }()
+        }, {
+          key: "clickFeedback",
+          value: function clickFeedback() {
+            window.location.href = "https://kitty.didiapp.com/lovenote/feedback";
+          }
+        }, {
+          key: "quitGame",
+          value: function () {
+            var _quitGame = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+              var _this2 = this;
+
+              var dia;
+              return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                while (1) {
+                  switch (_context8.prev = _context8.next) {
+                    case 0:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_leave_clicked);
+                      dia = new Dialog(this.scene, this.SDK, '确定退出游戏？', DialogButtonType.multiple);
+                      _context8.next = 4;
+                      return dia.show(this, function () {
+                        if (_this2.SDK.curDialog.dead) {
+                          return;
+                        }
+
+                        _this2.SDK.gameManager.Util.callTDGA(StatisticsKey.game_leave_confirmed);
+
+                        _this2.SDK.gameManager.Util.callTDGA(StatisticsKey.leave);
+
+                        _this2.SDK.curDialog.destroy();
+
+                        window['RunNative']('exitMiniGame', {}, '', '');
+                      }, function () {
+                        if (_this2.SDK.curDialog.dead) {
+                          return;
+                        }
+
+                        _this2.SDK.curDialog.destroy();
+                      });
+
+                    case 4:
+                    case "end":
+                      return _context8.stop();
+                  }
+                }
+              }, _callee8, this);
+            }));
+
+            function quitGame() {
+              return _quitGame.apply(this, arguments);
+            }
+
+            return quitGame;
+          }()
+        }, {
+          key: "showInvite",
+          value: function showInvite() {
+            this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_share_clicked);
+            var sharePlatform = this.board.getChildByName('sharePlatform');
+            sharePlatform.getChildByName('content').setPosition(0, -240, 0);
+            sharePlatform.active = true;
+            tween(sharePlatform.getChildByName('content')).to(.3, {
+              position: new Vec3(0, -38, 0)
+            }).start();
+            sharePlatform.getChildByName('content').getChildByName('inApp').on(SystemEventType.TOUCH_END, this.shareToMessage, this);
+            sharePlatform.getChildByName('content').getChildByName('weChat').on(SystemEventType.TOUCH_END, this.shareToWX, this);
+            sharePlatform.getChildByName('content').getChildByName('QQ').on(SystemEventType.TOUCH_END, this.shareToQQ, this);
+            sharePlatform.getChildByName('content').getChildByName('close').on(SystemEventType.TOUCH_END, this.maskClose, this);
+            sharePlatform.getChildByName('maskBg').on(SystemEventType.TOUCH_END, this.maskClose, this);
+          }
+        }, {
+          key: "shareToMessage",
+          value: function shareToMessage() {
+            var _this3 = this;
+
+            var ua = navigator.userAgent.toLowerCase();
+            var isAndroid = ua.indexOf('android') > -1;
+
+            window['toldTA'] = function () {
+              _this3.close();
+
+              _this3.SDK.gameManager.Util.callTDGA(StatisticsKey.game_share_chat);
+
+              isAndroid ? '' : _this3.SDK.gameManager.showToast('发送成功', 2);
+            };
+
+            window['sendLinkFail'] = function () {
+              _this3.close();
+
+              isAndroid ? '' : _this3.SDK.gameManager.showToast('邀请失败', 2);
+            };
+
+            window['RunNative']('shareURLToPlatform', {
+              "url": "lianaiji://open.minigame?name=jump&group=".concat(this.SDK.curGroup.groupInfo.id),
+              "title": "双人跳一跳",
+              "content": '亲爱的，和我一起玩双人跳一跳吧',
+              "imgUrl": "https://cdn1.didiapp.com/jump/banner.png",
+              "source": "双人跳一跳",
+              "platform": ["chat"]
+            }, 'toldTA', 'sendLinkFail');
+          }
+        }, {
+          key: "shareToWX",
+          value: function shareToWX() {
+            var _this4 = this;
+
+            window['wxSuc'] = function () {
+              _this4.close();
+
+              _this4.SDK.gameManager.Util.callTDGA(StatisticsKey.game_share_wechat);
+            };
+
+            window['wxErr'] = function () {
+              _this4.close();
+            };
+
+            var avatar = this.SDK.gameManager.PlayerData.avatar_url;
+            window['RunNative']('shareURLToPlatform', {
+              "url": "https://dev-kitty.didiapp.com/lovenote/miniGameinvite?from=jump&group=".concat(this.SDK.curGroup.groupInfo.id, "&avatar=").concat(avatar),
+              "title": "邀你一起玩双人跳一跳！点击链接进入游戏",
+              "content": '我们组队，和其他情侣PK，相信我们一定是最有默契的情侣！',
+              "imgUrl": "https://cdn1.didiapp.com/jump/banner.png",
+              "source": "恋爱记",
+              "platform": ["wxsession"]
+            }, 'wxSuc', 'wxErr');
+            setTimeout(function () {
+              if (_this4.board.getChildByName('sharePlatform').active === true) {
+                _this4.close();
+              }
+            }, 500);
+          }
+        }, {
+          key: "shareToQQ",
+          value: function shareToQQ() {
+            var _this5 = this;
+
+            window['qqSuc'] = function () {
+              _this5.close();
+
+              _this5.SDK.gameManager.Util.callTDGA(StatisticsKey.game_share_QQ);
+            };
+
+            window['qqErr'] = function () {
+              _this5.close();
+            };
+
+            var avatar = this.SDK.gameManager.PlayerData.avatar_url;
+            window['RunNative']('shareURLToPlatform', {
+              "url": "https://dev-kitty.didiapp.com/lovenote/miniGameinvite?from=jump&group=".concat(this.SDK.curGroup.groupInfo.id, "&avatar=").concat(avatar),
+              "title": "邀你一起玩双人跳一跳！点击链接进入游戏",
+              "content": '我们组队，和其他情侣PK，相信我们一定是最有默契的情侣！',
+              "imgUrl": "https://cdn1.didiapp.com/jump/banner.png",
+              "source": "恋爱记",
+              "platform": ["qq"]
+            }, 'qqSuc', 'qqErr');
+            setTimeout(function () {
+              if (_this5.board.getChildByName('sharePlatform').active === true) {
+                _this5.close();
+              }
+            }, 500);
+          }
+        }, {
+          key: "close",
+          value: function () {
+            var _close = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+              var sharePlatform, groupInfo;
+              return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      sharePlatform = this.board.getChildByName('sharePlatform');
+                      sharePlatform.getChildByName('content').getChildByName('inApp').off(SystemEventType.TOUCH_END);
+                      sharePlatform.getChildByName('content').getChildByName('weChat').off(SystemEventType.TOUCH_END);
+                      sharePlatform.getChildByName('content').getChildByName('QQ').off(SystemEventType.TOUCH_END);
+                      sharePlatform.getChildByName('content').getChildByName('close').off(SystemEventType.TOUCH_END);
+                      sharePlatform.getChildByName('maskBg').off(SystemEventType.TOUCH_END);
+                      _context9.next = 8;
+                      return this.SDK.getGroupInfo();
+
+                    case 8:
+                      groupInfo = _context9.sent;
+                      this.SDK.gameManager.Util.http(this.SDK.gameManager.Config.serverURL.group, 'POST', {
+                        'group_id': groupInfo.id
+                      }, false, this.SDK.gameManager.AccessToken);
+                      _context9.next = 12;
+                      return this.ChangeBoard(this.SDK.gameManager.WaitLoverBoard);
+
+                    case 12:
+                      sharePlatform.active = false;
+
+                    case 13:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9, this);
+            }));
+
+            function close() {
+              return _close.apply(this, arguments);
+            }
+
+            return close;
+          }()
+        }, {
+          key: "maskClose",
+          value: function () {
+            var _maskClose = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+              var sharePlatform;
+              return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                while (1) {
+                  switch (_context10.prev = _context10.next) {
+                    case 0:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.main_wait_invite_cancel);
+                      sharePlatform = this.board.getChildByName('sharePlatform');
+                      sharePlatform.active = false;
+                      sharePlatform.getChildByName('content').getChildByName('inApp').off(SystemEventType.TOUCH_END);
+                      sharePlatform.getChildByName('content').getChildByName('weChat').off(SystemEventType.TOUCH_END);
+                      sharePlatform.getChildByName('content').getChildByName('QQ').off(SystemEventType.TOUCH_END);
+                      sharePlatform.getChildByName('content').getChildByName('close').off(SystemEventType.TOUCH_END);
+                      sharePlatform.getChildByName('maskBg').off(SystemEventType.TOUCH_END);
+                      _context10.next = 10;
+                      return this.SDK.dismissGroup();
+
+                    case 10:
+                      this.SDK.leaveGroup();
+
+                    case 11:
+                    case "end":
+                      return _context10.stop();
+                  }
+                }
+              }, _callee10, this);
+            }));
+
+            function maskClose() {
+              return _maskClose.apply(this, arguments);
+            }
+
+            return maskClose;
+          }()
+        }]);
+
+        return MainBoard;
+      }(BaseBoard), (_applyDecoratedDescriptor(_class.prototype, "clickSingleMatch", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "clickSingleMatch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clickLoverMatch", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "clickLoverMatch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clickRules", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "clickRules"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clickFeedback", [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, "clickFeedback"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "quitGame", [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, "quitGame"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "close", [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, "close"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "maskClose", [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, "maskClose"), _class.prototype)), _class)));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Board/MatchingBoard.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Const.js", "../../Util.js", "../Dialog/Dialog.js", "./BaseBoard.js"], function (_export, _context15) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _createClass, _get, _asyncToGenerator, cclegacy, SystemEventType, Label, Color, ProgressBar, Sprite, tween, log, ClientDataType, RoomDataType, ServerDataType, StatisticsKey, DialogButtonType, TeamColor, throttle, Dialog, BaseBoard, _dec, _class, _temp, UIControl, MatchingBoard;
+
+  _export({
+    _dec: void 0,
+    _class: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _get = _virtual_rollupPluginBabelHelpersJs.get;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      SystemEventType = _cc.SystemEventType;
+      Label = _cc.Label;
+      Color = _cc.Color;
+      ProgressBar = _cc.ProgressBar;
+      Sprite = _cc.Sprite;
+      tween = _cc.tween;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      ClientDataType = _ConstJs.ClientDataType;
+      RoomDataType = _ConstJs.RoomDataType;
+      ServerDataType = _ConstJs.ServerDataType;
+      StatisticsKey = _ConstJs.StatisticsKey;
+      DialogButtonType = _ConstJs.DialogButtonType;
+      TeamColor = _ConstJs.TeamColor;
+    }, function (_UtilJs) {
+      throttle = _UtilJs.throttle;
+    }, function (_DialogDialogJs) {
+      Dialog = _DialogDialogJs.Dialog;
+    }, function (_BaseBoardJs) {
+      BaseBoard = _BaseBoardJs.BaseBoard;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "b8dbbjBDbxP+YYY37doxtEY", "MatchingBoard", undefined);
+
+      UIControl = /*#__PURE__*/function () {
+        // circle: Node = null;
+        function UIControl(board, sdk) {
+          _classCallCheck(this, UIControl);
+
+          this.board = null;
+          this.SDK = null;
+          this.team1 = null;
+          this.team2 = null;
+          this.time = null;
+          this.board = board;
+          this.SDK = sdk;
+        }
+
+        _createClass(UIControl, [{
+          key: "initUI",
+          value: function () {
+            var _initUI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(board) {
+              var groupInfo, curPlayerInfo, groupPlayerList, index, element;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      this.board = board;
+                      this.team1 = this.board.getChildByName('team1');
+                      this.team2 = this.board.getChildByName('team2'); // this.circle = this.board.getChildByName('circle')
+
+                      this.time = this.board.getChildByName('guide').getChildByName('Label');
+                      _context.next = 6;
+                      return this.SDK.getGroupInfo();
+
+                    case 6:
+                      groupInfo = _context.sent;
+                      _context.next = 9;
+                      return this.SDK.getPlayerInfo();
+
+                    case 9:
+                      curPlayerInfo = _context.sent;
+                      groupPlayerList = null; // this.circle.getComponent(Animation).onLoad()
+                      // this.circle.setRotationFromEuler(0, 0, 0)
+                      // this.circle.setScale(1, 1, 1)
+                      // this.circle.getChildByName('red').active = true
+                      // this.circle.getChildByName('red1').active = true
+                      // this.circle.getChildByName('blue').active = true
+                      // this.circle.getChildByName('blue1').active = true
+                      // this.circle.getChildByName('Sprite').active = false
+                      // this.circle.getChildByName('Sprite2').active = false
+
+                      this.team1.getChildByName('card').getChildByName('user2').active = false;
+                      this.team1.getChildByName('card').getChildByName('user2_wait').active = true;
+                      this.team2.getChildByName('card').getChildByName('user1').active = false;
+                      this.team2.getChildByName('card').getChildByName('user2').active = false;
+                      this.team2.getChildByName('card').getChildByName('user1_wait').active = true;
+                      this.team2.getChildByName('card').getChildByName('user2_wait').active = true;
+                      this.team1.getChildByName('card').getChildByName('Lover').active = false;
+                      this.team2.getChildByName('card').getChildByName('Lover').active = false;
+                      this.board.getChildByName('CancelMatchButton').active = true;
+                      this.board.getChildByName('expectedTime').active = true;
+                      this.board.getChildByName('guide').active = true;
+                      this.board.getChildByName('ProgressBar').getComponent(ProgressBar).progress = 0;
+                      this.board.getChildByName('ProgressBar').active = false;
+                      this.time.getComponent(Label).string = '正在匹配 (00:00)';
+                      _context.next = 27;
+                      return this.initCard();
+
+                    case 27:
+                      if (!groupInfo) {
+                        _context.next = 34;
+                        break;
+                      }
+
+                      _context.next = 30;
+                      return this.showLoverUI();
+
+                    case 30:
+                      groupPlayerList = groupInfo.groupPlayerList;
+
+                      for (index = 0; index < groupPlayerList.length; index++) {
+                        element = groupPlayerList[index];
+
+                        if (element.id == curPlayerInfo.id) {
+                          this.setPlayer(1, 1, {
+                            id: element.id,
+                            teamId: '1',
+                            profile: element.customGroupPlayerProfile
+                          });
+                        } else {
+                          this.setPlayer(1, 2, {
+                            id: element.id,
+                            teamId: '1',
+                            profile: element.customGroupPlayerProfile
+                          });
+                        }
+                      }
+
+                      _context.next = 35;
+                      break;
+
+                    case 34:
+                      this.setPlayer(1, 1, {
+                        id: curPlayerInfo.id,
+                        teamId: curPlayerInfo.teamId,
+                        profile: curPlayerInfo.profile
+                      });
+
+                    case 35:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function initUI(_x) {
+              return _initUI.apply(this, arguments);
+            }
+
+            return initUI;
+          }()
+        }, {
+          key: "initCard",
+          value: function () {
+            var _initCard = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var isLover;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      this.team1.getComponent(Sprite).enabled = false;
+                      this.team2.getComponent(Sprite).enabled = false;
+                      this.team1.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = false;
+                      this.team1.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = false;
+                      _context2.next = 6;
+                      return this.SDK.gameManager.Util.teammaterIsLover();
+
+                    case 6:
+                      isLover = _context2.sent;
+
+                      if (!isLover) {
+                        _context2.next = 13;
+                        break;
+                      }
+
+                      _context2.next = 10;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-0/spriteFrame', this.team1);
+
+                    case 10:
+                      this.team1.getComponent(Sprite).enabled = true;
+                      _context2.next = 19;
+                      break;
+
+                    case 13:
+                      _context2.next = 15;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-0/spriteFrame', this.team1.getChildByName('card').getChildByName('user1'));
+
+                    case 15:
+                      _context2.next = 17;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-0/spriteFrame', this.team1.getChildByName('card').getChildByName('user2'));
+
+                    case 17:
+                      this.team1.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = true;
+                      this.team1.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = true;
+
+                    case 19:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function initCard() {
+              return _initCard.apply(this, arguments);
+            }
+
+            return initCard;
+          }()
+        }, {
+          key: "initData",
+          value: function initData() {}
+        }, {
+          key: "matchSuccess",
+          value: function () {
+            var _matchSuccess = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(playerList) {
+              var curPlayerInfo, team2_index, index, element, profile;
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      this.showLoverUI();
+                      _context3.next = 3;
+                      return this.SDK.getPlayerInfo();
+
+                    case 3:
+                      curPlayerInfo = _context3.sent;
+                      team2_index = 1;
+
+                      for (index = 0; index < playerList.length; index++) {
+                        element = playerList[index];
+                        profile = {
+                          nickname: element.nickname,
+                          avatar_url: element.avatar,
+                          user_id: element.user_id,
+                          lover_id: element.lover_id,
+                          gender: element.gender,
+                          isVip: element.isVip,
+                          playCountWeek: 0,
+                          winCountWeek: 0,
+                          mvpCountWeek: 0,
+                          loverCount: 0,
+                          loverWinCount: 0,
+                          tacitScore: 0
+                        };
+                        element.profile = JSON.stringify(profile);
+
+                        if (element.teamId == curPlayerInfo.teamId) {
+                          if (element.id == curPlayerInfo.id) {
+                            this.setPlayer(1, 1, element);
+                          } else {
+                            this.setPlayer(1, 2, element);
+                          }
+                        } else {
+                          this.setPlayer(2, team2_index, element);
+                          team2_index = team2_index + 1;
+                        }
+                      }
+
+                      this.board.getChildByName('expectedTime').active = false;
+                      this.board.getChildByName('guide').active = false;
+                      this.board.getChildByName('ProgressBar').active = true;
+                      tween(this.board.getChildByName('ProgressBar').getComponent(ProgressBar)).to(2, {
+                        progress: 1
+                      }).start();
+                      this.time.getComponent(Label).string = '匹配成功,等待进入游戏';
+
+                    case 11:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+
+            function matchSuccess(_x2) {
+              return _matchSuccess.apply(this, arguments);
+            }
+
+            return matchSuccess;
+          }()
+        }, {
+          key: "setTime",
+          value: function setTime(time) {
+            if (this.board) {
+              var m = Math.floor(time / 60);
+              var s = Math.floor(time - m * 60);
+              this.time.getComponent(Label).string = "\u6B63\u5728\u5339\u914D (".concat(m > 9 ? m : '0' + m, ":").concat(s > 9 ? s : '0' + s, ")");
+            }
+          }
+        }, {
+          key: "setPlayer",
+          value: function setPlayer(teamNum, playerNum, playerInfo) {
+            var teamBox = null;
+            var userBox = null;
+            var waitBox = null;
+            var playerData = JSON.parse(playerInfo.profile);
+            teamBox = this.team1;
+
+            if (teamNum == 2) {
+              teamBox = this.team2;
+            }
+
+            userBox = teamBox.getChildByName('card').getChildByName('user1');
+            waitBox = teamBox.getChildByName('card').getChildByName('user1_wait');
+
+            if (playerNum == 2) {
+              userBox = teamBox.getChildByName('card').getChildByName('user2');
+              waitBox = teamBox.getChildByName('card').getChildByName('user2_wait');
+            }
+
+            if (playerInfo) {
+              userBox.getChildByName('nickName').getComponent(Label).string = playerData.nickname.length > 6 ? playerData.nickname.slice(0, 5) : playerData.nickname;
+
+              if (playerData.isVip) {
+                userBox.getChildByName('nickName').getComponent(Label).color = new Color(240, 190, 37, 255);
+                userBox.getChildByName('nickName').getChildByName('vip').active = true;
+              } else {
+                userBox.getChildByName('nickName').getComponent(Label).color = new Color(51, 51, 51, 255);
+                userBox.getChildByName('nickName').getChildByName('vip').active = false;
+              }
+
+              var _comp = userBox.getChildByName('avatarBg').getChildByName('avatar');
+
+              this.SDK.gameManager.Util.setAvatar(_comp, playerInfo, false);
+              userBox.active = true;
+              waitBox && (waitBox.active = false);
+            } else {
+              userBox.active = false;
+              waitBox && (waitBox.active = true);
+            }
+          }
+        }, {
+          key: "showLoverUI",
+          value: function () {
+            var _showLoverUI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              var isLover, enemyIsLover;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      _context4.next = 2;
+                      return this.SDK.gameManager.Util.teammaterIsLover();
+
+                    case 2:
+                      isLover = _context4.sent;
+                      _context4.next = 5;
+                      return this.SDK.gameManager.Util.enemyIsLover();
+
+                    case 5:
+                      enemyIsLover = _context4.sent;
+
+                      if (isLover) {
+                        this.team1.getChildByName('card').getChildByName('Lover').active = true;
+                      } else {
+                        this.team1.getChildByName('card').getChildByName('Lover').active = false;
+                      }
+
+                      if (enemyIsLover) {
+                        this.team2.getChildByName('card').getChildByName('Lover').active = true;
+                      } else {
+                        this.team2.getChildByName('card').getChildByName('Lover').active = false;
+                      }
+
+                    case 8:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+
+            function showLoverUI() {
+              return _showLoverUI.apply(this, arguments);
+            }
+
+            return showLoverUI;
+          }()
+        }, {
+          key: "changeMatchStatus",
+          value: function () {
+            var _changeMatchStatus = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              var teamId, isLover, enemyIsLover;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      _context5.next = 2;
+                      return this.SDK.getTeamId();
+
+                    case 2:
+                      teamId = _context5.sent;
+                      _context5.next = 5;
+                      return this.SDK.gameManager.Util.teammaterIsLover();
+
+                    case 5:
+                      isLover = _context5.sent;
+                      _context5.next = 8;
+                      return this.SDK.gameManager.Util.enemyIsLover();
+
+                    case 8:
+                      enemyIsLover = _context5.sent;
+
+                      if (!(teamId == TeamColor.blue)) {
+                        _context5.next = 40;
+                        break;
+                      }
+
+                      if (!isLover) {
+                        _context5.next = 18;
+                        break;
+                      }
+
+                      this.team1.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = false;
+                      this.team1.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = false;
+                      _context5.next = 15;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-2/spriteFrame', this.team1);
+
+                    case 15:
+                      this.team1.getComponent(Sprite).enabled = true;
+                      _context5.next = 25;
+                      break;
+
+                    case 18:
+                      this.team1.getComponent(Sprite).enabled = false;
+                      _context5.next = 21;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-2/spriteFrame', this.team1.getChildByName('card').getChildByName('user1'));
+
+                    case 21:
+                      _context5.next = 23;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-2/spriteFrame', this.team1.getChildByName('card').getChildByName('user2'));
+
+                    case 23:
+                      this.team1.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = true;
+                      this.team1.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = true;
+
+                    case 25:
+                      if (!enemyIsLover) {
+                        _context5.next = 33;
+                        break;
+                      }
+
+                      this.team2.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = false;
+                      this.team2.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = false;
+                      _context5.next = 30;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-1/spriteFrame', this.team2);
+
+                    case 30:
+                      this.team2.getComponent(Sprite).enabled = true;
+                      _context5.next = 40;
+                      break;
+
+                    case 33:
+                      this.team2.getComponent(Sprite).enabled = false;
+                      _context5.next = 36;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-1/spriteFrame', this.team2.getChildByName('card').getChildByName('user1'));
+
+                    case 36:
+                      _context5.next = 38;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-1/spriteFrame', this.team2.getChildByName('card').getChildByName('user2'));
+
+                    case 38:
+                      this.team2.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = true;
+                      this.team2.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = true;
+
+                    case 40:
+                      if (!(teamId == TeamColor.red)) {
+                        _context5.next = 71;
+                        break;
+                      }
+
+                      if (!isLover) {
+                        _context5.next = 49;
+                        break;
+                      }
+
+                      this.team1.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = false;
+                      this.team1.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = false;
+                      _context5.next = 46;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-1/spriteFrame', this.team1);
+
+                    case 46:
+                      this.team1.getComponent(Sprite).enabled = true;
+                      _context5.next = 56;
+                      break;
+
+                    case 49:
+                      this.team1.getComponent(Sprite).enabled = false;
+                      _context5.next = 52;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-1/spriteFrame', this.team1.getChildByName('card').getChildByName('user1'));
+
+                    case 52:
+                      _context5.next = 54;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-1/spriteFrame', this.team1.getChildByName('card').getChildByName('user2'));
+
+                    case 54:
+                      this.team1.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = true;
+                      this.team1.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = true;
+
+                    case 56:
+                      if (!enemyIsLover) {
+                        _context5.next = 64;
+                        break;
+                      }
+
+                      this.team2.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = false;
+                      this.team2.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = false;
+                      _context5.next = 61;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-2/spriteFrame', this.team2);
+
+                    case 61:
+                      this.team2.getComponent(Sprite).enabled = true;
+                      _context5.next = 71;
+                      break;
+
+                    case 64:
+                      this.team2.getComponent(Sprite).enabled = false;
+                      _context5.next = 67;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-2/spriteFrame', this.team2.getChildByName('card').getChildByName('user1'));
+
+                    case 67:
+                      _context5.next = 69;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/matching/2-2/spriteFrame', this.team2.getChildByName('card').getChildByName('user2'));
+
+                    case 69:
+                      this.team2.getChildByName('card').getChildByName('user1').getComponent(Sprite).enabled = true;
+                      this.team2.getChildByName('card').getChildByName('user2').getComponent(Sprite).enabled = true;
+
+                    case 71:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
+            }));
+
+            function changeMatchStatus() {
+              return _changeMatchStatus.apply(this, arguments);
+            }
+
+            return changeMatchStatus;
+          }()
+        }]);
+
+        return UIControl;
+      }();
+
+      _export("MatchingBoard", MatchingBoard = (_dec = throttle(), (_class = (_temp = /*#__PURE__*/function (_BaseBoard) {
+        _inherits(MatchingBoard, _BaseBoard);
+
+        function MatchingBoard(scene, sdk) {
+          var _this;
+
+          _classCallCheck(this, MatchingBoard);
+
+          _this = _possibleConstructorReturn(this, _getPrototypeOf(MatchingBoard).call(this, scene, sdk));
+          _this.uiControl = null;
+          _this.matchingTime = 0;
+          _this.initTime = -100;
+          _this.waitInit = false;
+          _this.name = 'MatchingBoard';
+          _this.uiControl = new UIControl(_this.board, _this.SDK);
+          return _this;
+        }
+
+        _createClass(MatchingBoard, [{
+          key: "setListener",
+          value: function setListener() {
+            _get(_getPrototypeOf(MatchingBoard.prototype), "setListener", this).call(this);
+
+            this.SDK.Room.onCancelMatch = this.onCancelMatch.bind(this);
+            this.SDK.Room.onMatch = this.onMatch.bind(this);
+            this.SDK.curRoom.onRecvFromClient = this.onRecvFromClient.bind(this);
+            this.SDK.curRoom.onLeaveRoom = this.onLeaveRoom.bind(this);
+            this.SDK.curRoom.onRecvFromGameSvr = this.onRecvFromGameSvr.bind(this);
+            this.SDK.gameManager.timerSingal = this.onTimerSingal.bind(this);
+          }
+        }, {
+          key: "initData",
+          value: function initData() {
+            _get(_getPrototypeOf(MatchingBoard.prototype), "initData", this).call(this);
+
+            this.matchingTime = 0;
+            this.initTime = 0;
+            this.waitInit = false;
+            this.SDK.gameManager.Util.isRobotRoomCache = undefined;
+          }
+          /* 各类监听方法 */
+
+        }, {
+          key: "onTimerSingal",
+          value: function () {
+            var _onTimerSingal = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      if (this.dead) {
+                        _context6.next = 19;
+                        break;
+                      }
+
+                      if (this.waitInit) {
+                        _context6.next = 6;
+                        break;
+                      }
+
+                      this.uiControl.setTime(this.matchingTime);
+                      this.matchingTime += 0.2;
+                      _context6.next = 19;
+                      break;
+
+                    case 6:
+                      this.initTime += 0.2;
+
+                      if (!(this.initTime >= 2 && this.initTime < 2.3)) {
+                        _context6.next = 11;
+                        break;
+                      }
+
+                      log('未正常接收到初始化数据,发送请求初始化数据请求');
+                      _context6.next = 11;
+                      return this.SDK.sendToServer(ClientDataType.RequestInitData, 1);
+
+                    case 11:
+                      log('inittime', this.initTime);
+
+                      if (!(this.initTime > 6)) {
+                        _context6.next = 19;
+                        break;
+                      }
+
+                      this.initTime = 0;
+                      this.waitInit = false;
+                      this.SDK.gameManager.timerSingal = null;
+                      this.SDK.gameManager.showToast('加载游戏失败', 2);
+                      _context6.next = 19;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 19:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function onTimerSingal() {
+              return _onTimerSingal.apply(this, arguments);
+            }
+
+            return onTimerSingal;
+          }()
+        }, {
+          key: "onCancelMatch",
+          value: function () {
+            var _onCancelMatch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(event) {
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      log('接收到取消匹配的信号', event);
+                      _context7.next = 3;
+                      return this.leaveMatchingBoard();
+
+                    case 3:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7, this);
+            }));
+
+            function onCancelMatch(_x3) {
+              return _onCancelMatch.apply(this, arguments);
+            }
+
+            return onCancelMatch;
+          }()
+        }, {
+          key: "onMatch",
+          value: function () {
+            var _onMatch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(event) {
+              var isRobotRoom, _groupInfo, playerIndex, code, _groupInfo2, groupInfo;
+
+              return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                while (1) {
+                  switch (_context8.prev = _context8.next) {
+                    case 0:
+                      if (!(event.data.errCode === this.SDK.errorCode.EC_OK)) {
+                        _context8.next = 25;
+                        break;
+                      }
+
+                      log('匹配成功', event.data);
+                      this.SDK.curRoom.initRoom(event.data.roomInfo);
+                      this.SDK.Listener.add(this.SDK.curRoom);
+                      this.waitInit = true; // 修改流程,为了配合AI机制,匹配成功的时候不进行UI修改,等待服务器发送信号后再进行UI修改
+                      // 判断是否为机器人房间,是的话如果当前玩家在队伍中的位置为第一则由他伪造一份敌人数据
+
+                      isRobotRoom = this.SDK.gameManager.Util.IsRobotRoom();
+
+                      if (isRobotRoom) {
+                        log('匹配成功', '当前房间为AI房间');
+                      } // 如果是单人匹配成功后,自动与随机匹配到的队友组成一个group,用于游戏结束后的通信
+
+
+                      _context8.next = 9;
+                      return this.SDK.getGroupInfo();
+
+                    case 9:
+                      _groupInfo = _context8.sent;
+
+                      if (_groupInfo) {
+                        _context8.next = 24;
+                        break;
+                      }
+
+                      _context8.next = 13;
+                      return this.SDK.getPlayerIndex();
+
+                    case 13:
+                      playerIndex = _context8.sent;
+
+                      if (!(playerIndex == 1)) {
+                        _context8.next = 24;
+                        break;
+                      }
+
+                      _context8.next = 17;
+                      return this.SDK.createGroup();
+
+                    case 17:
+                      code = _context8.sent;
+
+                      if (!(code == MGOBE.ErrCode.EC_OK)) {
+                        _context8.next = 24;
+                        break;
+                      }
+
+                      _context8.next = 21;
+                      return this.SDK.getGroupInfo();
+
+                    case 21:
+                      _groupInfo2 = _context8.sent;
+                      _context8.next = 24;
+                      return this.SDK.sendToRoom(RoomDataType.MatchedJoinGroup, _groupInfo2.id);
+
+                    case 24:
+                      return _context8.abrupt("return");
+
+                    case 25:
+                      log('匹配超时');
+                      this.SDK.gameManager.showToast('匹配超时', 2);
+                      _context8.next = 29;
+                      return this.SDK.getGroupInfo();
+
+                    case 29:
+                      groupInfo = _context8.sent;
+                      _context8.next = 32;
+                      return this.ChangeBoard(groupInfo ? this.SDK.gameManager.WaitLoverBoard : this.SDK.gameManager.MainBoard);
+
+                    case 32:
+                    case "end":
+                      return _context8.stop();
+                  }
+                }
+              }, _callee8, this);
+            }));
+
+            function onMatch(_x4) {
+              return _onMatch.apply(this, arguments);
+            }
+
+            return onMatch;
+          }()
+        }, {
+          key: "onLeaveRoom",
+          value: function () {
+            var _onLeaveRoom = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(event) {
+              return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      if (!this.dead) {
+                        this.dead = true;
+                        this.SDK.gameManager.showToast('有玩家离开了', 2);
+                        this.ChangeBoard(this.SDK.gameManager.MainBoard);
+                      }
+
+                    case 1:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9, this);
+            }));
+
+            function onLeaveRoom(_x5) {
+              return _onLeaveRoom.apply(this, arguments);
+            }
+
+            return onLeaveRoom;
+          }()
+        }, {
+          key: "onRecvFromGameSvr",
+          value: function () {
+            var _onRecvFromGameSvr = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(event) {
+              var _this2 = this;
+
+              var data, mesType, serverData, selfInfo, failedMatching, index, element, _players, _serverData, localTime, dia;
+
+              return regeneratorRuntime.wrap(function _callee11$(_context11) {
+                while (1) {
+                  switch (_context11.prev = _context11.next) {
+                    case 0:
+                      log('接收到实时服务器的数据:', event.data);
+                      data = event.data.data;
+                      mesType = data.type;
+
+                      if (!(mesType == ServerDataType.Init)) {
+                        _context11.next = 35;
+                        break;
+                      }
+
+                      this.initTime = 2.4;
+                      serverData = data.data;
+                      log('初始化参数:', serverData);
+                      this.SDK.gameManager.node.emit('GameInit', serverData.init);
+                      /* 
+                      对服务器发送的初始化数据中的playerList进行数据解析,对AI玩家的数据进行缓存,
+                      并根据所有玩家的数据修改UI,为了保证对局不可能出现[人+人 VS 人+AI]的情况,
+                      如果有人一个人发现自己的队友为电脑玩家,则判定匹配失败,直接离开队组和房间.其他玩家也会接收到相应信号提示匹配失败
+                      */
+
+                      _context11.next = 10;
+                      return this.SDK.getPlayerInfo();
+
+                    case 10:
+                      selfInfo = _context11.sent;
+                      failedMatching = false;
+
+                      for (index = 0; index < serverData.playerList.length; index++) {
+                        element = serverData.playerList[index];
+
+                        if (element.isRobot) {
+                          this.SDK.gameManager.robotInfo[element.id] = element;
+
+                          if (element.teamId == selfInfo.teamId) {
+                            failedMatching = true;
+                          }
+                        }
+                      }
+
+                      if (!failedMatching) {
+                        _context11.next = 18;
+                        break;
+                      }
+
+                      this.SDK.gameManager.showToast('匹配失败', 1.5);
+                      this.ChangeBoard(this.SDK.gameManager.MainBoard);
+                      _context11.next = 33;
+                      break;
+
+                    case 18:
+                      _context11.t0 = this.SDK.gameManager.Util;
+                      _context11.next = 21;
+                      return this.SDK.gameManager.Util.teammaterIsLover();
+
+                    case 21:
+                      if (!_context11.sent) {
+                        _context11.next = 25;
+                        break;
+                      }
+
+                      _context11.t1 = StatisticsKey.main_couple_match;
+                      _context11.next = 26;
+                      break;
+
+                    case 25:
+                      _context11.t1 = StatisticsKey.main_quick_match;
+
+                    case 26:
+                      _context11.t2 = _context11.t1;
+
+                      _context11.t0.callTDGA.call(_context11.t0, _context11.t2);
+
+                      _context11.next = 30;
+                      return this.uiControl.changeMatchStatus();
+
+                    case 30:
+                      _players = [];
+                      Object.keys(serverData.init.gameState.teamList).map(function (i) {
+                        serverData.init.gameState.teamList[i].playerList.map(function (p) {
+                          _players.push(p);
+                        });
+                      });
+                      this.uiControl.matchSuccess(_players);
+
+                    case 33:
+                      _context11.next = 50;
+                      break;
+
+                    case 35:
+                      if (!(mesType == ServerDataType.Start)) {
+                        _context11.next = 46;
+                        break;
+                      }
+
+                      this.SDK.gameManager.isRunning = true;
+                      _serverData = data.data;
+                      this.SDK.gameManager.startTime = _serverData.startTime;
+                      localTime = this.SDK.gameManager.Util.getLocalTime();
+
+                      if (Math.abs(localTime - _serverData.startTime) > 5) {
+                        dia = new Dialog(this.scene, this.SDK, '检测到您本地时间有误,可能导致游戏倒计时显示错误', DialogButtonType.single, '知道了');
+                        dia.show(this, function () {
+                          _this2.SDK.curDialog.destroy();
+                        });
+                      }
+
+                      if (this.SDK.gameManager.Config.env == 'dev') {
+                        this.SDK.gameManager.gameTime = this.SDK.gameManager.Config.DebugGameTime > 0 ? this.SDK.gameManager.Config.DebugGameTime : data.data.gameTime;
+                      } else {
+                        this.SDK.gameManager.gameTime = data.data.gameTime;
+                      }
+
+                      log('[游戏开始数据]', _serverData);
+                      setTimeout( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+                        return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                          while (1) {
+                            switch (_context10.prev = _context10.next) {
+                              case 0:
+                                _context10.next = 2;
+                                return _this2.ChangeBoard(_this2.SDK.gameManager.GamingBoard);
+
+                              case 2:
+                              case "end":
+                                return _context10.stop();
+                            }
+                          }
+                        }, _callee10);
+                      })), 2000);
+                      _context11.next = 50;
+                      break;
+
+                    case 46:
+                      if (!(mesType == ServerDataType.NetState)) {
+                        _context11.next = 50;
+                        break;
+                      }
+
+                      if (!this.dead) {
+                        _context11.next = 49;
+                        break;
+                      }
+
+                      return _context11.abrupt("return");
+
+                    case 49:
+                      log('[matching]接收到在线状态变更信息', data.data);
+                    // const loverInfo = await this.SDK.getLoverInfo();
+                    // const eventPlayerId = data.data.playerId;
+                    // const eventState = data.data.state;
+                    // const eventIsTeammater = loverInfo.id == eventPlayerId;
+                    // const isLover = await this.SDK.gameManager.Util.teammaterIsLover();
+                    // let dia:Dialog;
+                    // let newBoard:BaseBoard = this.SDK.gameManager.MainBoard;
+                    // this.dead = true;
+                    // if(eventState == NetState.Offline) {
+                    //     await this.SDK.leaveRoom();
+                    //     if(loverInfo) {
+                    //         if(eventIsTeammater) {
+                    //             this.SDK.leaveGroup();
+                    //             if(isLover) {
+                    //                 this.SDK.gameManager.showToast('另一半离开了房间', 2);
+                    //             } else {
+                    //                 this.SDK.gameManager.showToast('队友离开了房间', 2);
+                    //             }
+                    //         } else {
+                    //             if(isLover) {
+                    //                 newBoard = this.SDK.gameManager.WaitLoverBoard;
+                    //                 this.SDK.gameManager.showToast('对方离开了房间', 2);
+                    //             } else {
+                    //                 this.SDK.leaveGroup();
+                    //                 this.SDK.gameManager.showToast('对方离开了房间', 2);
+                    //             }
+                    //         }
+                    //     } else {
+                    //         this.SDK.leaveGroup();
+                    //     }
+                    //     this.ChangeBoard(newBoard);
+                    // }
+
+                    case 50:
+                    case "end":
+                      return _context11.stop();
+                  }
+                }
+              }, _callee11, this);
+            }));
+
+            function onRecvFromGameSvr(_x6) {
+              return _onRecvFromGameSvr.apply(this, arguments);
+            }
+
+            return onRecvFromGameSvr;
+          }()
+        }, {
+          key: "onRecvFromClient",
+          value: function () {
+            var _onRecvFromClient = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(event) {
+              var mesData, type, data, senderId;
+              return regeneratorRuntime.wrap(function _callee12$(_context12) {
+                while (1) {
+                  switch (_context12.prev = _context12.next) {
+                    case 0:
+                      mesData = JSON.parse(event.data.msg);
+                      type = mesData.type;
+                      data = mesData.data;
+                      senderId = event.data.sendPlayerId;
+
+                      if (!(type == RoomDataType.MatchedJoinGroup)) {
+                        _context12.next = 8;
+                        break;
+                      }
+
+                      log('接收到路人组队的队组ID', data);
+                      _context12.next = 8;
+                      return this.SDK.joinGroup(data);
+
+                    case 8:
+                    case "end":
+                      return _context12.stop();
+                  }
+                }
+              }, _callee12, this);
+            }));
+
+            function onRecvFromClient(_x7) {
+              return _onRecvFromClient.apply(this, arguments);
+            }
+
+            return onRecvFromClient;
+          }()
+          /* ------------------------------------------------------------------------------- */
+
+        }, {
+          key: "InitEvent",
+          value: function InitEvent() {
+            _get(_getPrototypeOf(MatchingBoard.prototype), "InitEvent", this).call(this);
+
+            var button_cancel = this.board.getChildByName('CancelMatchButton').getChildByName('Button');
+            button_cancel.on(SystemEventType.TOUCH_END, this.clickCancelMatch, this);
+          }
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            _get(_getPrototypeOf(MatchingBoard.prototype), "destroy", this).call(this);
+
+            var button_cancel = this.board.getChildByName('CancelMatchButton').getChildByName('Button');
+            button_cancel.off(SystemEventType.TOUCH_END);
+          }
+        }, {
+          key: "clickCancelMatch",
+          value: function () {
+            var _clickCancelMatch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+              return regeneratorRuntime.wrap(function _callee13$(_context13) {
+                while (1) {
+                  switch (_context13.prev = _context13.next) {
+                    case 0:
+                      if (!this.dead) {
+                        _context13.next = 2;
+                        break;
+                      }
+
+                      return _context13.abrupt("return");
+
+                    case 2:
+                      this.dead = true;
+                      _context13.next = 5;
+                      return this.SDK.cancelMatchinig();
+
+                    case 5:
+                    case "end":
+                      return _context13.stop();
+                  }
+                }
+              }, _callee13, this);
+            }));
+
+            function clickCancelMatch() {
+              return _clickCancelMatch.apply(this, arguments);
+            }
+
+            return clickCancelMatch;
+          }()
+        }, {
+          key: "leaveMatchingBoard",
+          value: function () {
+            var _leaveMatchingBoard = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+              var groupInfo, key;
+              return regeneratorRuntime.wrap(function _callee14$(_context14) {
+                while (1) {
+                  switch (_context14.prev = _context14.next) {
+                    case 0:
+                      _context14.next = 2;
+                      return this.SDK.getGroupInfo();
+
+                    case 2:
+                      groupInfo = _context14.sent;
+                      _context14.t0 = groupInfo;
+
+                      if (!_context14.t0) {
+                        _context14.next = 8;
+                        break;
+                      }
+
+                      _context14.next = 7;
+                      return this.SDK.gameManager.Util.teammaterIsLover();
+
+                    case 7:
+                      _context14.t0 = _context14.sent;
+
+                    case 8:
+                      if (!_context14.t0) {
+                        _context14.next = 12;
+                        break;
+                      }
+
+                      _context14.t1 = StatisticsKey.main_couple_cancel;
+                      _context14.next = 13;
+                      break;
+
+                    case 12:
+                      _context14.t1 = StatisticsKey.main_quick_cancel;
+
+                    case 13:
+                      key = _context14.t1;
+                      this.SDK.gameManager.Util.callTDGA(key);
+                      _context14.next = 17;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 17:
+                    case "end":
+                      return _context14.stop();
+                  }
+                }
+              }, _callee14, this);
+            }));
+
+            function leaveMatchingBoard() {
+              return _leaveMatchingBoard.apply(this, arguments);
+            }
+
+            return leaveMatchingBoard;
+          }()
+        }]);
+
+        return MatchingBoard;
+      }(BaseBoard), _temp), _applyDecoratedDescriptor(_class.prototype, "clickCancelMatch", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "clickCancelMatch"), _class.prototype), _class)));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Board/ResultBoard.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Const.js", "../../Util.js", "./BaseBoard.js", "../avatar.js"], function (_export, _context12) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _createClass, _get, _asyncToGenerator, cclegacy, SystemEventType, Animation, Label, ProgressBar, AudioSource, Vec3, tween, Color, Sprite, log, TeamColor, PlayerState, GroupMessageType, GroupSysMessageType, StatisticsKey, throttle, BaseBoard, Avatar, _dec, _dec2, _dec3, _class, _temp, UIControl, ResultBoard;
+
+  _export({
+    _dec: void 0,
+    _dec2: void 0,
+    _dec3: void 0,
+    _class: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _get = _virtual_rollupPluginBabelHelpersJs.get;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      SystemEventType = _cc.SystemEventType;
+      Animation = _cc.Animation;
+      Label = _cc.Label;
+      ProgressBar = _cc.ProgressBar;
+      AudioSource = _cc.AudioSource;
+      Vec3 = _cc.Vec3;
+      tween = _cc.tween;
+      Color = _cc.Color;
+      Sprite = _cc.Sprite;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      TeamColor = _ConstJs.TeamColor;
+      PlayerState = _ConstJs.PlayerState;
+      GroupMessageType = _ConstJs.GroupMessageType;
+      GroupSysMessageType = _ConstJs.GroupSysMessageType;
+      StatisticsKey = _ConstJs.StatisticsKey;
+    }, function (_UtilJs) {
+      throttle = _UtilJs.throttle;
+    }, function (_BaseBoardJs) {
+      BaseBoard = _BaseBoardJs.BaseBoard;
+    }, function (_avatarJs) {
+      Avatar = _avatarJs.Avatar;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "8a67cE5ERBGL6NMmCPaURz2", "ResultBoard", undefined);
+
+      UIControl = /*#__PURE__*/function () {
+        function UIControl(board, sdk) {
+          _classCallCheck(this, UIControl);
+
+          this.board = null;
+          this.SDK = null;
+          this.isLover = false;
+          this.redTeam = [];
+          this.blueTeam = [];
+          this.players = [];
+          this.result = null;
+          log('初始化UI控制');
+          this.board = board;
+          this.SDK = sdk;
+        }
+
+        _createClass(UIControl, [{
+          key: "initData",
+          value: function () {
+            var _initData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var teammater;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      _context.next = 2;
+                      return this.SDK.getTeammate();
+
+                    case 2:
+                      teammater = _context.sent;
+
+                      if (teammater) {
+                        this.setOnceMore(0);
+                      } else {
+                        this.setOnceMore(4);
+                      }
+
+                    case 4:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function initData() {
+              return _initData.apply(this, arguments);
+            }
+
+            return initData;
+          }()
+        }, {
+          key: "initUI",
+          value: function () {
+            var _initUI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(board) {
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      this.board = board;
+                      _context2.next = 3;
+                      return this.SDK.gameManager.Util.teammaterIsLover();
+
+                    case 3:
+                      this.isLover = _context2.sent;
+                      _context2.next = 6;
+                      return this.initBoardData(this.result);
+
+                    case 6:
+                      this.changeTeammater = this.board.getChildByName('other');
+                      this.homepage = this.board.getChildByName('back');
+
+                      if (this.isLover) {
+                        this.onceMore = this.board.getChildByName('loverOnceMore');
+                        this.board.getChildByName('other').active = false;
+                        this.board.getChildByName('onceMore').active = false;
+                        this.board.getChildByName('loverOnceMore').active = true;
+                      } else {
+                        this.onceMore = this.board.getChildByName('onceMore');
+                        this.board.getChildByName('other').active = true;
+                        this.board.getChildByName('onceMore').active = true;
+                        this.board.getChildByName('loverOnceMore').active = false;
+                      }
+
+                      this.SDK.gameManager.Util.loadImg('Texture/UI/result/anniu_1/spriteFrame', this.onceMore);
+
+                    case 10:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function initUI(_x) {
+              return _initUI.apply(this, arguments);
+            }
+
+            return initUI;
+          }()
+        }, {
+          key: "initBoardData",
+          value: function () {
+            var _initBoardData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(result) {
+              var _this = this;
+
+              var _cup, _board, lover, profile, loverProfile, boyAvatarNode, girlAvatarNode, progress, loverRes, original, _final, levelList, team1Score, team2Score, _mvpNode, _anima, mvp_pos, top, rate;
+
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      _cup = this.board.getChildByName('scoreBoard').getChildByName('cup');
+                      _cup.getChildByName('win').active = false;
+                      _cup.getChildByName('draw').active = false;
+                      _cup.getChildByName('default').active = false;
+                      this.board.getChildByName('scoreBoard').getChildByName('mvp').active = false;
+                      _context4.next = 7;
+                      return this.SDK.getPlayerInfo();
+
+                    case 7:
+                      this.playerInfo = _context4.sent;
+                      if (!result.winnerTeam) _cup.getChildByName('draw').active = true;
+
+                      if (!(this.SDK.gameManager.serverPlayer.teamId == TeamColor.red && result.winnerTeam == TeamColor.red || this.SDK.gameManager.serverPlayer.teamId == TeamColor.blue && result.winnerTeam == TeamColor.blue)) {
+                        _context4.next = 14;
+                        break;
+                      }
+
+                      _context4.next = 12;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/result/ying/spriteFrame', this.board.getChildByName('scoreBoard'));
+
+                    case 12:
+                      _cup.getChildByName('win').active = true;
+                      this.SDK.gameManager.getComponent(AudioSource).playOneShot(this.SDK.gameManager.audio_win, 1);
+
+                    case 14:
+                      if (!(this.SDK.gameManager.serverPlayer.teamId == TeamColor.red && result.winnerTeam == TeamColor.blue || this.SDK.gameManager.serverPlayer.teamId == TeamColor.blue && result.winnerTeam == TeamColor.red)) {
+                        _context4.next = 19;
+                        break;
+                      }
+
+                      _context4.next = 17;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/result/shu/spriteFrame', this.board.getChildByName('scoreBoard'));
+
+                    case 17:
+                      _cup.getChildByName('default').active = true;
+                      this.SDK.gameManager.Util.playAudio(this.SDK.gameManager.audio_failed);
+
+                    case 19:
+                      _board = null;
+
+                      if (!this.isLover) {
+                        _context4.next = 38;
+                        break;
+                      }
+
+                      this.board.getChildByName('scoreBoard').getChildByName('loverBoard').active = true;
+                      this.board.getChildByName('scoreBoard').getChildByName('strengerBoard').active = false;
+                      _board = this.board.getChildByName('scoreBoard').getChildByName('loverBoard');
+                      _context4.next = 26;
+                      return this.SDK.getLoverInfo();
+
+                    case 26:
+                      lover = _context4.sent;
+
+                      if (!lover) {
+                        Object.keys(result.teamList).map(function (i) {
+                          result.teamList[i].playerList.map(function (p) {
+                            if (result.teamList[i].id === _this.playerInfo.teamId && p.id !== _this.playerInfo.id) {
+                              lover = p;
+                            }
+                          });
+                        });
+                      }
+
+                      profile = JSON.parse(this.playerInfo.profile);
+                      loverProfile = lover.profile ? JSON.parse(lover.profile) : lover;
+                      boyAvatarNode = _board.getChildByName('top').getChildByName('Avatar').getChildByName('boyAvatar');
+                      girlAvatarNode = _board.getChildByName('top').getChildByName('Avatar2').getChildByName('girlAvatar');
+
+                      if (profile.gender === 1) {
+                        this.SDK.gameManager.Util.loadRemoteImg(profile.avatar_url, boyAvatarNode);
+                        this.SDK.gameManager.Util.loadRemoteImg(loverProfile.avatar_url ? loverProfile.avatar_url : loverProfile.avatar, girlAvatarNode);
+                      } else {
+                        this.SDK.gameManager.Util.loadRemoteImg(loverProfile.avatar_url ? loverProfile.avatar_url : loverProfile.avatar, boyAvatarNode);
+                        this.SDK.gameManager.Util.loadRemoteImg(profile.avatar_url, girlAvatarNode);
+                      }
+
+                      if (profile.isVip) {
+                        boyAvatarNode.getChildByName('isVip').active = true;
+                        girlAvatarNode.getChildByName('isVip').active = true;
+                      } else {
+                        boyAvatarNode.getChildByName('isVip').active = false;
+                        girlAvatarNode.getChildByName('isVip').active = false;
+                      }
+
+                      progress = _board.getChildByName('top').getChildByName('ProgressBar');
+
+                      if (result.tacit_score_info && result.tacit_score_info.length) {
+                        loverRes = result.tacit_score_info.filter(function (v) {
+                          return v.lover_id === JSON.parse(_this.playerInfo.profile).lover_id;
+                        })[0];
+                        _board.getChildByName('top').getChildByName('Lv').getComponent(Label).string = "\u604B\u4EBALv.".concat(this.SDK.gameManager.Util.loverLevel(loverRes.original_tacit_score));
+                        _board.getChildByName('top').getChildByName('LvHeart').getChildByName('Lv').getComponent(Label).string = "".concat(this.SDK.gameManager.Util.loverLevel(loverRes.original_tacit_score));
+                        _board.getChildByName('top').getChildByName('desc').getChildByName('score').getComponent(Label).string = "+".concat(loverRes.add_tacit_score);
+                        original = loverRes.original_tacit_score;
+                        _final = loverRes.original_tacit_score + loverRes.add_tacit_score;
+                        this.progressBarScore(progress, original);
+                        levelList = [50, 150, 350, 850, 1850, 3850, 6850, 11850, 18850, 28850];
+                        setTimeout(function () {
+                          var timer = setInterval(function () {
+                            if (original >= _final) {
+                              _board.getChildByName('top').getChildByName('Lv').getComponent(Label).string = "\u604B\u4EBALv.".concat(_this.SDK.gameManager.Util.loverLevel(_final));
+                              _board.getChildByName('top').getChildByName('LvHeart').getChildByName('Lv').getComponent(Label).string = "".concat(_this.SDK.gameManager.Util.loverLevel(_final));
+                              clearInterval(timer);
+                              return;
+                            }
+
+                            if (original < _final) {
+                              original++;
+
+                              if (levelList.indexOf(original) > -1 && original < _final) {
+                                progress.getComponent(ProgressBar).progress = 0;
+                              } else {
+                                _this.progressBarScore(progress, original);
+                              }
+                            }
+                          }, 10);
+                        }, result.mvp === this.playerInfo.id ? 3500 : 500);
+                      }
+
+                      _context4.next = 42;
+                      break;
+
+                    case 38:
+                      this.board.getChildByName('scoreBoard').getChildByName('loverBoard').active = false;
+                      this.board.getChildByName('scoreBoard').getChildByName('strengerBoard').active = true;
+                      _board = this.board.getChildByName('scoreBoard').getChildByName('strengerBoard');
+
+                      _board.getChildByName('players').children.map(function (v, i) {
+                        v.getChildByName('avatar').getChildByName('onceMore').active = false;
+                        v.getChildByName('avatar').getChildByName('leave').active = false;
+                      });
+
+                    case 42:
+                      team1Score = 0;
+                      team2Score = 0;
+                      _mvpNode = this.board.getChildByName('scoreBoard').getChildByName('mvp');
+                      _anima = _mvpNode.getComponent(Animation);
+                      mvp_pos = new Vec3();
+                      this.players = [];
+                      this.redTeam = [];
+                      this.blueTeam = [];
+
+                      _anima.onLoad();
+
+                      Object.keys(result.teamList).map(function (i) {
+                        if (result.teamList[i].id == TeamColor.red) {
+                          result.teamList[i].playerList.map( /*#__PURE__*/function () {
+                            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(v, index) {
+                              var _comp;
+
+                              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                                while (1) {
+                                  switch (_context3.prev = _context3.next) {
+                                    case 0:
+                                      if (!_this.players.find(function (p) {
+                                        return p.id === v.id;
+                                      })) _this.players.push(v);
+
+                                      _this.redTeam.push({
+                                        player: v,
+                                        node: "avatar".concat(index + 1)
+                                      });
+
+                                      team1Score += v.score;
+
+                                      if (_this.isLover) {
+                                        _comp = _board.getChildByName('teamRed').getChildByName('avatars').getChildByName("avatar".concat(index + 1));
+                                        _comp.getChildByName('score').getComponent(Label).string = "".concat(v.score, "\u5206");
+                                        _comp.getChildByName('onceMore').active = false;
+                                        _comp.getChildByName('leave').active = false;
+
+                                        if (v.gender === 1) {
+                                          _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/boy/spriteFrame', _comp.getChildByName('avatar').getChildByName('gender'));
+                                        } else {
+                                          _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/girl/spriteFrame', _comp.getChildByName('avatar').getChildByName('gender'));
+                                        }
+
+                                        if (v.status === 0) {
+                                          _comp.getChildByName('offLine').active = true;
+
+                                          _comp.getChildByName('avatar').getComponent(Avatar).setOffline();
+                                        } else {
+                                          _comp.getChildByName('offLine').active = false;
+
+                                          _comp.getChildByName('avatar').getComponent(Avatar).setOnline();
+                                        }
+
+                                        if (v.isVip) {
+                                          _comp.getChildByName('avatar').getChildByName('isVip').active = true;
+                                        } else {
+                                          _comp.getChildByName('avatar').getChildByName('isVip').active = false;
+                                        }
+
+                                        _this.SDK.gameManager.Util.loadRemoteImg(v.avatar, _comp.getChildByName('avatar'));
+
+                                        v.id === result.mvp && (mvp_pos = new Vec3(_comp.getPosition().x - 190, _comp.getPosition().y - 150, 0));
+                                      } else {
+                                        _comp = _board.getChildByName('top').getChildByName('teamRed').getChildByName("avatar".concat(index + 1));
+
+                                        _this.SDK.gameManager.Util.loadRemoteImg(v.avatar, _comp);
+
+                                        v.gender === 1 && _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/boy/spriteFrame', _comp.getChildByName('gender'));
+                                        v.gender === 2 && _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/girl/spriteFrame', _comp.getChildByName('gender'));
+                                        if (v.isVip) _comp.getChildByName('isVip').active = true;else _comp.getChildByName('isVip').active = false;
+                                      }
+
+                                    case 4:
+                                    case "end":
+                                      return _context3.stop();
+                                  }
+                                }
+                              }, _callee3);
+                            }));
+
+                            return function (_x3, _x4) {
+                              return _ref.apply(this, arguments);
+                            };
+                          }());
+                        }
+
+                        if (result.teamList[i].id == TeamColor.blue) {
+                          result.teamList[i].playerList.map(function (v, index) {
+                            var _comp;
+
+                            if (!_this.players.find(function (p) {
+                              return p.id === v.id;
+                            })) _this.players.push(v);
+
+                            _this.blueTeam.push({
+                              player: v,
+                              node: "avatar".concat(index + 1)
+                            });
+
+                            team2Score += v.score;
+
+                            if (_this.isLover) {
+                              _comp = _board.getChildByName('teamBlue').getChildByName('avatars').getChildByName("avatar".concat(index + 1));
+                              _comp.getChildByName('score').getComponent(Label).string = "".concat(v.score, "\u5206");
+                              _comp.getChildByName('onceMore').active = false;
+                              _comp.getChildByName('leave').active = false;
+
+                              if (v.gender === 1) {
+                                _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/boy/spriteFrame', _comp.getChildByName('avatar').getChildByName('gender'));
+                              } else {
+                                _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/girl/spriteFrame', _comp.getChildByName('avatar').getChildByName('gender'));
+                              }
+
+                              if (v.status === 0) {
+                                _comp.getChildByName('offLine').active = true;
+
+                                _comp.getChildByName('avatar').getComponent(Avatar).setOffline();
+                              } else {
+                                _comp.getChildByName('offLine').active = false;
+
+                                _comp.getChildByName('avatar').getComponent(Avatar).setOnline();
+                              }
+
+                              if (v.isVip) {
+                                _comp.getChildByName('avatar').getChildByName('isVip').active = true;
+                              } else {
+                                _comp.getChildByName('avatar').getChildByName('isVip').active = false;
+                              }
+
+                              _this.SDK.gameManager.Util.loadRemoteImg(v.avatar, _comp.getChildByName('avatar'));
+
+                              v.id === result.mvp && (mvp_pos = new Vec3(_comp.getPosition().x + 120, _comp.getPosition().y - 150, 0));
+                            } else {
+                              _comp = _board.getChildByName('top').getChildByName('teamBlue').getChildByName("avatar".concat(index + 1));
+
+                              _this.SDK.gameManager.Util.loadRemoteImg(v.avatar, _comp);
+
+                              v.gender === 1 && _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/boy/spriteFrame', _comp.getChildByName('gender'));
+                              v.gender === 2 && _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/girl/spriteFrame', _comp.getChildByName('gender'));
+                              if (v.isVip) _comp.getChildByName('isVip').active = true;else _comp.getChildByName('isVip').active = false;
+                            }
+                          });
+                        }
+                      });
+
+                      if (!this.isLover) {
+                        top = this.board.getChildByName('scoreBoard').getChildByName('strengerBoard').getChildByName('top');
+                        top.getChildByName('scoreBar').getComponent(ProgressBar).progress = 0.5;
+                        top.getChildByName('scoreBar').getChildByName('Bar').getChildByName('vs').position = new Vec3(240, 5, 0);
+                        rate = team1Score + team2Score !== 0 ? team1Score / (team1Score + team2Score) : 0.5;
+                        if (rate < 0.2) rate = 0.2;
+                        if (rate > 0.8) rate = 0.8;
+                        setTimeout(function () {
+                          tween(top.getChildByName('scoreBar').getComponent(ProgressBar)).to(.3, {
+                            progress: rate
+                          }).start();
+                          tween(top.getChildByName('scoreBar').getChildByName('Bar').getChildByName('vs')).to(.3, {
+                            position: new Vec3(480 * rate, 5, 0)
+                          }).start();
+                        }, 100);
+                        top.getChildByName('scoreBar').getChildByName('redScore').getComponent(Label).string = "".concat(team1Score);
+                        top.getChildByName('scoreBar').getChildByName('blueScore').getComponent(Label).string = "".concat(team2Score);
+                        this.players.sort(function (a, b) {
+                          return b.score - a.score;
+                        });
+                        this.players.map(function (v, i) {
+                          var user = _board.getChildByName('players').getChildByName("player".concat(i + 1));
+
+                          _this.SDK.gameManager.Util.loadRemoteImg(v.avatar, user.getChildByName('avatar'));
+
+                          user.getChildByName('nickName').getComponent(Label).string = v.name.length > 6 ? v.name.slice(0, 5) : v.name;
+                          user.getChildByName('score').getComponent(Label).string = "".concat(v.score, "\u5206");
+
+                          if (v.isVip) {
+                            user.getChildByName('nickName').getComponent(Label).color = new Color(240, 190, 37, 255);
+                            user.getChildByName('nickName').getChildByName('vip').active = true;
+                          } else {
+                            user.getChildByName('nickName').getComponent(Label).color = new Color(51, 51, 51, 255);
+                            user.getChildByName('nickName').getChildByName('vip').active = false;
+                          }
+
+                          if (_this.playerInfo.id === v.id) {
+                            user.getComponent(Sprite).color = new Color(255, 246, 237, 255);
+                            user.getChildByName('nickName').getComponent(Label).color = new Color(210, 107, 0, 255);
+                            user.getChildByName('score').getComponent(Label).color = new Color(210, 107, 0, 255);
+                          } else {
+                            user.getComponent(Sprite).color = new Color(255, 255, 255, 255);
+                            user.getChildByName('score').getComponent(Label).color = new Color(51, 51, 51, 255);
+
+                            if (!v.isVip) {
+                              user.getChildByName('nickName').getComponent(Label).color = new Color(51, 51, 51, 255);
+                            }
+                          }
+
+                          if (v.status === 0) {
+                            user.getChildByName('avatar').getChildByName('offLine').active = true;
+                            user.getChildByName('avatar').getComponent(Avatar).setOffline();
+                          } else {
+                            user.getChildByName('avatar').getChildByName('offLine').active = false;
+                            user.getChildByName('avatar').getComponent(Avatar).setOnline();
+                          }
+
+                          if (v.gender === 1) {
+                            _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/boy/spriteFrame', user.getChildByName('avatar').getChildByName('gender'));
+                          } else {
+                            _this.SDK.gameManager.Util.loadImg('/Texture/UI/result/girl/spriteFrame', user.getChildByName('avatar').getChildByName('gender'));
+                          }
+
+                          if (!_this.isLover && v.id === result.mvp) {
+                            mvp_pos = new Vec3(user.getChildByName('avatar').getPosition().x - 35, user.getChildByName('avatar').getPosition().y + 65, 0);
+                          }
+                        });
+                      }
+
+                      if (result.mvp) {
+                        if (result.mvp === this.playerInfo.id) {
+                          setTimeout(function () {
+                            _mvpNode.active = true;
+
+                            _anima.on(Animation.EventType.FINISHED, function () {
+                              tween(_mvpNode).to(.3, {
+                                position: mvp_pos,
+                                scale: new Vec3(.2, .2, .2)
+                              }).start();
+                            });
+
+                            _anima.play();
+                          }, 300);
+                        } else {
+                          _mvpNode.setScale(.2, .2, .2);
+
+                          _mvpNode.setPosition(mvp_pos);
+
+                          _mvpNode.active = true;
+                        }
+                      }
+
+                    case 54:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+
+            function initBoardData(_x2) {
+              return _initBoardData.apply(this, arguments);
+            }
+
+            return initBoardData;
+          }()
+        }, {
+          key: "setOnceMore",
+          value: function setOnceMore(type) {
+            var _this2 = this;
+
+            if (!this.onceMore) this.onceMore = this.board.getChildByName('onceMore');
+
+            switch (type) {
+              case 1:
+                this.SDK.gameManager.Util.loadImg('Texture/UI/result/anniu_3/spriteFrame', this.onceMore);
+                this.onceMore.off(SystemEventType.TOUCH_END);
+                this.onceMore.getChildByName('Label').getComponent(Label).string = '等待队友准备';
+                break;
+
+              case 2:
+                this.SDK.gameManager.Util.loadImg('Texture/UI/result/anniu_1/spriteFrame', this.onceMore);
+                this.onceMore.getChildByName('Label').getComponent(Label).string = '队友已准备好,立即开始';
+                break;
+
+              case 3:
+                this.SDK.gameManager.Util.loadImg('Texture/UI/result/anniu_1/spriteFrame', this.onceMore);
+                this.onceMore.getChildByName('Label').getComponent(Label).string = '再来一局';
+                break;
+
+              case 4:
+                this.SDK.gameManager.Util.loadImg('Texture/UI/result/anniu_3/spriteFrame', this.onceMore);
+                this.onceMore.getChildByName('Label').getComponent(Label).string = '队友已离开';
+                break;
+
+              default:
+                this.SDK.gameManager.Util.loadImg('Texture/UI/result/anniu_1/spriteFrame', this.onceMore);
+                this.onceMore.getChildByName('Label').getComponent(Label).string = '再来一局';
+                break;
+            }
+
+            var loverRed = this.board.getChildByName('scoreBoard').getChildByName('loverBoard').getChildByName('teamRed').getChildByName('avatars');
+            var loverBlue = this.board.getChildByName('scoreBoard').getChildByName('loverBoard').getChildByName('teamBlue').getChildByName('avatars');
+            var str = this.board.getChildByName('scoreBoard').getChildByName('strengerBoard');
+
+            if (this.playerInfo.teamId === TeamColor.red) {
+              this.redTeam.map(function (v) {
+                switch (type) {
+                  case 0:
+                  case 3:
+                  case 4:
+                    loverRed.getChildByName("".concat(v.node)).getChildByName('onceMore').active = false;
+                    str.getChildByName('players').getChildByName("player".concat(_this2.players.findIndex(function (p) {
+                      return p.id === v.player.id;
+                    }) + 1)).getChildByName('avatar').getChildByName('onceMore').active = false;
+                    break;
+
+                  case 1:
+                    if (v.player.id !== _this2.playerInfo.id) break;
+                    loverRed.getChildByName("".concat(v.node)).getChildByName('onceMore').active = true;
+                    str.getChildByName('players').getChildByName("player".concat(_this2.players.findIndex(function (p) {
+                      return p.id === v.player.id;
+                    }) + 1)).getChildByName('avatar').getChildByName('onceMore').active = true;
+                    break;
+
+                  case 2:
+                    if (v.player.id === _this2.playerInfo.id) break;
+                    loverRed.getChildByName("".concat(v.node)).getChildByName('onceMore').active = true;
+                    str.getChildByName('players').getChildByName("player".concat(_this2.players.findIndex(function (p) {
+                      return p.id === v.player.id;
+                    }) + 1)).getChildByName('avatar').getChildByName('onceMore').active = true;
+                    break;
+
+                  default:
+                    break;
+                }
+              });
+            } else {
+              this.blueTeam.map(function (v) {
+                switch (type) {
+                  case 0:
+                  case 3:
+                  case 4:
+                    loverBlue.getChildByName("".concat(v.node)).getChildByName('onceMore').active = false;
+                    str.getChildByName('players').getChildByName("player".concat(_this2.players.findIndex(function (p) {
+                      return p.id === v.player.id;
+                    }) + 1)).getChildByName('avatar').getChildByName('onceMore').active = false;
+                    break;
+
+                  case 1:
+                    if (v.player.id !== _this2.playerInfo.id) break;
+                    loverBlue.getChildByName("".concat(v.node)).getChildByName('onceMore').active = true;
+                    str.getChildByName('players').getChildByName("player".concat(_this2.players.findIndex(function (p) {
+                      return p.id === v.player.id;
+                    }) + 1)).getChildByName('avatar').getChildByName('onceMore').active = true;
+                    break;
+
+                  case 2:
+                    if (v.player.id === _this2.playerInfo.id) break;
+                    loverBlue.getChildByName("".concat(v.node)).getChildByName('onceMore').active = true;
+                    str.getChildByName('players').getChildByName("player".concat(_this2.players.findIndex(function (p) {
+                      return p.id === v.player.id;
+                    }) + 1)).getChildByName('avatar').getChildByName('onceMore').active = true;
+                    break;
+
+                  default:
+                    break;
+                }
+              });
+            }
+          }
+        }, {
+          key: "progressBarScore",
+          value: function progressBarScore(node, data) {
+            var progressNum;
+            if (data <= 50) progressNum = data / 50;else if (data > 50 && data <= 150) progressNum = (data - 50) / 100;else if (data > 150 && data <= 350) progressNum = (data - 150) / 200;else if (data > 350 && data <= 850) progressNum = (data - 350) / 500;else if (data > 850 && data <= 1850) progressNum = (data - 850) / 1000;else if (data > 1850 && data <= 3850) progressNum = (data - 1850) / 2000;else if (data > 3850 && data <= 6850) progressNum = (data - 3850) / 3000;else if (data > 6850 && data <= 11850) progressNum = (data - 6850) / 5000;else if (data > 11850 && data <= 18850) progressNum = (data - 11850) / 7000;else if (data > 18850 && data <= 28850) progressNum = (data - 18850) / 10000;else progressNum = 0;
+            node.getComponent(ProgressBar).progress = progressNum;
+          }
+        }]);
+
+        return UIControl;
+      }();
+
+      _export("ResultBoard", ResultBoard = (_dec = throttle(), _dec2 = throttle(500), _dec3 = throttle(), (_class = (_temp = /*#__PURE__*/function (_BaseBoard) {
+        _inherits(ResultBoard, _BaseBoard); // 结算数据,从服务器拿到结算结果后创建ResultBoard作为构造函数参数传入
+
+
+        function ResultBoard(scene, sdk) {
+          var _this3;
+
+          _classCallCheck(this, ResultBoard);
+
+          _this3 = _possibleConstructorReturn(this, _getPrototypeOf(ResultBoard).call(this, scene, sdk));
+          _this3.uiControl = null;
+          _this3.result = null;
+          _this3.name = 'ResultBoard';
+          _this3.uiControl = new UIControl(_this3.board, _this3.SDK);
+          return _this3;
+        }
+
+        _createClass(ResultBoard, [{
+          key: "setResult",
+          value: function setResult(data) {
+            if (data) {
+              this.uiControl.result = data;
+            }
+          }
+        }, {
+          key: "initData",
+          value: function initData() {
+            _get(_getPrototypeOf(ResultBoard.prototype), "initData", this).call(this); // 打补丁 在此处清空manager内的机器人玩家数据
+
+
+            this.SDK.gameManager.robotInfo = {};
+          }
+        }, {
+          key: "setListener",
+          value: function setListener() {
+            _get(_getPrototypeOf(ResultBoard.prototype), "setListener", this).call(this);
+
+            this.SDK.curGroup.onChangeCustomGroupPlayerStatus = this.onChangeCustomGroupPlayerStatus.bind(this);
+            this.SDK.curGroup.onRecvFromGroupClient = this.onRecvFromGroupClient.bind(this);
+            this.SDK.curGroup.onLeaveGroup = this.onLeaveGroup.bind(this);
+            this.SDK.Room.onCancelMatch = this.onCancelMatch.bind(this);
+            this.SDK.Room.onMatch = this.onMatch.bind(this);
+
+            if (this.SDK.gameManager.timerSingal) {
+              this.SDK.gameManager.timerSingal = null;
+            }
+          }
+          /* 各类监听方法 */
+
+        }, {
+          key: "onChangeCustomGroupPlayerStatus",
+          value: function () {
+            var _onChangeCustomGroupPlayerStatus = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(event) {
+              var teammater, cur_info, ready1, ready2, groupInfo, code;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      _context5.next = 2;
+                      return this.SDK.getTeammate();
+
+                    case 2:
+                      teammater = _context5.sent;
+                      _context5.next = 5;
+                      return this.SDK.getPlayerInfo();
+
+                    case 5:
+                      cur_info = _context5.sent;
+                      ready1 = cur_info.stateGroup; //this.uiControl.playerInfo.stateGroup;
+
+                      ready2 = PlayerState.NotReady;
+                      log('接收到队组准备状态变更消息', event);
+
+                      if (teammater) {
+                        ready2 = teammater.customPlayerStatus;
+
+                        if (event.data.changePlayerId == teammater.id) {
+                          ready2 = event.data.customGroupPlayerStatus;
+
+                          if (ready1 == PlayerState.Ready) {
+                            if (ready2 == PlayerState.Ready) ;else {
+                              this.uiControl.setOnceMore(1); //自己准备好了,队友没准备好,设置按钮显示为等待队友准备
+                            }
+                          } else {
+                            if (ready2 == PlayerState.Ready) {
+                              // 自己没准备好,队友准备好了,设置按钮显示队友已准备好,立即开始
+                              this.uiControl.setOnceMore(2);
+                            } else {
+                              // 自己没准备好,队友也没准备好,设置按钮显示为再来一局
+                              this.uiControl.setOnceMore(3);
+                            }
+                          }
+                        }
+                      }
+
+                      if (!(ready1 == PlayerState.Ready && ready2 == PlayerState.Ready)) {
+                        _context5.next = 28;
+                        break;
+                      }
+
+                      _context5.next = 13;
+                      return this.SDK.getGroupInfo();
+
+                    case 13:
+                      groupInfo = _context5.sent;
+                      log('都准备完毕,进入匹配', groupInfo.owner, this.uiControl.playerInfo.id);
+
+                      if (!(groupInfo.owner == this.uiControl.playerInfo.id)) {
+                        _context5.next = 28;
+                        break;
+                      }
+
+                      _context5.next = 18;
+                      return this.SDK.matchingLover();
+
+                    case 18:
+                      code = _context5.sent;
+
+                      if (!(code == MGOBE.ErrCode.EC_OK)) {
+                        _context5.next = 27;
+                        break;
+                      }
+
+                      _context5.next = 22;
+                      return this.SDK.sendToGroup(GroupMessageType.Sys, GroupSysMessageType.Matching);
+
+                    case 22:
+                      this.initBoardElements();
+                      this.ChangeBoard(this.SDK.gameManager.MatchingBoard);
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_over_again);
+                      _context5.next = 28;
+                      break;
+
+                    case 27:
+                      log('进入匹配失败', code);
+
+                    case 28:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
+            }));
+
+            function onChangeCustomGroupPlayerStatus(_x5) {
+              return _onChangeCustomGroupPlayerStatus.apply(this, arguments);
+            }
+
+            return onChangeCustomGroupPlayerStatus;
+          }()
+        }, {
+          key: "onRecvFromGroupClient",
+          value: function () {
+            var _onRecvFromGroupClient = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(event) {
+              var msg;
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      log('接收到来自另一半的消息:', event);
+                      msg = JSON.parse(event.data.msg);
+
+                      if (!(msg['type'] == GroupMessageType.Sys)) {
+                        _context6.next = 7;
+                        break;
+                      }
+
+                      if (!(msg['content'] == GroupSysMessageType.Matching)) {
+                        _context6.next = 7;
+                        break;
+                      }
+
+                      this.initBoardElements();
+                      _context6.next = 7;
+                      return this.ChangeBoard(this.SDK.gameManager.MatchingBoard);
+
+                    case 7:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function onRecvFromGroupClient(_x6) {
+              return _onRecvFromGroupClient.apply(this, arguments);
+            }
+
+            return onRecvFromGroupClient;
+          }()
+        }, {
+          key: "onChangeGroupPlayerNetworkState",
+          value: function () {
+            var _onChangeGroupPlayerNetworkState = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(event) {
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      log('玩家[', event.data.changePlayerId, ']在线状态有变化', event.data.networkState);
+
+                    case 1:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7);
+            }));
+
+            function onChangeGroupPlayerNetworkState(_x7) {
+              return _onChangeGroupPlayerNetworkState.apply(this, arguments);
+            }
+
+            return onChangeGroupPlayerNetworkState;
+          }()
+        }, {
+          key: "onJoinGroup",
+          value: function onJoinGroup(event) {
+            log('有玩家加入队组:', event.data.joinPlayerId);
+          }
+        }, {
+          key: "onCancelMatch",
+          value: function onCancelMatch(event) {
+            log('MainBoard', '取消匹配', event);
+          }
+        }, {
+          key: "onMatch",
+          value: function onMatch(event) {
+            log('MainBoard', '匹配完成', event);
+          }
+        }, {
+          key: "onLeaveGroup",
+          value: function onLeaveGroup(event) {
+            var _this4 = this;
+
+            log('有人离开队组', event.data.leavePlayerId);
+            var players = this.uiControl.blueTeam.concat(this.uiControl.redTeam);
+
+            var _board;
+
+            if (this.uiControl.isLover) {
+              _board = this.board.getChildByName('scoreBoard').getChildByName('loverBoard');
+              players.map(function (v) {
+                if (v.player.id === event.data.leavePlayerId) {
+                  if (v.player.teamId === TeamColor.red) {
+                    _board.getChildByName('teamRed').getChildByName('avatars').getChildByName("".concat(v.node)).getChildByName('leave').active = true;
+                  } else {
+                    _board.getChildByName('teamBlue').getChildByName('avatars').getChildByName("".concat(v.node)).getChildByName('leave').active = true;
+                  }
+                }
+              });
+            } else {
+              _board = this.board.getChildByName('scoreBoard').getChildByName('strengerBoard');
+              players.map(function (v) {
+                if (v.player.id === event.data.leavePlayerId) {
+                  _board.getChildByName('players').getChildByName("player".concat(_this4.uiControl.players.findIndex(function (p) {
+                    return p.id === v.player.id;
+                  }) + 1)).getChildByName('avatar').getChildByName('leave').active = true;
+                }
+              });
+            }
+
+            this.uiControl.setOnceMore(4);
+          }
+        }, {
+          key: "InitEvent",
+          value: function () {
+            var _InitEvent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+              var isLover, button_homepage, button_onceMore, _button_homepage, _button_onceMore, button_other;
+
+              return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                while (1) {
+                  switch (_context8.prev = _context8.next) {
+                    case 0:
+                      _get(_getPrototypeOf(ResultBoard.prototype), "InitEvent", this).call(this);
+
+                      _context8.next = 3;
+                      return this.SDK.gameManager.Util.teammaterIsLover();
+
+                    case 3:
+                      isLover = _context8.sent;
+
+                      if (isLover) {
+                        button_homepage = this.board.getChildByName('back');
+                        button_onceMore = this.board.getChildByName('loverOnceMore');
+                        button_homepage.on(SystemEventType.TOUCH_END, this.clickHomepage, this);
+                        button_onceMore.on(SystemEventType.TOUCH_END, this.clickOnceMore, this);
+                      } else {
+                        _button_homepage = this.board.getChildByName('back');
+                        _button_onceMore = this.board.getChildByName('onceMore');
+                        button_other = this.board.getChildByName('other');
+
+                        _button_homepage.on(SystemEventType.TOUCH_END, this.clickHomepage, this);
+
+                        _button_onceMore.on(SystemEventType.TOUCH_END, this.clickOnceMore, this);
+
+                        button_other.on(SystemEventType.TOUCH_END, this.clickOther, this);
+                      }
+
+                    case 5:
+                    case "end":
+                      return _context8.stop();
+                  }
+                }
+              }, _callee8, this);
+            }));
+
+            function InitEvent() {
+              return _InitEvent.apply(this, arguments);
+            }
+
+            return InitEvent;
+          }()
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            _get(_getPrototypeOf(ResultBoard.prototype), "destroy", this).call(this);
+
+            var button_homepage = this.board.getChildByName('back');
+            var button_onceMore = this.board.getChildByName('onceMore');
+            var button_other = this.board.getChildByName('other');
+            button_homepage.off(SystemEventType.TOUCH_END);
+            button_onceMore.off(SystemEventType.TOUCH_END);
+            button_other.off(SystemEventType.TOUCH_END);
+          }
+        }, {
+          key: "clickHomepage",
+          value: function () {
+            var _clickHomepage = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+              return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      this.initBoardElements();
+                      _context9.next = 3;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 3:
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_over_back);
+
+                    case 4:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9, this);
+            }));
+
+            function clickHomepage() {
+              return _clickHomepage.apply(this, arguments);
+            }
+
+            return clickHomepage;
+          }()
+        }, {
+          key: "clickOnceMore",
+          value: function () {
+            var _clickOnceMore = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+              var teammater, ready1, ready2, newReady;
+              return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                while (1) {
+                  switch (_context10.prev = _context10.next) {
+                    case 0:
+                      _context10.next = 2;
+                      return this.SDK.getTeammate();
+
+                    case 2:
+                      teammater = _context10.sent;
+
+                      if (teammater) {
+                        _context10.next = 5;
+                        break;
+                      }
+
+                      return _context10.abrupt("return");
+
+                    case 5:
+                      ready1 = this.uiControl.playerInfo.stateGroup;
+                      ready2 = teammater.customPlayerStatus;
+                      newReady = ready1 == PlayerState.Ready ? PlayerState.NotReady : PlayerState.Ready;
+
+                      if (newReady == PlayerState.Ready) {
+                        if (ready2 == PlayerState.Ready) ;else {
+                          this.uiControl.setOnceMore(1); //自己准备好了,队友没准备好,设置按钮显示为等待队友准备
+                        }
+                      } else {
+                        if (ready2 == PlayerState.Ready) {
+                          // 自己没准备好,队友准备好了,设置按钮显示队友已准备好,立即开始
+                          this.uiControl.setOnceMore(2);
+                        } else {
+                          // 自己没准备好,队友也没准备好,设置按钮显示为再来一局
+                          this.uiControl.setOnceMore(3);
+                        }
+                      }
+
+                      this.uiControl.playerInfo.stateGroup = newReady;
+                      this.SDK.setGroupPlayerStatus(newReady);
+
+                    case 11:
+                    case "end":
+                      return _context10.stop();
+                  }
+                }
+              }, _callee10, this);
+            }));
+
+            function clickOnceMore() {
+              return _clickOnceMore.apply(this, arguments);
+            }
+
+            return clickOnceMore;
+          }() // @throttle()
+          // async clickDialogButton() {
+          //     this.SDK.curDialog.destroy();
+          //     this.SDK.leaveGroup();
+          //     const newBoard = this.SDK.gameManager.MainBoard;
+          //     this.initBoardElements()
+          //     await this.ChangeBoard(newBoard);
+          // }
+
+        }, {
+          key: "clickOther",
+          value: function () {
+            var _clickOther = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+              var code;
+              return regeneratorRuntime.wrap(function _callee11$(_context11) {
+                while (1) {
+                  switch (_context11.prev = _context11.next) {
+                    case 0:
+                      _context11.next = 2;
+                      return this.SDK.leaveGroup();
+
+                    case 2:
+                      _context11.next = 4;
+                      return this.SDK.leaveRoom();
+
+                    case 4:
+                      this.initBoardElements();
+                      _context11.next = 7;
+                      return this.SDK.matchingSingle();
+
+                    case 7:
+                      code = _context11.sent;
+
+                      if (!(code == MGOBE.ErrCode.EC_OK)) {
+                        _context11.next = 14;
+                        break;
+                      }
+
+                      this.SDK.gameManager.Util.callTDGA(StatisticsKey.game_over_replace);
+                      _context11.next = 12;
+                      return this.ChangeBoard(this.SDK.gameManager.MatchingBoard);
+
+                    case 12:
+                      _context11.next = 16;
+                      break;
+
+                    case 14:
+                      _context11.next = 16;
+                      return this.ChangeBoard(this.SDK.gameManager.MainBoard);
+
+                    case 16:
+                    case "end":
+                      return _context11.stop();
+                  }
+                }
+              }, _callee11, this);
+            }));
+
+            function clickOther() {
+              return _clickOther.apply(this, arguments);
+            }
+
+            return clickOther;
+          }()
+        }, {
+          key: "initBoardElements",
+          value: function initBoardElements() {
+            this.board.getChildByName('scoreBoard').getChildByName('mvp').getComponent(Animation).onDestroy();
+            this.board.getChildByName('scoreBoard').getChildByName('mvp').active = false;
+            this.board.getChildByName('scoreBoard').getChildByName('mvp').setPosition(0, 0, 0);
+            this.board.getChildByName('scoreBoard').getChildByName('mvp').setScale(1.2, 1.2, 1.2);
+          }
+        }]);
+
+        return ResultBoard;
+      }(BaseBoard), _temp), (_applyDecoratedDescriptor(_class.prototype, "clickHomepage", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "clickHomepage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clickOnceMore", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "clickOnceMore"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clickOther", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "clickOther"), _class.prototype)), _class)));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/highLightMask.js", ["../_virtual/_rollupPluginBabelHelpers.js", "cc"], function (_export, _context) {
+  "use strict";
+
+  var _inherits, _createClass, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, cclegacy, _decorator, Sprite, view, Vec3, UITransform, Component, _dec, _class, ccclass, property, HighLightMask;
+
+  _export({
+    _dec: void 0,
+    _class: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Sprite = _cc.Sprite;
+      view = _cc.view;
+      Vec3 = _cc.Vec3;
+      UITransform = _cc.UITransform;
+      Component = _cc.Component;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "25f14P49k9O0ZDlm2Ne6KtT", "highLightMask", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      _export("HighLightMask", HighLightMask = (_dec = ccclass('HighLightMask'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inherits(HighLightMask, _Component);
+
+        function HighLightMask() {
+          _classCallCheck(this, HighLightMask);
+
+          return _possibleConstructorReturn(this, _getPrototypeOf(HighLightMask).apply(this, arguments));
+        }
+
+        _createClass(HighLightMask, [{
+          key: "reset",
+          value: function reset() {
+            this.pass = this.node.getComponent(Sprite).material.passes[0];
+            this.pass.setUniform(this.pass.getHandle("radius"), 0);
+          }
+        }, {
+          key: "setFocus",
+          value: function setFocus(node, camera) {
+            var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 50;
+            if (!node || !node.components || node.components.length <= 0) return;
+            this.focus = node;
+            this.camera = camera;
+            this.radius = radius;
+            var ui = this.node;
+            var size = view.getFrameSize();
+            var center = new Vec3();
+            var pos = new Vec3();
+
+            if (node && node.getComponent(UITransform)) {
+              node.getPosition(pos);
+              var father = node;
+              var fatherPos = new Vec3();
+              var scale;
+
+              while (true) {
+                father = father.getParent();
+
+                if (father && father.name != 'UI') {
+                  scale = father.getScale();
+                  pos.x *= scale.x;
+                  pos.y *= scale.y;
+                  father.getPosition(fatherPos);
+                  pos.x += fatherPos.x;
+                  pos.y += fatherPos.y;
+                } else break;
+              }
+
+              center.x = pos.x + size.width / 2;
+              center.y = -pos.y + size.height / 2;
+            } else {
+              node.getPosition(pos);
+              camera.convertToUINode(pos, ui, center);
+              center.x += size.width / 2;
+              center.y = -center.y + size.height / 2;
+            }
+
+            this.pass.setUniform(this.pass.getHandle("centerX"), center.x);
+            this.pass.setUniform(this.pass.getHandle("centerY"), center.y);
+            this.pass.setUniform(this.pass.getHandle("radius"), radius);
+            this.pass.setUniform(this.pass.getHandle("height"), size.height);
+            this.pass.setUniform(this.pass.getHandle("width"), size.width);
+          }
+        }, {
+          key: "update",
+          value: function update(dt) {
+            if (this.focus) {
+              this.setFocus(this.focus, this.camera, this.radius);
+            }
+          }
+        }]);
+
+        return HighLightMask;
+      }(Component)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/Board/TeachingBoard.js", ["../../_virtual/_rollupPluginBabelHelpers.js", "cc", "../../Box.js", "../../Const.js", "../../Util.js", "../Dialog/Dialog.js", "./BaseBoard.js", "../avatar.js", "../highLightMask.js"], function (_export, _context19) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _assertThisInitialized, _createClass, _get, _asyncToGenerator, cclegacy, Vec3, systemEvent, SystemEvent, SystemEventType, Label, tween, ProgressBar, Vec2, randomRange, Node, UITransform, Sprite, loader, Prefab, UIOpacity, instantiate, Box, log, StatisticsKey, DialogButtonType, NetState, JumpStatus, EmojiType, throttle, Dialog, BaseBoard, Avatar, HighLightMask, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _temp, UIControl, TeachState, TeachStage, TeachingBoard;
+
+  _export({
+    _dec: void 0,
+    _dec2: void 0,
+    _dec3: void 0,
+    _dec4: void 0,
+    _dec5: void 0,
+    _dec6: void 0,
+    _dec7: void 0,
+    _dec8: void 0,
+    _dec9: void 0,
+    _class: void 0,
+    _temp: void 0,
+    TeachState: void 0,
+    TeachStage: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _assertThisInitialized = _virtual_rollupPluginBabelHelpersJs.assertThisInitialized;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _get = _virtual_rollupPluginBabelHelpersJs.get;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      Vec3 = _cc.Vec3;
+      systemEvent = _cc.systemEvent;
+      SystemEvent = _cc.SystemEvent;
+      SystemEventType = _cc.SystemEventType;
+      Label = _cc.Label;
+      tween = _cc.tween;
+      ProgressBar = _cc.ProgressBar;
+      Vec2 = _cc.Vec2;
+      randomRange = _cc.randomRange;
+      Node = _cc.Node;
+      UITransform = _cc.UITransform;
+      Sprite = _cc.Sprite;
+      loader = _cc.loader;
+      Prefab = _cc.Prefab;
+      UIOpacity = _cc.UIOpacity;
+      instantiate = _cc.instantiate;
+    }, function (_BoxJs) {
+      Box = _BoxJs.Box;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      StatisticsKey = _ConstJs.StatisticsKey;
+      DialogButtonType = _ConstJs.DialogButtonType;
+      NetState = _ConstJs.NetState;
+      JumpStatus = _ConstJs.JumpStatus;
+      EmojiType = _ConstJs.EmojiType;
+    }, function (_UtilJs) {
+      throttle = _UtilJs.throttle;
+    }, function (_DialogDialogJs) {
+      Dialog = _DialogDialogJs.Dialog;
+    }, function (_BaseBoardJs) {
+      BaseBoard = _BaseBoardJs.BaseBoard;
+    }, function (_avatarJs) {
+      Avatar = _avatarJs.Avatar;
+    }, function (_highLightMaskJs) {
+      HighLightMask = _highLightMaskJs.HighLightMask;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "f4ca8JWOD5I16+qzhkrFKPI", "TeachingBoard", undefined);
+
+      UIControl = /*#__PURE__*/function () {
+        function UIControl(board, sdk) {
+          _classCallCheck(this, UIControl);
+
+          this.board = null;
+          this.SDK = null;
+          this.end = false;
+          this.emojiList = [];
+          this.selfAvatar = null;
+          this.teammaterAvatar = null;
+          this.timeNumberNode = null;
+          this.time = 0;
+          this.selfSign = '1-2';
+          this.top1 = true;
+          log('初始化UI控制', board, sdk);
+          this.board = board;
+          this.SDK = sdk;
+        }
+
+        _createClass(UIControl, [{
+          key: "initUI",
+          value: function () {
+            var _initUI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(board) {
+              var selfInfo, profile;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      this.board = board;
+                      this.changeSoundUI(this.SDK.gameManager.Setting.switch_audio);
+                      this.headerNode = this.board.getChildByName('Header');
+                      this.selfAvatar = this.headerNode.getChildByName('team0').getChildByName('avatar-2').getChildByName('avatar');
+                      this.teammaterAvatar = this.headerNode.getChildByName('team0').getChildByName('avatar-1').getChildByName('avatar');
+                      this.timeNumberNode = this.headerNode.getChildByName('time').getChildByName('number');
+                      this.tipNode_tip = this.board.getChildByName('tip');
+                      this.tipNode_wait = this.board.getChildByName('wait');
+                      this.team1Node = this.board.getChildByName('Header').getChildByName('team0');
+                      this.introduceTitleNode = this.board.getChildByName('introduce-title');
+                      this.introduceBoxNode = this.board.getChildByName('introduce-box');
+                      this.introduceBoxNode1 = this.board.getChildByName('introduce-box1');
+                      this.interactionNode = this.board.getChildByName('Interaction-ex');
+                      this.touch = this.board.getChildByName('touch-tech');
+                      this.mask = this.board.getChildByName('mask').getComponent(HighLightMask);
+                      this.board.getChildByName('mask2').active = false;
+                      this.introduceBoxNode.active = false;
+                      this.introduceBoxNode1.active = false;
+                      this.tipNode_tip.active = false;
+                      this.tipNode_wait.active = false;
+                      this.board.getChildByName('emojiTip').active = false;
+                      this.headerNode.getChildByName('team0').getChildByName('avatar-1').getChildByName('offLine').active = false;
+                      this.headerNode.getChildByName('team0').getChildByName('avatar-2').getChildByName('offLine').active = false;
+                      this.headerNode.getChildByName('team1').getChildByName('avatar-1').getChildByName('offLine').active = false;
+                      this.headerNode.getChildByName('team1').getChildByName('avatar-2').getChildByName('offLine').active = false;
+                      this.teammaterAvatar.getComponent(Avatar).setOnline();
+                      this.selfAvatar.getComponent(Avatar).setOnline();
+                      this.headerNode.getChildByName('team1').getChildByName('avatar-1').getChildByName('avatar').getComponent(Avatar).setOnline();
+                      this.headerNode.getChildByName('team1').getChildByName('avatar-2').getChildByName('avatar').getComponent(Avatar).setOnline();
+                      _context.next = 31;
+                      return this.SDK.getPlayerInfo();
+
+                    case 31:
+                      selfInfo = _context.sent;
+                      profile = JSON.parse(selfInfo.profile);
+                      this.SDK.gameManager.Util.loadRemoteImg(profile.avatar_url, this.selfAvatar);
+                      this.selfAvatar.getChildByName('name').getComponent(Label).string = selfInfo.name;
+
+                    case 35:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+
+            function initUI(_x) {
+              return _initUI.apply(this, arguments);
+            }
+
+            return initUI;
+          }()
+        }, {
+          key: "initData",
+          value: function initData() {
+            this.time = -100;
+          }
+        }, {
+          key: "setTime",
+          value: function () {
+            var _setTime = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(time) {
+              var n, numNodeList, newNumNode, com_transform, index, childs, _index, _index2;
+
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      if (!this.board) {
+                        _context2.next = 51;
+                        break;
+                      }
+
+                      if (!(this.time != time && time <= 20)) {
+                        _context2.next = 51;
+                        break;
+                      }
+
+                      this.time = time;
+                      numNodeList = [];
+
+                      if (!(time != 0)) {
+                        _context2.next = 21;
+                        break;
+                      }
+
+                    case 5:
+                      if (!(time > 0)) {
+                        _context2.next = 19;
+                        break;
+                      }
+
+                      n = time % 10;
+                      time = Math.floor(time / 10);
+                      newNumNode = new Node();
+                      com_transform = newNumNode.addComponent(UITransform);
+                      newNumNode.addComponent(Sprite);
+                      com_transform.setContentSize(42, 56);
+                      com_transform.setAnchorPoint(0.5, 0.5);
+                      newNumNode.setScale(new Vec3(0.5, 0.5, 1));
+                      _context2.next = 16;
+                      return this.SDK.gameManager.Util.loadImg('Texture/number/' + n + '/spriteFrame', newNumNode);
+
+                    case 16:
+                      numNodeList.push(newNumNode);
+                      _context2.next = 5;
+                      break;
+
+                    case 19:
+                      _context2.next = 31;
+                      break;
+
+                    case 21:
+                      n = 0;
+                      newNumNode = new Node();
+                      com_transform = newNumNode.addComponent(UITransform);
+                      newNumNode.addComponent(Sprite);
+                      com_transform.setContentSize(42, 56);
+                      com_transform.setAnchorPoint(0.5, 0.5);
+                      newNumNode.setScale(new Vec3(0.5, 0.5, 1));
+                      _context2.next = 30;
+                      return this.SDK.gameManager.Util.loadImg('Texture/number/' + n + '/spriteFrame', newNumNode);
+
+                    case 30:
+                      numNodeList.push(newNumNode);
+
+                    case 31:
+                      _context2.t0 = numNodeList.length;
+                      _context2.next = _context2.t0 === 1 ? 34 : _context2.t0 === 2 ? 37 : _context2.t0 === 3 ? 40 : 44;
+                      break;
+
+                    case 34:
+                      numNodeList[0].setPosition(new Vec3(0, 0, 0));
+
+                      if (n > 0 && n <= 5) {
+                        tween(numNodeList[0]).to(.5, {
+                          scale: new Vec3(1.5, 1.5, 1)
+                        }).start();
+                      }
+
+                      return _context2.abrupt("break", 48);
+
+                    case 37:
+                      numNodeList[1].setPosition(new Vec3(-10, 0, 0));
+                      numNodeList[0].setPosition(new Vec3(10, 0, 0));
+                      return _context2.abrupt("break", 48);
+
+                    case 40:
+                      numNodeList[2].setPosition(new Vec3(-20, 0, 0));
+                      numNodeList[1].setPosition(new Vec3(0, 0, 0));
+                      numNodeList[0].setPosition(new Vec3(20, 0, 0));
+                      return _context2.abrupt("break", 48);
+
+                    case 44:
+                      for (index = 0; index < numNodeList.length; index++) {
+                        numNodeList[index].destroy();
+                      }
+
+                      numNodeList = [];
+                      this.board.getChildByName('Header').getChildByName('time').getComponent(Label).string = time;
+                      return _context2.abrupt("break", 48);
+
+                    case 48:
+                      // 销毁已存在的数字
+                      childs = this.timeNumberNode.children;
+
+                      for (_index = 0; _index < childs.length; _index++) {
+                        childs[_index].destroy();
+                      } // 将最新数字装配到指定位置
+
+
+                      for (_index2 = 0; _index2 < numNodeList.length; _index2++) {
+                        numNodeList[_index2].setParent(this.timeNumberNode);
+                      }
+
+                    case 51:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+
+            function setTime(_x2) {
+              return _setTime.apply(this, arguments);
+            }
+
+            return setTime;
+          }()
+        }, {
+          key: "showEmoji",
+          value: function () {
+            var _showEmoji = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(type, senderId) {
+              var _this = this;
+
+              var pos, emojiNode, promise;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      pos = new Vec3(260, 206, 0);
+                      promise = new Promise(function (resolve) {
+                        var path = 'Prefab/Emoji/emoji_' + (type + 1);
+                        log('预制件路径', path);
+                        loader.loadRes(path, Prefab, /*#__PURE__*/function () {
+                          var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(err, prefab) {
+                            var selfInfo;
+                            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                              while (1) {
+                                switch (_context3.prev = _context3.next) {
+                                  case 0:
+                                    if (!err) {
+                                      _context3.next = 3;
+                                      break;
+                                    }
+
+                                    log('表情预制件实例化失败', err);
+                                    return _context3.abrupt("return");
+
+                                  case 3:
+                                    emojiNode = instantiate(prefab);
+                                    _context3.next = 6;
+                                    return _this.SDK.getPlayerInfo();
+
+                                  case 6:
+                                    selfInfo = _context3.sent;
+
+                                    _this.SDK.gameManager.Util.loadRemoteImg(JSON.parse(selfInfo.profile).avatar_url, emojiNode.getChildByName('avatar'));
+
+                                    emojiNode.getComponent(UITransform).priority = 99;
+                                    emojiNode.setPosition(pos);
+                                    emojiNode.setScale(new Vec3(.8, .8, .8));
+                                    emojiNode.setParent(_this.board);
+                                    tween(emojiNode).to(3, {
+                                      position: {
+                                        x: -218,
+                                        y: 206,
+                                        z: 0
+                                      }
+                                    }, {
+                                      onComplete: function onComplete() {
+                                        emojiNode.destroy();
+                                      }
+                                    }).start();
+                                    resolve(true);
+
+                                  case 14:
+                                  case "end":
+                                    return _context3.stop();
+                                }
+                              }
+                            }, _callee3);
+                          }));
+
+                          return function (_x5, _x6) {
+                            return _ref.apply(this, arguments);
+                          };
+                        }());
+                      });
+                      return _context4.abrupt("return", promise);
+
+                    case 3:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4);
+            }));
+
+            function showEmoji(_x3, _x4) {
+              return _showEmoji.apply(this, arguments);
+            }
+
+            return showEmoji;
+          }()
+        }, {
+          key: "changePlayer",
+          value: function () {
+            var _changePlayer = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(isController) {
+              var team, avatar1, avatar2, avatar1Opacity, avatar2Opacity;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      log('changeplayer');
+                      team = this.board.getChildByName('Header').getChildByName('team0');
+
+                      if (this.selfSign === '2-1' || this.selfSign === '2-2') {
+                        team = this.board.getChildByName('Header').getChildByName('team1');
+                      }
+
+                      avatar1 = team.getChildByName('avatar-1');
+                      avatar2 = team.getChildByName('avatar-2');
+                      avatar1Opacity = avatar1.getComponent(UIOpacity);
+                      avatar2Opacity = avatar2.getComponent(UIOpacity);
+
+                      if (isController) {
+                        this.tipNode_tip.active = true;
+                        this.tipNode_wait.active = false;
+                      } else {
+                        this.tipNode_tip.active = false;
+                        this.tipNode_wait.active = true;
+                      }
+
+                      if (isController && (this.selfSign === '1-1' || this.selfSign === '2-1') || !isController && (this.selfSign === '1-2' || this.selfSign === '2-2')) {
+                        avatar2.getComponent(UITransform).priority = -1;
+                        avatar1.getComponent(UITransform).priority = 1;
+                        tween(avatar2).to(.6, {
+                          position: this.selfSign === '1-1' || this.selfSign === '1-2' ? new Vec3(-95, -46, 0) : new Vec3(95, -46, 0),
+                          scale: new Vec3(.9, .9, .9)
+                        }).start();
+                        tween(avatar2Opacity).to(.6, {
+                          opacity: 122
+                        }).start();
+                        tween(avatar1).to(.6, {
+                          position: this.selfSign === '1-1' || this.selfSign === '1-2' ? new Vec3(-65, 30, 0) : new Vec3(65, 30, 0)
+                        }).start();
+                        tween(avatar1).to(.3, {
+                          scale: new Vec3(1.06, 1.06, 1.06)
+                        }).then(tween(avatar1).to(.3, {
+                          scale: new Vec3(1, 1, 1)
+                        }).start()).start();
+                        tween(avatar1Opacity).to(.6, {
+                          opacity: 255
+                        }).start();
+                      } else {
+                        avatar1.getComponent(UITransform).priority = -1;
+                        avatar2.getComponent(UITransform).priority = 1;
+                        tween(avatar1).to(.6, {
+                          position: this.selfSign === '1-1' || this.selfSign === '1-2' ? new Vec3(-95, -46, 0) : new Vec3(95, -46, 0),
+                          scale: new Vec3(.9, .9, .9)
+                        }).start();
+                        tween(avatar1Opacity).to(.6, {
+                          opacity: 122
+                        }).start();
+                        tween(avatar2).to(.6, {
+                          position: this.selfSign === '1-1' || this.selfSign === '1-2' ? new Vec3(-65, 30, 0) : new Vec3(65, 30, 0)
+                        }).start();
+                        tween(avatar2).to(.3, {
+                          scale: new Vec3(1.06, 1.06, 1.06)
+                        }).then(tween(avatar2).to(.3, {
+                          scale: new Vec3(1, 1, 1)
+                        }).start());
+                        tween(avatar2Opacity).to(.6, {
+                          opacity: 255
+                        }).start();
+                      }
+
+                    case 9:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
+            }));
+
+            function changePlayer(_x7) {
+              return _changePlayer.apply(this, arguments);
+            }
+
+            return changePlayer;
+          }()
+        }, {
+          key: "setTipAvatar",
+          value: function () {
+            var _setTipAvatar = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(isController) {
+              var pos, uipos_userTip, ui;
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      uipos_userTip = new Vec3();
+                      ui = this.board;
+                      pos = this.SDK.gameManager.Player.node.getPosition();
+                      pos.y += 2.2;
+                      this.SDK.gameManager.camera.convertToUINode(pos, ui, uipos_userTip);
+                      this.SDK.gameManager.userTipNode.setPosition(uipos_userTip);
+
+                      if (!isController) {
+                        _context6.next = 11;
+                        break;
+                      }
+
+                      _context6.next = 9;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/gaming/me-001/spriteFrame', this.SDK.gameManager.userTipNode.getChildByName('avatar'));
+
+                    case 9:
+                      _context6.next = 13;
+                      break;
+
+                    case 11:
+                      _context6.next = 13;
+                      return this.SDK.gameManager.Util.loadImg('Texture/UI/main/banner@2x (3)/spriteFrame', this.SDK.gameManager.userTipNode.getChildByName('avatar'));
+
+                    case 13:
+                      this.SDK.gameManager.userTipNode.active = true;
+
+                    case 14:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+
+            function setTipAvatar(_x8) {
+              return _setTipAvatar.apply(this, arguments);
+            }
+
+            return setTipAvatar;
+          }()
+        }, {
+          key: "setIntroduce",
+          value: function setIntroduce(title, box) {
+            title && (this.introduceTitleNode.getComponent(Label).string = title);
+            box && (this.introduceBoxNode.getChildByName('Label').getComponent(Label).string = box);
+          }
+        }, {
+          key: "refreshScore",
+          value: function refreshScore(score1, score2) {
+            var _score1 = score1;
+            var _score2 = score2;
+            var scoreEl = this.board.getChildByName('Header').getChildByName('score');
+            var rate1;
+            if (_score1 + _score2 === 0) rate1 = 0.5;else {
+              rate1 = _score1 / (_score1 + _score2);
+            }
+            rate1 < 0.2 && (rate1 = 0.2);
+            rate1 > 0.8 && (rate1 = 0.8);
+            if (rate1 > 0.24 && rate1 < 0.5) rate1 *= 0.85;
+            if (rate1 > 0.5 && rate1 < 0.6) rate1 *= 1.2;
+            tween(scoreEl.getComponent(ProgressBar)).to(.3, {
+              progress: rate1
+            }).start();
+            scoreEl.getChildByName('redScore').getComponent(Label).string = "".concat(_score1, "\u5206");
+            scoreEl.getChildByName('blueScore').getComponent(Label).string = "".concat(_score2, "\u5206");
+          }
+        }, {
+          key: "setFocus",
+          value: function setFocus(node, radius) {
+            this.mask.setFocus(node, this.SDK.gameManager.camera, radius);
+          }
+        }, {
+          key: "changeSoundUI",
+          value: function changeSoundUI(sign) {
+            this.SDK.gameManager.Util.loadImg(sign ? '/Texture/UI/gaming/kaiqi@2x/spriteFrame' : '/Texture/UI/gaming/gianbi@2x/spriteFrame', this.board.getChildByName('nav').getChildByName('music'));
+          }
+        }]);
+
+        return UIControl;
+      }();
+
+      (function (TeachState) {
+        TeachState[TeachState["normal"] = 0] = "normal";
+        TeachState[TeachState["try"] = 1] = "try";
+        TeachState[TeachState["wait"] = 2] = "wait";
+      })(TeachState || (TeachState = {}));
+
+      (function (TeachStage) {
+        TeachStage[TeachStage["single"] = 0] = "single";
+        TeachStage[TeachStage["multiple"] = 1] = "multiple";
+        TeachStage[TeachStage["gaming"] = 2] = "gaming";
+        TeachStage[TeachStage["end"] = 3] = "end";
+      })(TeachStage || (TeachStage = {}));
+
+      _export("TeachingBoard", TeachingBoard = (_dec = throttle(), _dec2 = throttle(), _dec3 = throttle(), _dec4 = throttle(), _dec5 = throttle(), _dec6 = throttle(), _dec7 = throttle(), _dec8 = throttle(), _dec9 = throttle(), (_class = (_temp = /*#__PURE__*/function (_BaseBoard) {
+        _inherits(TeachingBoard, _BaseBoard);
+
+        function TeachingBoard(scene, sdk) {
+          var _this2;
+
+          _classCallCheck(this, TeachingBoard);
+
+          _this2 = _possibleConstructorReturn(this, _getPrototypeOf(TeachingBoard).call(this, scene, sdk));
+          _this2.TeachState = {
+            0: _this2.action_1.bind(_assertThisInitialized(_this2)),
+            1: _this2.action_2.bind(_assertThisInitialized(_this2)),
+            2: _this2.action_3.bind(_assertThisInitialized(_this2)),
+            3: _this2.action_4.bind(_assertThisInitialized(_this2)),
+            4: _this2.action_5.bind(_assertThisInitialized(_this2)),
+            5: _this2.action_6.bind(_assertThisInitialized(_this2)) // 6: this.action_7.bind(this),
+            // 7: this.action_8.bind(this),
+            // 8: this.action_9.bind(this),
+            // 9: this.action_10.bind(this),
+
+          };
+          _this2.uiControl = null;
+          _this2.name = 'TeachingBoard';
+          _this2.uiControl = new UIControl(_assertThisInitialized(_this2), _this2.SDK);
+          return _this2;
+        }
+
+        _createClass(TeachingBoard, [{
+          key: "initData",
+          value: function initData() {
+            _get(_getPrototypeOf(TeachingBoard.prototype), "initData", this).call(this);
+
+            this.teachMap = [[1, 2.5, 4, 0, 0, {
+              x: 0,
+              y: 0,
+              z: 0
+            }], [1, 2.5, 4, 0, 3, {
+              x: 0,
+              y: 0,
+              z: 0
+            }]];
+            this.SDK.gameManager.updateCenterNode(false);
+            this.teachIndex = 0;
+            this.curBoxIndex = 0;
+            this.score = 0;
+            this.enemyScore = 0;
+            this.perfectCount = 0;
+            this.jumpCount = 0;
+            this.time = 0;
+            this.teachState = TeachState.normal;
+            this.teachStage = TeachStage.single;
+            this.Player = this.SDK.gameManager.Player;
+            this.OtherPlayer = this.SDK.gameManager.OtherTeam;
+            this.uiControl.mask.reset();
+            this.uiControl.refreshScore(0, 0);
+            this.SDK.gameManager.camera.node.setPosition(this.SDK.gameManager._origin_camera_pos);
+            this.SDK.gameManager.plane.setPosition(new Vec3(0, 0, 0));
+            this.action_1();
+          }
+        }, {
+          key: "setListener",
+          value: function setListener() {
+            _get(_getPrototypeOf(TeachingBoard.prototype), "setListener", this).call(this);
+
+            this.SDK.gameManager.timerSingal = this.onTimerSingal.bind(this);
+            this.SDK.gameManager.teachJumpSingal = this.jumpEnd.bind(this);
+            this.SDK.Room.onCancelMatch = this.onCancelMatch.bind(this);
+            this.SDK.Room.onMatch = this.onMatch.bind(this);
+          }
+        }, {
+          key: "onCancelMatch",
+          value: function onCancelMatch(event) {
+            log('MainBoard', '取消匹配', event);
+          }
+        }, {
+          key: "onMatch",
+          value: function onMatch(event) {
+            log('MainBoard', '匹配完成', event);
+          }
+        }, {
+          key: "onTimerSingal",
+          value: function () {
+            var _onTimerSingal = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+              var a, curPos, nextPos, face, randomDis, dis, newPos, jumpResult;
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      if (this.teachStage == TeachStage.gaming) {
+                        this.time -= 0.2;
+                        this.uiControl.setTime(Math.floor(this.time)); // 实战演示中敌人AI的跳跃控制
+
+                        a = Math.floor(this.time * 5);
+
+                        if (a % 8 == 0) {
+                          curPos = this.OtherPlayer.node.getPosition();
+                          nextPos = this.OtherPlayer.nextBox.node.getPosition();
+                          face = new Vec2(nextPos.x - curPos.x, nextPos.z - curPos.z);
+                          randomDis = randomRange(-1, 1);
+                          dis = Vec2.distance(new Vec2(curPos.x, curPos.z), new Vec2(nextPos.x, nextPos.z)) + randomDis;
+                          newPos = this.SDK.gameManager.Util.getPosWithVec(curPos, face, dis);
+                          jumpResult = {
+                            time: 0,
+                            status: JumpStatus.next,
+                            offset: [newPos.x - nextPos.x, newPos.z - nextPos.z],
+                            perfect: Math.abs(randomDis) < .325 ? true : false,
+                            distance: dis
+                          };
+                          this.SDK.gameManager.OtherTeam.PowerEnd(jumpResult);
+                        }
+
+                        if (this.time <= 0) {
+                          this.nextState();
+                        }
+                      }
+
+                    case 1:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7, this);
+            }));
+
+            function onTimerSingal() {
+              return _onTimerSingal.apply(this, arguments);
+            }
+
+            return onTimerSingal;
+          }()
+        }, {
+          key: "onAvatarSingal",
+          value: function onAvatarSingal(isSelf, isStart) {
+            if (isSelf) {
+              if (isStart) {
+                this.uiControl.selfAvatar.getComponent(Avatar).timeStart();
+              } else {
+                this.uiControl.selfAvatar.getComponent(Avatar).reset();
+              }
+            } else {
+              if (isStart) {
+                this.uiControl.teammaterAvatar.getComponent(Avatar).timeStart();
+              } else {
+                this.uiControl.teammaterAvatar.getComponent(Avatar).reset();
+              }
+            }
+          }
+        }, {
+          key: "InitEvent",
+          value: function () {
+            var _InitEvent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+              var interaction;
+              return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                while (1) {
+                  switch (_context8.prev = _context8.next) {
+                    case 0:
+                      _get(_getPrototypeOf(TeachingBoard.prototype), "InitEvent", this).call(this);
+
+                      interaction = this.board.getChildByName('Interaction-ex');
+                      this.board.getChildByName('nav').getChildByName('music').on(SystemEventType.TOUCH_END, this.switchSound, this);
+                      this.board.getChildByName('nav').getChildByName('back').on(SystemEventType.TOUCH_END, this.leave, this);
+                      this.board.getChildByName('introduce-box').getChildByName('next').on(SystemEventType.TOUCH_END, this.nextStateAction, this);
+                      this.board.getChildByName('introduce-box').getChildByName('again').on(SystemEventType.TOUCH_END, this.againAction, this);
+                      systemEvent.on(SystemEvent.EventType.TOUCH_START, this.onTouchDown, this);
+                      systemEvent.on(SystemEvent.EventType.TOUCH_END, this.onTouchUp, this);
+                      interaction.getChildByName('emoji_1').on(SystemEventType.TOUCH_END, this.sendEmoji_1, this);
+                      interaction.getChildByName('emoji_2').on(SystemEventType.TOUCH_END, this.sendEmoji_2, this);
+                      interaction.getChildByName('emoji_3').on(SystemEventType.TOUCH_END, this.sendEmoji_3, this);
+                      interaction.getChildByName('emoji_4').on(SystemEventType.TOUCH_END, this.sendEmoji_4, this);
+
+                    case 12:
+                    case "end":
+                      return _context8.stop();
+                  }
+                }
+              }, _callee8, this);
+            }));
+
+            function InitEvent() {
+              return _InitEvent.apply(this, arguments);
+            }
+
+            return InitEvent;
+          }()
+        }, {
+          key: "destroy",
+          value: function destroy() {
+            _get(_getPrototypeOf(TeachingBoard.prototype), "destroy", this).call(this);
+
+            systemEvent.off(SystemEvent.EventType.TOUCH_START);
+            systemEvent.off(SystemEvent.EventType.TOUCH_END);
+            var interaction = this.board.getChildByName('Interaction-ex');
+            this.board.getChildByName('nav').getChildByName('music').off(SystemEventType.TOUCH_END);
+            this.board.getChildByName('nav').getChildByName('back').off(SystemEventType.TOUCH_END);
+            this.board.getChildByName('introduce-box').getChildByName('next').off(SystemEventType.TOUCH_END);
+            this.board.getChildByName('introduce-box').getChildByName('again').off(SystemEventType.TOUCH_END);
+            interaction.getChildByName('emoji_1').off(SystemEventType.TOUCH_END);
+            interaction.getChildByName('emoji_2').off(SystemEventType.TOUCH_END);
+            interaction.getChildByName('emoji_3').off(SystemEventType.TOUCH_END);
+            interaction.getChildByName('emoji_4').off(SystemEventType.TOUCH_END);
+          }
+        }, {
+          key: "switchSound",
+          value: function switchSound() {
+            this.SDK.gameManager.Setting.switch_audio = !this.SDK.gameManager.Setting.switch_audio;
+            this.uiControl.changeSoundUI(this.SDK.gameManager.Setting.switch_audio);
+          }
+        }, {
+          key: "nextStateAction",
+          value: function nextStateAction() {
+            this.nextState();
+          }
+        }, {
+          key: "againAction",
+          value: function againAction() {
+            this.board.getChildByName('mask').active = false;
+            var newState = this.teachIndex - 1;
+            log('教学流程', '回到上一步', this.teachIndex, '-->', newState);
+
+            if (this.TeachState[newState]) {
+              this.TeachState[newState]();
+              this.teachIndex = newState;
+              return true;
+            }
+          }
+        }, {
+          key: "clearScoreNode",
+          value: function clearScoreNode() {
+            for (var index = 0; index < this.SDK.gameManager.scoreNodeList.length; index++) {
+              var element = this.SDK.gameManager.scoreNodeList[index];
+              element.node.destroy();
+              if (element.perfect) element.perfect.destroy();
+            }
+
+            this.SDK.gameManager.scoreNodeList = [];
+          }
+        }, {
+          key: "leave",
+          value: function leave() {
+            var _this3 = this;
+
+            log('教学流程', '点击退出演示,弹出选择框', this.SDK.gameManager.scoreNodeList);
+            this.SDK.gameManager.Util.callTDGA(StatisticsKey.Guidance_skip_clicked);
+            new Dialog(this.scene, this.SDK, "确认要跳过游戏演示吗?", DialogButtonType.multiple, '开始游戏', '我再看看').show(this, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+              var code, loverGroupId, _code2, teammaterInfo, _code, groupInfo;
+
+              return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      if (!_this3.SDK.curDialog.dead) {
+                        _context9.next = 2;
+                        break;
+                      }
+
+                      return _context9.abrupt("return");
+
+                    case 2:
+                      _this3.SDK.curDialog.destroy();
+
+                      log('教学流程', '确认退出演示');
+                      _this3.SDK.gameManager.isTeached = true;
+
+                      _this3.clearScoreNode();
+
+                      _this3.SDK.gameManager.Util.callTDGA(StatisticsKey.Guidance_skip_confirmed);
+
+                      if (!_this3.SDK.gameManager.isQuickMatching) {
+                        _context9.next = 21;
+                        break;
+                      }
+
+                      _context9.next = 10;
+                      return _this3.SDK.matchingSingle();
+
+                    case 10:
+                      code = _context9.sent;
+
+                      if (!(code == MGOBE.ErrCode.EC_OK)) {
+                        _context9.next = 16;
+                        break;
+                      }
+
+                      _context9.next = 14;
+                      return _this3.ChangeBoard(_this3.SDK.gameManager.MatchingBoard);
+
+                    case 14:
+                      _context9.next = 19;
+                      break;
+
+                    case 16:
+                      _this3.SDK.cancelMatchinig();
+
+                      _context9.next = 19;
+                      return _this3.ChangeBoard(_this3.SDK.gameManager.MainBoard);
+
+                    case 19:
+                      _context9.next = 48;
+                      break;
+
+                    case 21:
+                      _context9.next = 23;
+                      return _this3.SDK.gameManager.Util.http(_this3.SDK.gameManager.Config.serverURL.group, 'GET', null, false, _this3.SDK.gameManager.AccessToken);
+
+                    case 23:
+                      loverGroupId = _context9.sent;
+
+                      if (!loverGroupId) {
+                        _context9.next = 36;
+                        break;
+                      }
+
+                      loverGroupId = loverGroupId['other_group_id'];
+                      _context9.next = 28;
+                      return _this3.SDK.joinGroup(loverGroupId);
+
+                    case 28:
+                      _code2 = _context9.sent;
+
+                      if (!(_code2 === MGOBE.ErrCode.EC_OK)) {
+                        _context9.next = 36;
+                        break;
+                      }
+
+                      _context9.next = 32;
+                      return _this3.SDK.getTeammate();
+
+                    case 32:
+                      teammaterInfo = _context9.sent;
+
+                      if (!(teammaterInfo.commonNetworkState != NetState.Offline)) {
+                        _context9.next = 36;
+                        break;
+                      }
+
+                      _this3.ChangeBoard(_this3.SDK.gameManager.WaitLoverBoard);
+
+                      return _context9.abrupt("return");
+
+                    case 36:
+                      _context9.next = 38;
+                      return _this3.SDK.createGroup();
+
+                    case 38:
+                      _code = _context9.sent;
+
+                      if (!(_code === 0)) {
+                        _context9.next = 47;
+                        break;
+                      }
+
+                      _context9.next = 42;
+                      return _this3.SDK.getGroupInfo();
+
+                    case 42:
+                      groupInfo = _context9.sent;
+
+                      _this3.SDK.gameManager.Util.http(_this3.SDK.gameManager.Config.serverURL.group, 'POST', {
+                        'group_id': groupInfo.id
+                      }, false, _this3.SDK.gameManager.AccessToken);
+
+                      _this3.ChangeBoard(_this3.SDK.gameManager.WaitLoverBoard);
+
+                      _context9.next = 48;
+                      break;
+
+                    case 47:
+                      _this3.ChangeBoard(_this3.SDK.gameManager.MainBoard);
+
+                    case 48:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9);
+            })), function () {
+              if (_this3.SDK.curDialog.dead) return;
+
+              _this3.SDK.curDialog.destroy();
+
+              log('教学流程', '取消退出演示');
+            });
+          }
+        }, {
+          key: "endActionYes",
+          value: function endActionYes() {
+            var _this4 = this;
+
+            this.board.getChildByName('dialog-end').active = false;
+            this.SDK.gameManager.isTeached = true;
+            this.SDK.gameManager.Util.callTDGA(StatisticsKey.Guidance_pass_start);
+            setTimeout( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+              var code, loverGroupId, _code4, teammaterInfo, _code3, groupInfo;
+
+              return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                while (1) {
+                  switch (_context10.prev = _context10.next) {
+                    case 0:
+                      if (!_this4.SDK.gameManager.isQuickMatching) {
+                        _context10.next = 14;
+                        break;
+                      }
+
+                      _context10.next = 3;
+                      return _this4.SDK.matchingSingle();
+
+                    case 3:
+                      code = _context10.sent;
+
+                      if (!(code == MGOBE.ErrCode.EC_OK)) {
+                        _context10.next = 9;
+                        break;
+                      }
+
+                      _context10.next = 7;
+                      return _this4.ChangeBoard(_this4.SDK.gameManager.MatchingBoard);
+
+                    case 7:
+                      _context10.next = 12;
+                      break;
+
+                    case 9:
+                      _this4.SDK.cancelMatchinig();
+
+                      _context10.next = 12;
+                      return _this4.ChangeBoard(_this4.SDK.gameManager.MainBoard);
+
+                    case 12:
+                      _context10.next = 41;
+                      break;
+
+                    case 14:
+                      _context10.next = 16;
+                      return _this4.SDK.gameManager.Util.http(_this4.SDK.gameManager.Config.serverURL.group, 'GET', null, false, _this4.SDK.gameManager.AccessToken);
+
+                    case 16:
+                      loverGroupId = _context10.sent;
+
+                      if (!loverGroupId) {
+                        _context10.next = 29;
+                        break;
+                      }
+
+                      loverGroupId = loverGroupId['other_group_id'];
+                      _context10.next = 21;
+                      return _this4.SDK.joinGroup(loverGroupId);
+
+                    case 21:
+                      _code4 = _context10.sent;
+
+                      if (!(_code4 === MGOBE.ErrCode.EC_OK)) {
+                        _context10.next = 29;
+                        break;
+                      }
+
+                      _context10.next = 25;
+                      return _this4.SDK.getTeammate();
+
+                    case 25:
+                      teammaterInfo = _context10.sent;
+
+                      if (!(teammaterInfo.commonNetworkState != NetState.Offline)) {
+                        _context10.next = 29;
+                        break;
+                      }
+
+                      _this4.ChangeBoard(_this4.SDK.gameManager.WaitLoverBoard);
+
+                      return _context10.abrupt("return");
+
+                    case 29:
+                      _context10.next = 31;
+                      return _this4.SDK.createGroup();
+
+                    case 31:
+                      _code3 = _context10.sent;
+
+                      if (!(_code3 === 0)) {
+                        _context10.next = 40;
+                        break;
+                      }
+
+                      _context10.next = 35;
+                      return _this4.SDK.getGroupInfo();
+
+                    case 35:
+                      groupInfo = _context10.sent;
+
+                      _this4.SDK.gameManager.Util.http(_this4.SDK.gameManager.Config.serverURL.group, 'POST', {
+                        'group_id': groupInfo.id
+                      }, false, _this4.SDK.gameManager.AccessToken);
+
+                      _this4.ChangeBoard(_this4.SDK.gameManager.WaitLoverBoard);
+
+                      _context10.next = 41;
+                      break;
+
+                    case 40:
+                      _this4.ChangeBoard(_this4.SDK.gameManager.MainBoard);
+
+                    case 41:
+                    case "end":
+                      return _context10.stop();
+                  }
+                }
+              }, _callee10);
+            })), 500);
+          }
+        }, {
+          key: "endActionNo",
+          value: function endActionNo() {
+            this.board.getChildByName('dialog-end').active = false;
+            this.SDK.gameManager.Util.callTDGA(StatisticsKey.Guidance_pass_again);
+            this.ChangeBoard(this.SDK.gameManager.TeachingBoard);
+          }
+        }, {
+          key: "nextState",
+          value: function nextState() {
+            var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+            var newState = this.teachIndex + 1;
+            log('教学流程', '进入下一步', this.teachIndex, '-->', newState);
+
+            if (this.TeachState[newState]) {
+              this.TeachState[newState](params);
+              this.teachIndex = newState;
+              return true;
+            } else {
+              log('教学流程', '看完结束');
+              this.teachState = TeachState.normal;
+              this.teachStage = TeachStage.end;
+              this.board.getChildByName('dialog-end').active = true;
+              this.board.getChildByName('dialog-end').getChildByName('content').getChildByName('replay').on(SystemEventType.TOUCH_END, this.endActionNo, this);
+              this.board.getChildByName('dialog-end').getChildByName('content').getChildByName('next').on(SystemEventType.TOUCH_END, this.endActionYes, this); // new Dialog(this.scene, this.SDK, "知道双人跳一跳怎么玩了吗?点击'立即开始'开启游戏", DialogButtonType.multiple, '立即开始', '重新演示').show(this, this.endActionYes, this.endActionNo);
+
+              return false;
+            }
+          }
+        }, {
+          key: "onTouchDown",
+          value: function onTouchDown(event) {
+            switch (this.teachState) {
+              case TeachState["try"]:
+                log('教学流程', '开始蓄力');
+                this.Player._stat_power = true;
+                this.Player.jumpResult.time = 0;
+                this.Player.particleOpen(true);
+                this.SDK.gameManager.Util.playAudio(this.SDK.gameManager.audio_touch_down);
+                break;
+
+              default:
+                break;
+            }
+          }
+        }, {
+          key: "jumpEnd",
+          value: function () {
+            var _jumpEnd = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(isEnemy) {
+              var _this5 = this;
+
+              var jumpPlayer, status, isPerfect, scoreNode, camera_pos, cur_pos, plane_pos, score, next_pos;
+              return regeneratorRuntime.wrap(function _callee11$(_context11) {
+                while (1) {
+                  switch (_context11.prev = _context11.next) {
+                    case 0:
+                      jumpPlayer = null;
+
+                      if (isEnemy) {
+                        jumpPlayer = this.OtherPlayer;
+                      } else {
+                        jumpPlayer = this.Player;
+                      }
+
+                      status = jumpPlayer.jumpResult.status;
+                      isPerfect = jumpPlayer.jumpResult.perfect;
+                      scoreNode = null;
+
+                      if (!(status == JumpStatus.next)) {
+                        _context11.next = 32;
+                        break;
+                      }
+
+                      camera_pos = new Vec3();
+                      cur_pos = new Vec3();
+                      plane_pos = new Vec3();
+
+                      if (isEnemy) {
+                        _context11.next = 26;
+                        break;
+                      }
+
+                      jumpPlayer.nextBox.node.getPosition(cur_pos);
+                      jumpPlayer.nextBox.node.getPosition(plane_pos);
+                      plane_pos.y = 0;
+                      this.curBoxIndex += 1;
+                      jumpPlayer.curBox = this.SDK.gameManager.map[this.curBoxIndex];
+                      this.SDK.gameManager.curBox = jumpPlayer.curBox;
+                      jumpPlayer.nextBox = this.SDK.gameManager.map[this.curBoxIndex + 1];
+                      this.SDK.gameManager.nextBox = jumpPlayer.nextBox;
+
+                      if (isPerfect) {
+                        this.perfectCount += 1;
+                      } else {
+                        this.perfectCount = 0;
+                      }
+
+                      score = this.SDK.gameManager.Util.getScore(this.perfectCount);
+                      this.score += score; // 显示得分特效
+
+                      _context11.next = 23;
+                      return this.SDK.gameManager.showScore(score, this.perfectCount);
+
+                    case 23:
+                      scoreNode = _context11.sent;
+                      _context11.next = 29;
+                      break;
+
+                    case 26:
+                      if (isPerfect) {
+                        this.enemyScore += 2;
+                      } else {
+                        this.enemyScore += 1;
+                      } // this.OtherPlayer.index += 1;
+
+
+                      jumpPlayer.curBox = this.SDK.gameManager.map[this.OtherPlayer.index];
+                      jumpPlayer.nextBox = this.SDK.gameManager.map[this.OtherPlayer.index + 1];
+
+                    case 29:
+                      if (jumpPlayer.nextBox) {
+                        if (!isEnemy) {
+                          next_pos = new Vec3();
+                          jumpPlayer.nextBox.node.getPosition(next_pos);
+                          cur_pos.x = (cur_pos.x + next_pos.x) / 2.0;
+                          cur_pos.z = (cur_pos.z + next_pos.z) / 2.0;
+                          Vec3.add(camera_pos, cur_pos, this.SDK.gameManager._origin_camera_pos);
+                          tween(this.SDK.gameManager.camera.node).to(0.5, {
+                            position: camera_pos
+                          }, {}).start();
+                          tween(this.SDK.gameManager.plane).to(0.5, {
+                            position: plane_pos
+                          }, {}).start();
+                        }
+                      } else {
+                        // 创建地图新的节点
+                        this.teachMap.push([1, 2.8, 4, 0, 0, {
+                          x: 0,
+                          y: 0,
+                          z: 0
+                        }]);
+                        this.SDK.gameManager.drawMap(this.teachMap);
+                      }
+
+                      _context11.next = 33;
+                      break;
+
+                    case 32:
+                      if (!isEnemy) {
+                        this.perfectCount = 0;
+                      }
+
+                    case 33:
+                      this.uiControl.refreshScore(this.score, this.enemyScore);
+
+                      if (!isEnemy) {
+                        if (this.teachStage == TeachStage.multiple) {
+                          this.jumpCount += 1;
+
+                          if (this.jumpCount >= 4) {
+                            this.nextState({
+                              jumpInfo: this.Player.jumpResult,
+                              scoreNode: scoreNode
+                            });
+                          } else {
+                            this.isControler = !this.isControler;
+                            this.uiControl.changePlayer(this.isControler);
+                            this.uiControl.setTipAvatar(this.isControler);
+                            this.Player.setModel(this.isControler ? 1 : 2);
+
+                            if (this.isControler) {
+                              this.teachState = TeachState["try"];
+                            } else {
+                              this.teachState = TeachState.wait;
+                              setTimeout(function () {
+                                _this5.Player.AI = true;
+                              }, 2000);
+                            }
+                          }
+                        } else if (this.teachStage == TeachStage.gaming) {
+                          this.isControler = !this.isControler;
+                          this.uiControl.changePlayer(this.isControler);
+                          this.uiControl.setTipAvatar(this.isControler);
+                          this.Player.setModel(this.isControler ? 1 : 2);
+
+                          if (this.isControler) {
+                            this.teachState = TeachState["try"];
+                          } else {
+                            this.teachState = TeachState.wait;
+                            setTimeout(function () {
+                              if (_this5.teachStage == TeachStage.gaming) {
+                                _this5.Player.AI = true;
+                              }
+                            }, 2000);
+                          }
+                        } else {
+                          this.nextState({
+                            jumpInfo: this.Player.jumpResult,
+                            scoreNode: scoreNode
+                          });
+                        }
+                      }
+
+                    case 35:
+                    case "end":
+                      return _context11.stop();
+                  }
+                }
+              }, _callee11, this);
+            }));
+
+            function jumpEnd(_x9) {
+              return _jumpEnd.apply(this, arguments);
+            }
+
+            return jumpEnd;
+          }()
+        }, {
+          key: "onTouchUp",
+          value: function onTouchUp(event) {
+            if (this.teachState == TeachState["try"] && this.Player._stat_power) {
+              log('教学流程', '结束蓄力');
+              /* 为了不修改到原本的棋子跳跃流程与逻辑,直接对教程跳跃中需要的内容在此处进行处理 */
+              // 设置蓄力标记为false,根据蓄力时间计算得到跳跃相关信息
+
+              this.Player._stat_power = false;
+              this.Player.function_getJumpInfo(); // 重置模型状态
+
+              this.Player.modelBody.setScale(new Vec3(1, 1, 1));
+              this.Player.modelHead.setPosition(this.Player.modelHeadPos);
+
+              if (this.Player.modelTire) {
+                this.Player.modelTire.setPosition(new Vec3(0, 0, 0));
+              } // 修正起跳点为标准高度
+
+
+              var PlayerPos = new Vec3();
+              this.Player.node.getPosition(PlayerPos);
+              PlayerPos.y = this.Player.originPosY;
+              this.Player.node.setPosition(PlayerPos);
+              this.Player.node.getPosition(this.Player.curPostion); // 播放盒子回弹动画
+
+              this.Player.curBox.node.getComponent(Box).startElastic();
+              this.Player.particleOpen(false); // 将需要记录的中间值进行赋值
+
+              this.Player._axis = this.Player.gameManager.Util.getJumpAxis(this.Player.node, this.Player.nextBox.node);
+              this.Player.getFace(); // 设置起跳标记为true
+
+              this.Player._stat_jump = true;
+              this.teachState = TeachState.normal;
+            }
+          }
+          /* 每一步的入口函数 */
+
+        }, {
+          key: "action_1",
+          value: function () {
+            var _action_ = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+              var manager;
+              return regeneratorRuntime.wrap(function _callee12$(_context12) {
+                while (1) {
+                  switch (_context12.prev = _context12.next) {
+                    case 0:
+                      manager = this.SDK.gameManager; // 伪造一份地图
+
+                      this.teachMap = [[1, 2.5, 4, 0, 0, {
+                        x: 0,
+                        y: 0,
+                        z: 0
+                      }], [1, 2.5, 4, 0, 3, {
+                        x: 0,
+                        y: 0,
+                        z: 0
+                      }]];
+                      _context12.next = 5;
+                      return this.SDK.gameManager.drawMap(this.teachMap, true);
+
+                    case 5:
+                      this.Player.curBox = this.SDK.gameManager.map[0];
+                      this.Player.nextBox = this.SDK.gameManager.map[1]; // 给敌人和自己的角色创建模型,设置初始位置
+
+                      _context12.next = 9;
+                      return manager.Player.setModel(1);
+
+                    case 9:
+                      _context12.next = 11;
+                      return manager.OtherTeam.setModel(-1);
+
+                    case 11:
+                      manager.Player.node.setPosition(new Vec3(0, manager.Player.originPosY, 0));
+                      this.Player.node.getPosition(this.Player.curPostion);
+                      this.jumpCount = 0;
+                      this.perfectCount = 0; // 设置文案
+
+                      this.uiControl.introduceBoxNode.active = false;
+                      this.uiControl.introduceTitleNode.getComponent(Label).string = '先来一把单人跳一跳让我看看你的实力吧';
+                      this.uiControl.introduceBoxNode1.getChildByName('Label').getComponent(Label).string = '长按蓄力,松手控制向前跳';
+                      this.uiControl.introduceBoxNode1.active = true;
+                      this.uiControl.touch.active = true;
+                      this.uiControl.introduceTitleNode.active = true;
+                      this.uiControl.interactionNode.active = false;
+                      this.uiControl.headerNode.active = false;
+                      this.uiControl.introduceBoxNode.getChildByName('again').active = false;
+                      this.uiControl.introduceBoxNode.getChildByName('next').active = false;
+                      this.uiControl.introduceBoxNode.getChildByName('next').getChildByName('Label').getComponent(Label).string = '下一步';
+                      this.uiControl.tipNode_tip.active = false;
+                      this.uiControl.tipNode_wait.active = false;
+                      this.SDK.gameManager.userTipNode.active = false;
+                      this.isControler = true;
+                      this.teachStage = TeachStage.single;
+                      this.teachState = TeachState["try"];
+
+                    case 32:
+                    case "end":
+                      return _context12.stop();
+                  }
+                }
+              }, _callee12, this);
+            }));
+
+            function action_1() {
+              return _action_.apply(this, arguments);
+            }
+
+            return action_1;
+          }()
+        }, {
+          key: "action_2",
+          value: function action_2() {
+            var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+            this.uiControl.touch.active = false;
+            this.uiControl.introduceBoxNode1.active = false;
+            this.uiControl.introduceBoxNode.active = false;
+            this.teachState = TeachState.normal;
+            this.uiControl.introduceTitleNode.active = false;
+            this.board.getChildByName('mask').active = true;
+            this.uiControl.introduceBoxNode.getChildByName('next').getChildByName('arrow').active = true;
+
+            switch (params.jumpInfo.status) {
+              case JumpStatus.next:
+                if (params.jumpInfo.perfect) {
+                  this.uiControl.setIntroduce('', '太棒了\n那相信双人的跳一跳\n你也没问题');
+                } else {
+                  this.uiControl.setIntroduce('', '你已经掌握跳一跳的精髓了\n那相信双人的跳一跳\n你也没问题');
+                }
+
+                break;
+
+              case JumpStatus.dead:
+              case JumpStatus.current:
+                this.uiControl.setIntroduce('', '好遗憾\n有点担心双人的跳一跳\n对你来说会不会太难');
+                this.uiControl.introduceBoxNode.getChildByName('again').active = true;
+                this.uiControl.introduceBoxNode.getChildByName('next').getChildByName('arrow').active = false;
+                this.uiControl.introduceBoxNode.getChildByName('again').getChildByName('arrow').active = true;
+                break;
+
+              default:
+                break;
+            }
+
+            this.uiControl.introduceBoxNode.active = true;
+            this.uiControl.introduceBoxNode.getChildByName('next').active = true;
+          }
+        }, {
+          key: "action_3",
+          value: function () {
+            var _action_2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+              return regeneratorRuntime.wrap(function _callee13$(_context13) {
+                while (1) {
+                  switch (_context13.prev = _context13.next) {
+                    case 0:
+                      this.uiControl.introduceBoxNode.active = false;
+                      this.uiControl.introduceBoxNode.getChildByName('again').active = false;
+                      this.uiControl.introduceBoxNode.getChildByName('next').active = false;
+                      this.uiControl.interactionNode.active = false;
+                      this.uiControl.headerNode.active = false; // 设置文案
+
+                      this.uiControl.setIntroduce('', '两个人共同控制棋子\n一人跳完后另一人再跳');
+                      this.board.getChildByName('emojiTip').active = true;
+                      this.teachStage = TeachStage.multiple;
+                      this.uiControl.interactionNode.active = true;
+                      this.uiControl.introduceBoxNode.active = true; // 展示 该你跳了 提示
+
+                      this.isControler = false;
+                      this.uiControl.changePlayer(this.isControler);
+                      this.uiControl.setTipAvatar(this.isControler);
+                      this.uiControl.mask.node.active = true;
+
+                    case 15:
+                    case "end":
+                      return _context13.stop();
+                  }
+                }
+              }, _callee13, this);
+            }));
+
+            function action_3() {
+              return _action_2.apply(this, arguments);
+            }
+
+            return action_3;
+          }()
+        }, {
+          key: "action_4",
+          value: function action_4() {
+            var _this6 = this;
+
+            this.uiControl.mask.node.active = false;
+            this.teachState = TeachState.wait;
+            setTimeout(function () {
+              _this6.Player.AI = true;
+              setTimeout(function () {
+                _this6.uiControl.setIntroduce('', '头像和提示变更为“我“\n就是到你跳了');
+
+                _this6.board.getChildByName('emojiTip').active = false;
+              }, 1000);
+            }, 2000);
+          }
+        }, {
+          key: "action_5",
+          value: function action_5() {
+            this.uiControl.introduceBoxNode.active = false;
+            this.uiControl.tipNode_tip.active = false;
+            this.uiControl.tipNode_wait.active = false;
+            this.uiControl.introduceBoxNode.getChildByName('next').getChildByName('Label').getComponent(Label).string = '接受挑战';
+            this.uiControl.setIntroduce('', '看来你已经适应了轮流跳了\n给你加个对手怎么样\n要加油超过他们呢');
+            this.board.getChildByName('mask').active = true;
+            this.uiControl.introduceBoxNode.active = true;
+            this.uiControl.introduceBoxNode.getChildByName('again').active = false;
+            this.uiControl.introduceBoxNode.getChildByName('again').getChildByName('arrow').active = false;
+            this.uiControl.introduceBoxNode.getChildByName('next').active = true;
+            this.uiControl.introduceBoxNode.getChildByName('next').getChildByName('arrow').active = true;
+          }
+        }, {
+          key: "action_6",
+          value: function () {
+            var _action_3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+              var manager;
+              return regeneratorRuntime.wrap(function _callee14$(_context14) {
+                while (1) {
+                  switch (_context14.prev = _context14.next) {
+                    case 0:
+                      this.uiControl.introduceBoxNode.active = false;
+                      this.uiControl.introduceTitleNode.active = false;
+                      this.uiControl.headerNode.active = true;
+                      this.board.getChildByName('mask').active = false;
+                      this.score = 0;
+                      this.time = 20;
+                      this.perfectCount = 0;
+                      this.curBoxIndex = 0;
+                      this.isControler = true;
+                      this.uiControl.setTime(this.time);
+                      this.uiControl.refreshScore(0, 0);
+                      this.uiControl.changePlayer(this.isControler);
+                      this.uiControl.setTipAvatar(this.isControler);
+                      this.teachStage = TeachStage.gaming;
+                      this.teachState = TeachState["try"];
+                      this.OtherPlayer.index = 0;
+                      manager = this.SDK.gameManager; // 伪造一份地图
+
+                      this.teachMap = [[1, 2.5, 4, 0, 0, {
+                        x: 0,
+                        y: 0,
+                        z: 0
+                      }], [1, 2.5, 4, 0, 3, {
+                        x: 0,
+                        y: 0,
+                        z: 0
+                      }]];
+                      _context14.next = 21;
+                      return this.SDK.gameManager.drawMap(this.teachMap, true);
+
+                    case 21:
+                      this.Player.curBox = this.SDK.gameManager.map[0];
+                      this.Player.nextBox = this.SDK.gameManager.map[1];
+                      this.OtherPlayer.curBox = this.SDK.gameManager.map[0];
+                      this.OtherPlayer.nextBox = this.SDK.gameManager.map[1]; // 给敌人和自己的角色创建模型,设置初始位置
+
+                      _context14.next = 27;
+                      return manager.Player.setModel(1);
+
+                    case 27:
+                      _context14.next = 29;
+                      return manager.OtherTeam.setModel(1);
+
+                    case 29:
+                      manager.Player.node.setPosition(new Vec3(.7, manager.Player.originPosY, 0));
+                      manager.OtherTeam.node.setPosition(new Vec3(-.7, manager.Player.originPosY, 0));
+                      this.Player.node.getPosition(this.Player.curPostion);
+                      this.SDK.gameManager.camera.node.setPosition(this.SDK.gameManager._origin_camera_pos);
+                      this.SDK.gameManager.plane.setPosition(new Vec3(0, 0, 0));
+
+                    case 34:
+                    case "end":
+                      return _context14.stop();
+                  }
+                }
+              }, _callee14, this);
+            }));
+
+            function action_6() {
+              return _action_3.apply(this, arguments);
+            }
+
+            return action_6;
+          }()
+        }, {
+          key: "sendEmoji_1",
+          value: function () {
+            var _sendEmoji_ = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+              var selfInfo;
+              return regeneratorRuntime.wrap(function _callee15$(_context15) {
+                while (1) {
+                  switch (_context15.prev = _context15.next) {
+                    case 0:
+                      _context15.next = 2;
+                      return this.SDK.getPlayerInfo();
+
+                    case 2:
+                      selfInfo = _context15.sent;
+                      this.uiControl.showEmoji(EmojiType.Angry, selfInfo.id);
+
+                      if (this.teachIndex == 2) {
+                        this.nextState();
+                      }
+
+                    case 5:
+                    case "end":
+                      return _context15.stop();
+                  }
+                }
+              }, _callee15, this);
+            }));
+
+            function sendEmoji_1() {
+              return _sendEmoji_.apply(this, arguments);
+            }
+
+            return sendEmoji_1;
+          }()
+        }, {
+          key: "sendEmoji_2",
+          value: function () {
+            var _sendEmoji_2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
+              var selfInfo;
+              return regeneratorRuntime.wrap(function _callee16$(_context16) {
+                while (1) {
+                  switch (_context16.prev = _context16.next) {
+                    case 0:
+                      _context16.next = 2;
+                      return this.SDK.getPlayerInfo();
+
+                    case 2:
+                      selfInfo = _context16.sent;
+                      this.uiControl.showEmoji(EmojiType.Worship, selfInfo.id);
+
+                      if (this.teachIndex == 2) {
+                        this.nextState();
+                      }
+
+                    case 5:
+                    case "end":
+                      return _context16.stop();
+                  }
+                }
+              }, _callee16, this);
+            }));
+
+            function sendEmoji_2() {
+              return _sendEmoji_2.apply(this, arguments);
+            }
+
+            return sendEmoji_2;
+          }()
+        }, {
+          key: "sendEmoji_3",
+          value: function () {
+            var _sendEmoji_3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+              var selfInfo;
+              return regeneratorRuntime.wrap(function _callee17$(_context17) {
+                while (1) {
+                  switch (_context17.prev = _context17.next) {
+                    case 0:
+                      _context17.next = 2;
+                      return this.SDK.getPlayerInfo();
+
+                    case 2:
+                      selfInfo = _context17.sent;
+                      this.uiControl.showEmoji(EmojiType.Unfortunately, selfInfo.id);
+
+                      if (this.teachIndex == 2) {
+                        this.nextState();
+                      }
+
+                    case 5:
+                    case "end":
+                      return _context17.stop();
+                  }
+                }
+              }, _callee17, this);
+            }));
+
+            function sendEmoji_3() {
+              return _sendEmoji_3.apply(this, arguments);
+            }
+
+            return sendEmoji_3;
+          }()
+        }, {
+          key: "sendEmoji_4",
+          value: function () {
+            var _sendEmoji_4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
+              var selfInfo;
+              return regeneratorRuntime.wrap(function _callee18$(_context18) {
+                while (1) {
+                  switch (_context18.prev = _context18.next) {
+                    case 0:
+                      _context18.next = 2;
+                      return this.SDK.getPlayerInfo();
+
+                    case 2:
+                      selfInfo = _context18.sent;
+                      this.uiControl.showEmoji(EmojiType.Applause, selfInfo.id);
+
+                      if (this.teachIndex == 2) {
+                        this.nextState();
+                      }
+
+                    case 5:
+                    case "end":
+                      return _context18.stop();
+                  }
+                }
+              }, _callee18, this);
+            }));
+
+            function sendEmoji_4() {
+              return _sendEmoji_4.apply(this, arguments);
+            }
+
+            return sendEmoji_4;
+          }()
+        }]);
+
+        return TeachingBoard;
+      }(BaseBoard), _temp), (_applyDecoratedDescriptor(_class.prototype, "nextStateAction", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "nextStateAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "againAction", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "againAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "leave", [_dec3], Object.getOwnPropertyDescriptor(_class.prototype, "leave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "endActionYes", [_dec4], Object.getOwnPropertyDescriptor(_class.prototype, "endActionYes"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "endActionNo", [_dec5], Object.getOwnPropertyDescriptor(_class.prototype, "endActionNo"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sendEmoji_1", [_dec6], Object.getOwnPropertyDescriptor(_class.prototype, "sendEmoji_1"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sendEmoji_2", [_dec7], Object.getOwnPropertyDescriptor(_class.prototype, "sendEmoji_2"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sendEmoji_3", [_dec8], Object.getOwnPropertyDescriptor(_class.prototype, "sendEmoji_3"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sendEmoji_4", [_dec9], Object.getOwnPropertyDescriptor(_class.prototype, "sendEmoji_4"), _class.prototype)), _class)));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/toast.js", ["../_virtual/_rollupPluginBabelHelpers.js", "cc"], function (_export, _context) {
+  "use strict";
+
+  var _inherits, _createClass, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, cclegacy, _decorator, Label, tween, Sprite, Component, _dec, _class, ccclass, property, Toast;
+
+  _export({
+    _dec: void 0,
+    _class: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Label = _cc.Label;
+      tween = _cc.tween;
+      Sprite = _cc.Sprite;
+      Component = _cc.Component;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "33b70jRWeBFZqBft8IjVWL7", "toast", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      _export("Toast", Toast = (_dec = ccclass('Toast'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inherits(Toast, _Component);
+
+        function Toast() {
+          _classCallCheck(this, Toast);
+
+          return _possibleConstructorReturn(this, _getPrototypeOf(Toast).apply(this, arguments));
+        }
+
+        _createClass(Toast, [{
+          key: "start",
+          value: function start() {
+            this.isShow = false;
+          }
+        }, {
+          key: "show",
+          value: function show(text) {
+            var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+
+            if (!this.isShow) {
+              this.node.active = true;
+              this.isShow = true;
+              this.node.getChildByName('Label').getComponent(Label).string = text;
+              tween(this.node).to(time, {}, {
+                onComplete: this.onComplete.bind(this),
+                onUpdate: this.onUpdate.bind(this)
+              }).start();
+            }
+          }
+        }, {
+          key: "onComplete",
+          value: function onComplete() {
+            this.node.active = false;
+            this.isShow = false;
+          }
+        }, {
+          key: "onUpdate",
+          value: function onUpdate(target, ratio) {
+            this.node.getComponent(Sprite).color.set(255, 255, 255, 230 * (1 - ratio));
+          }
+        }]);
+
+        return Toast;
+      }(Component)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/loadingBar.js", ["../_virtual/_rollupPluginBabelHelpers.js", "cc"], function (_export, _context) {
+  "use strict";
+
+  var _inherits, _createClass, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, cclegacy, _decorator, ProgressBar, Component, _dec, _class, ccclass, property, LoadingBar;
+
+  _export({
+    _dec: void 0,
+    _class: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      ProgressBar = _cc.ProgressBar;
+      Component = _cc.Component;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "96263H2xxlKi5TOCG4Qi7hA", "loadingBar", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      _export("LoadingBar", LoadingBar = (_dec = ccclass('LoadingBar'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inherits(LoadingBar, _Component);
+
+        function LoadingBar() {
+          _classCallCheck(this, LoadingBar);
+
+          return _possibleConstructorReturn(this, _getPrototypeOf(LoadingBar).apply(this, arguments));
+        }
+
+        _createClass(LoadingBar, [{
+          key: "start",
+
+          /* class member could be defined like this */
+          // dummy = '';
+
+          /* use `property` decorator if your want the member to be serializable */
+          // @property
+          // serializableDummy = 0;
+          value: function start() {
+            // Your initialization goes here.
+            this.bar = this.node.getComponent(ProgressBar);
+            this.bar.progress = 0;
+          }
+        }, {
+          key: "run",
+          value: function run() {
+            this.time = 0;
+            this.rate = 0;
+            this.dt_rate = 0;
+            this.isComplete = false;
+            this.bar = this.node.getComponent(ProgressBar);
+            this.bar.progress = 0;
+          }
+        }, {
+          key: "complete",
+          value: function complete() {
+            this.isComplete = true;
+            this.dt_rate = 100 - this.rate;
+          }
+        }, {
+          key: "update",
+          value: function update(deltaTime) {
+            // Your update function goes here.
+            this.time += deltaTime;
+
+            if (!this.isComplete) {
+              this.rate = (-1 / (this.time / 2 + 1) + 1) * 90;
+            } else {
+              this.rate += this.dt_rate * deltaTime;
+
+              if (this.rate >= 100) {
+                this.rate = 100;
+              }
+            }
+
+            this.bar.progress = this.rate / 100;
+          }
+        }]);
+
+        return LoadingBar;
+      }(Component)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///GameManager.js", ["./_virtual/_rollupPluginBabelHelpers.js", "cc", "./Box.js", "./Config.js", "./Const.js", "./Player.js", "./Util.js", "./SDK.js", "./UI/Dialog/Dialog.js", "./UI/Board/WaitLoverBoard.js", "./OtherPlayer.js", "./UI/Board/GamingBoard.js", "./UI/Board/MainBoard.js", "./UI/Board/MatchingBoard.js", "./UI/Board/ResultBoard.js", "./UI/Board/TeachingBoard.js", "./UI/toast.js", "./UI/loadingBar.js"], function (_export, _context) {
+  "use strict";
+
+  var _applyDecoratedDescriptor, _inherits, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, _assertThisInitialized, _initializerDefineProperty, _createClass, _asyncToGenerator, cclegacy, _decorator, Node, Camera, Prefab, AudioClip, Texture2D, Vec3, tween, MeshRenderer, view, Component, instantiate, UITransform, Label, Color, Box, Config, log, ClientDataType, RoomDataType, BoxSize, TeamColor, DialogButtonType, NetState, ServerDataType, StatisticsKey, BoxShape, Player, Util, SDK, Dialog, WaitLoverBoard, OtherPlayer, GamingBoard, MainBoard, MatchingBoard, ResultBoard, TeachingBoard, Toast, LoadingBar, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22, _descriptor23, _descriptor24, _temp, ccclass, property, Setting, GameManager;
+
+  _export({
+    _dec: void 0,
+    _dec2: void 0,
+    _dec3: void 0,
+    _dec4: void 0,
+    _dec5: void 0,
+    _dec6: void 0,
+    _dec7: void 0,
+    _dec8: void 0,
+    _dec9: void 0,
+    _dec10: void 0,
+    _dec11: void 0,
+    _dec12: void 0,
+    _dec13: void 0,
+    _dec14: void 0,
+    _dec15: void 0,
+    _dec16: void 0,
+    _dec17: void 0,
+    _dec18: void 0,
+    _dec19: void 0,
+    _dec20: void 0,
+    _dec21: void 0,
+    _dec22: void 0,
+    _dec23: void 0,
+    _dec24: void 0,
+    _dec25: void 0,
+    _class: void 0,
+    _class2: void 0,
+    _descriptor: void 0,
+    _descriptor2: void 0,
+    _descriptor3: void 0,
+    _descriptor4: void 0,
+    _descriptor5: void 0,
+    _descriptor6: void 0,
+    _descriptor7: void 0,
+    _descriptor8: void 0,
+    _descriptor9: void 0,
+    _descriptor10: void 0,
+    _descriptor11: void 0,
+    _descriptor12: void 0,
+    _descriptor13: void 0,
+    _descriptor14: void 0,
+    _descriptor15: void 0,
+    _descriptor16: void 0,
+    _descriptor17: void 0,
+    _descriptor18: void 0,
+    _descriptor19: void 0,
+    _descriptor20: void 0,
+    _descriptor21: void 0,
+    _descriptor22: void 0,
+    _descriptor23: void 0,
+    _descriptor24: void 0,
+    _temp: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _applyDecoratedDescriptor = _virtual_rollupPluginBabelHelpersJs.applyDecoratedDescriptor;
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+      _assertThisInitialized = _virtual_rollupPluginBabelHelpersJs.assertThisInitialized;
+      _initializerDefineProperty = _virtual_rollupPluginBabelHelpersJs.initializerDefineProperty;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _asyncToGenerator = _virtual_rollupPluginBabelHelpersJs.asyncToGenerator;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Node = _cc.Node;
+      Camera = _cc.Camera;
+      Prefab = _cc.Prefab;
+      AudioClip = _cc.AudioClip;
+      Texture2D = _cc.Texture2D;
+      Vec3 = _cc.Vec3;
+      tween = _cc.tween;
+      MeshRenderer = _cc.MeshRenderer;
+      view = _cc.view;
+      Component = _cc.Component;
+      instantiate = _cc.instantiate;
+      UITransform = _cc.UITransform;
+      Label = _cc.Label;
+      Color = _cc.Color;
+    }, function (_BoxJs) {
+      Box = _BoxJs.Box;
+    }, function (_ConfigJs) {
+      Config = _ConfigJs.Config;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+      ClientDataType = _ConstJs.ClientDataType;
+      RoomDataType = _ConstJs.RoomDataType;
+      BoxSize = _ConstJs.BoxSize;
+      TeamColor = _ConstJs.TeamColor;
+      DialogButtonType = _ConstJs.DialogButtonType;
+      NetState = _ConstJs.NetState;
+      ServerDataType = _ConstJs.ServerDataType;
+      StatisticsKey = _ConstJs.StatisticsKey;
+      BoxShape = _ConstJs.BoxShape;
+    }, function (_PlayerJs) {
+      Player = _PlayerJs.Player;
+    }, function (_UtilJs) {
+      Util = _UtilJs.Util;
+    }, function (_SDKJs) {
+      SDK = _SDKJs.SDK;
+    }, function (_UIDialogDialogJs) {
+      Dialog = _UIDialogDialogJs.Dialog;
+    }, function (_UIBoardWaitLoverBoardJs) {
+      WaitLoverBoard = _UIBoardWaitLoverBoardJs.WaitLoverBoard;
+    }, function (_OtherPlayerJs) {
+      OtherPlayer = _OtherPlayerJs.OtherPlayer;
+    }, function (_UIBoardGamingBoardJs) {
+      GamingBoard = _UIBoardGamingBoardJs.GamingBoard;
+    }, function (_UIBoardMainBoardJs) {
+      MainBoard = _UIBoardMainBoardJs.MainBoard;
+    }, function (_UIBoardMatchingBoardJs) {
+      MatchingBoard = _UIBoardMatchingBoardJs.MatchingBoard;
+    }, function (_UIBoardResultBoardJs) {
+      ResultBoard = _UIBoardResultBoardJs.ResultBoard;
+    }, function (_UIBoardTeachingBoardJs) {
+      TeachingBoard = _UIBoardTeachingBoardJs.TeachingBoard;
+    }, function (_UIToastJs) {
+      Toast = _UIToastJs.Toast;
+    }, function (_UILoadingBarJs) {
+      LoadingBar = _UILoadingBarJs.LoadingBar;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "1a8f1+varZBzIr09OsNwJXt", "GameManager", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      Setting = function Setting() {
+        _classCallCheck(this, Setting);
+
+        this.switch_audio = true;
+      };
+
+      _export("GameManager", GameManager = (_dec = ccclass('GameManager'), _dec2 = property({
+        type: Player
+      }), _dec3 = property({
+        type: OtherPlayer
+      }), _dec4 = property({
+        type: Node
+      }), _dec5 = property({
+        type: Node
+      }), _dec6 = property({
+        type: Camera
+      }), _dec7 = property({
+        type: Node
+      }), _dec8 = property({
+        type: Toast
+      }), _dec9 = property({
+        type: Prefab
+      }), _dec10 = property({
+        type: AudioClip
+      }), _dec11 = property({
+        type: AudioClip
+      }), _dec12 = property({
+        type: AudioClip
+      }), _dec13 = property({
+        type: AudioClip
+      }), _dec14 = property({
+        type: AudioClip
+      }), _dec15 = property({
+        type: AudioClip
+      }), _dec16 = property({
+        type: AudioClip
+      }), _dec17 = property({
+        type: AudioClip
+      }), _dec18 = property({
+        type: AudioClip
+      }), _dec19 = property({
+        type: AudioClip
+      }), _dec20 = property({
+        type: Texture2D
+      }), _dec21 = property({
+        type: Texture2D
+      }), _dec22 = property({
+        type: Texture2D
+      }), _dec23 = property({
+        type: Texture2D
+      }), _dec24 = property({
+        type: Node
+      }), _dec25 = property({
+        type: LoadingBar
+      }), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function (_Component) {
+        _inherits(GameManager, _Component);
+
+        function GameManager() {
+          var _getPrototypeOf2;
+
+          var _this;
+
+          _classCallCheck(this, GameManager);
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(GameManager)).call.apply(_getPrototypeOf2, [this].concat(args)));
+          _this.SDK = new SDK();
+          _this.Setting = new Setting();
+          _this.Debug = null;
+          _this.Util = new Util(_this.SDK, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "Player", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "OtherTeam", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "CenterNode", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "plane", _descriptor4, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "camera", _descriptor5, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "UI", _descriptor6, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "toast", _descriptor7, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "rangeShowPrefab", _descriptor8, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_failed", _descriptor9, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_complete", _descriptor10, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_dead", _descriptor11, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_perfect", _descriptor12, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_last5s", _descriptor13, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_ready", _descriptor14, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_relife", _descriptor15, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_touch_down", _descriptor16, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_win", _descriptor17, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "audio_go", _descriptor18, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "background_1", _descriptor19, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "background_2", _descriptor20, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "background_3", _descriptor21, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "background_4", _descriptor22, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "userTipNode", _descriptor23, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "loadingBar", _descriptor24, _assertThisInitialized(_this));
+
+          _this._origin_camera_pos = new Vec3();
+          _this.map = [];
+          _this.curActionPlayer = null;
+          _this.scoreNodeList = [];
+          _this.curBox = null;
+          _this.nextBox = null;
+          _this.planeIndex = 1;
+          _this._isControler = false;
+          _this.startTime = 0;
+          _this.gameTime = 0;
+          _this.isTeached = false;
+          _this._isRunning = false;
+          _this.diaDead = false;
+          _this.AccessToken = null;
+          _this.clearTime = 0;
+          _this.teammaterIsLover = undefined;
+          _this.enemyIsLover = undefined;
+          _this.isReconnect = false;
+          _this.isQuickMatching = false;
+          _this.robotInfo = {};
+          _this.BoxPrefab = {
+            f1: [null, null, null, null, null, null],
+            f2: [null, null, null, null, null, null],
+            f3: [null, null, null, null, null, null],
+            f4: [null, null, null, null, null, null],
+            f5: [null, null, null, null, null, null],
+            y1: [null, null, null, null, null, null],
+            y2: [null, null, null, null, null, null],
+            y3: [null, null, null, null, null, null],
+            y4: [null, null, null, null, null, null],
+            y5: [null, null, null, null, null, null]
+          };
+          _this.ChessPrefab = [null, null, null, null];
+          _this.ChessPrefabEnemy = {
+            red: null,
+            blue: null
+          };
+          return _this;
+        }
+
+        _createClass(GameManager, [{
+          key: "initPrefab",
+          value: function () {
+            var _initPrefab = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+              var scene, prefab, i, j, prefabPath, key, _i, _j, _prefabPath, _key2, chess_key, index, _prefabPath2;
+
+              return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      // 加载预制件-界面
+                      scene = this.node.getParent();
+                      this.MainBoard = new MainBoard(scene, this.SDK);
+                      this.WaitLoverBoard = new WaitLoverBoard(scene, this.SDK);
+                      this.MatchingBoard = new MatchingBoard(scene, this.SDK);
+                      this.GamingBoard = new GamingBoard(scene, this.SDK);
+                      this.ResultBoard = new ResultBoard(scene, this.SDK);
+                      this.TeachingBoard = new TeachingBoard(scene, this.SDK); // this.MainBoard.InitBoard();
+                      // this.GamingBoard.InitBoard();
+                      // this.MatchingBoard.InitBoard();
+                      // this.WaitLoverBoard.InitBoard();
+                      // this.TeachingBoard.InitBoard();
+
+                      this.MainBoard.board = scene.getChildByName('UI').getChildByName('board').getChildByName('MainBoard');
+                      this.GamingBoard.board = scene.getChildByName('UI').getChildByName('board').getChildByName('GamingBoard');
+                      this.MatchingBoard.board = scene.getChildByName('UI').getChildByName('board').getChildByName('MatchingBoard');
+                      this.WaitLoverBoard.board = scene.getChildByName('UI').getChildByName('board').getChildByName('WaitLoverBoard');
+                      this.TeachingBoard.board = scene.getChildByName('UI').getChildByName('board').getChildByName('TeachingBoard');
+                      this.ResultBoard.board = scene.getChildByName('UI').getChildByName('board').getChildByName('ResultBoard'); // 加载预制件---方形盒子
+
+                      for (i = 1; i <= 5; i++) {
+                        for (j = 1; j <= 6; j++) {
+                          prefabPath = '';
+                          prefabPath = "Model/Box/f" + i + "0" + j + '/f' + i + "0" + j;
+                          key = 'f' + i.toString();
+                          this.Util.loadBoxPrefab(prefabPath, key, j - 1);
+                        }
+                      } // 加载预制件---圆形盒子
+
+
+                      for (_i = 1; _i <= 5; _i++) {
+                        for (_j = 1; _j <= 6; _j++) {
+                          _prefabPath = '';
+                          _prefabPath = "Model/Box/y" + _i + "0" + _j + '/y' + _i + "0" + _j;
+                          _key2 = 'y' + _i.toString();
+                          this.Util.loadBoxPrefab(_prefabPath, _key2, _j - 1);
+                        }
+                      }
+
+                      log('盒子预制件', this.BoxPrefab); // 加载预制件--棋子
+
+                      chess_key = ['red_1', 'red_2', 'blue_1', 'blue_2'];
+
+                      for (index = 0; index < chess_key.length; index++) {
+                        _prefabPath2 = 'Model/qizi/' + chess_key[index] + '/Node';
+                        this.Util.loadChessPrefab(_prefabPath2, index);
+                      }
+
+                      this.Util.loadEnemyChessPrefab('Model/qizi/enemy_blue/Node', TeamColor.blue);
+                      this.Util.loadEnemyChessPrefab('Model/qizi/enemy_red/Node', TeamColor.red); // 加载预制件--完美跳跃效果图
+
+                      _context9.next = 22;
+                      return this.Util.loadPrefab('Prefab/UI/perfect');
+
+                    case 22:
+                      prefab = _context9.sent;
+
+                      if (prefab) {
+                        this.PerfectPrefab = prefab;
+                      }
+
+                    case 24:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9, this);
+            }));
+
+            function initPrefab() {
+              return _initPrefab.apply(this, arguments);
+            }
+
+            return initPrefab;
+          }() // 游戏初始化数据
+
+        }, {
+          key: "initData",
+          value: function () {
+            var _initData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(id) {
+              var _this2 = this;
+
+              var result, scene, inRoom, dia, _dia;
+
+              return regeneratorRuntime.wrap(function _callee11$(_context11) {
+                while (1) {
+                  switch (_context11.prev = _context11.next) {
+                    case 0:
+                      _context11.next = 2;
+                      return this.SDK.init(id, this);
+
+                    case 2:
+                      result = _context11.sent;
+                      scene = this.node.getParent();
+
+                      if (!result) {
+                        _context11.next = 19;
+                        break;
+                      }
+
+                      log('初始化SDK成功', MGOBE.Player.id);
+                      _context11.next = 8;
+                      return this.SDK.inRunningRoom();
+
+                    case 8:
+                      inRoom = _context11.sent;
+
+                      if (!inRoom) {
+                        _context11.next = 15;
+                        break;
+                      }
+
+                      dia = new Dialog(scene, this.SDK, '游戏仍在进行中,是否要进行重连?', DialogButtonType.multiple, '重连', '不重连');
+                      _context11.next = 13;
+                      return dia.show(this, this.reconnection_yes, this.reconnection_no);
+
+                    case 13:
+                      _context11.next = 17;
+                      break;
+
+                    case 15:
+                      this.loadingBar.complete();
+                      setTimeout( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+                        var newBoard, loverGroupId, cur_group_info, code, teammaterInfo, userContent;
+                        return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                          while (1) {
+                            switch (_context10.prev = _context10.next) {
+                              case 0:
+                                if (!(_this2.Util.localGet('userContent') && _this2.Util.localGet('userContent').group)) {
+                                  _context10.next = 28;
+                                  break;
+                                }
+
+                                loverGroupId = _this2.Util.localGet('userContent').group;
+                                _context10.next = 4;
+                                return _this2.SDK.getGroupInfo();
+
+                              case 4:
+                                cur_group_info = _context10.sent;
+                                cur_group_info = cur_group_info ? cur_group_info : {
+                                  id: '111'
+                                };
+
+                                if (!(cur_group_info.id != loverGroupId)) {
+                                  _context10.next = 23;
+                                  break;
+                                }
+
+                                _context10.next = 9;
+                                return _this2.SDK.leaveGroup();
+
+                              case 9:
+                                _context10.next = 11;
+                                return _this2.SDK.joinGroup(loverGroupId);
+
+                              case 11:
+                                code = _context10.sent;
+
+                                if (!(code === MGOBE.ErrCode.EC_OK)) {
+                                  _context10.next = 19;
+                                  break;
+                                }
+
+                                _context10.next = 15;
+                                return _this2.SDK.getTeammate();
+
+                              case 15:
+                                teammaterInfo = _context10.sent;
+
+                                if (teammaterInfo.commonNetworkState != NetState.Offline) {
+                                  newBoard = _this2.WaitLoverBoard;
+                                  userContent = _this2.Util.localGet('userContent');
+                                  userContent.group = '';
+
+                                  _this2.Util.localSet('userContent', userContent);
+                                } else {
+                                  newBoard = _this2.MainBoard;
+
+                                  _this2.showToast('游戏邀请已失效，请重新邀请', 2);
+                                }
+
+                                _context10.next = 21;
+                                break;
+
+                              case 19:
+                                newBoard = _this2.MainBoard;
+
+                                _this2.showToast('游戏邀请已失效，请重新邀请', 2);
+
+                              case 21:
+                                _context10.next = 26;
+                                break;
+
+                              case 23:
+                                _this2.SDK.Listener.add(_this2.SDK.curGroup);
+
+                                _this2.SDK.curGroup.initGroup(cur_group_info);
+
+                                newBoard = _this2.WaitLoverBoard;
+
+                              case 26:
+                                _context10.next = 29;
+                                break;
+
+                              case 28:
+                                newBoard = _this2.MainBoard;
+
+                              case 29:
+                                _context10.next = 31;
+                                return newBoard.ChangeBoard(newBoard);
+
+                              case 31:
+                                scene.getChildByName('UI').getChildByName('loading').active = false;
+
+                              case 32:
+                              case "end":
+                                return _context10.stop();
+                            }
+                          }
+                        }, _callee10);
+                      })), 1000);
+
+                    case 17:
+                      _context11.next = 22;
+                      break;
+
+                    case 19:
+                      _dia = new Dialog(scene, this.SDK, '登录失败,请重新开启游戏', DialogButtonType.single, '知道了');
+                      _context11.next = 22;
+                      return _dia.show(this, function () {
+                        if (_this2.SDK.curDialog.dead) {
+                          return;
+                        }
+
+                        _this2.SDK.curDialog.destroy();
+
+                        window['RunNative']('exitMiniGame', {}, '', '');
+                      });
+
+                    case 22:
+                    case "end":
+                      return _context11.stop();
+                  }
+                }
+              }, _callee11, this);
+            }));
+
+            function initData(_x2) {
+              return _initData.apply(this, arguments);
+            }
+
+            return initData;
+          }()
+        }, {
+          key: "reconnection_yes",
+          value: function () {
+            var _reconnection_yes = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+              var roomInfo, selfInfo, teamId, playerList, index, element, code, scene, dia;
+              return regeneratorRuntime.wrap(function _callee12$(_context12) {
+                while (1) {
+                  switch (_context12.prev = _context12.next) {
+                    case 0:
+                      if (!this.diaDead) {
+                        _context12.next = 2;
+                        break;
+                      }
+
+                      return _context12.abrupt("return");
+
+                    case 2:
+                      this.diaDead = true;
+                      log('进行断线重连');
+                      this.SDK.curDialog.destroy();
+                      _context12.next = 7;
+                      return this.SDK.reconnect();
+
+                    case 7:
+                      _context12.next = 9;
+                      return this.SDK.getRoomInfo();
+
+                    case 9:
+                      roomInfo = _context12.sent;
+                      _context12.next = 12;
+                      return this.SDK.getPlayerInfo();
+
+                    case 12:
+                      selfInfo = _context12.sent;
+
+                      if (!roomInfo) {
+                        _context12.next = 42;
+                        break;
+                      }
+
+                      playerList = roomInfo.playerList;
+                      index = 0;
+
+                    case 16:
+                      if (!(index < playerList.length)) {
+                        _context12.next = 24;
+                        break;
+                      }
+
+                      element = playerList[index];
+
+                      if (!(element.id == selfInfo.id)) {
+                        _context12.next = 21;
+                        break;
+                      }
+
+                      teamId = element.teamId;
+                      return _context12.abrupt("break", 24);
+
+                    case 21:
+                      index++;
+                      _context12.next = 16;
+                      break;
+
+                    case 24:
+                      this.SDK.curRoom.onRecvFromGameSvr = this.onRecvFromGameSvr.bind(this);
+                      _context12.next = 27;
+                      return this.SDK.sendToServer(ClientDataType.Reconnect, teamId);
+
+                    case 27:
+                      code = _context12.sent;
+                      log('请求重连的回应', code);
+
+                      if (!(code != MGOBE.ErrCode.EC_OK)) {
+                        _context12.next = 40;
+                        break;
+                      }
+
+                      _context12.next = 32;
+                      return this.SDK.leaveGroup();
+
+                    case 32:
+                      _context12.next = 34;
+                      return this.SDK.leaveRoom();
+
+                    case 34:
+                      _context12.next = 36;
+                      return this.SDK.cancelMatchinig();
+
+                    case 36:
+                      scene = this.node.getParent();
+                      dia = new Dialog(scene, this.SDK, '房间已关闭,无法重连', DialogButtonType.single, '回到首页');
+                      _context12.next = 40;
+                      return dia.show(this, this.backMainBoard);
+
+                    case 40:
+                      _context12.next = 43;
+                      break;
+
+                    case 42:
+                      log('重连失败');
+
+                    case 43:
+                    case "end":
+                      return _context12.stop();
+                  }
+                }
+              }, _callee12, this);
+            }));
+
+            function reconnection_yes() {
+              return _reconnection_yes.apply(this, arguments);
+            }
+
+            return reconnection_yes;
+          }()
+        }, {
+          key: "reconnection_no",
+          value: function () {
+            var _reconnection_no = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+              var scene;
+              return regeneratorRuntime.wrap(function _callee13$(_context13) {
+                while (1) {
+                  switch (_context13.prev = _context13.next) {
+                    case 0:
+                      if (!this.SDK.curDialog.dead) {
+                        _context13.next = 2;
+                        break;
+                      }
+
+                      return _context13.abrupt("return");
+
+                    case 2:
+                      log('拒绝断线重连');
+                      scene = this.node.getParent();
+                      _context13.next = 6;
+                      return this.SDK.leaveGroup();
+
+                    case 6:
+                      _context13.next = 8;
+                      return this.SDK.leaveRoom();
+
+                    case 8:
+                      _context13.next = 10;
+                      return this.SDK.cancelMatchinig();
+
+                    case 10:
+                      this.SDK.curDialog.destroy();
+                      log('点击拒绝重连切换到MainBoard');
+                      _context13.next = 14;
+                      return this.MainBoard.ChangeBoard(this.MainBoard);
+
+                    case 14:
+                    case "end":
+                      return _context13.stop();
+                  }
+                }
+              }, _callee13, this);
+            }));
+
+            function reconnection_no() {
+              return _reconnection_no.apply(this, arguments);
+            }
+
+            return reconnection_no;
+          }()
+        }, {
+          key: "onRecvFromGameSvr",
+          value: function () {
+            var _onRecvFromGameSvr = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(event) {
+              var _this3 = this;
+
+              var scene, data, mesType, dia;
+              return regeneratorRuntime.wrap(function _callee14$(_context14) {
+                while (1) {
+                  switch (_context14.prev = _context14.next) {
+                    case 0:
+                      log('接收到实时服务器的数据:', event.data);
+                      scene = this.node.getParent();
+                      data = event.data.data;
+                      mesType = data.type;
+
+                      if (!(mesType == ServerDataType.Reconnect)) {
+                        _context14.next = 17;
+                        break;
+                      }
+
+                      this.isReconnect = true;
+                      this.SDK.curRoom.onRecvFromGameSvr = null;
+                      _context14.next = 9;
+                      return this.reconnectSyncData(data.data);
+
+                    case 9:
+                      this.isRunning = true;
+                      _context14.next = 12;
+                      return this.GamingBoard.ChangeBoard(this.GamingBoard);
+
+                    case 12:
+                      this.SDK.sendToServer(ClientDataType.ReconnectComplete, this.serverTeam.id);
+                      this.SDK.sendToServer(ClientDataType.ChangeControler);
+                      this.changeControler(this.curActionPlayer);
+                      _context14.next = 28;
+                      break;
+
+                    case 17:
+                      if (!(mesType == ServerDataType.ReconnectFailed)) {
+                        _context14.next = 28;
+                        break;
+                      }
+
+                      log('重连失败,游戏已经结束');
+                      _context14.next = 21;
+                      return this.SDK.leaveGroup();
+
+                    case 21:
+                      _context14.next = 23;
+                      return this.SDK.leaveRoom();
+
+                    case 23:
+                      _context14.next = 25;
+                      return this.SDK.cancelMatchinig();
+
+                    case 25:
+                      dia = new Dialog(scene, this.SDK, '游戏已结束', DialogButtonType.single, '知道了');
+                      _context14.next = 28;
+                      return dia.show(this, function () {
+                        if (_this3.SDK.curDialog.dead) {
+                          return;
+                        }
+
+                        _this3.MainBoard.ChangeBoard(_this3.MainBoard);
+
+                        _this3.SDK.curDialog.destroy();
+                      });
+
+                    case 28:
+                    case "end":
+                      return _context14.stop();
+                  }
+                }
+              }, _callee14, this);
+            }));
+
+            function onRecvFromGameSvr(_x3) {
+              return _onRecvFromGameSvr.apply(this, arguments);
+            }
+
+            return onRecvFromGameSvr;
+          }()
+        }, {
+          key: "backMainBoard",
+          value: function () {
+            var _backMainBoard = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+              var newBoard;
+              return regeneratorRuntime.wrap(function _callee15$(_context15) {
+                while (1) {
+                  switch (_context15.prev = _context15.next) {
+                    case 0:
+                      if (!this.SDK.curDialog.dead) {
+                        _context15.next = 2;
+                        break;
+                      }
+
+                      return _context15.abrupt("return");
+
+                    case 2:
+                      this.SDK.curDialog.destroy();
+                      newBoard = this.MainBoard;
+                      _context15.next = 6;
+                      return newBoard.ChangeBoard(newBoard);
+
+                    case 6:
+                    case "end":
+                      return _context15.stop();
+                  }
+                }
+              }, _callee15, this);
+            }));
+
+            function backMainBoard() {
+              return _backMainBoard.apply(this, arguments);
+            }
+
+            return backMainBoard;
+          }()
+        }, {
+          key: "onLoad",
+          value: function onLoad() {
+            this.Config = new Config();
+          } // 进入游戏
+
+        }, {
+          key: "start",
+          value: function () {
+            var _start = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
+              var paraStr, token, user_id;
+              return regeneratorRuntime.wrap(function _callee16$(_context16) {
+                while (1) {
+                  switch (_context16.prev = _context16.next) {
+                    case 0:
+                      this.Player.gameManager = this;
+                      this.OtherTeam.gameManager = this;
+                      this.camera.node.getPosition(this._origin_camera_pos);
+                      this.loadingBar.run(); // URL解析
+
+                      paraStr = window.location.search;
+                      token = 'af9d280a2e13cb9b2519960c9c4f3a3de8f3d26a'; //this.Util.localGet('userContent') ? this.Util.localGet('userContent').appToken : '';
+                      // const token = this.Util.getPara('access_token', paraStr);
+
+                      user_id = null;
+                      this.AccessToken = token;
+
+                      if (this.Config.env == 'dev') {
+                        user_id = this.Util.getPara('user_id', paraStr);
+                      } // 游戏基本事件注册
+
+
+                      this.registerEvent();
+                      this.Player.onJumpComplete = this.onJumpComplete.bind(this);
+                      this.Player.onJumpDead = this.onJumpDead.bind(this);
+                      this.Player.onPowerDown = this.onPowerDown.bind(this);
+                      this.Player.onPowerUp = this.onPowerUp.bind(this);
+                      this.schedule(this.timerSingalAction.bind(this), 0.2); // 初始化加载预制件
+
+                      _context16.next = 17;
+                      return this.initPrefab();
+
+                    case 17:
+                      // 根据配置确定是否开启Debug面板
+                      {
+                        this.node.parent.getChildByName('UI').getChildByName('Debug').destroy();
+                      } // 登录
+
+                      _context16.next = 20;
+                      return this.login(user_id);
+
+                    case 20:
+                      this.Util.callTDGA(StatisticsKey.login, this.PlayerData);
+
+                    case 21:
+                    case "end":
+                      return _context16.stop();
+                  }
+                }
+              }, _callee16, this);
+            }));
+
+            function start() {
+              return _start.apply(this, arguments);
+            }
+
+            return start;
+          }()
+        }, {
+          key: "login",
+          value: function () {
+            var _login = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+              var _this4 = this;
+
+              var user_id,
+                  playerData,
+                  _gameInfo,
+                  _userInfo,
+                  _loverInfo,
+                  _userVip,
+                  userInfo,
+                  gameInfo,
+                  res1,
+                  res2,
+                  scene,
+                  dia,
+                  _scene,
+                  _dia2,
+                  _args17 = arguments;
+
+              return regeneratorRuntime.wrap(function _callee17$(_context17) {
+                while (1) {
+                  switch (_context17.prev = _context17.next) {
+                    case 0:
+                      user_id = _args17.length > 0 && _args17[0] !== undefined ? _args17[0] : null;
+                      playerData = {
+                        nickname: '',
+                        avatar_url: '',
+                        user_id: 0,
+                        lover_id: 0,
+                        gender: 0,
+                        totalCount: 0,
+                        playCountWeek: 0,
+                        winCountWeek: 0,
+                        mvpCountWeek: 0,
+                        loverCount: 0,
+                        loverWinCount: 0,
+                        tacitScore: 0,
+                        isVip: false
+                      }; // 使用token请求初始化数据
+
+                      if (!user_id) {
+                        _context17.next = 19;
+                        break;
+                      }
+
+                      playerData.nickname = user_id;
+                      playerData.avatar_url = '';
+                      playerData.user_id = user_id;
+                      playerData.lover_id = 0;
+                      playerData.gender = 1;
+                      playerData.playCountWeek = 0;
+                      playerData.mvpCountWeek = 0;
+                      playerData.winCountWeek = 0;
+                      playerData.loverCount = 0;
+                      playerData.loverWinCount = 0;
+                      playerData.tacitScore = 0;
+                      playerData.isVip = false;
+                      this.PlayerData = playerData;
+                      this.initData(user_id);
+                      log('登录完成', 'user_id', '玩家数据:', this.PlayerData);
+                      return _context17.abrupt("return");
+
+                    case 19:
+                      if (!this.AccessToken) {
+                        _context17.next = 72;
+                        break;
+                      }
+
+                      _context17.next = 22;
+                      return this.Util.http(this.Config.serverURL.gameInit, "GET", {}, false, this.AccessToken);
+
+                    case 22:
+                      _gameInfo = _context17.sent;
+                      _context17.next = 25;
+                      return this.Util.http(this.Config.serverURL.accountInit, "GET", {}, false, this.AccessToken);
+
+                    case 25:
+                      _userInfo = _context17.sent;
+                      _context17.next = 28;
+                      return this.Util.http(this.Config.serverURL.loverInfo, 'GET', {}, false, this.AccessToken);
+
+                    case 28:
+                      _loverInfo = _context17.sent;
+                      _context17.next = 31;
+                      return this.Util.http(this.Config.serverURL.vipInfo, "GET", {}, false, this.AccessToken);
+
+                    case 31:
+                      _userVip = _context17.sent;
+                      log('接口请求gameInfo', _gameInfo);
+                      log('接口请求userInfo', _userInfo);
+                      log('解耦请求Vip', _userVip);
+
+                      if (!(_gameInfo && _userInfo.kiwi_user_info)) {
+                        _context17.next = 66;
+                        break;
+                      }
+
+                      userInfo = _userInfo.kiwi_user_info;
+                      gameInfo = _gameInfo;
+
+                      if (userInfo && userInfo.gender === 1) {
+                        this.loverData = _loverInfo.lover_info.female_user_info;
+                        this.loverData.avatar = _loverInfo.lover_info.female_user_info.avatar_info ? _loverInfo.lover_info.female_user_info.avatar_info : {
+                          host: 'didi-static.oss-cn-hangzhou.aliyuncs.com',
+                          path: '/kitty/girl.jpg'
+                        };
+                      } else {
+                        this.loverData = _loverInfo.lover_info.male_user_info;
+                        this.loverData.avatar = _loverInfo.lover_info.male_user_info.avatar_info ? _loverInfo.lover_info.male_user_info.avatar_info : {
+                          host: 'didi-static.oss-cn-hangzhou.aliyuncs.com',
+                          path: '/kitty/boy.jpg'
+                        };
+                      }
+
+                      playerData.nickname = userInfo.nickname ? userInfo.nickname : userInfo.id.toString();
+                      playerData.avatar_url = userInfo.avatar_info ? 'https://' + userInfo.avatar_info.host + '/' + userInfo.avatar_info.path : '';
+                      playerData.user_id = userInfo.id;
+                      playerData.lover_id = userInfo.lovers_id;
+                      playerData.gender = userInfo.gender;
+                      playerData.totalCount = gameInfo.user_match_info.total_game_match ? gameInfo.user_match_info.total_game_match : 0;
+                      playerData.playCountWeek = gameInfo.user_match_info.game_match_count ? gameInfo.user_match_info.game_match_count : 0;
+                      playerData.mvpCountWeek = gameInfo.user_match_info.mvp_count ? gameInfo.user_match_info.mvp_count : 0;
+                      playerData.winCountWeek = gameInfo.user_match_info.win_count ? gameInfo.user_match_info.win_count : 0;
+                      playerData.loverCount = gameInfo.lover_match_info.game_match_count ? gameInfo.lover_match_info.game_match_count : 0;
+                      playerData.loverWinCount = gameInfo.lover_match_info.win_count ? gameInfo.lover_match_info.win_count : 0;
+                      playerData.tacitScore = gameInfo.lover_match_info.tacit_socre ? gameInfo.lover_match_info.tacit_socre : 0;
+                      _context17.next = 53;
+                      return this.Util.loadRemoteImg(playerData.avatar_url, null);
+
+                    case 53:
+                      res1 = _context17.sent;
+                      _context17.next = 56;
+                      return this.Util.loadRemoteImg("https://".concat(this.loverData.avatar.host, "/").concat(this.loverData.avatar.path), null);
+
+                    case 56:
+                      res2 = _context17.sent;
+
+                      if (!res1) {
+                        playerData.gender === 1 && (playerData.avatar_url = 'https://didi-static.oss-cn-hangzhou.aliyuncs.com/kitty/boy.jpg');
+                        playerData.gender === 2 && (playerData.avatar_url = 'https://didi-static.oss-cn-hangzhou.aliyuncs.com/kitty/girl.jpg');
+                      }
+
+                      if (!res2) {
+                        this.loverData.gender === 1 && (this.loverData.avatar = {
+                          host: 'didi-static.oss-cn-hangzhou.aliyuncs.com',
+                          path: '/kitty/boy.jpg'
+                        });
+                        this.loverData.gender === 2 && (this.loverData.avatar = {
+                          host: 'didi-static.oss-cn-hangzhou.aliyuncs.com',
+                          path: '/kitty/girl.jpg'
+                        });
+                      }
+
+                      this.PlayerData = playerData;
+                      this.PlayerData.isVip = _userVip ? _userVip.vip_info.end_date_at * 1000 > new Date().getTime() ? true : false : false;
+                      this.initData(this.PlayerData.user_id);
+                      log('登录完成', 'token', '玩家数据:', this.PlayerData);
+                      return _context17.abrupt("return");
+
+                    case 66:
+                      scene = this.node.getParent();
+                      dia = new Dialog(scene, this.SDK, '登录失败,未获取到玩家信息', DialogButtonType.single, '知道了');
+                      _context17.next = 70;
+                      return dia.show(this, function () {
+                        if (_this4.SDK.curDialog.dead) {
+                          return;
+                        }
+
+                        _this4.SDK.curDialog.destroy();
+                      });
+
+                    case 70:
+                      _context17.next = 76;
+                      break;
+
+                    case 72:
+                      _scene = this.node.getParent();
+                      _dia2 = new Dialog(_scene, this.SDK, '登录失败,无登录数据', DialogButtonType.single, '知道了');
+                      _context17.next = 76;
+                      return _dia2.show(this, function () {
+                        if (_this4.SDK.curDialog.dead) {
+                          return;
+                        }
+
+                        _this4.SDK.curDialog.destroy();
+                      });
+
+                    case 76:
+                    case "end":
+                      return _context17.stop();
+                  }
+                }
+              }, _callee17, this);
+            }));
+
+            function login() {
+              return _login.apply(this, arguments);
+            }
+
+            return login;
+          }()
+        }, {
+          key: "registerEvent",
+          // 注册自定义事件用于控制游戏流程,在各UI类中发送对应信号对游戏流程进行控制
+          value: function registerEvent() {
+            // 获取到实时服务器发送的初始化数据后进行游戏初始化
+            this.node.on('GameInit', this.gameInit, this);
+            this.node.on('SyncData', this.syncGameData, this);
+          } // --------------------自定义事件-----------------------
+
+        }, {
+          key: "gameInit",
+          value: function () {
+            var _gameInit = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(data) {
+              var map, mesData, selfInfo, playerIndex, selfIndex, modelIndex, enemyTeamColor, enemyIsVip, code;
+              return regeneratorRuntime.wrap(function _callee18$(_context18) {
+                while (1) {
+                  switch (_context18.prev = _context18.next) {
+                    case 0:
+                      log('游戏初始化', '开始');
+                      this.Player.AI = false;
+                      this.isReconnect = false;
+                      map = data.map;
+                      mesData = data.gameState; // const curPlayerInfo = await this.SDK.getPlayerInfo();
+
+                      this.CenterNode.setParent(this.node.getParent());
+                      log('游戏初始化', '地图数据:', map);
+                      log('游戏初始化', '游戏数据', mesData);
+                      this.camera.node.setPosition(this._origin_camera_pos);
+                      this.plane.setPosition(new Vec3(0, 0, 0));
+                      _context18.next = 12;
+                      return this.drawMap(map, true);
+
+                    case 12:
+                      _context18.next = 14;
+                      return this.syncGameData(mesData.teamList, true);
+
+                    case 14:
+                      this.Player.initPlayer();
+                      this.OtherTeam.initPlayer(); // 确定初始由谁控制棋子,则显示谁的模型
+
+                      _context18.next = 18;
+                      return this.SDK.getPlayerInfo();
+
+                    case 18:
+                      selfInfo = _context18.sent;
+                      _context18.next = 21;
+                      return this.SDK.getPlayerIndex();
+
+                    case 21:
+                      selfIndex = _context18.sent;
+
+                      if (this.Util.isControler(mesData.curActionPlayer, selfInfo)) {
+                        playerIndex = selfIndex;
+                      } else {
+                        playerIndex = selfIndex == 1 ? 2 : 1;
+                      }
+
+                      if (this.serverPlayer.teamId == TeamColor.red) {
+                        modelIndex = 1;
+                        enemyTeamColor = TeamColor.blue;
+                      } else {
+                        modelIndex = 3;
+                        enemyTeamColor = TeamColor.red;
+                      }
+
+                      modelIndex += playerIndex - 1;
+                      _context18.next = 27;
+                      return this.Player.setModel(modelIndex);
+
+                    case 27:
+                      _context18.next = 29;
+                      return this.OtherTeam.setModel(enemyTeamColor);
+
+                    case 29:
+                      _context18.next = 31;
+                      return this.Player.setTire(this.PlayerData.isVip ? 1 : 0);
+
+                    case 31:
+                      _context18.next = 33;
+                      return this.Util.enemyIsVip();
+
+                    case 33:
+                      enemyIsVip = _context18.sent;
+                      _context18.next = 36;
+                      return this.OtherTeam.setTire(enemyIsVip ? 1 : 0);
+
+                    case 36:
+                      this.OtherTeam.map = this.map;
+                      this.OtherTeam.index = 0;
+                      this.Player.curBox = this.map[0];
+                      this.Player.nextBox = this.map[1];
+                      this.OtherTeam.curBox = this.map[0];
+                      this.OtherTeam.nextBox = this.map[1];
+                      this.curActionPlayer = mesData.curActionPlayer; // todo 完成后删除发送此消息中发送的内容,直接将数据存储在PlayerProfile中
+
+                      _context18.next = 45;
+                      return this.SDK.sendToServer(ClientDataType.Ready, {
+                        avatar: this.PlayerData.avatar_url,
+                        user_id: this.PlayerData.user_id,
+                        gender: this.PlayerData.gender,
+                        lover_id: this.PlayerData.lover_id
+                      });
+
+                    case 45:
+                      code = _context18.sent;
+
+                      if (code == this.SDK.errorCode.EC_OK) {
+                        log('游戏初始化', '完成', '发送ready信号', '成功');
+                      } else {
+                        log('游戏初始化', '完成', '发送ready信号', '失败', code);
+                      }
+
+                    case 47:
+                    case "end":
+                      return _context18.stop();
+                  }
+                }
+              }, _callee18, this);
+            }));
+
+            function gameInit(_x4) {
+              return _gameInit.apply(this, arguments);
+            }
+
+            return gameInit;
+          }() // 断线重连方法,自动同步玩家、队伍数据以及视角、模型位置
+
+        }, {
+          key: "reconnectSyncData",
+          value: function () {
+            var _reconnectSyncData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(data) {
+              var groupInfo, selfInfo, playerIndex, selfIndex, modelIndex, enemyTeamColor, enemyIsVip;
+              return regeneratorRuntime.wrap(function _callee19$(_context19) {
+                while (1) {
+                  switch (_context19.prev = _context19.next) {
+                    case 0:
+                      log('断线重连同步数据', data);
+
+                      if (this.Config.env == 'dev') {
+                        this.gameTime = this.Config.DebugGameTime > 0 ? this.Config.DebugGameTime : data.gameTime;
+                      } else {
+                        this.gameTime = data.gameTime;
+                      }
+
+                      this.startTime = data.startTime;
+                      _context19.next = 5;
+                      return this.drawMap(data.map, true);
+
+                    case 5:
+                      _context19.next = 7;
+                      return this.syncGameData(data.gameState.teamList, true);
+
+                    case 7:
+                      _context19.next = 9;
+                      return this.SDK.getGroupInfo();
+
+                    case 9:
+                      groupInfo = _context19.sent;
+
+                      if (groupInfo) {
+                        this.SDK.Listener.add(this.SDK.curGroup);
+                        this.SDK.curGroup.initGroup(groupInfo);
+                      }
+
+                      _context19.next = 13;
+                      return this.SDK.getPlayerInfo();
+
+                    case 13:
+                      selfInfo = _context19.sent;
+                      _context19.next = 16;
+                      return this.SDK.getPlayerIndex();
+
+                    case 16:
+                      selfIndex = _context19.sent;
+
+                      if (this.Util.isControler(data.gameState.curActionPlayer, selfInfo)) {
+                        playerIndex = selfIndex;
+                      } else {
+                        playerIndex = selfIndex == 1 ? 2 : 1;
+                      }
+
+                      if (this.serverPlayer.teamId == TeamColor.red) {
+                        modelIndex = 1;
+                        enemyTeamColor = TeamColor.blue;
+                      } else {
+                        modelIndex = 3;
+                        enemyTeamColor = TeamColor.red;
+                      }
+
+                      modelIndex += playerIndex - 1;
+                      _context19.next = 22;
+                      return this.Player.setModel(modelIndex);
+
+                    case 22:
+                      _context19.next = 24;
+                      return this.OtherTeam.setModel(enemyTeamColor);
+
+                    case 24:
+                      if (!this.PlayerData.isVip) {
+                        _context19.next = 27;
+                        break;
+                      }
+
+                      _context19.next = 27;
+                      return this.Player.setTire(1);
+
+                    case 27:
+                      _context19.next = 29;
+                      return this.Util.enemyIsVip();
+
+                    case 29:
+                      enemyIsVip = _context19.sent;
+
+                      if (!enemyIsVip) {
+                        _context19.next = 33;
+                        break;
+                      }
+
+                      _context19.next = 33;
+                      return this.OtherTeam.setTire(1);
+
+                    case 33:
+                      this.Player.reset(this.serverTeam);
+                      this.OtherTeam.reset(); // const curPlayerInfo = await this.SDK.getPlayerInfo();
+
+                      this.curActionPlayer = data.gameState.curActionPlayer;
+
+                    case 36:
+                    case "end":
+                      return _context19.stop();
+                  }
+                }
+              }, _callee19, this);
+            }));
+
+            function reconnectSyncData(_x5) {
+              return _reconnectSyncData.apply(this, arguments);
+            }
+
+            return reconnectSyncData;
+          }() // 同步自己的角色数据以及双方队伍数据
+
+        }, {
+          key: "syncData",
+          value: function () {
+            var _syncData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(data) {
+              return regeneratorRuntime.wrap(function _callee20$(_context20) {
+                while (1) {
+                  switch (_context20.prev = _context20.next) {
+                    case 0:
+                      _context20.next = 2;
+                      return this.syncGameData(data);
+
+                    case 2:
+                      this.uiRefresh();
+                      return _context20.abrupt("return", true);
+
+                    case 4:
+                    case "end":
+                      return _context20.stop();
+                  }
+                }
+              }, _callee20, this);
+            }));
+
+            function syncData(_x6) {
+              return _syncData.apply(this, arguments);
+            }
+
+            return syncData;
+          }() // 控制权转移
+
+        }, {
+          key: "changeControler",
+          value: function () {
+            var _changeControler = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(data) {
+              var _this5 = this;
+
+              var curPlayerInfo, control;
+              return regeneratorRuntime.wrap(function _callee22$(_context22) {
+                while (1) {
+                  switch (_context22.prev = _context22.next) {
+                    case 0:
+                      log('控制权转移数据', data);
+                      _context22.next = 3;
+                      return this.SDK.getPlayerInfo();
+
+                    case 3:
+                      curPlayerInfo = _context22.sent;
+                      control = this.Util.isControler(data, curPlayerInfo);
+                      setTimeout( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
+                        var playerIndex, avatar_url, selfIndex, modelIndex;
+                        return regeneratorRuntime.wrap(function _callee21$(_context21) {
+                          while (1) {
+                            switch (_context21.prev = _context21.next) {
+                              case 0:
+                                // 确定初始由谁控制棋子,则显示谁的模型
+                                avatar_url = 'xxx';
+                                _context21.next = 3;
+                                return _this5.SDK.getPlayerIndex();
+
+                              case 3:
+                                selfIndex = _context21.sent;
+
+                                if (!control) {
+                                  _context21.next = 8;
+                                  break;
+                                }
+
+                                playerIndex = selfIndex;
+                                _context21.next = 12;
+                                break;
+
+                              case 8:
+                                playerIndex = selfIndex == 1 ? 2 : 1;
+                                _context21.next = 11;
+                                return _this5.Util.getTeammaterAvatar();
+
+                              case 11:
+                                avatar_url = _context21.sent;
+
+                              case 12:
+                                if (_this5.serverPlayer.teamId == TeamColor.red) {
+                                  modelIndex = 1;
+                                } else {
+                                  modelIndex = 3;
+                                }
+
+                                modelIndex += playerIndex - 1;
+                                _context21.next = 16;
+                                return _this5.Player.setModel(modelIndex);
+
+                              case 16:
+                                _this5.isControler = control;
+
+                                _this5.uiRefresh();
+
+                                _this5.avatarSingal(control, true); // 修改userTip
+
+
+                                if (_this5.isRunning) {
+                                  if (!avatar_url || avatar_url == 'xxx') {
+                                    _this5.Util.loadImg('Texture/UI/gaming/me-001/spriteFrame', _this5.userTipNode.getChildByName('avatar'));
+                                  } else {
+                                    _this5.Util.loadRemoteImg(avatar_url, _this5.userTipNode.getChildByName('avatar'));
+                                  }
+
+                                  _this5.userTipNode.active = true;
+                                }
+
+                              case 20:
+                              case "end":
+                                return _context21.stop();
+                            }
+                          }
+                        }, _callee21);
+                      })), 1);
+
+                    case 6:
+                    case "end":
+                      return _context22.stop();
+                  }
+                }
+              }, _callee22, this);
+            }));
+
+            function changeControler(_x7) {
+              return _changeControler.apply(this, arguments);
+            }
+
+            return changeControler;
+          }()
+        }, {
+          key: "syncMap",
+          value: function () {
+            var _syncMap = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee23(map) {
+              return regeneratorRuntime.wrap(function _callee23$(_context23) {
+                while (1) {
+                  switch (_context23.prev = _context23.next) {
+                    case 0:
+                      log('同步地图数据', map);
+                      this.drawMap(map);
+
+                    case 2:
+                    case "end":
+                      return _context23.stop();
+                  }
+                }
+              }, _callee23, this);
+            }));
+
+            function syncMap(_x8) {
+              return _syncMap.apply(this, arguments);
+            }
+
+            return syncMap;
+          }()
+        }, {
+          key: "onJumpComplete",
+          value: function onJumpComplete(success, isControler) {
+            if (this.SDK.curBoard.name != 'GamingBoard') {
+              if (this.SDK.curBoard.name == 'TeachingBoard') this.teachJumpSingal(false);
+              return;
+            }
+
+            log('跳跃完成', '发送完成信号');
+            log('跳跃完成', '是否为进入下一跳:', success);
+            this.isControler = false;
+
+            if (this.Player.jumpResult.perfect) {
+              this.serverTeam.perfectJump += 1;
+            } else {
+              this.serverTeam.perfectJump = 0;
+            }
+
+            this.avatarSingal(false, false);
+
+            if (success) {
+              log('跳跃完成', '完美跳跃次数:', this.serverTeam.perfectJump);
+              var score = this.Util.getScore(this.serverTeam.perfectJump); // 显示得分特效
+
+              this.showScore(score, this.serverTeam.perfectJump); // 设置摄像机位置
+
+              var camera_pos = new Vec3();
+              var cur_pos = new Vec3();
+              var plane_pos = new Vec3();
+              this.nextBox.node.getPosition(cur_pos);
+              this.nextBox.node.getPosition(plane_pos);
+              plane_pos.y = 0;
+
+              if (isControler) {
+                this.serverPlayer.score += score;
+              }
+
+              this.serverTeam.cur_cube += 1;
+              this.serverTeam.pos = this.Player.jumpResult.offset;
+              log('跳跃完成', '最新的下标:', this.serverTeam.cur_cube);
+              log('跳跃完成', '地图长度:', this.map.length);
+              if (this.serverTeam.cur_cube % 10 == 0) this.changePlane();
+              this.Player.curBox = this.map[this.serverTeam.cur_cube];
+              this.Player.nextBox = this.map[this.serverTeam.cur_cube + 1];
+              this.curBox = this.Player.curBox;
+              this.nextBox = this.Player.nextBox;
+              this.updateCenterNode(this.serverTeam.perfectJump > 0);
+
+              if (this.nextBox) {
+                var next_pos = new Vec3();
+                this.nextBox.node.getPosition(next_pos);
+                cur_pos.x = (cur_pos.x + next_pos.x) / 2.0;
+                cur_pos.z = (cur_pos.z + next_pos.z) / 2.0;
+                Vec3.add(camera_pos, cur_pos, this._origin_camera_pos);
+                log('跳跃完成', '移动镜头:', camera_pos);
+                tween(this.camera.node).to(0.5, {
+                  position: camera_pos
+                }, {}).start();
+                tween(this.plane).to(0.5, {
+                  position: plane_pos
+                }, {}).start();
+              }
+            } else {
+              this.updateCenterNode(false);
+              this.serverTeam.pos = this.Player.jumpResult.offset;
+            }
+
+            if (isControler) {
+              log('跳跃完成', '作为控制者发送跳跃完成信号');
+              this.SDK.sendToServer(ClientDataType.JumpComplete, {
+                team: this.serverTeam
+              });
+            } else {
+              log('跳跃完成', '作为观看者发送请求同步数据信号');
+              this.SDK.sendToServer(ClientDataType.RequestSyncData, {
+                team: this.SDK.gameManager.serverTeam
+              });
+            }
+          }
+        }, {
+          key: "onJumpDead",
+          value: function onJumpDead() {
+            if (!this.serverTeam) {
+              if (this.SDK.curBoard.name == 'TeachingBoard') this.teachJumpSingal(false);
+              return;
+            }
+
+            this.serverTeam.perfectJump = 0;
+            this.updateCenterNode(false);
+            this.avatarSingal(false, false);
+
+            if (this.isControler) {
+              log('跳跃失败', '作为控制者发送跳跃完成信号');
+              this.SDK.sendToServer(ClientDataType.JumpComplete, {
+                team: this.serverTeam
+              });
+            } else {
+              log('跳跃失败', '作为观看者发送请求同步数据信号');
+              this.SDK.sendToServer(ClientDataType.RequestSyncData, {
+                team: this.serverTeam
+              });
+            }
+
+            this.isControler = false;
+          }
+        }, {
+          key: "onPowerDown",
+          value: function onPowerDown() {
+            this.SDK.sendToRoom(RoomDataType.Power, 1);
+            this.avatarSingal(true, false);
+          }
+        }, {
+          key: "onPowerUp",
+          value: function onPowerUp() {
+            var data = {
+              distance: this.Player.jumpResult.distance,
+              pos: this.Player.jumpResult.offset,
+              status: this.Player.jumpResult.status,
+              time: this.Player.jumpResult.time,
+              index: this.serverTeam.cur_cube,
+              perfect: this.Player.jumpResult.perfect
+            };
+            this.SDK.sendToRoom(RoomDataType.PowerEnd, data);
+            this.SDK.sendToRoom(RoomDataType.EnemyPowerEnd, data);
+          }
+        }, {
+          key: "timerSingalAction",
+          value: function timerSingalAction() {
+            if (this.timerSingal) {
+              this.timerSingal();
+            }
+          }
+          /* -------------------游戏基础方法------------------------- */
+          // 地图数据绘制地图,默认状态下自动检测地图数据更新然后绘制新的地图,提供reset参数为true则自动清空原有地图重新开始绘制
+
+        }, {
+          key: "drawMap",
+          value: function () {
+            var _drawMap = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee24(map) {
+              var reset,
+                  index,
+                  element,
+                  firstNode,
+                  firstGround,
+                  ground,
+                  lastestGround,
+                  _index,
+                  info,
+                  newNode,
+                  islong,
+                  lastest,
+                  _newNode,
+                  _index2,
+                  _info,
+                  newGround,
+                  cur_pos,
+                  camera_pos,
+                  next_pos,
+                  plane_pos,
+                  _args24 = arguments;
+
+              return regeneratorRuntime.wrap(function _callee24$(_context24) {
+                while (1) {
+                  switch (_context24.prev = _context24.next) {
+                    case 0:
+                      reset = _args24.length > 1 && _args24[1] !== undefined ? _args24[1] : false;
+
+                      if (!reset) {
+                        _context24.next = 26;
+                        break;
+                      }
+
+                      if (this.map.length > 0) {
+                        for (index = 0; index < this.map.length; index++) {
+                          element = this.map[index].node;
+
+                          if (element) {
+                            element.destroy();
+                          }
+                        }
+
+                        this.map = [];
+                      }
+
+                      _context24.next = 5;
+                      return this.createBox(map[0]);
+
+                    case 5:
+                      firstNode = _context24.sent;
+                      firstGround = {
+                        node: firstNode,
+                        size: map[0][2],
+                        shape: map[0][3],
+                        index: map[0][4],
+                        centerPos: map[0][5]
+                      };
+                      this.map.push(firstGround);
+                      ground = null;
+                      lastestGround = firstGround;
+                      _index = 1;
+
+                    case 11:
+                      if (!(_index < map.length)) {
+                        _context24.next = 22;
+                        break;
+                      }
+
+                      info = map[_index];
+                      _context24.next = 15;
+                      return this.createBox(info, lastestGround);
+
+                    case 15:
+                      ground = _context24.sent;
+                      newNode = {
+                        node: ground,
+                        size: info[2],
+                        shape: info[3],
+                        index: info[4],
+                        centerPos: info[5]
+                      };
+                      this.map.push(newNode);
+                      lastestGround = newNode;
+
+                    case 19:
+                      _index++;
+                      _context24.next = 11;
+                      break;
+
+                    case 22:
+                      this.nextBox = this.map[1];
+                      this.curBox = this.map[0];
+                      _context24.next = 45;
+                      break;
+
+                    case 26:
+                      if (!(map.length > this.map.length)) {
+                        _context24.next = 45;
+                        break;
+                      }
+
+                      islong = map.length - this.map.length > 1;
+                      log('绘制地图', '检测到有新的地图数据', this.map.length, '-->', map.length);
+                      lastest = this.map[this.map.length - 1];
+                      _newNode = null;
+                      _index2 = this.map.length;
+
+                    case 32:
+                      if (!(_index2 < map.length)) {
+                        _context24.next = 45;
+                        break;
+                      }
+
+                      _info = map[_index2];
+                      log('绘制地图', '开始生成地图节点', _index2, _info);
+                      _context24.next = 37;
+                      return this.createBox(_info, lastest, !islong);
+
+                    case 37:
+                      _newNode = _context24.sent;
+                      newGround = {
+                        node: _newNode,
+                        size: _info[2],
+                        shape: _info[3],
+                        index: _info[4],
+                        centerPos: _info[5]
+                      };
+                      this.map.push(newGround);
+                      lastest = newGround; // 如果角色的nextBox为空说明他处于地图更新前的最后一个盒子上,则在生成完最后一个盒子的时候将他的nextBox设置为最新生成的盒子
+
+                      if (_index2 == map.length - 1) {
+                        if (!this.OtherTeam.nextBox) {
+                          this.OtherTeam.nextBox = this.map[this.OtherTeam.index + 1];
+                        }
+
+                        if (!this.nextBox) {
+                          log('绘制地图', '新地图创建时为自己角色设置nextBox', newGround);
+                          this.nextBox = newGround;
+                          this.Player.nextBox = newGround;
+                          log('绘制地图', '创建新节点时设置自己的next box时reset自己的player');
+                          this.Player.reset();
+                          cur_pos = new Vec3();
+                          camera_pos = new Vec3();
+                          this.curBox.node.getPosition(cur_pos);
+                          next_pos = new Vec3();
+                          plane_pos = new Vec3();
+                          this.nextBox.node.getPosition(next_pos);
+                          this.nextBox.node.getPosition(plane_pos);
+                          plane_pos.y = 0;
+                          cur_pos.x = (cur_pos.x + next_pos.x) / 2.0;
+                          cur_pos.z = (cur_pos.z + next_pos.z) / 2.0;
+                          Vec3.add(camera_pos, cur_pos, this._origin_camera_pos);
+                          log('绘制地图', '移动镜头', camera_pos);
+                          tween(this.camera.node).to(0.5, {
+                            position: camera_pos
+                          }).start();
+                          tween(this.plane).to(0.5, {
+                            position: plane_pos
+                          }, {}).start();
+                        }
+                      }
+
+                    case 42:
+                      _index2++;
+                      _context24.next = 32;
+                      break;
+
+                    case 45:
+                    case "end":
+                      return _context24.stop();
+                  }
+                }
+              }, _callee24, this);
+            }));
+
+            function drawMap(_x9) {
+              return _drawMap.apply(this, arguments);
+            }
+
+            return drawMap;
+          }() // 根据服务器数据进行数据同步,this.serverPlayer和this.serverTeam进行更新,同时将manager和player类中的当前盒子和下一个盒子数据更新至对应对象
+
+        }, {
+          key: "syncGameData",
+          value: function () {
+            var _syncGameData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee25(data) {
+              var reconnect,
+                  curPlayerInfo,
+                  team,
+                  otherTeam,
+                  senderTeamId,
+                  senderId,
+                  teamList,
+                  isTeammater,
+                  isSelf,
+                  index,
+                  player,
+                  _index3,
+                  _player,
+                  profile,
+                  info,
+                  _index4,
+                  _player2,
+                  curPos,
+                  cameraPos,
+                  planePos,
+                  _args25 = arguments;
+
+              return regeneratorRuntime.wrap(function _callee25$(_context25) {
+                while (1) {
+                  switch (_context25.prev = _context25.next) {
+                    case 0:
+                      reconnect = _args25.length > 1 && _args25[1] !== undefined ? _args25[1] : false;
+                      _context25.next = 3;
+                      return this.SDK.getPlayerInfo();
+
+                    case 3:
+                      curPlayerInfo = _context25.sent;
+                      team = null;
+                      otherTeam = null;
+                      log('同步游戏数据', '开始', data);
+                      senderTeamId = '';
+                      senderId = '';
+                      teamList = null;
+
+                      if (reconnect) {
+                        teamList = data;
+                      } else {
+                        teamList = data.data;
+                        senderTeamId = data.teamId;
+                        senderId = data.senderId;
+                      }
+
+                      isTeammater = curPlayerInfo.teamId == senderTeamId;
+                      isSelf = curPlayerInfo.id == senderId;
+
+                      if (curPlayerInfo.teamId == TeamColor.red) {
+                        team = teamList[0];
+                        otherTeam = teamList[1];
+                      } else {
+                        team = teamList[1];
+                        otherTeam = teamList[0];
+                      }
+
+                      if (!reconnect) {
+                        _context25.next = 30;
+                        break;
+                      }
+
+                      this.serverTeam = team;
+                      this.otherTeam = otherTeam;
+                      index = 0;
+
+                    case 18:
+                      if (!(index < team.playerList.length)) {
+                        _context25.next = 26;
+                        break;
+                      }
+
+                      player = team.playerList[index];
+
+                      if (!(player.id == curPlayerInfo.id)) {
+                        _context25.next = 23;
+                        break;
+                      }
+
+                      this.serverPlayer = player;
+                      return _context25.abrupt("break", 26);
+
+                    case 23:
+                      index++;
+                      _context25.next = 18;
+                      break;
+
+                    case 26:
+                      for (_index3 = 0; _index3 < otherTeam.playerList.length; _index3++) {
+                        _player = otherTeam.playerList[_index3];
+
+                        if (_player.isRobot) {
+                          profile = {
+                            "nickname": _player.name,
+                            "avatar_url": _player.avatar,
+                            "user_id": _player.user_id,
+                            "lover_id": _player.lover_id,
+                            "gender": _player.gender,
+                            "playCountWeek": 0,
+                            "winCountWeek": 0,
+                            "mvpCountWeek": 0,
+                            "loverCount": 0,
+                            "loverWinCount": 0,
+                            "tacitScore": 0,
+                            "isVip": _player.isVip
+                          };
+                          info = {
+                            id: _player.id,
+                            isRobot: true,
+                            profile: JSON.stringify(profile),
+                            teamId: _player.teamId
+                          };
+                          this.robotInfo[_player.id] = info;
+                        }
+                      }
+
+                      log('重连设置robot信息', this.robotInfo);
+                      _context25.next = 44;
+                      break;
+
+                    case 30:
+                      if (!(isTeammater && isSelf)) {
+                        _context25.next = 43;
+                        break;
+                      }
+
+                      this.serverTeam = team;
+                      _index4 = 0;
+
+                    case 33:
+                      if (!(_index4 < team.playerList.length)) {
+                        _context25.next = 41;
+                        break;
+                      }
+
+                      _player2 = team.playerList[_index4];
+
+                      if (!(_player2.id == curPlayerInfo.id)) {
+                        _context25.next = 38;
+                        break;
+                      }
+
+                      this.serverPlayer = _player2;
+                      return _context25.abrupt("break", 41);
+
+                    case 38:
+                      _index4++;
+                      _context25.next = 33;
+                      break;
+
+                    case 41:
+                      _context25.next = 44;
+                      break;
+
+                    case 43:
+                      this.otherTeam = otherTeam;
+
+                    case 44:
+                      if (reconnect) {
+                        this.OtherTeam.map = this.map;
+                        this.curBox = this.map[team.cur_cube];
+                        this.nextBox = this.map[team.cur_cube + 1];
+                        this.Player.curBox = this.curBox;
+                        this.Player.nextBox = this.nextBox;
+                        this.OtherTeam.curBox = this.map[otherTeam.cur_cube];
+                        this.OtherTeam.nextBox = this.map[otherTeam.cur_cube + 1];
+                        curPos = new Vec3();
+                        cameraPos = new Vec3();
+                        planePos = new Vec3();
+                        this.curBox.node.getPosition(curPos);
+                        this.curBox.node.getPosition(planePos);
+                        planePos.y = 0;
+                        Vec3.add(cameraPos, curPos, this._origin_camera_pos);
+                        cameraPos.y = this._origin_camera_pos.y;
+                        this.camera.node.setPosition(cameraPos);
+                        this.plane.setPosition(planePos);
+                      } else {
+                        if (isTeammater && isSelf) {
+                          this.SDK.sendToServer(ClientDataType.SyncComplete, this.serverTeam.id);
+                          log('同步游戏数据', '当前Map长度:', this.map.length);
+                          log('同步游戏数据', '当前位置下标:', this.serverTeam.cur_cube);
+                          this.curBox = this.map[this.serverTeam.cur_cube];
+                          this.nextBox = this.map[this.serverTeam.cur_cube + 1];
+                          this.Player.curBox = this.curBox;
+                          this.Player.nextBox = this.nextBox;
+
+                          if (this.curBox) {
+                            log('同步游戏数据', '数据源为自己,重置自己棋子');
+                            this.Player.reset(this.serverTeam);
+                          }
+                        }
+                      }
+
+                      log('同步游戏数据', '完成', 'ServerPlayer:', this.serverPlayer, 'ServerTeam:', this.serverTeam);
+
+                    case 46:
+                    case "end":
+                      return _context25.stop();
+                  }
+                }
+              }, _callee25, this);
+            }));
+
+            function syncGameData(_x10) {
+              return _syncGameData.apply(this, arguments);
+            }
+
+            return syncGameData;
+          }() // 根据地图节点数据创建一个方块并返回
+
+        }, {
+          key: "createBox",
+          value: function () {
+            var _createBox = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+              var data,
+                  lastNode,
+                  animation,
+                  cur_pos,
+                  new_pos,
+                  face,
+                  distance,
+                  size,
+                  shae,
+                  key,
+                  prefab,
+                  newBox,
+                  root,
+                  index,
+                  element,
+                  render,
+                  boxCom,
+                  _args26 = arguments;
+              return regeneratorRuntime.wrap(function _callee26$(_context26) {
+                while (1) {
+                  switch (_context26.prev = _context26.next) {
+                    case 0:
+                      data = _args26.length > 0 && _args26[0] !== undefined ? _args26[0] : null;
+                      lastNode = _args26.length > 1 && _args26[1] !== undefined ? _args26[1] : null;
+                      animation = _args26.length > 2 && _args26[2] !== undefined ? _args26[2] : false;
+                      cur_pos = new Vec3();
+                      new_pos = new Vec3();
+                      face = data[0];
+                      distance = data[1];
+                      size = data[2];
+                      shae = data[3];
+                      key = '';
+
+                      if (shae == BoxShape.circle) {
+                        key = 'y';
+                      } else {
+                        key = 'f';
+                      }
+
+                      key = key + (size + 1).toString();
+                      prefab = this.BoxPrefab[key][data[4]]; //[randomRangeInt(0, this.BoxPrefab[key].length)]
+
+                      if (!prefab) prefab = this.BoxPrefab[key][0];
+                      newBox = instantiate(prefab); // 添加测试用范围大小显示
+                      // const t1 = instantiate(this.rangeShowPrefab)
+                      // const t2 = instantiate(this.rangeShowPrefab)
+                      // const t3 = instantiate(this.rangeShowPrefab)
+                      // const t4 = instantiate(this.rangeShowPrefab)
+                      // t1.setParent(newBox);
+                      // t2.setParent(newBox);
+                      // t3.setParent(newBox);
+                      // t4.setParent(newBox);
+                      // t1.setPosition(new Vec3(BoxSize[size]/2, 0.5, 0))
+                      // t2.setPosition(new Vec3(-BoxSize[size]/2, 0.5, 0))
+                      // t3.setPosition(new Vec3(0, 0.5, BoxSize[size]/2))
+                      // t4.setPosition(new Vec3(0, 0.5, -BoxSize[size]/2))
+                      // 开启阴影
+
+                      root = newBox.getChildByName('RootNode');
+
+                      for (index = 0; index < root.children.length; index++) {
+                        element = root.children[index];
+                        render = element.getComponent(MeshRenderer);
+
+                        if (render) {
+                          render.shadowCastingMode = 1;
+                        }
+                      } // 添加box脚本组件
+
+
+                      boxCom = newBox.addComponent(Box);
+
+                      if (!lastNode) {
+                        _context26.next = 34;
+                        break;
+                      }
+
+                      lastNode.node.getPosition(cur_pos);
+                      new_pos = cur_pos.clone();
+                      new_pos.y = 0;
+                      distance += (BoxSize[lastNode.size] + BoxSize[size]) / 2.0;
+
+                      if (face == 1) {
+                        new_pos.z -= distance;
+                      } else {
+                        new_pos.x += distance;
+                      }
+
+                      if (animation) {
+                        newBox.setPosition(new Vec3(new_pos.x, 7, new_pos.z));
+                      } else {
+                        newBox.setPosition(new Vec3(new_pos.x, 0, new_pos.z));
+                      }
+
+                      newBox.setParent(this.Player.node.parent);
+
+                      if (!animation) {
+                        _context26.next = 31;
+                        break;
+                      }
+
+                      boxCom.startFall();
+                      return _context26.abrupt("return", newBox);
+
+                    case 31:
+                      return _context26.abrupt("return", newBox);
+
+                    case 32:
+                      _context26.next = 37;
+                      break;
+
+                    case 34:
+                      newBox.setPosition(new Vec3(0, 0, 0));
+                      newBox.setParent(this.Player.node.parent);
+                      return _context26.abrupt("return", newBox);
+
+                    case 37:
+                    case "end":
+                      return _context26.stop();
+                  }
+                }
+              }, _callee26, this);
+            }));
+
+            function createBox() {
+              return _createBox.apply(this, arguments);
+            }
+
+            return createBox;
+          }()
+        }, {
+          key: "clearMap",
+          value: function clearMap() {
+            var min = this.serverTeam.cur_cube > this.otherTeam.cur_cube ? this.otherTeam.cur_cube : this.serverTeam.cur_cube;
+            var limit = min - 4;
+            log('地图定时清除', limit);
+
+            if (limit > 0) {
+              for (var index = limit; index >= 0; index--) {
+                var element = this.map[index];
+
+                if (element.node) {
+                  log('地图定时清除', index, element.node);
+                  element.node.destroy();
+                  element.node = null;
+                } else break;
+              }
+            }
+          }
+        }, {
+          key: "showToast",
+          value: function showToast(text, time) {
+            this.toast.show(text, time);
+          }
+        }, {
+          key: "changePlane",
+          value: function changePlane() {
+            var met = this.plane.getComponent(MeshRenderer).material;
+            this.planeIndex += 1;
+            if (this.planeIndex > 4) this.planeIndex = 1;
+            var tag = this.planeIndex % 2 == 0;
+            var new_texture;
+
+            switch (this.planeIndex) {
+              case 1:
+                new_texture = this.background_2;
+                break;
+
+              case 2:
+                new_texture = this.background_3;
+                break;
+
+              case 3:
+                new_texture = this.background_4;
+                break;
+
+              case 4:
+                new_texture = this.background_1;
+                break;
+
+              default:
+                return;
+            }
+
+            tween(this.plane).to(2, {}, {
+              onComplete: function onComplete() {
+                if (tag) met.setProperty('Texture1', new_texture);else met.setProperty('Texture2', new_texture);
+              },
+              onUpdate: function onUpdate(target, ratio) {
+                met.passes[0].setUniform(met.passes[0].getHandle("rate"), tag ? ratio : 1.0 - ratio);
+              }
+            }).start(); // tween(this.node).to(2, {}, {onComplete: () => {
+            //     this.planeIndex += 1;
+            //     if(this.planeIndex > 4) this.planeIndex = 1
+            //     switch (this.planeIndex) {
+            //         case 1:
+            //             met.setProperty('mainTexture', this.background_1);
+            //             break;
+            //         case 2:
+            //             met.setProperty('mainTexture', this.background_2);
+            //             break;
+            //         case 3:
+            //             met.setProperty('mainTexture', this.background_3);
+            //             break;
+            //         case 4:
+            //             met.setProperty('mainTexture', this.background_4);
+            //             break;
+            //         default:
+            //             break;
+            //     }
+            //     met.passes[0].setUniform(met.passes[0].getHandle("alpha"), 0);
+            //     tween(this.node).to(2, {}, {onComplete: () => {
+            //         met.passes[0].setUniform(met.passes[0].getHandle("alpha"), 1);
+            //     }, onUpdate: (target, ratio: number) => {
+            //         met.passes[0].setUniform(met.passes[0].getHandle("alpha"), ratio);
+            //     }}).start()
+            // }, onUpdate: (target, ratio: number) => {
+            //     met.passes[0].setUniform(met.passes[0].getHandle("alpha"), 1-ratio);
+            // }}).start()
+          }
+        }, {
+          key: "showScore",
+          value: function () {
+            var _showScore = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee28(score, perfectCount) {
+              var _this6 = this;
+
+              var speed,
+                  _args28 = arguments;
+              return regeneratorRuntime.wrap(function _callee28$(_context28) {
+                while (1) {
+                  switch (_context28.prev = _context28.next) {
+                    case 0:
+                      speed = _args28.length > 2 && _args28[2] !== undefined ? _args28[2] : 1;
+                      return _context28.abrupt("return", new Promise( /*#__PURE__*/function () {
+                        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee27(resolve) {
+                          var ui, scoreNode, perfectNode, pos, uipos, transform, label, num1, num2, count1, count2, node;
+                          return regeneratorRuntime.wrap(function _callee27$(_context27) {
+                            while (1) {
+                              switch (_context27.prev = _context27.next) {
+                                case 0:
+                                  ui = _this6.node.parent.getChildByName('UI');
+                                  scoreNode = new Node();
+                                  pos = new Vec3();
+
+                                  _this6.Player.node.getPosition(pos);
+
+                                  pos.y += 1;
+                                  uipos = new Vec3();
+
+                                  _this6.camera.convertToUINode(pos, ui, uipos);
+
+                                  transform = scoreNode.addComponent(UITransform);
+                                  label = scoreNode.addComponent(Label);
+                                  transform.setContentSize(35, 25);
+                                  label.string = '+' + score;
+                                  label.fontSize = 20;
+                                  label.color = new Color(102, 102, 102);
+                                  scoreNode.setPosition(uipos);
+                                  scoreNode.setParent(ui);
+                                  scoreNode.active = true;
+
+                                  if (!(perfectCount > 0)) {
+                                    _context27.next = 39;
+                                    break;
+                                  } //显示白圈
+
+
+                                  _this6.Player.quan.startAnimation(); // 显示perfect
+
+
+                                  perfectNode = instantiate(_this6.PerfectPrefab);
+                                  perfectNode.active = false;
+                                  num1 = perfectNode.getChildByName('number_1');
+                                  num2 = perfectNode.getChildByName('number_2');
+
+                                  if (!(perfectCount < 10)) {
+                                    _context27.next = 27;
+                                    break;
+                                  }
+
+                                  _context27.next = 25;
+                                  return _this6.Util.loadImg('Texture/number/' + perfectCount + '/spriteFrame', num1);
+
+                                case 25:
+                                  _context27.next = 34;
+                                  break;
+
+                                case 27:
+                                  count1 = Math.floor(perfectCount / 10);
+                                  count2 = perfectCount % 10;
+                                  _context27.next = 31;
+                                  return _this6.Util.loadImg('Texture/number/' + count1 + '/spriteFrame', num1);
+
+                                case 31:
+                                  _context27.next = 33;
+                                  return _this6.Util.loadImg('Texture/number/' + count2 + '/spriteFrame', num2);
+
+                                case 33:
+                                  num2.active = true;
+
+                                case 34:
+                                  uipos.y += 1.5;
+                                  perfectNode.setPosition(uipos);
+                                  perfectNode.setParent(ui);
+                                  perfectNode.setSiblingIndex(0);
+                                  perfectNode.active = true;
+
+                                case 39:
+                                  node = {
+                                    node: scoreNode,
+                                    perfect: perfectNode,
+                                    owner: _this6.Player.node,
+                                    time: 0,
+                                    speed: speed
+                                  };
+
+                                  _this6.scoreNodeList.push(node);
+
+                                  resolve(node);
+
+                                case 42:
+                                case "end":
+                                  return _context27.stop();
+                              }
+                            }
+                          }, _callee27);
+                        }));
+
+                        return function (_x13) {
+                          return _ref3.apply(this, arguments);
+                        };
+                      }()));
+
+                    case 2:
+                    case "end":
+                      return _context28.stop();
+                  }
+                }
+              }, _callee28);
+            }));
+
+            function showScore(_x11, _x12) {
+              return _showScore.apply(this, arguments);
+            }
+
+            return showScore;
+          }()
+        }, {
+          key: "updateCenterNode",
+          value: function updateCenterNode() {
+            var isPerfect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+            if (!isPerfect) {
+              this.CenterNode.active = false;
+              this.CenterNode.setParent(this.node.getParent());
+              return;
+            }
+
+            if (this.nextBox) {
+              this.CenterNode.setParent(this.nextBox.node);
+              var scale = BoxSize[this.nextBox.size] / 10;
+              this.CenterNode.setScale(new Vec3(scale, 0.001, scale));
+              this.CenterNode.active = true;
+            } else {
+              this.CenterNode.active = false;
+              this.CenterNode.setParent(this.node.getParent());
+              return;
+            }
+          }
+        }, {
+          key: "updateScoreNode",
+          value: function updateScoreNode(dt) {
+            var pos = new Vec3();
+            var uipos = new Vec3();
+            var uipos_perfect = new Vec3();
+            var uipos_userTip = new Vec3();
+            var ui = this.node.parent.getChildByName('UI');
+
+            for (var index = this.scoreNodeList.length - 1; index >= 0; index--) {
+              var element = this.scoreNodeList[index];
+              element.owner.getPosition(pos);
+              pos.y += element.time * element.speed + 4;
+              this.camera.convertToUINode(pos, ui, uipos);
+              element.node.setPosition(uipos);
+
+              if (element.perfect != undefined) {
+                element.owner.getPosition(uipos_perfect);
+                uipos_perfect.y += 3.5;
+                this.camera.convertToUINode(uipos_perfect, ui, uipos_perfect);
+                element.perfect.setPosition(uipos_perfect);
+              }
+
+              element.time += dt;
+
+              if (element.time > 1) {
+                element.node.destroy();
+
+                if (element.perfect) {
+                  element.perfect.destroy();
+                }
+
+                this.scoreNodeList.splice(index, 1);
+              }
+            } // 显示用户头像提示
+
+
+            if (this.isRunning || this.SDK.curBoard && this.SDK.curBoard.name == 'TeachingBoard') {
+              pos = this.Player.node.getPosition();
+              pos.y += 2.2;
+              this.camera.convertToUINode(pos, ui, uipos_userTip);
+              this.userTipNode.setPosition(uipos_userTip);
+            } else {
+              if (this.SDK.curBoard && this.SDK.curBoard.name != 'TeachingBoard') {
+                this.userTipNode.active = false;
+
+                var _ui = this.node.getParent().getChildByName('UI');
+
+                _ui.getChildByName('enemy1').active = false;
+                _ui.getChildByName('enemy2').active = false;
+              }
+            }
+          }
+        }, {
+          key: "updateEnemyPosition",
+          value: function updateEnemyPosition() {
+            var ui = this.node.getParent().getChildByName('UI');
+
+            var _pos = this.OtherTeam.node.getPosition();
+
+            var screen = view.getFrameSize();
+            ui.getChildByName('enemy1').active = false;
+            ui.getChildByName('enemy2').active = false;
+            this.camera.convertToUINode(_pos, this.node.getParent().getChildByName('UI'), _pos);
+
+            if (Math.abs(_pos.x) > screen.width / 2 || Math.abs(_pos.y) > screen.height / 2) {
+              if (_pos.x < 0 && _pos.y > 0) {
+                ui.getChildByName('enemy1').active = true;
+              }
+
+              if (_pos.x > 0 && _pos.y > 0) {
+                ui.getChildByName('enemy2').active = true;
+              }
+            }
+          }
+        }, {
+          key: "update",
+          value: function update(dt) {
+            this.updateScoreNode(dt);
+
+            if (this.isRunning) {
+              this.updateEnemyPosition();
+              this.clearTime += dt;
+
+              if (this.clearTime >= 60) {
+                this.clearTime = 0;
+                this.clearMap();
+              }
+            }
+          }
+        }, {
+          key: "isControler",
+          set: function set(b) {
+            this._isControler = b;
+            this.Player.control = b;
+          },
+          get: function get() {
+            return this._isControler;
+          }
+        }, {
+          key: "isRunning",
+          set: function set(b) {
+            this._isRunning = b;
+            this.Player.isRunning = b;
+            this.OtherTeam.isRunning = b;
+          },
+          get: function get() {
+            return this._isRunning;
+          }
+        }]);
+
+        return GameManager;
+      }(Component), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "Player", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "OtherTeam", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "CenterNode", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "plane", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "camera", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "UI", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "toast", [_dec8], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "rangeShowPrefab", [_dec9], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "audio_failed", [_dec10], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, "audio_complete", [_dec11], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, "audio_dead", [_dec12], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, "audio_perfect", [_dec13], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, "audio_last5s", [_dec14], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor14 = _applyDecoratedDescriptor(_class2.prototype, "audio_ready", [_dec15], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor15 = _applyDecoratedDescriptor(_class2.prototype, "audio_relife", [_dec16], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor16 = _applyDecoratedDescriptor(_class2.prototype, "audio_touch_down", [_dec17], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor17 = _applyDecoratedDescriptor(_class2.prototype, "audio_win", [_dec18], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor18 = _applyDecoratedDescriptor(_class2.prototype, "audio_go", [_dec19], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor19 = _applyDecoratedDescriptor(_class2.prototype, "background_1", [_dec20], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor20 = _applyDecoratedDescriptor(_class2.prototype, "background_2", [_dec21], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor21 = _applyDecoratedDescriptor(_class2.prototype, "background_3", [_dec22], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor22 = _applyDecoratedDescriptor(_class2.prototype, "background_4", [_dec23], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor23 = _applyDecoratedDescriptor(_class2.prototype, "userTipNode", [_dec24], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor24 = _applyDecoratedDescriptor(_class2.prototype, "loadingBar", [_dec25], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///Interface.js", ["cc"], function (_export, _context) {
+  "use strict";
+
+  var cclegacy;
+  return {
+    setters: [function (_cc) {
+      cclegacy = _cc.cclegacy;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "894b2eWkr1IfbbtaCcBLs2k", "Interface", undefined);
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///UI/resultUI.js", ["../_virtual/_rollupPluginBabelHelpers.js", "cc", "../Const.js"], function (_export, _context) {
+  "use strict";
+
+  var _inherits, _createClass, _classCallCheck, _possibleConstructorReturn, _getPrototypeOf, cclegacy, _decorator, Animation, Component, log, _dec, _class, ccclass, property, ResultUI;
+
+  _export({
+    _dec: void 0,
+    _class: void 0
+  });
+
+  return {
+    setters: [function (_virtual_rollupPluginBabelHelpersJs) {
+      _inherits = _virtual_rollupPluginBabelHelpersJs.inherits;
+      _createClass = _virtual_rollupPluginBabelHelpersJs.createClass;
+      _classCallCheck = _virtual_rollupPluginBabelHelpersJs.classCallCheck;
+      _possibleConstructorReturn = _virtual_rollupPluginBabelHelpersJs.possibleConstructorReturn;
+      _getPrototypeOf = _virtual_rollupPluginBabelHelpersJs.getPrototypeOf;
+    }, function (_cc) {
+      cclegacy = _cc.cclegacy;
+      _decorator = _cc._decorator;
+      Animation = _cc.Animation;
+      Component = _cc.Component;
+    }, function (_ConstJs) {
+      log = _ConstJs.log;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "8f98aNhGdlEqY/iWb0VOzE3", "resultUI", undefined);
+
+      ccclass = _decorator.ccclass;
+      property = _decorator.property;
+
+      _export("ResultUI", ResultUI = (_dec = ccclass('ResultUI'), _dec(_class = /*#__PURE__*/function (_Component) {
+        _inherits(ResultUI, _Component);
+
+        function ResultUI() {
+          _classCallCheck(this, ResultUI);
+
+          return _possibleConstructorReturn(this, _getPrototypeOf(ResultUI).apply(this, arguments));
+        }
+
+        _createClass(ResultUI, [{
+          key: "start",
+          value: function start() {
+            this.anima = this.node.getComponent(Animation);
+            log('anima: ', this.anima);
+            log('parent: ', this.node.getParent());
+            this.anima.defaultClip.events.push({
+              frame: 1,
+              func: 'test',
+              params: []
+            });
+            this.anima.defaultClip.updateEventDatas();
+          }
+        }, {
+          key: "test",
+          value: function test() {
+            var _this = this;
+
+            log('anima test');
+            this.anima.pause();
+            setTimeout(function () {
+              _this.anima.resume();
+            }, 1000);
+          }
+        }, {
+          key: "mvpAnimaEnd",
+          value: function mvpAnimaEnd() {
+            log('mvp Anima end');
+          }
+        }]);
+
+        return ResultUI;
+      }(Component)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/prerequisite-imports:main", ["../Box.js", "../Config.js", "../Const.js", "../DeployInfo.js", "../quan.js", "../Player.js", "../Util.js", "../SDK.js", "../UI/Dialog/Dialog.js", "../UI/Board/BaseBoard.js", "../UI/Board/WaitLoverBoard.js", "../OtherPlayer.js", "../UI/avatar.js", "../UI/Board/GamingBoard.js", "../UI/Dialog/RulesDialog.js", "../UI/Board/MainBoard.js", "../UI/Board/MatchingBoard.js", "../UI/Board/ResultBoard.js", "../UI/highLightMask.js", "../UI/Board/TeachingBoard.js", "../UI/toast.js", "../UI/loadingBar.js", "../GameManager.js", "../Interface.js", "../UI/resultUI.js"], function (_export, _context) {
+  "use strict";
+
+  return {
+    setters: [function (_BoxJs) {}, function (_ConfigJs) {}, function (_ConstJs) {}, function (_DeployInfoJs) {}, function (_quanJs) {}, function (_PlayerJs) {}, function (_UtilJs) {}, function (_SDKJs) {}, function (_UIDialogDialogJs) {}, function (_UIBoardBaseBoardJs) {}, function (_UIBoardWaitLoverBoardJs) {}, function (_OtherPlayerJs) {}, function (_UIAvatarJs) {}, function (_UIBoardGamingBoardJs) {}, function (_UIDialogRulesDialogJs) {}, function (_UIBoardMainBoardJs) {}, function (_UIBoardMatchingBoardJs) {}, function (_UIBoardResultBoardJs) {}, function (_UIHighLightMaskJs) {}, function (_UIBoardTeachingBoardJs) {}, function (_UIToastJs) {}, function (_UILoadingBarJs) {}, function (_GameManagerJs) {}, function (_InterfaceJs) {}, function (_UIResultUIJs) {}],
+    execute: function () {}
+  };
+});
 
 (function(r) {
   r('project:///assets/Scripts/Box.js', 'chunks:///Box.js');
@@ -71,6 +15939,7 @@ System.register("chunks:///_virtual/prerequisite-imports:main",["../Box.js","../
   r('project:///assets/Scripts/UI/highLightMask.js', 'chunks:///UI/highLightMask.js');
   r('project:///assets/Scripts/UI/Board/TeachingBoard.js', 'chunks:///UI/Board/TeachingBoard.js');
   r('project:///assets/Scripts/UI/toast.js', 'chunks:///UI/toast.js');
+  r('project:///assets/Scripts/UI/loadingBar.js', 'chunks:///UI/loadingBar.js');
   r('project:///assets/Scripts/GameManager.js', 'chunks:///GameManager.js');
   r('project:///assets/Scripts/Interface.js', 'chunks:///Interface.js');
   r('project:///assets/Scripts/UI/resultUI.js', 'chunks:///UI/resultUI.js');

@@ -1,1 +1,1 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"wenhao","rect":{"x":1,"y":1,"width":22,"height":22},"offset":{"x":0,"y":0},"originalSize":{"width":24,"height":24},"rotated":false,"capInsets":[0,0,0,0],"texture":"b6wA+oNpFOBLTGyxqJ12ip@6c48a"}}
+{"__type__":"cc.SpriteFrame","content":{"name":"wenhao","atlas":"","rect":{"x":1,"y":1,"width":22,"height":22},"offset":{"x":0,"y":0},"originalSize":{"width":24,"height":24},"rotated":false,"capInsets":[0,0,0,0],"texture":"b6c00fa8-3691-4e04-b4c6-cb1a89d768a9@6c48a"}}

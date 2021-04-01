@@ -1,1 +1,1 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"VIP","rect":{"x":1,"y":0,"width":46,"height":22},"offset":{"x":0,"y":0},"originalSize":{"width":48,"height":22},"rotated":false,"capInsets":[0,0,0,0],"texture":"8567oGWhVF5rMALnaOpUFP@6c48a"}}
+{"__type__":"cc.SpriteFrame","content":{"name":"VIP","atlas":"","rect":{"x":1,"y":0,"width":46,"height":22},"offset":{"x":0,"y":0},"originalSize":{"width":48,"height":22},"rotated":false,"capInsets":[0,0,0,0],"texture":"85ebba06-5a15-45e6-b300-2e768ea5414f@6c48a"}}

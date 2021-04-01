@@ -1,1 +1,21 @@
-System.register([],(function(r){"use strict";return{execute:function(){r({a:function(){throw new Error("Dynamic requires are not currently supported by @rollup/plugin-commonjs")},c:function(r,e){return r(e={exports:{}},e.exports),e.exports}})}}}));
+System.register([], function (exports) {
+	'use strict';
+	return {
+		execute: function () {
+
+			exports({
+				a: commonjsRequire,
+				c: createCommonjsModule
+			});
+
+			function createCommonjsModule(fn, module) {
+				return module = { exports: {} }, fn(module, module.exports), module.exports;
+			}
+
+			function commonjsRequire () {
+				throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+			}
+
+		}
+	};
+});

@@ -1,1 +1,27 @@
-System.register([],(function(t){"use strict";return{execute:function(){t({g:function(t){return t.__cc_wrapper__},m:function(t){return Math.max(t.x,Math.max(t.y,t.z))},s:function(t,n){t.__cc_wrapper__=n}})}}}));
+System.register([], function (exports) {
+    'use strict';
+    return {
+        execute: function () {
+
+            exports({
+                g: getWrap,
+                m: maxComponent,
+                s: setWrap
+            });
+
+            /**
+             * @hidden
+             */
+            function setWrap(object, wrapper) {
+              object.__cc_wrapper__ = wrapper;
+            }
+            function getWrap(object) {
+              return object.__cc_wrapper__;
+            }
+            function maxComponent(v) {
+              return Math.max(v.x, Math.max(v.y, v.z));
+            }
+
+        }
+    };
+});

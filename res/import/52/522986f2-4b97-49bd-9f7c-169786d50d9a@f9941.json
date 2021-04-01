@@ -1,1 +1,1 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"6","rect":{"x":0,"y":0,"width":42,"height":56},"offset":{"x":0,"y":0},"originalSize":{"width":42,"height":56},"rotated":false,"capInsets":[0,0,0,0],"texture":"52KYbyS5dJvZ98FpeG1Q2a@6c48a"}}
+{"__type__":"cc.SpriteFrame","content":{"name":"6","atlas":"","rect":{"x":0,"y":0,"width":42,"height":56},"offset":{"x":0,"y":0},"originalSize":{"width":42,"height":56},"rotated":false,"capInsets":[0,0,0,0],"texture":"522986f2-4b97-49bd-9f7c-169786d50d9a@6c48a"}}

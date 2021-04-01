@@ -1,1 +1,1 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"angre","rect":{"x":3,"y":3,"width":81,"height":80},"offset":{"x":-0.5,"y":1},"originalSize":{"width":88,"height":88},"rotated":false,"capInsets":[0,0,0,0],"texture":"05yhtoPpZOEr3rMu/xWKLJ@6c48a"}}
+{"__type__":"cc.SpriteFrame","content":{"name":"angre","atlas":"","rect":{"x":3,"y":3,"width":81,"height":80},"offset":{"x":-0.5,"y":1},"originalSize":{"width":88,"height":88},"rotated":false,"capInsets":[0,0,0,0],"texture":"05ca1b68-3e96-4e12-bdeb-32eff158a2c9@6c48a"}}
