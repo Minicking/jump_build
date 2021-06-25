@@ -1,1 +1,1 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"tishi","rect":{"x":0,"y":0,"width":80,"height":56},"offset":{"x":0,"y":0},"originalSize":{"width":80,"height":56},"rotated":false,"capInsets":[26,0,26,0],"texture":"efKnklItxAw4/7i15KF0WK@6c48a"}}
+{"__type__":"cc.SpriteFrame","content":{"name":"tishi","atlas":"","rect":{"x":0,"y":0,"width":80,"height":56},"offset":{"x":0,"y":0},"originalSize":{"width":80,"height":56},"rotated":false,"capInsets":[26,0,26,0],"texture":"ef2a7925-22dc-40c3-8ffb-8b5e4a17458a@6c48a"}}

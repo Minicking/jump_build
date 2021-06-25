@@ -1,1 +1,1 @@
-{"__type__":"cc.SpriteFrame","content":{"name":"message","rect":{"x":4,"y":7,"width":66,"height":63},"offset":{"x":0,"y":-1.5},"originalSize":{"width":74,"height":74},"rotated":false,"capInsets":[0,0,0,0],"texture":"7asYr9T8JDQ7l0nzWp6vg/@6c48a"}}
+{"__type__":"cc.SpriteFrame","content":{"name":"message","atlas":"","rect":{"x":4,"y":7,"width":66,"height":63},"offset":{"x":0,"y":-1.5},"originalSize":{"width":74,"height":74},"rotated":false,"capInsets":[0,0,0,0],"texture":"7ab18afd-4fc2-4343-b974-9f35a9eaf83f@6c48a"}}
