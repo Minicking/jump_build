@@ -39,7 +39,780 @@
 
   <link rel="stylesheet" type="text/css" href="style.css"/>
   <!-- <script src="http://sdk.talkingdata.com/g/h5/v2/DCAAEEE59BF0455BA5D103F4460A2EA6" type="text/javascript"></script> -->
-  <script src="http://sdk.talkingdata.com/g/h5/v2/94C64D951FFC445BAD07E3EEEDFDF5D4" type="text/javascript"></script>
+  <!-- <script src="http://sdk.talkingdata.com/g/h5/v2/94C64D951FFC445BAD07E3EEEDFDF5D4" type="text/javascript"></script> -->
+  <script>
+  function TDGA_init  () {
+    // var sequenceNumber = '6EEB642DCD0440BDB4F66DC3924DCB43';
+    var sequenceNumber = '18F23E7ABAFA41D99B81DA9EF661D097';
+    var appDisplayName = '';
+    var DTGAbaseUrl = 'http://sdk.talkingdata.com/websdk';
+    var DTGARequestUrl = 'http://tdwv1.talkingdata.com/g/h5/v1/receive';
+    function e(e) {
+        return e.replace(/(^\s*)|(\s*$)/g, "")
+    }
+
+    function t(e) {
+        f.addLoginCache("logout")
+    }
+
+    function n() {
+        this.element = null, this.url = DTGARequestUrl, this.create(), this.opts = {}
+    }
+    var i = {
+            sdkVersion: "1.0.9",
+            sdkType: "mobile_web",
+            installationTime: "",
+            appDisplayName: "",
+            sequenceNumber: ""
+        },
+        s = {
+            deviceId: "",
+            pixel: "",
+            language: navigator.language
+        },
+        a = {},
+        o = null,
+        r = (new Date).getTime(),
+        u = {
+            level: null,
+            time: null
+        },
+        c = {},
+        l = (location.hostname, {
+            addEventListener: function (e, t, n) {
+                e.addEventListener ? e.addEventListener(t, n, !1) : e.attachEvent ? e.attachEvent("on" + t, n) : e["on" + t] = n
+            }
+        }),
+        v = [];
+    l.addEventListener(window, "pagehide", t), l.addEventListener(window, "beforeunload", t),
+        function (e, t, n) {
+            "undefined" != typeof module && module.exports ? module.exports = n() : "function" == typeof define && define.amd ? define(n) : t.Fingerprint = n()
+        }(0, c, function () {
+            "use strict";
+            var e = function (e) {
+                var t, n;
+                t = Array.prototype.forEach, n = Array.prototype.map, this.each = function (e, n, i) {
+                    if (null !== e)
+                        if (t && e.forEach === t) e.forEach(n, i);
+                        else if (e.length === +e.length) {
+                        for (var s = 0, a = e.length; s < a; s++)
+                            if (n.call(i, e[s], s, e) === {}) return
+                    } else
+                        for (var o in e)
+                            if (e.hasOwnProperty(o) && n.call(i, e[o], o, e) === {}) return
+                }, this.map = function (e, t, i) {
+                    var s = [];
+                    return null == e ? s : n && e.map === n ? e.map(t, i) : (this.each(e, function (e, n, a) {
+                        s[s.length] = t.call(i, e, n, a)
+                    }), s)
+                }, "object" == typeof e ? (this.hasher = e.hasher, this.screen_resolution = e.screen_resolution, this.screen_orientation = e.screen_orientation, this.canvas = e.canvas, this.ie_activex = e.ie_activex) : "function" == typeof e && (this.hasher = e)
+            };
+            return e.prototype = {
+                get: function () {
+                    var e = [];
+                    if (e.push(navigator.userAgent), e.push(navigator.language), e.push(screen.colorDepth), this.screen_resolution) {
+                        void 0 !== this.getScreenResolution() && e.push(this.getScreenResolution().join("x"))
+                    }
+                    return e.push((new Date).getTimezoneOffset()), e.push(this.hasSessionStorage()), e.push(this.hasLocalStorage()), e.push(!!window.indexedDB), document.body ? e.push(typeof document.body.addBehavior) : e.push("undefined"), e.push(typeof window.openDatabase), e.push(navigator.cpuClass), e.push(navigator.platform), e.push(navigator.doNotTrack), e.push(this.getPluginsString()), this.canvas && this.isCanvasSupported() && e.push(this.getCanvasFingerprint()), this.hasher ? this.hasher(e.join("###"), 31) : this.murmurhash3_32_gc(e.join("###"), 31)
+                },
+                murmurhash3_32_gc: function (e, t) {
+                    var n, i, s, a, o, r, u, c;
+                    for (n = 3 & e.length, i = e.length - n, s = t, o = 3432918353, r = 461845907, c = 0; c < i;) u = 255 & e.charCodeAt(c) | (255 & e.charCodeAt(++c)) << 8 | (255 & e.charCodeAt(++c)) << 16 | (255 & e.charCodeAt(++c)) << 24, ++c, u = (65535 & u) * o + (((u >>> 16) * o & 65535) << 16) & 4294967295, u = u << 15 | u >>> 17, u = (65535 & u) * r + (((u >>> 16) * r & 65535) << 16) & 4294967295, s ^= u, s = s << 13 | s >>> 19, a = 5 * (65535 & s) + ((5 * (s >>> 16) & 65535) << 16) & 4294967295, s = 27492 + (65535 & a) + ((58964 + (a >>> 16) & 65535) << 16);
+                    switch (u = 0, n) {
+                        case 3:
+                            u ^= (255 & e.charCodeAt(c + 2)) << 16;
+                        case 2:
+                            u ^= (255 & e.charCodeAt(c + 1)) << 8;
+                        case 1:
+                            u ^= 255 & e.charCodeAt(c), u = (65535 & u) * o + (((u >>> 16) * o & 65535) << 16) & 4294967295, u = u << 15 | u >>> 17, u = (65535 & u) * r + (((u >>> 16) * r & 65535) << 16) & 4294967295, s ^= u
+                    }
+                    return s ^= e.length, s ^= s >>> 16, s = 2246822507 * (65535 & s) + ((2246822507 * (s >>> 16) & 65535) << 16) & 4294967295, s ^= s >>> 13, s = 3266489909 * (65535 & s) + ((3266489909 * (s >>> 16) & 65535) << 16) & 4294967295, (s ^= s >>> 16) >>> 0
+                },
+                hasLocalStorage: function () {
+                    try {
+                        return !!window.localStorage
+                    } catch (e) {
+                        return !0
+                    }
+                },
+                hasSessionStorage: function () {
+                    try {
+                        return !!window.sessionStorage
+                    } catch (e) {
+                        return !0
+                    }
+                },
+                isCanvasSupported: function () {
+                    var e = document.createElement("canvas");
+                    return !(!e.getContext || !e.getContext("2d"))
+                },
+                isIE: function () {
+                    return "Microsoft Internet Explorer" === navigator.appName || !("Netscape" !== navigator.appName || !/Trident/.test(navigator.userAgent))
+                },
+                getPluginsString: function () {
+                    return this.isIE() && this.ie_activex ? this.getIEPluginsString() : this.getRegularPluginsString()
+                },
+                getRegularPluginsString: function () {
+                    return this.map(navigator.plugins, function (e) {
+                        var t = this.map(e, function (e) {
+                            return [e.type, e.suffixes].join("~")
+                        }).join(",");
+                        return [e.name, e.description, t].join("::")
+                    }, this).join(";")
+                },
+                getIEPluginsString: function () {
+                    if (window.ActiveXObject) {
+                        var e = ["ShockwaveFlash.ShockwaveFlash", "AcroPDF.PDF", "PDF.PdfCtrl", "QuickTime.QuickTime", "rmocx.RealPlayer G2 Control", "rmocx.RealPlayer G2 Control.1", "RealPlayer.RealPlayer(tm) ActiveX Control (32-bit)", "RealVideo.RealVideo(tm) ActiveX Control (32-bit)", "RealPlayer", "SWCtl.SWCtl", "WMPlayer.OCX", "AgControl.AgControl", "Skype.Detection"];
+                        return this.map(e, function (e) {
+                            try {
+                                return new ActiveXObject(e), e
+                            } catch (e) {
+                                return null
+                            }
+                        }).join(";")
+                    }
+                    return ""
+                },
+                getScreenResolution: function () {
+                    return this.screen_orientation ? screen.height > screen.width ? [screen.height, screen.width] : [screen.width, screen.height] : [screen.height, screen.width]
+                },
+                getCanvasFingerprint: function () {
+                    var e = document.createElement("canvas"),
+                        t = e.getContext("2d"),
+                        n = "https://www.talkingdata.com";
+                    return t.textBaseline = "top", t.font = "14px 'Arial'", t.textBaseline = "alphabetic", t.fillStyle = "#f60", t.fillRect(125, 1, 62, 20), t.fillStyle = "#069", t.fillText(n, 2, 15), t.fillStyle = "rgba(102, 204, 0, 0.7)", t.fillText(n, 4, 17), e.toDataURL()
+                }
+            }, e
+        });
+    var g = function (t, n, i) {
+        if (void 0 === n) {
+            var s = null;
+            if (document.cookie && "" != document.cookie)
+                for (var a = document.cookie.split(";"), o = 0; o < a.length; o++) {
+                    var r = e(a[o]);
+                    if (r.substring(0, t.length + 1) == t + "=") {
+                        s = decodeURIComponent(r.substring(t.length + 1));
+                        break
+                    }
+                }
+            return s
+        }
+        i = i || {}, null === n && (n = "", i.expires = -1);
+        var u = "";
+        if (i.expires && ("number" == typeof i.expires || i.expires.toUTCString)) {
+            var c;
+            "number" == typeof i.expires ? (c = new Date, c.setTime(c.getTime() + 24 * i.expires * 60 * 60 * 1e3)) : c = i.expires, u = "; expires=" + c.toUTCString()
+        }
+        var l = i.path ? "; path=" + i.path : "",
+            v = i.domain ? "; domain=" + i.domain : "",
+            g = i.secure ? "; secure" : "";
+        document.cookie = [t, "=", encodeURIComponent(n), u, l, v, g].join("")
+    };
+    c.supportStore = {
+        local: !0,
+        session: !0,
+        verifyStorage: function () {
+            try {
+                localStorage.setItem("__TD_localStorage", 1), localStorage.removeItem("__TD_localStorage"), this.local = !0
+            } catch (e) {
+                this.local = !1
+            }
+            try {
+                sessionStorage.setItem("__TD_sessionStorage", 1), sessionStorage.removeItem("__TD_sessionStorage"), this.session = !0
+            } catch (e) {
+                this.session = !1
+            }
+        }
+    }, c.supportStore.verifyStorage(), c.localStorage = {
+        add: function (e, t) {
+            this.addLocalStorage(e, t), "sessionId" != e && this.addCookie(e, t)
+        },
+        remove: function (e) {
+            for (var t = e.split(","), n = 0, i = t.length; n < i; n++) t[n] && this.delLocalStorage(t[n])
+        },
+        get: function (e) {
+            var t = this.getLocalStorage(e);
+            return t || this._getCookie(e)
+        },
+        create: function () {
+            g("__TD_LOCAL") || (this._addCookie(""), c.supportStore.local)
+        },
+        addCookie: function (e, t) {
+            if (!c.supportStore.local) {
+                this.create();
+                var n = this.cookieList();
+                n[e] = t;
+                var i = [];
+                for (var s in n) i.push(s + "=" + n[s]);
+                this._addCookie(i.join(";"))
+            }
+        },
+        _setCookie: function () {
+            this.cookieList();
+            g("__TD_LOCAL", "", {
+                expires: 1095,
+                path: "/",
+                domain: location.hostname
+            })
+        },
+        _addCookie: function (e) {
+            g("__TD_LOCAL", e, {
+                expires: 1095,
+                path: "/",
+                domain: location.hostname
+            })
+        },
+        _getCookie: function (e) {
+            var t = this.cookieList();
+            if (t && t[e]) return t[e]
+        },
+        delCookie: function (e) {},
+        cookieList: function () {
+            var e = g("__TD_LOCAL");
+            return this.format(e)
+        },
+        addLocalStorage: function (e, t) {
+            c.supportStore.local && ("sessionId" == e && c.supportStore.session ? sessionStorage.setItem("__TD_" + e, t) : localStorage["__TD_" + e] = t)
+        },
+        delLocalStorage: function (e) {
+            c.supportStore.local && ("sessionId" == e && c.supportStore.session ? sessionStorage.removeItem("__TD_" + e) : localStorage.removeItem("__TD_" + e))
+        },
+        getLocalStorage: function (e) {
+            if (c.supportStore.local) return "sessionId" == e && c.supportStore.session ? sessionStorage.getItem("__TD_" + e) : localStorage["__TD_" + e]
+        },
+        format: function (e) {
+            var t = {};
+            if (!e) return t;
+            for (var n = e.split(";"), i = n.length, s = 0; s < i; s++) {
+                var a = n[s].split("=");
+                2 == a.length && (t[a[0]] = a[1])
+            }
+            return t
+        }
+    }, c.sessionStorage = {
+        add: function (e, t) {
+            c.supportStore.session && sessionStorage.setItem("__TD_" + e, t)
+        },
+        get: function (e) {
+            return sessionStorage.getItem("__TD_" + e)
+        },
+        remove: function (e) {
+            sessionStorage.removeItem("__TD_" + e)
+        }
+    }, n.prototype = {
+        create: function () {},
+        scriptCallback: function (e) {},
+        set: function (e) {
+            this.opts = e, this.send()
+        },
+        getConfig: function () {},
+        send: function () {
+            var e = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+            e.open("POST", this.url, !0), e.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), e.onreadystatechange = function () {
+                4 == e.readyState && e.status
+            }, e.send(JSON.stringify(this.opts))
+        }
+    }, (new n).create();
+    var d = {};
+    d.userInfo = {
+        userID: 0,
+        gameServer: "",
+        level: -1
+    }, d.index = {
+        G2: "gameInit",
+        G3: "Login",
+        G4: "Logout",
+        G5: "Levelup",
+        G7: "UpdateUserProfile",
+        G8: "CustomEvent",
+        "G9.1": "Charge",
+        "G9.2": "Charge",
+        G15: "Reward"
+    }, d.getEventData = function (e) {
+        d.index;
+        if (d.index[e]) return d[d.index[e]].getData(e)
+    }, d.getCommon = function () {
+        return {
+            appProfile: i,
+            deviceProfile: s,
+            events: []
+        }
+    }, d.gameInit = {
+        getData: function () {
+            return {
+                eventOccurTime: (new Date).getTime(),
+                eventData: {},
+                eventID: "G2"
+            }
+        }
+    }, d.Login = {
+        getData: function () {
+            var e = {
+                eventOccurTime: (new Date).getTime(),
+                eventData: {},
+                eventID: "G3"
+            };
+            e.eventData = Object.assign({}, a), delete e.eventData.logout;
+            var t = d.getUserStateTime("logout");
+            return t && (e.eventData.interval = t), f.addLoginCache("login"), e
+        }
+    }, d.Logout = {
+        getData: function () {
+            var e = {
+                    eventOccurTime: (new Date).getTime(),
+                    eventData: {},
+                    eventID: "G4"
+                },
+                t = a;
+            o && o.userID ? (t = o, o.userID === a.userID && this.isSameUser(o, a) && (a.logout = !0), o = {}) : (t = Object.assign({}, a), a.logout = !0), t.gameSessionID && (e.eventData.gameSessionID = t.gameSessionID), t.userID && (e.eventData.userID = t.userID), t.level && (e.eventData.level = t.level), t.gameServer && (e.eventData.gameServer = t.gameServer), e.eventData.gameSessionStart = r;
+            var n = d.getUserStateTime("login");
+            return n && (e.eventData.duration = n), f.addLoginCache("logout"), e
+        },
+        isSameUser: function (e, t) {
+            return typeof e == typeof t && (!e || this.isPropertySame(e.userID, t.userID) && this.isPropertySame(e.level, t.level) && this.isPropertySame(e.gameServer, t.gameServer) && this.isPropertySame(e.accountType, t.accountType) && this.isPropertySame(e.age, t.age) && this.isPropertySame(e.account, t.account) && this.isPropertySame(e.sex, t.sex))
+        },
+        isPropertySame: function (e, t) {
+            return typeof e == typeof t && (!e || e === t)
+        }
+    }, d.getUserStateTime = function (e) {
+        if (v.length > 0)
+            for (var t = v.length - 1; t >= 0; t--) {
+                var n = v[t];
+                if (n[1] == e) {
+                    var i = n[2];
+                    return parseInt(((new Date).getTime() - i) / 1e3)
+                }
+            }
+    }, d.Levelup = {
+        getData: function () {
+            var e = {
+                    eventOccurTime: (new Date).getTime(),
+                    eventData: {},
+                    eventID: "G5"
+                },
+                t = a || o;
+            e.eventData.gameSessionID = t.gameSessionID || a.gameSessionID, t.userID && (e.eventData.userID = t.userID), t.level && (e.eventData.level = t.level), t.gameServer && (e.eventData.gameServer = t.gameServer), u.level && (e.eventData.preLevel = u.level), u.time && (e.eventData.timeConsuming = parseInt(((new Date).getTime() - u.time) / 1e3)), e.eventData.gameSessionStart = r;
+            var n = f.Mission.getMission();
+            return n && (e.eventData.mission = n), e
+        }
+    }, d.UpdateUserProfile = {
+        getData: function () {
+            var e = d.Login.getData();
+            return e.eventID = "G7", e
+        }
+    }, d.CustomEvent = {
+        getData: function () {
+            var e = {
+                    eventOccurTime: (new Date).getTime(),
+                    eventData: {},
+                    eventID: "G8"
+                },
+                t = a;
+            t.gameSessionID && (e.eventData.gameSessionID = t.gameSessionID), t.userID && (e.eventData.userID = t.userID), t.level && (e.eventData.level = t.level), t.gameServer && (e.eventData.gameServer = t.gameServer);
+            var n = f.CustomEvent.info;
+            return n.actionID && (e.eventData.actionID = n.actionID), n.actionData && (e.eventData.actionData = n.actionData), e
+        }
+    }, d.Charge = {
+        getData: function (e) {
+            var t = {
+                eventOccurTime: (new Date).getTime(),
+                eventData: {},
+                eventID: "G9"
+            };
+            t.eventData = f.Charge.info;
+            var n = f.Mission.getMission(),
+                i = a;
+            return i.gameSessionID && (t.eventData.gameSessionID = i.gameSessionID), i.userID && (t.eventData.userID = i.userID), i.level && (t.eventData.level = i.level), i.gameServer && (t.eventData.gameServer = i.gameServer), n && (t.eventData.mission = n), t
+        }
+    }, d.Reward = {
+        getData: function () {
+            var e = {
+                    eventOccurTime: (new Date).getTime(),
+                    eventData: {},
+                    eventID: "G15"
+                },
+                t = a;
+            t.gameSessionID && (e.eventData.gameSessionID = t.gameSessionID), t.userID && (e.eventData.userID = t.userID), t.level && (e.eventData.level = t.level), t.gameServer && (e.eventData.gameServer = t.gameServer);
+            var n = f.Reward.info;
+            return n.virtualCurrencyAmount && (e.eventData.virtualCurrencyAmount = n.virtualCurrencyAmount), n.reason && (e.eventData.reason = n.reason), n.mission && (e.eventData.mission = n.mission), e
+        }
+    }, d.Profile = function (e, t) {
+        ({}).gameSessionId = sessionId
+    }, d.Profile.prototype = {
+        getData: function () {}
+    }, d.formatOpts = function (e) {
+        var t = {};
+        for (var n in e) t.key = e[n]
+    }, d.loginCache = function () {
+        a.userID || s.deviceId
+    };
+    var m = c.localStorage,
+        f = {
+            deviceId: 0,
+            sessionId: 0,
+            isSendG2: !1,
+            changeSessionId: !1,
+            isNewApp: !1,
+            userInfoArr: ["userID", "account", "sex", "age", "accountType", "level", "gameServer"],
+            installationTime: 0,
+            init: function () {
+                this.setDeviceId(), this.setPixel(), this.getAppFlag(), this.setSession(), this.setUser(), this.setLoginCache(), this.getLocalProfile(), this.isNewApp && (this.lastLogout(!0), this.resetLocalInfo(), this.setAppProfile()), this.sendGameInit(), this.setPartner(), this.isNewApp || this.lastLogout(), this.sendLogin()
+            },
+            resetLocalInfo: function () {
+                for (var e = this.userInfoArr, t = 0, n = e.length; t < n; t++) delete a[e[t]], m.remove(e[t]);
+                m.remove("login"), m.remove("leveluptime")
+            },
+            setDeviceId: function () {
+                if (m.get("deviceId")) this.deviceId = m.get("deviceId"), this.isSendG2 = !1;
+                else {
+                    this.isSendG2 = !0;
+                    var e = new c.Fingerprint,
+                        t = new c.Fingerprint({
+                            screen_resolution: !0
+                        }),
+                        n = e.get() + "" + t.get();
+                    NaN == parseInt(n) ? this.deviceId = n : this.deviceId = parseInt(n).toString(16), m.add("deviceId", this.deviceId)
+                }
+                s.deviceId = this.deviceId
+            },
+            setAppProfile: function () {
+                var e = this.installationTime || (new Date).getTime();
+                i.appDisplayName = appDisplayName, i.sequenceNumber = sequenceNumber, m.add("appDisplayName", appDisplayName), m.add("appKey", sequenceNumber), m.add("installationTime", e)
+            },
+            getLocalProfile: function () {
+                var e = m.get("appDisplayName"),
+                    t = m.get("appKey");
+                if (i.appDisplayName = e || "", i.sequenceNumber = t, m.get("installationTime")) i.installationTime = m.get("installationTime");
+                else {
+                    var n = (new Date).getTime();
+                    this.installationTime = n, i.installationTime = n
+                }
+            },
+            setSession: function () {
+                var e, t = this.deviceId;
+                parseInt(t, 16);
+                e = this.deviceId + "" + (new Date).getTime(), !c.sessionStorage.get("sessionId") || this.isNewApp ? (f.changeSessionId = !0, c.sessionStorage.add("sessionId", e)) : e = c.sessionStorage.get("sessionId"), a.gameSessionID = this.sessionId = e
+            },
+            setPixel: function () {
+                var e = [window.screen.width, window.screen.height];
+                window.devicePixelRatio && e.push(window.devicePixelRatio), s.pixel = e.join("*")
+            },
+            getAppFlag: function () {
+                var e = m.get("appKey");
+                sequenceNumber !== e ? (this.isNewApp = !0, this.isSendG2 = !0) : (this.isNewApp = !1, this.isSendG2 = !1)
+            },
+            sendLastApp: function () {},
+            setUser: function () {
+                var e = m.get("userID");
+                o = o || {}, e && (a.userID = e, o.userID = e);
+                var t = m.get("gameServer");
+                t && (a.gameServer = o.gameServer = t);
+                var n = m.get("level");
+                n && (a.level = o.level = n);
+                var i = m.get("accountType");
+                i && (a.accountType = o.accountType = i);
+                var s = m.get("age");
+                s && (a.age = o.age = s);
+                var r = m.get("account");
+                r && (a.account = o.account = r);
+                var u = m.get("sex");
+                u && (a.sex = o.sex = u), !f.changeSessionId && a.gameSessionID && (o.gameSessionID = a.gameSessionID)
+            },
+            setPartner: function () {
+                var e = location.search;
+                if (e.indexOf("td_channelid") > -1)
+                    for (var t = e.replace("?", "").split("&"), n = 0; n < t.length; n++) t[n].indexOf("td_channelid=") > -1 && (i.partner = t[n].replace("td_channelid=", ""))
+            },
+            setLoginCache: function () {
+                var e = m.get("login");
+                e && (v = JSON.parse(e))
+            },
+            addLoginCache: function (e) {
+                var t = a.userID || s.deviceId,
+                    n = [];
+                n.push(t), n.push(e), n.push((new Date).getTime()), n.push(a.gameSessionID), v.push(n), v.length > 30 && (v = v.splice(1, v.length - 1)), m.add("login", JSON.stringify(v))
+            },
+            sendGameInit: function () {
+                this.isSendG2 && f.EventBox.add("G2")
+            },
+            lastLogout: function (e) {
+                if (v && f.changeSessionId) {
+                    for (var t = v, i = t.length, s = [], o = [], r = i - 1; r >= 0; r--) t[r].length < 3 || (0 == s.length && "logout" == t[r][1] ? s = t[r] : "login" == t[r][1] && t[r][3] == s[3] && (o = t[r]));
+                    var u, c;
+                    if (o.length > 0) {
+                        u = o[2], c = parseInt((s[2] - u) / 1e3);
+                        var l = {
+                                eventOccurTime: s[2],
+                                eventData: {},
+                                eventID: "G4"
+                            },
+                            g = e ? m.get("level") : a.level,
+                            h = e ? m.get("gameServer") : a.gameServer;
+                        l.eventData = {
+                            gameSessionID: s[3],
+                            userID: s[0],
+                            level: g,
+                            gameServer: h,
+                            gameSessionStart: u,
+                            duration: c
+                        };
+                        var p = d.getCommon();
+                        p.events.push(l);
+                        (new n).set(p)
+                    }
+                }
+            },
+            sendLogin: function () {
+                f.changeSessionId && f.EventBox.add("G3")
+            }
+        };
+    f.EventBox = {
+        eventNames: [],
+        timer: null,
+        add: function (e) {
+            for (var t = "," + this.eventNames.join() + ",", n = e.split(","), i = 0; i < n.length; i++) - 1 == t.indexOf("," + n[i]) && this.eventNames.push(n[i]);
+            this.send()
+        },
+        send: function () {
+            var e = this;
+            clearTimeout(e.timer), e.timer = setTimeout(function () {
+                if (("," + e.eventNames.join() + ",").indexOf("G3,") > -1) {
+                    for (var t = [], i = 0; i < e.eventNames.length; i++) "G7" != e.eventNames[i] && "G5" != e.eventNames[i] && t.push(e.eventNames[i]);
+                    e.eventNames = t
+                }
+                for (var s = d.getCommon(), i = 0; i < e.eventNames.length; i++) {
+                    var a = e.eventNames[i];
+                    d.index[a] && s.events.push(d[d.index[a]].getData(a))
+                }
+                if (0 != s.events.length) {
+                    (new n).set(s), e.eventNames = []
+                }
+            }, 20)
+        }
+    }, f.setUserInfo = function (e) {
+        var t = a;
+        return a.gameSessionID && (e.gameSessionID = a.gameSessionID), t.userID && (e.userID = t.userID), t.level && (e.level = parseInt(t.level)), t.gameServer && (e.gameServer = t.gameServer), e
+    }, f.init(), window.TDGA = {}, TDGA.onPageLeave = function () {
+        f.EventBox.add("G4")
+    }, TDGA.getDeviceId = function () {
+        return s.deviceId
+    }, f.Profile = {
+        eventList: [],
+        delInfo: [],
+        set: function (e) {
+            var t = "accountType,account,level,gender,age,gameServer,",
+                n = null;
+            for (var i in e) f.Profile["set_" + i] && (e[i] || 0 === e[i]) && (i = "accountName" === i ? "account" : i, n = new RegExp(i + ",", "g"), t = t.replace(n, ""));
+            f.Profile.delInfo = t.split(","), f.Profile.clearOtherInfo(t);
+            for (var s in e) f.Profile["set_" + s] && (e[s] || 0 === e[s]) && f.Profile["set_" + s](e[s])
+        },
+        clearOtherInfo: function (e) {
+            m.remove(e)
+        },
+        set_accountId: function (e) {
+            var t = f.Profile.delInfo;
+            if (a.userID)
+                if (a.logout || a.userID != e) {
+                    o.gameSessionID = a.gameSessionID, c.sessionStorage.remove("sessionId"), f.setSession();
+                    for (var n = 0, i = t.length; n < i; n++) {
+                        const s = t[n];
+                        delete a[s]
+                    }
+                    m.add("userID", e), a.logout ? (a.logout = !1, o = {}, f.EventBox.add("G3")) : (o.userID = a.userID, f.EventBox.add("G4,G3")), a.userID = e
+                } else;
+            else m.add("userID", e), a.userID = e, f.EventBox.add("G7")
+        },
+        set_accountType: function (e) {
+            a.accountType != e && (m.add("accountType", e), a.accountType = e, f.EventBox.add("G7"))
+        },
+        set_accountName: function (e) {
+            a.account != e && (m.add("account", e), a.account = e, f.EventBox.add("G7"))
+        },
+        set_level: function (e) {
+            if (a.level && (o.level = a.level), a.level != e) {
+                u.level = a.level, m.get("level");
+                var t = m.get("leveluptime");
+                t && (u.time = t), m.add("level", e), m.add("leveluptime", (new Date).getTime()), a.level = e, f.EventBox.add("G5")
+            }
+        },
+        set_gender: function (e) {
+            a.sex != e && (m.add("sex", e), a.sex = e, f.EventBox.add("G7"))
+        },
+        set_age: function (e) {
+            a.age != e && (m.add("age", e), a.age = e, f.EventBox.add("G7"))
+        },
+        set_gameServer: function (e) {
+            a.gameServer ? (o.gameServer = a.gameServer, a.gameServer != e && (c.sessionStorage.remove("sessionId"), o.gameSessionID = a.gameSessionID, f.setSession(), o.userID = a.userID, m.add("gameServer", e), a.gameServer = e, f.EventBox.add("G4,G3"))) : (m.add("gameServer", e), a.gameServer = e, f.EventBox.add("G7"))
+        }
+    }, TDGA.Profile = f.Profile.set, TDGA.Profile.setProfile = f.Profile.set_accountId, TDGA.Profile.setProfileType = f.Profile.set_accountType, TDGA.Profile.setProfileName = f.Profile.set_accountName, TDGA.Profile.setLevel = f.Profile.set_level, TDGA.Profile.setGender = f.Profile.set_gender, TDGA.Profile.setAge = f.Profile.set_age, TDGA.Profile.setGameServer = f.Profile.set_gameServer, TDGA.ProfileType = {
+        ANONYMOUS: 0,
+        REGISTERED: 1,
+        SINA_WEIBO: 2,
+        QQ: 3,
+        TENCENT_WEIBO: 4,
+        ND91: 5
+    }, TDGA.Gender = {
+        UNKNOWN: -1,
+        MALE: 1,
+        FEMALE: 2
+    }, f.Mission = {
+        info: {},
+        MissionNum: {},
+        list: {},
+        selKey: "_key",
+        begin: function (e) {
+            if (e && "" != e) {
+                var t = {};
+                t = f.setUserInfo(t), t.mission = e, t.status = 1, f.Mission.add(t), f.Mission.send(t)
+            }
+        },
+        completed: function (e) {
+            if (e && "" != e) {
+                var t = {
+                    mission: e
+                };
+                t = f.setUserInfo(t), t.mission = e, t.status = 2;
+                var n = f.Mission;
+                n.caculateTimeConsuming(t), n.add(t), n.send(t)
+            }
+        },
+        failed: function (e, t) {
+            if (e && "" != e) {
+                var n = {
+                    mission: e
+                };
+                n = f.setUserInfo(n), n.mission = e, n.cause = t, n.status = 3;
+                var i = f.Mission;
+                i.caculateTimeConsuming(n), i.add(n), i.send(n)
+            }
+        },
+        caculateTimeConsuming: function (e) {
+            var t = f.Mission,
+                n = t.list[e.mission + "_" + e.userID];
+            if (Array.isArray(n)) {
+                if (n && n.length > 0)
+                    for (var i = n.length, s = i - 1; s >= 0; s--)
+                        if (1 == n[s].status && n[s].time) {
+                            var a = n[s].time,
+                                o = parseInt(((new Date).getTime() - a) / 1e3);
+                            return void(e.timeConsuming = o)
+                        }
+            } else if (n && 1 == n.status && n.time) {
+                var o = parseInt(((new Date).getTime() - n.time) / 1e3);
+                e.timeConsuming = o
+            }
+        },
+        init: function () {
+            var e = m.get("mission");
+            if (e) {
+                var t = JSON.parse(e);
+                this.list = t;
+                var n = m.get("mission_Num");
+                n && (this.MissionNum = JSON.parse(n))
+            }
+        },
+        add: function (e) {
+            if (e.time = (new Date).getTime(), 2 === e.status) delete this.list[e.mission + "_" + e.userID];
+            else {
+                if (3 === e.status) return;
+                this.list[e.mission + "_" + e.userID] = e
+            }
+            m.add("mission", JSON.stringify(this.list))
+        },
+        send: function (e) {
+            var t = {
+                eventOccurTime: (new Date).getTime(),
+                eventData: {},
+                eventID: "G6"
+            };
+            e = Object.assign({}, e), delete e.time;
+            var i = e.userID;
+            this.MissionNum["uid_" + i] = e.mission, m.add("mission_Num", JSON.stringify(this.MissionNum)), t.eventData = e;
+            var s = d.getCommon();
+            s.events.push(t), (new n).set(s)
+        },
+        getMission: function () {
+            return this.MissionNum["uid_" + a.userID]
+        }
+    }, f.Mission.init(), TDGA.onMissionBegin = f.Mission.begin, TDGA.onMissionCompleted = f.Mission.completed, TDGA.onMissionFailed = f.Mission.failed, f.Reward = {
+        info: {},
+        send: function (e, t) {
+            f.Reward.info = {};
+            var n = {};
+            e && (n.virtualCurrencyAmount = e), t && (n.reason = t);
+            var i = f.Mission.getMission();
+            i && (n.mission = i), f.Reward.info = n, f.EventBox.add("G15")
+        }
+    }, TDGA.onReward = f.Reward.send, f.CustomEvent = {
+        info: {},
+        send: function (e, t) {
+            if ((e || /0{1}/.test(e)) && (e = e.replace(/^\s+|\s+$/g, ""), 0 != e.length)) {
+                f.CustomEvent.info = {};
+                var n = {};
+                n.actionID = e, t && (n.actionData = t), f.CustomEvent.info = n, f.EventBox.add("G8")
+            }
+        }
+    }, TDGA.onEvent = f.CustomEvent.send, f.Item = {
+        purchase: function (e) {
+            if (e && e.item) {
+                var t = {};
+                t.itemid = e.item, e.itemNumber && (t.itemnumber = parseInt(e.itemNumber)), e.priceInVirtualCurrency && (t.virtualCurrencyAmount = parseFloat(e.priceInVirtualCurrency));
+                var n = f.Mission.getMission();
+                n && (t.mission = n), t = f.setUserInfo(t), f.Item.send(t, "G10")
+            }
+        },
+        use: function (e) {
+            if (e && e.item) {
+                var t = {};
+                t.itemid = e.item, e.itemNumber && (t.itemnumber = e.itemNumber);
+                var n = f.Mission.getMission();
+                n && (t.mission = n), t = f.setUserInfo(t), f.Item.send(t, "G12")
+            }
+        },
+        send: function (e, t) {
+            var i = {
+                eventOccurTime: (new Date).getTime(),
+                eventData: {},
+                eventID: t
+            };
+            i.eventData = e;
+            var s = d.getCommon();
+            s.events.push(i), (new n).set(s)
+        }
+    }, TDGA.onItemPurchase = f.Item.purchase, TDGA.onItemUse = f.Item.use, f.Charge = {
+        info: {},
+        orderList: {},
+        selKey: "_key",
+        request: function (e) {
+            if (e.orderId && "" != e.orderId) {
+                var t = this;
+                t.info = {};
+                for (var n = ["orderId", "iapId", "currencyAmount", "currencyType", "virtualCurrencyAmount", "paymentType"], i = 0; i < n.length; i++) e[n[i]] && (t.info[n[i]] = e[n[i]]);
+                t.info.status = 1, f.Charge.info = t.info, f.EventBox.add("G9.1")
+            }
+        },
+        successt: function (e) {
+            if (e.orderId && "" != e.orderId) {
+                var t = this;
+                t.info = {};
+                for (var n = ["orderId", "iapId", "currencyAmount", "currencyType", "virtualCurrencyAmount", "paymentType"], i = 0; i < n.length; i++) e[n[i]] && (t.info[n[i]] = e[n[i]]);
+                t.info.status = 2, f.Charge.info = t.info, f.EventBox.add("G9.2")
+            }
+        },
+        init: function () {
+            var e = m.get("order");
+            if (e && "undefined" != e) {
+                var t = JSON.parse(e);
+                this.addOrder(t)
+            }
+        },
+        addOrder: function (e) {
+            this.orderList[e.orderId + this.selKey] = e
+        }
+    }, f.Charge.init(), TDGA.onChargeRequest = f.Charge.request, TDGA.onChargeSuccess = f.Charge.successt
+};
+
+  </script>
 
 
 </head>

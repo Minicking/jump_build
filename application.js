@@ -80,7 +80,7 @@ System.register([], function (_export, _context) {
 
     function loadSettingsJson(cc) {
       return new Promise(function (resolve, reject) {
-        cc.loader.load('./res/settings.367fc.json', function (err, json) {
+        cc.loader.load('./res/settings.b8cfa.json', function (err, json) {
           if (err) {
             return reject(err);
           }
@@ -130,7 +130,65 @@ System.register([], function (_export, _context) {
   }
 
   function getGameOptions(settings, findCanvas) {
-    // asset library options
+    var uuids = settings.uuids;
+    var rawAssets = settings.rawAssets;
+    var assetTypes = settings.assetTypes;
+    var realRawAssets = settings.rawAssets = {};
+
+    for (var mount in rawAssets) {
+      var entries = rawAssets[mount];
+      var realEntries = realRawAssets[mount] = {};
+
+      for (var id in entries) {
+        var entry = entries[id];
+        var type = entry[1]; // retrieve minified raw asset
+
+        if (typeof type === 'number') {
+          entry[1] = assetTypes[type];
+        } // retrieve uuid
+
+
+        realEntries[uuids[id] || id] = entry;
+      }
+    }
+
+    var scenes = settings.scenes;
+
+    for (var i = 0; i < scenes.length; ++i) {
+      var scene = scenes[i];
+
+      if (typeof scene.uuid === 'number') {
+        scene.uuid = uuids[scene.uuid];
+      }
+    }
+
+    var packedAssets = settings.packedAssets;
+
+    for (var packId in packedAssets) {
+      var packedIds = packedAssets[packId];
+
+      for (var j = 0; j < packedIds.length; ++j) {
+        if (typeof packedIds[j] === 'number') {
+          packedIds[j] = uuids[packedIds[j]];
+        }
+      }
+    }
+
+    var subpackages = settings.subpackages;
+
+    for (var subId in subpackages) {
+      var uuidArray = subpackages[subId].uuids;
+
+      if (uuidArray) {
+        for (var k = 0, l = uuidArray.length; k < l; k++) {
+          if (typeof uuidArray[k] === 'number') {
+            uuidArray[k] = uuids[uuidArray[k]];
+          }
+        }
+      }
+    } // asset library options
+
+
     var assetOptions = {
       libraryPath: 'res/import',
       rawAssetsBase: 'res/raw-',
